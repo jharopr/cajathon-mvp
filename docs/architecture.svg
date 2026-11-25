@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="1010" viewBox="0 0 960 1010">
+<rect width="960" height="1010" fill="#f3f6f7"/>
+<g font-family="Segoe UI,Arial,sans-serif"><text x="48" y="53" font-size="28" fill="#19333b" font-weight="700">ClimaShield AI</text>
+<text x="48" y="83" font-size="16" fill="#536771">Arquitectura tecnológica · NestJS + React + PostgreSQL/PostGIS</text>
+<rect x="48" y="115" width="864" height="102" rx="8" fill="white" stroke="#d6e2e5"/>
+<rect x="48" y="115" width="5" height="102" rx="2" fill="#6397b0"/>
+<circle cx="78" cy="147" r="5" fill="#6397b0"/>
+<text x="96" y="154" font-size="21" fill="#19333b" font-weight="600">Fuentes de información</text>
+<text x="78" y="190" font-size="16" fill="#536771">CENEPRED SHAPE 102 · Avisos SENAMHI (WFS) · Open-Meteo · Cartera ficticia</text>
+<path d="M480 220v18m-5-6 5 6 5-6" fill="none" stroke="#9eb4bc" stroke-width="2"/>
+<rect x="48" y="241" width="864" height="102" rx="8" fill="white" stroke="#d6e2e5"/>
+<rect x="48" y="241" width="5" height="102" rx="2" fill="#778b93"/>
+<circle cx="78" cy="273" r="5" fill="#778b93"/>
+<text x="96" y="280" font-size="21" fill="#19333b" font-weight="600">Integración y datos</text>
+<text x="78" y="316" font-size="16" fill="#536771">NestJS / Zod · Lector shapefile · Migraciones SQL · PostGIS / Supabase</text>
+<path d="M480 346v18m-5-6 5 6 5-6" fill="none" stroke="#9eb4bc" stroke-width="2"/>
+<rect x="48" y="367" width="864" height="102" rx="8" fill="white" stroke="#d6e2e5"/>
+<rect x="48" y="367" width="5" height="102" rx="2" fill="#b18b35"/>
+<circle cx="78" cy="399" r="5" fill="#b18b35"/>
+<text x="96" y="406" font-size="21" fill="#19333b" font-weight="600">Inteligencia climática</text>
+<text x="78" y="442" font-size="16" fill="#536771">ST_Covers zonas y distritos · Vulnerabilidad · Índice explicable</text>
+<path d="M480 472v18m-5-6 5 6 5-6" fill="none" stroke="#9eb4bc" stroke-width="2"/>
+<rect x="48" y="493" width="864" height="102" rx="8" fill="white" stroke="#d6e2e5"/>
+<rect x="48" y="493" width="5" height="102" rx="2" fill="#ba7962"/>
+<circle cx="78" cy="525" r="5" fill="#ba7962"/>
+<text x="96" y="532" font-size="21" fill="#19333b" font-weight="600">Inteligencia financiera</text>
+<text x="78" y="568" font-size="16" fill="#536771">Decimal.js · Caja mensual · Optimización bajo recursos limitados</text>
+<path d="M480 598v18m-5-6 5 6 5-6" fill="none" stroke="#9eb4bc" stroke-width="2"/>
+<rect x="48" y="619" width="864" height="102" rx="8" fill="white" stroke="#d6e2e5"/>
+<rect x="48" y="619" width="5" height="102" rx="2" fill="#9777b2"/>
+<circle cx="78" cy="651" r="5" fill="#9777b2"/>
+<text x="96" y="658" font-size="21" fill="#19333b" font-weight="600">Asistente de inteligencia artificial</text>
+<text x="78" y="694" font-size="16" fill="#536771">Gemini · Herramientas validadas · Explicaciones con evidencia</text>
+<path d="M480 724v18m-5-6 5 6 5-6" fill="none" stroke="#9eb4bc" stroke-width="2"/>
+<rect x="48" y="745" width="864" height="102" rx="8" fill="white" stroke="#d6e2e5"/>
+<rect x="48" y="745" width="5" height="102" rx="2" fill="#409a86"/>
+<circle cx="78" cy="777" r="5" fill="#409a86"/>
+<text x="96" y="784" font-size="21" fill="#19333b" font-weight="600">Aplicaciones de negocio</text>
+<text x="78" y="820" font-size="16" fill="#536771">React / MapLibre · Riesgo · Simulador · Bandeja del coordinador</text>
+<rect x="48" y="886" width="864" height="74" rx="6" fill="#e7f3ec" stroke="#bcd8ca"/>
+<text x="480" y="916" text-anchor="middle" font-size="18" fill="#25674f" font-weight="600">Seguridad · Auditoría · Trazabilidad · Supervisión humana</text>
+<text x="480" y="941" text-anchor="middle" font-size="14" fill="#536771">Clima oficial con procedencia y vigencia. Cartera ficticia. Autenticación institucional: futura.</text></g></svg>

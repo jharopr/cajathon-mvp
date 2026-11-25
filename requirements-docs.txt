@@ -1,0 +1,3 @@
+# Herramientas opcionales de documentos; no son dependencias del backend NestJS.
+reportlab==4.4.5
+pymupdf==1.26.6

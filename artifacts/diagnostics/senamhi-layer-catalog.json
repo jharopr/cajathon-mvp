@@ -1,0 +1,5452 @@
+[
+  {
+    "name": "g_04_02:04_02_005_03_002_512_0000_00_00",
+    "title": "ANOMALIA DE PRECIPITACION - 1RA DECADA",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_04_02:04_02_006_03_002_512_0000_00_00",
+    "title": "ANOMALIA DE PRECIPITACION - 2DA DECADA",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_04_02:04_02_007_03_002_512_0000_00_00",
+    "title": "ANOMALIA DE PRECIPITACION - 3RA DECADA",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_04_02:04_02_008_03_002_512_0000_00_00",
+    "title": "ANOMALIA DE PRECIPITACION - MES",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_04_05:04_05_005_03_002_512_0000_00_00",
+    "title": "ANOMALIA DE TEMPERATURA MAXIMA - 1RA DECADA",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_04_05:04_05_006_03_002_512_0000_00_00",
+    "title": "ANOMALIA DE TEMPERATURA MAXIMA - 2DA DECADA",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_04_05:04_05_007_03_002_512_0000_00_00",
+    "title": "ANOMALIA DE TEMPERATURA MAXIMA - 3RA DECADA",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_04_05:04_05_008_03_002_512_0000_00_00",
+    "title": "ANOMALIA DE TEMPERATURA MAXIMA - MES",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_04_04:04_04_005_03_002_512_0000_00_00",
+    "title": "ANOMALIA DE TEMPERATURA MINIMA - 1RA DECADA",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_04_04:04_04_006_03_002_512_0000_00_00",
+    "title": "ANOMALIA DE TEMPERATURA MINIMA - 2DA DECADA",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_04_04:04_04_007_03_002_512_0000_00_00",
+    "title": "ANOMALIA DE TEMPERATURA MINIMA - 3RA DECADA",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_04_04:04_04_008_03_002_512_0000_00_00",
+    "title": "ANOMALIA DE TEMPERATURA MINIMA - MES",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_00_01:00_01_005_03_000_000_0000_00_00",
+    "title": "AREAS URBANAS - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_acti_quebrada:view_av_activ_qdra",
+    "title": "AVISO DE ACTIVACION DE QUEBRADA - NACIONAL",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_acti_quebrada:view_av_activ_qdrahist",
+    "title": "AVISO DE ACTIVACION DE QUEBRADA - NACIONAL - HISTORICO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso001",
+    "title": "AVISO METEOROLOGICO NO 001",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso002",
+    "title": "AVISO METEOROLOGICO NO 002",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso003",
+    "title": "AVISO METEOROLOGICO NO 003",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso004",
+    "title": "AVISO METEOROLOGICO NO 004",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso005",
+    "title": "AVISO METEOROLOGICO NO 005",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso006",
+    "title": "AVISO METEOROLOGICO NO 006",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso007",
+    "title": "AVISO METEOROLOGICO NO 007",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso008",
+    "title": "AVISO METEOROLOGICO NO 008",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso009",
+    "title": "AVISO METEOROLOGICO NO 009",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso010",
+    "title": "AVISO METEOROLOGICO NO 010",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso011",
+    "title": "AVISO METEOROLOGICO NO 011",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso012",
+    "title": "AVISO METEOROLOGICO NO 012",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso013",
+    "title": "AVISO METEOROLOGICO NO 013",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso014",
+    "title": "AVISO METEOROLOGICO NO 014",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso015",
+    "title": "AVISO METEOROLOGICO NO 015",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso016",
+    "title": "AVISO METEOROLOGICO NO 016",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso017",
+    "title": "AVISO METEOROLOGICO NO 017",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso018",
+    "title": "AVISO METEOROLOGICO NO 018",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso019",
+    "title": "AVISO METEOROLOGICO NO 019",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso020",
+    "title": "AVISO METEOROLOGICO NO 020",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso021",
+    "title": "AVISO METEOROLOGICO NO 021",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso022",
+    "title": "AVISO METEOROLOGICO NO 022",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso023",
+    "title": "AVISO METEOROLOGICO NO 023",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso024",
+    "title": "AVISO METEOROLOGICO NO 024",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso025",
+    "title": "AVISO METEOROLOGICO NO 025",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso026",
+    "title": "AVISO METEOROLOGICO NO 026",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso027",
+    "title": "AVISO METEOROLOGICO NO 027",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso028",
+    "title": "AVISO METEOROLOGICO NO 028",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso029",
+    "title": "AVISO METEOROLOGICO NO 029",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso030",
+    "title": "AVISO METEOROLOGICO NO 030",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso031",
+    "title": "AVISO METEOROLOGICO NO 031",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso032",
+    "title": "AVISO METEOROLOGICO NO 032",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso033",
+    "title": "AVISO METEOROLOGICO NO 033",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso034",
+    "title": "AVISO METEOROLOGICO NO 034",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso035",
+    "title": "AVISO METEOROLOGICO NO 035",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso036",
+    "title": "AVISO METEOROLOGICO NO 036",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso037",
+    "title": "AVISO METEOROLOGICO NO 037",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso038",
+    "title": "AVISO METEOROLOGICO NO 038",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso039",
+    "title": "AVISO METEOROLOGICO NO 039",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso040",
+    "title": "AVISO METEOROLOGICO NO 040",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso041",
+    "title": "AVISO METEOROLOGICO NO 041",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso042",
+    "title": "AVISO METEOROLOGICO NO 042",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso043",
+    "title": "AVISO METEOROLOGICO NO 043",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso044",
+    "title": "AVISO METEOROLOGICO NO 044",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso045",
+    "title": "AVISO METEOROLOGICO NO 045",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso046",
+    "title": "AVISO METEOROLOGICO NO 046",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso047",
+    "title": "AVISO METEOROLOGICO NO 047",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso048",
+    "title": "AVISO METEOROLOGICO NO 048",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso049",
+    "title": "AVISO METEOROLOGICO NO 049",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso050",
+    "title": "AVISO METEOROLOGICO NO 050",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso051",
+    "title": "AVISO METEOROLOGICO NO 051",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso052",
+    "title": "AVISO METEOROLOGICO NO 052",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso053",
+    "title": "AVISO METEOROLOGICO NO 053",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso054",
+    "title": "AVISO METEOROLOGICO NO 054",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso055",
+    "title": "AVISO METEOROLOGICO NO 055",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso056",
+    "title": "AVISO METEOROLOGICO NO 056",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso057",
+    "title": "AVISO METEOROLOGICO NO 057",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso058",
+    "title": "AVISO METEOROLOGICO NO 058",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso059",
+    "title": "AVISO METEOROLOGICO NO 059",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso060",
+    "title": "AVISO METEOROLOGICO NO 060",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso061",
+    "title": "AVISO METEOROLOGICO NO 061",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso062",
+    "title": "AVISO METEOROLOGICO NO 062",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso063",
+    "title": "AVISO METEOROLOGICO NO 063",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso064",
+    "title": "AVISO METEOROLOGICO NO 064",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso065",
+    "title": "AVISO METEOROLOGICO NO 065",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso066",
+    "title": "AVISO METEOROLOGICO NO 066",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso067",
+    "title": "AVISO METEOROLOGICO NO 067",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso068",
+    "title": "AVISO METEOROLOGICO NO 068",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso069",
+    "title": "AVISO METEOROLOGICO NO 069",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso070",
+    "title": "AVISO METEOROLOGICO NO 070",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso071",
+    "title": "AVISO METEOROLOGICO NO 071",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso072",
+    "title": "AVISO METEOROLOGICO NO 072",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso073",
+    "title": "AVISO METEOROLOGICO NO 073",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso074",
+    "title": "AVISO METEOROLOGICO NO 074",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso075",
+    "title": "AVISO METEOROLOGICO NO 075",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso076",
+    "title": "AVISO METEOROLOGICO NO 076",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso077",
+    "title": "AVISO METEOROLOGICO NO 077",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso078",
+    "title": "AVISO METEOROLOGICO NO 078",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso079",
+    "title": "AVISO METEOROLOGICO NO 079",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso080",
+    "title": "AVISO METEOROLOGICO NO 080",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso081",
+    "title": "AVISO METEOROLOGICO NO 081",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso082",
+    "title": "AVISO METEOROLOGICO NO 082",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso083",
+    "title": "AVISO METEOROLOGICO NO 083",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso084",
+    "title": "AVISO METEOROLOGICO NO 084",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso085",
+    "title": "AVISO METEOROLOGICO NO 085",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso086",
+    "title": "AVISO METEOROLOGICO NO 086",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso087",
+    "title": "AVISO METEOROLOGICO NO 087",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso088",
+    "title": "AVISO METEOROLOGICO NO 088",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso089",
+    "title": "AVISO METEOROLOGICO NO 089",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso090",
+    "title": "AVISO METEOROLOGICO NO 090",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso091",
+    "title": "AVISO METEOROLOGICO NO 091",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso092",
+    "title": "AVISO METEOROLOGICO NO 092",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso093",
+    "title": "AVISO METEOROLOGICO NO 093",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso094",
+    "title": "AVISO METEOROLOGICO NO 094",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso095",
+    "title": "AVISO METEOROLOGICO NO 095",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso096",
+    "title": "AVISO METEOROLOGICO NO 096",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso097",
+    "title": "AVISO METEOROLOGICO NO 097",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso098",
+    "title": "AVISO METEOROLOGICO NO 098",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso099",
+    "title": "AVISO METEOROLOGICO NO 099",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso100",
+    "title": "AVISO METEOROLOGICO NO 100",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso101",
+    "title": "AVISO METEOROLOGICO NO 101",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso102",
+    "title": "AVISO METEOROLOGICO NO 102",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso103",
+    "title": "AVISO METEOROLOGICO NO 103",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso104",
+    "title": "AVISO METEOROLOGICO NO 104",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso105",
+    "title": "AVISO METEOROLOGICO NO 105",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso106",
+    "title": "AVISO METEOROLOGICO NO 106",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso107",
+    "title": "AVISO METEOROLOGICO NO 107",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso108",
+    "title": "AVISO METEOROLOGICO NO 108",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso109",
+    "title": "AVISO METEOROLOGICO NO 109",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso110",
+    "title": "AVISO METEOROLOGICO NO 110",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso111",
+    "title": "AVISO METEOROLOGICO NO 111",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso112",
+    "title": "AVISO METEOROLOGICO NO 112",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso113",
+    "title": "AVISO METEOROLOGICO NO 113",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso114",
+    "title": "AVISO METEOROLOGICO NO 114",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso115",
+    "title": "AVISO METEOROLOGICO NO 115",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso116",
+    "title": "AVISO METEOROLOGICO NO 116",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso117",
+    "title": "AVISO METEOROLOGICO NO 117",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso118",
+    "title": "AVISO METEOROLOGICO NO 118",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso119",
+    "title": "AVISO METEOROLOGICO NO 119",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso120",
+    "title": "AVISO METEOROLOGICO NO 120",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso121",
+    "title": "AVISO METEOROLOGICO NO 121",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso122",
+    "title": "AVISO METEOROLOGICO NO 122",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso123",
+    "title": "AVISO METEOROLOGICO NO 123",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso124",
+    "title": "AVISO METEOROLOGICO NO 124",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso125",
+    "title": "AVISO METEOROLOGICO NO 125",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso126",
+    "title": "AVISO METEOROLOGICO NO 126",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso127",
+    "title": "AVISO METEOROLOGICO NO 127",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso128",
+    "title": "AVISO METEOROLOGICO NO 128",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso129",
+    "title": "AVISO METEOROLOGICO NO 129",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso130",
+    "title": "AVISO METEOROLOGICO NO 130",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso131",
+    "title": "AVISO METEOROLOGICO NO 131",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso132",
+    "title": "AVISO METEOROLOGICO NO 132",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso133",
+    "title": "AVISO METEOROLOGICO NO 133",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso134",
+    "title": "AVISO METEOROLOGICO NO 134",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso135",
+    "title": "AVISO METEOROLOGICO NO 135",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso136",
+    "title": "AVISO METEOROLOGICO NO 136",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso137",
+    "title": "AVISO METEOROLOGICO NO 137",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso138",
+    "title": "AVISO METEOROLOGICO NO 138",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso139",
+    "title": "AVISO METEOROLOGICO NO 139",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso140",
+    "title": "AVISO METEOROLOGICO NO 140",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso141",
+    "title": "AVISO METEOROLOGICO NO 141",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso142",
+    "title": "AVISO METEOROLOGICO NO 142",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso143",
+    "title": "AVISO METEOROLOGICO NO 143",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso144",
+    "title": "AVISO METEOROLOGICO NO 144",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso145",
+    "title": "AVISO METEOROLOGICO NO 145",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso146",
+    "title": "AVISO METEOROLOGICO NO 146",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso147",
+    "title": "AVISO METEOROLOGICO NO 147",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso148",
+    "title": "AVISO METEOROLOGICO NO 148",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso149",
+    "title": "AVISO METEOROLOGICO NO 149",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso150",
+    "title": "AVISO METEOROLOGICO NO 150",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso151",
+    "title": "AVISO METEOROLOGICO NO 151",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso152",
+    "title": "AVISO METEOROLOGICO NO 152",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso153",
+    "title": "AVISO METEOROLOGICO NO 153",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso154",
+    "title": "AVISO METEOROLOGICO NO 154",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso155",
+    "title": "AVISO METEOROLOGICO NO 155",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso156",
+    "title": "AVISO METEOROLOGICO NO 156",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso157",
+    "title": "AVISO METEOROLOGICO NO 157",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso158",
+    "title": "AVISO METEOROLOGICO NO 158",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso159",
+    "title": "AVISO METEOROLOGICO NO 159",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso160",
+    "title": "AVISO METEOROLOGICO NO 160",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso161",
+    "title": "AVISO METEOROLOGICO NO 161",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso162",
+    "title": "AVISO METEOROLOGICO NO 162",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso163",
+    "title": "AVISO METEOROLOGICO NO 163",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso164",
+    "title": "AVISO METEOROLOGICO NO 164",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso165",
+    "title": "AVISO METEOROLOGICO NO 165",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso166",
+    "title": "AVISO METEOROLOGICO NO 166",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso167",
+    "title": "AVISO METEOROLOGICO NO 167",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso168",
+    "title": "AVISO METEOROLOGICO NO 168",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso169",
+    "title": "AVISO METEOROLOGICO NO 169",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso170",
+    "title": "AVISO METEOROLOGICO NO 170",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso171",
+    "title": "AVISO METEOROLOGICO NO 171",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso172",
+    "title": "AVISO METEOROLOGICO NO 172",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso173",
+    "title": "AVISO METEOROLOGICO NO 173",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso174",
+    "title": "AVISO METEOROLOGICO NO 174",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso175",
+    "title": "AVISO METEOROLOGICO NO 175",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso176",
+    "title": "AVISO METEOROLOGICO NO 176",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso177",
+    "title": "AVISO METEOROLOGICO NO 177",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso178",
+    "title": "AVISO METEOROLOGICO NO 178",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso179",
+    "title": "AVISO METEOROLOGICO NO 179",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso180",
+    "title": "AVISO METEOROLOGICO NO 180",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso181",
+    "title": "AVISO METEOROLOGICO NO 181",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso182",
+    "title": "AVISO METEOROLOGICO NO 182",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso183",
+    "title": "AVISO METEOROLOGICO NO 183",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso184",
+    "title": "AVISO METEOROLOGICO NO 184",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso185",
+    "title": "AVISO METEOROLOGICO NO 185",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso186",
+    "title": "AVISO METEOROLOGICO NO 186",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso187",
+    "title": "AVISO METEOROLOGICO NO 187",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso188",
+    "title": "AVISO METEOROLOGICO NO 188",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso189",
+    "title": "AVISO METEOROLOGICO NO 189",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso190",
+    "title": "AVISO METEOROLOGICO NO 190",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso191",
+    "title": "AVISO METEOROLOGICO NO 191",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso192",
+    "title": "AVISO METEOROLOGICO NO 192",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso193",
+    "title": "AVISO METEOROLOGICO NO 193",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso194",
+    "title": "AVISO METEOROLOGICO NO 194",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso195",
+    "title": "AVISO METEOROLOGICO NO 195",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso196",
+    "title": "AVISO METEOROLOGICO NO 196",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso197",
+    "title": "AVISO METEOROLOGICO NO 197",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso198",
+    "title": "AVISO METEOROLOGICO NO 198",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso199",
+    "title": "AVISO METEOROLOGICO NO 199",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso200",
+    "title": "AVISO METEOROLOGICO NO 200",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso201",
+    "title": "AVISO METEOROLOGICO NO 201",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso202",
+    "title": "AVISO METEOROLOGICO NO 202",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso203",
+    "title": "AVISO METEOROLOGICO NO 203",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso204",
+    "title": "AVISO METEOROLOGICO NO 204",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso205",
+    "title": "AVISO METEOROLOGICO NO 205",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso206",
+    "title": "AVISO METEOROLOGICO NO 206",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso207",
+    "title": "AVISO METEOROLOGICO NO 207",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso208",
+    "title": "AVISO METEOROLOGICO NO 208",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso209",
+    "title": "AVISO METEOROLOGICO NO 209",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso210",
+    "title": "AVISO METEOROLOGICO NO 210",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso211",
+    "title": "AVISO METEOROLOGICO NO 211",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso212",
+    "title": "AVISO METEOROLOGICO NO 212",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso213",
+    "title": "AVISO METEOROLOGICO NO 213",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso214",
+    "title": "AVISO METEOROLOGICO NO 214",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso215",
+    "title": "AVISO METEOROLOGICO NO 215",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso216",
+    "title": "AVISO METEOROLOGICO NO 216",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso217",
+    "title": "AVISO METEOROLOGICO NO 217",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso218",
+    "title": "AVISO METEOROLOGICO NO 218",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso219",
+    "title": "AVISO METEOROLOGICO NO 219",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso220",
+    "title": "AVISO METEOROLOGICO NO 220",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso221",
+    "title": "AVISO METEOROLOGICO NO 221",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso222",
+    "title": "AVISO METEOROLOGICO NO 222",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso223",
+    "title": "AVISO METEOROLOGICO NO 223",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso224",
+    "title": "AVISO METEOROLOGICO NO 224",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso225",
+    "title": "AVISO METEOROLOGICO NO 225",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso226",
+    "title": "AVISO METEOROLOGICO NO 226",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso227",
+    "title": "AVISO METEOROLOGICO NO 227",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso228",
+    "title": "AVISO METEOROLOGICO NO 228",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso229",
+    "title": "AVISO METEOROLOGICO NO 229",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso230",
+    "title": "AVISO METEOROLOGICO NO 230",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso231",
+    "title": "AVISO METEOROLOGICO NO 231",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso232",
+    "title": "AVISO METEOROLOGICO NO 232",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso233",
+    "title": "AVISO METEOROLOGICO NO 233",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso234",
+    "title": "AVISO METEOROLOGICO NO 234",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso235",
+    "title": "AVISO METEOROLOGICO NO 235",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso236",
+    "title": "AVISO METEOROLOGICO NO 236",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso237",
+    "title": "AVISO METEOROLOGICO NO 237",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso238",
+    "title": "AVISO METEOROLOGICO NO 238",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso239",
+    "title": "AVISO METEOROLOGICO NO 239",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso240",
+    "title": "AVISO METEOROLOGICO NO 240",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso241",
+    "title": "AVISO METEOROLOGICO NO 241",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso242",
+    "title": "AVISO METEOROLOGICO NO 242",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso243",
+    "title": "AVISO METEOROLOGICO NO 243",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso244",
+    "title": "AVISO METEOROLOGICO NO 244",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso245",
+    "title": "AVISO METEOROLOGICO NO 245",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso246",
+    "title": "AVISO METEOROLOGICO NO 246",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso247",
+    "title": "AVISO METEOROLOGICO NO 247",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso248",
+    "title": "AVISO METEOROLOGICO NO 248",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso249",
+    "title": "AVISO METEOROLOGICO NO 249",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso250",
+    "title": "AVISO METEOROLOGICO NO 250",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso251",
+    "title": "AVISO METEOROLOGICO NO 251",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso252",
+    "title": "AVISO METEOROLOGICO NO 252",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso253",
+    "title": "AVISO METEOROLOGICO NO 253",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso254",
+    "title": "AVISO METEOROLOGICO NO 254",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso255",
+    "title": "AVISO METEOROLOGICO NO 255",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso256",
+    "title": "AVISO METEOROLOGICO NO 256",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso257",
+    "title": "AVISO METEOROLOGICO NO 257",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso258",
+    "title": "AVISO METEOROLOGICO NO 258",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso259",
+    "title": "AVISO METEOROLOGICO NO 259",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso260",
+    "title": "AVISO METEOROLOGICO NO 260",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso261",
+    "title": "AVISO METEOROLOGICO NO 261",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso262",
+    "title": "AVISO METEOROLOGICO NO 262",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso263",
+    "title": "AVISO METEOROLOGICO NO 263",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso264",
+    "title": "AVISO METEOROLOGICO NO 264",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso265",
+    "title": "AVISO METEOROLOGICO NO 265",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso266",
+    "title": "AVISO METEOROLOGICO NO 266",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso267",
+    "title": "AVISO METEOROLOGICO NO 267",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso268",
+    "title": "AVISO METEOROLOGICO NO 268",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso269",
+    "title": "AVISO METEOROLOGICO NO 269",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso270",
+    "title": "AVISO METEOROLOGICO NO 270",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso271",
+    "title": "AVISO METEOROLOGICO NO 271",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso272",
+    "title": "AVISO METEOROLOGICO NO 272",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso273",
+    "title": "AVISO METEOROLOGICO NO 273",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso274",
+    "title": "AVISO METEOROLOGICO NO 274",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:aviso275",
+    "title": "AVISO METEOROLOGICO NO 275",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_aviso:view_aviso",
+    "title": "AVISO METEOROLÓGICO NACIONAL",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_aviso:view_aviso_aux",
+    "title": "AVISO METEOROLÓGICO NACIONAL UBIGEO - DEPARTAMENTOS PROVINCIAS",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_prono_pp_24h:view_aviso24h",
+    "title": "AVISO PRONO PP 24 HORAS",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_02:AVISO_PRONOSTICO_FWI",
+    "title": "AVISO PRONOSTICO FWI - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_13:06_13_001_03_001_513_0000_00_00",
+    "title": "CAMBIO DE PRECIPITACIÓN 2050 - ANUAL",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_13:06_13_004_03_001_513_0000_00_00",
+    "title": "CAMBIO DE PRECIPITACIÓN 2050 - INVIERNO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_13:06_13_003_03_001_513_0000_00_00",
+    "title": "CAMBIO DE PRECIPITACIÓN 2050 - OTOÑO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_13:06_13_005_03_001_513_0000_00_00",
+    "title": "CAMBIO DE PRECIPITACIÓN 2050 - PRIMAVERA",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_13:06_13_002_03_001_513_0000_00_00",
+    "title": "CAMBIO DE PRECIPITACIÓN 2050 - VERANO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_15:06_15_001_03_001_513_0000_00_00",
+    "title": "CAMBIO DE TEMPERATURA MÁXIMA 2050 - ANUAL",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_15:06_15_004_03_001_513_0000_00_00",
+    "title": "CAMBIO DE TEMPERATURA MÁXIMA 2050 - INVIERNO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_15:06_15_003_03_001_513_0000_00_00",
+    "title": "CAMBIO DE TEMPERATURA MÁXIMA 2050 - OTOÑO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_15:06_15_005_03_001_513_0000_00_00",
+    "title": "CAMBIO DE TEMPERATURA MÁXIMA 2050 - PRIMAVERA",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_15:06_15_002_03_001_513_0000_00_00",
+    "title": "CAMBIO DE TEMPERATURA MÁXIMA 2050 - VERANO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_14:06_14_001_03_001_513_0000_00_00",
+    "title": "CAMBIO DE TEMPERATURA MÍNIMA 2050 - ANUAL",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_14:06_14_004_03_001_513_0000_00_00",
+    "title": "CAMBIO DE TEMPERATURA MÍNIMA 2050 - INVIERNO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_14:06_14_003_03_001_513_0000_00_00",
+    "title": "CAMBIO DE TEMPERATURA MÍNIMA 2050 - OTOÑO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_14:06_14_005_03_001_513_0000_00_00",
+    "title": "CAMBIO DE TEMPERATURA MÍNIMA 2050 - PRIMAVERA",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_14:06_14_002_03_001_513_0000_00_00",
+    "title": "CAMBIO DE TEMPERATURA MÍNIMA 2050 - VERANO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_00_01:00_01_001_03_000_000_0000_00_00",
+    "title": "CAPITAL DE DEPARTAMENTO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_00_01:00_01_003_03_000_000_0000_00_00",
+    "title": "CAPITAL DE DISTRITO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_00_01:00_01_002_03_000_000_0000_00_00",
+    "title": "CAPITAL DE PROVINCIA - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_02:05_02_001_03_001_512_0000_00_00",
+    "title": "CARACTERIZACION DE PRECIPITACION -  01 MES DE ENERO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_02:05_02_002_03_001_512_0000_00_00",
+    "title": "CARACTERIZACION DE PRECIPITACION - 02 MES DE FEBRERO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_02:05_02_003_03_001_512_0000_00_00",
+    "title": "CARACTERIZACION DE PRECIPITACION - 03 MES DE MARZO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_02:05_02_004_03_001_512_0000_00_00",
+    "title": "CARACTERIZACION DE PRECIPITACION - 04 MES DE ABRIL",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_02:05_02_005_03_001_512_0000_00_00",
+    "title": "CARACTERIZACION DE PRECIPITACION - 05 MES DE MAYO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_02:05_02_006_03_001_512_0000_00_00",
+    "title": "CARACTERIZACION DE PRECIPITACION - 06 MES DE JUNIO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_02:05_02_007_03_001_512_0000_00_00",
+    "title": "CARACTERIZACION DE PRECIPITACION - 07 MES DE JULIO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_02:05_02_008_03_001_512_0000_00_00",
+    "title": "CARACTERIZACION DE PRECIPITACION - 08 MES DE AGOSTO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_02:05_02_009_03_001_512_0000_00_00",
+    "title": "CARACTERIZACION DE PRECIPITACION - 09 MES DE SEPTIEMBRE",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_02:05_02_010_03_001_512_0000_00_00",
+    "title": "CARACTERIZACION DE PRECIPITACION - 10 MES DE OCTUBRE",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_02:05_02_011_03_001_512_0000_00_00",
+    "title": "CARACTERIZACION DE PRECIPITACION - 11 MES DE NOVIEMBRE",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_02:05_02_012_03_001_512_0000_00_00",
+    "title": "CARACTERIZACION DE PRECIPITACION - 12 MES DE DICIEMBRE",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_02:05_02_013_03_001_512_0000_00_00",
+    "title": "CARACTERIZACION DE PRECIPITACION - 13 ANUAL",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_02:05_02_014_03_001_512_0000_00_00",
+    "title": "CARACTERIZACION DE PRECIPITACION - 14 VERANO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_02:05_02_015_03_001_512_0000_00_00",
+    "title": "CARACTERIZACION DE PRECIPITACION - 15 OTOÑO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_02:05_02_016_03_001_512_0000_00_00",
+    "title": "CARACTERIZACION DE PRECIPITACION - 16 INVIERNO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_02:05_02_017_03_001_512_0000_00_00",
+    "title": "CARACTERIZACION DE PRECIPITACION - 17 PRIMAVERA",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_07:05_07_001_03_001_512_2020_00_00",
+    "title": "CARACTERIZACION DE PRECIPITACION 2020 - 01 MES DE ENERO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_07:05_07_002_03_001_512_2020_00_00",
+    "title": "CARACTERIZACION DE PRECIPITACION 2020 - 02 MES DE FEBRERO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_07:05_07_003_03_001_512_2020_00_00",
+    "title": "CARACTERIZACION DE PRECIPITACION 2020 - 03 MES DE MARZO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_07:05_07_004_03_001_512_2020_00_00",
+    "title": "CARACTERIZACION DE PRECIPITACION 2020 - 04 MES DE ABRIL",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_07:05_07_005_03_001_512_2020_00_00",
+    "title": "CARACTERIZACION DE PRECIPITACION 2020 - 05 MES DE MAYO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_07:05_07_006_03_001_512_2020_00_00",
+    "title": "CARACTERIZACION DE PRECIPITACION 2020 - 06 MES DE JUNIO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_07:05_07_007_03_001_512_2020_00_00",
+    "title": "CARACTERIZACION DE PRECIPITACION 2020 - 07 MES DE JULIO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_07:05_07_008_03_001_512_2020_00_00",
+    "title": "CARACTERIZACION DE PRECIPITACION 2020 - 08 MES DE AGOSTO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_07:05_07_009_03_001_512_2020_00_00",
+    "title": "CARACTERIZACION DE PRECIPITACION 2020 - 09 MES DE SEPTIEMBRE",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_07:05_07_010_03_001_512_2020_00_00",
+    "title": "CARACTERIZACION DE PRECIPITACION 2020 - 10 MES DE OCTUBRE",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_07:05_07_011_03_001_512_2020_00_00",
+    "title": "CARACTERIZACION DE PRECIPITACION 2020 - 11 MES DE NOVIEMBRE",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_07:05_07_012_03_001_512_2020_00_00",
+    "title": "CARACTERIZACION DE PRECIPITACION 2020 - 12 MES DE DICIEMBRE",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_07:05_07_013_03_001_512_2020_00_00",
+    "title": "CARACTERIZACION DE PRECIPITACION 2020 - 13 VERANO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_07:05_07_014_03_001_512_2020_00_00",
+    "title": "CARACTERIZACION DE PRECIPITACION 2020 - 14 OTOÑO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_07:05_07_015_03_001_512_2020_00_00",
+    "title": "CARACTERIZACION DE PRECIPITACION 2020 - 15 INVIERNO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_07:05_07_016_03_001_512_2020_00_00",
+    "title": "CARACTERIZACION DE PRECIPITACION 2020 - 16 PRIMAVERA",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_07:05_07_017_03_001_512_2020_00_00",
+    "title": "CARACTERIZACION DE PRECIPITACION 2020 - 17 ANUAL",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_04:05_04_001_03_001_512_0000_00_00",
+    "title": "CARACTERIZACION DE TEMP MAXIMA - 01 MES DE ENERO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_04:05_04_002_03_001_512_0000_00_00",
+    "title": "CARACTERIZACION DE TEMP MAXIMA - 02 MES DE FEBRERO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_04:05_04_003_03_001_512_0000_00_00",
+    "title": "CARACTERIZACION DE TEMP MAXIMA - 03 MES DE MARZO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_04:05_04_004_03_001_512_0000_00_00",
+    "title": "CARACTERIZACION DE TEMP MAXIMA - 04 MES DE ABRIL",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_04:05_04_005_03_001_512_0000_00_00",
+    "title": "CARACTERIZACION DE TEMP MAXIMA - 05 MES DE MAYO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_04:05_04_006_03_001_512_0000_00_00",
+    "title": "CARACTERIZACION DE TEMP MAXIMA - 06 MES DE JUNIO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_04:05_04_007_03_001_512_0000_00_00",
+    "title": "CARACTERIZACION DE TEMP MAXIMA - 07 MES DE JULIO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_04:05_04_008_03_001_512_0000_00_00",
+    "title": "CARACTERIZACION DE TEMP MAXIMA - 08 MES DE AGOSTO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_04:05_04_009_03_001_512_0000_00_00",
+    "title": "CARACTERIZACION DE TEMP MAXIMA - 09 MES DE SEPTIEMBRE",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_04:05_04_010_03_001_512_0000_00_00",
+    "title": "CARACTERIZACION DE TEMP MAXIMA - 10 MES DE OCTUBRE",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_04:05_04_011_03_001_512_0000_00_00",
+    "title": "CARACTERIZACION DE TEMP MAXIMA - 11 MES DE NOVIEMBRE",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_04:05_04_012_03_001_512_0000_00_00",
+    "title": "CARACTERIZACION DE TEMP MAXIMA - 12 MES DE DICIEMBRE",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_04:05_04_013_03_001_512_0000_00_00",
+    "title": "CARACTERIZACION DE TEMP MAXIMA - 13 ANUAL",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_04:05_04_014_03_001_512_0000_00_00",
+    "title": "CARACTERIZACION DE TEMP MAXIMA - 14 VERANO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_04:05_04_015_03_001_512_0000_00_00",
+    "title": "CARACTERIZACION DE TEMP MAXIMA - 15 OTOÑO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_04:05_04_016_03_001_512_0000_00_00",
+    "title": "CARACTERIZACION DE TEMP MAXIMA - 16 INVIERNO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_04:05_04_017_03_001_512_0000_00_00",
+    "title": "CARACTERIZACION DE TEMP MAXIMA - 17 PRIMAVERA",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_03:05_03_001_03_001_512_0000_00_00",
+    "title": "CARACTERIZACION DE TEMP MINIMA - 01 MES DE ENERO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_03:05_03_002_03_001_512_0000_00_00",
+    "title": "CARACTERIZACION DE TEMP MINIMA - 02 MES DE FEBRERO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_03:05_03_003_03_001_512_0000_00_00",
+    "title": "CARACTERIZACION DE TEMP MINIMA - 03 MES DE MARZO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_03:05_03_004_03_001_512_0000_00_00",
+    "title": "CARACTERIZACION DE TEMP MINIMA - 04 MES DE ABRIL",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_03:05_03_005_03_001_512_0000_00_00",
+    "title": "CARACTERIZACION DE TEMP MINIMA - 05 MES DE MAYO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_03:05_03_006_03_001_512_0000_00_00",
+    "title": "CARACTERIZACION DE TEMP MINIMA - 06 MES DE JUNIO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_03:05_03_007_03_001_512_0000_00_00",
+    "title": "CARACTERIZACION DE TEMP MINIMA - 07 MES DE JULIO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_03:05_03_008_03_001_512_0000_00_00",
+    "title": "CARACTERIZACION DE TEMP MINIMA - 08 MES DE AGOSTO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_03:05_03_009_03_001_512_0000_00_00",
+    "title": "CARACTERIZACION DE TEMP MINIMA - 09 MES DE SEPTIEMBRE",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_03:05_03_010_03_001_512_0000_00_00",
+    "title": "CARACTERIZACION DE TEMP MINIMA - 10 MES DE OCTUBRE",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_03:05_03_011_03_001_512_0000_00_00",
+    "title": "CARACTERIZACION DE TEMP MINIMA - 11 MES DE NOVIEMBRE",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_03:05_03_012_03_001_512_0000_00_00",
+    "title": "CARACTERIZACION DE TEMP MINIMA - 12 MES DE DICIEMBRE",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_03:05_03_013_03_001_512_0000_00_00",
+    "title": "CARACTERIZACION DE TEMP MINIMA - 13 ANUAL",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_03:05_03_014_03_001_512_0000_00_00",
+    "title": "CARACTERIZACION DE TEMP MINIMA - 14 VERANO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_03:05_03_015_03_001_512_0000_00_00",
+    "title": "CARACTERIZACION DE TEMP MINIMA - 15 OTOÑO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_03:05_03_016_03_001_512_0000_00_00",
+    "title": "CARACTERIZACION DE TEMP MINIMA - 16 INVIERNO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_03:05_03_017_03_001_512_0000_00_00",
+    "title": "CARACTERIZACION DE TEMP MINIMA - 17 PRIMAVERA",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_09:05_09_001_03_001_512_2020_00_00",
+    "title": "CARACTERIZACION DE TEMPERATURA MAXIMA 2020 - 01 MES DE ENERO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_09:05_09_002_03_001_512_2020_00_00",
+    "title": "CARACTERIZACION DE TEMPERATURA MAXIMA 2020 - 02 MES DE FEBRERO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_09:05_09_003_03_001_512_2020_00_00",
+    "title": "CARACTERIZACION DE TEMPERATURA MAXIMA 2020 - 03 MES DE MARZO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_09:05_09_004_03_001_512_2020_00_00",
+    "title": "CARACTERIZACION DE TEMPERATURA MAXIMA 2020 - 04 MES DE ABRIL",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_09:05_09_005_03_001_512_2020_00_00",
+    "title": "CARACTERIZACION DE TEMPERATURA MAXIMA 2020 - 05 MES DE MAYO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_09:05_09_006_03_001_512_2020_00_00",
+    "title": "CARACTERIZACION DE TEMPERATURA MAXIMA 2020 - 06 MES DE JUNIO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_09:05_09_007_03_001_512_2020_00_00",
+    "title": "CARACTERIZACION DE TEMPERATURA MAXIMA 2020 - 07 MES DE JULIO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_09:05_09_008_03_001_512_2020_00_00",
+    "title": "CARACTERIZACION DE TEMPERATURA MAXIMA 2020 - 08 MES DE AGOSTO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_09:05_09_009_03_001_512_2020_00_00",
+    "title": "CARACTERIZACION DE TEMPERATURA MAXIMA 2020 - 09 MES DE SEPTIEMBRE",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_09:05_09_010_03_001_512_2020_00_00",
+    "title": "CARACTERIZACION DE TEMPERATURA MAXIMA 2020 - 10 MES DE OCTUBRE",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_09:05_09_011_03_001_512_2020_00_00",
+    "title": "CARACTERIZACION DE TEMPERATURA MAXIMA 2020 - 11 MES DE NOVIEMBRE",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_09:05_09_012_03_001_512_2020_00_00",
+    "title": "CARACTERIZACION DE TEMPERATURA MAXIMA 2020 - 12 MES DE DICIEMBRE",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_09:05_09_013_03_001_512_2020_00_00",
+    "title": "CARACTERIZACION DE TEMPERATURA MAXIMA 2020 - 13 VERANO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_09:05_09_014_03_001_512_2020_00_00",
+    "title": "CARACTERIZACION DE TEMPERATURA MAXIMA 2020 - 14 OTOÑO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_09:05_09_015_03_001_512_2020_00_00",
+    "title": "CARACTERIZACION DE TEMPERATURA MAXIMA 2020 - 15 INVIERNO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_09:05_09_016_03_001_512_2020_00_00",
+    "title": "CARACTERIZACION DE TEMPERATURA MAXIMA 2020 - 16 PRIMAVERA",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_09:05_09_017_03_001_512_2020_00_00",
+    "title": "CARACTERIZACION DE TEMPERATURA MAXIMA 2020 - 17 ANUAL",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_08:05_08_001_03_001_512_2020_00_00",
+    "title": "CARACTERIZACION DE TEMPERATURA MINIMA 2020 - 01 MES DE ENERO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_08:05_08_002_03_001_512_2020_00_00",
+    "title": "CARACTERIZACION DE TEMPERATURA MINIMA 2020 - 02 MES DE FEBRERO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_08:05_08_003_03_001_512_2020_00_00",
+    "title": "CARACTERIZACION DE TEMPERATURA MINIMA 2020 - 03 MES DE MARZO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_08:05_08_004_03_001_512_2020_00_00",
+    "title": "CARACTERIZACION DE TEMPERATURA MINIMA 2020 - 04 MES DE ABRIL",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_08:05_08_005_03_001_512_2020_00_00",
+    "title": "CARACTERIZACION DE TEMPERATURA MINIMA 2020 - 05 MES DE MAYO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_08:05_08_006_03_001_512_2020_00_00",
+    "title": "CARACTERIZACION DE TEMPERATURA MINIMA 2020 - 06 MES DE JUNIO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_08:05_08_007_03_001_512_2020_00_00",
+    "title": "CARACTERIZACION DE TEMPERATURA MINIMA 2020 - 07 MES DE JULIO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_08:05_08_008_03_001_512_2020_00_00",
+    "title": "CARACTERIZACION DE TEMPERATURA MINIMA 2020 - 08 MES DE AGOSTO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_08:05_08_009_03_001_512_2020_00_00",
+    "title": "CARACTERIZACION DE TEMPERATURA MINIMA 2020 - 09 MES DE SEPTIEMBRE",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_08:05_08_010_03_001_512_2020_00_00",
+    "title": "CARACTERIZACION DE TEMPERATURA MINIMA 2020 - 10 MES DE OCTUBRE",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_08:05_08_011_03_001_512_2020_00_00",
+    "title": "CARACTERIZACION DE TEMPERATURA MINIMA 2020 - 11 MES DE NOVIEMBRE",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_08:05_08_012_03_001_512_2020_00_00",
+    "title": "CARACTERIZACION DE TEMPERATURA MINIMA 2020 - 12 MES DE DICIEMBRE",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_08:05_08_013_03_001_512_2020_00_00",
+    "title": "CARACTERIZACION DE TEMPERATURA MINIMA 2020 - 13 VERANO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_08:05_08_014_03_001_512_2020_00_00",
+    "title": "CARACTERIZACION DE TEMPERATURA MINIMA 2020 - 14 OTOÑO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_08:05_08_015_03_001_512_2020_00_00",
+    "title": "CARACTERIZACION DE TEMPERATURA MINIMA 2020 - 15 INVIERNO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_08:05_08_016_03_001_512_2020_00_00",
+    "title": "CARACTERIZACION DE TEMPERATURA MINIMA 2020 - 16 PRIMAVERA",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_08:05_08_017_03_001_512_2020_00_00",
+    "title": "CARACTERIZACION DE TEMPERATURA MINIMA 2020 - 17 ANUAL",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "midis:midis_02_01_scd_ninos_ninas",
+    "title": "CENTRO INFANTIL DE ATENCION A NIÑOS Y NIÑAS",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_00_01:00_01_004_03_000_000_0000_00_00",
+    "title": "CENTROS POBLADOS - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_carto_fundamento:centros_poblados",
+    "title": "CENTROS POBLADOS - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_siged:centros_poblados",
+    "title": "CENTROS POBLADOS SIG",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_acti_quebrada:ccpp_filter",
+    "title": "CENTRO_POBLADO_ACTIVACION_QUEBRADA",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_01:05_01_001_03_001_512_2021_00_00",
+    "title": "CLASIFICACION CLIMATICA - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "midis:midis_05_01_cppn",
+    "title": "COMEDORES POPULARES A NIVEL NACIONAL",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "ispi:COMUNIDADES_CAMPESINAS",
+    "title": "COMUNIDADES CAMPESINAS - ISPI",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "ispi:COMUNIDADES_NATIVAS",
+    "title": "COMUNIDADES NATIVAS - ISPI",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_00_06:00_06_001_03_000_000_0000_00_00",
+    "title": "CUENCAS HIDROGRAFICAS - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi_bh:cuencas_oferta_hidrica",
+    "title": "CUENCAS_HIDROLOGICAS",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_00_03:00_03_002_03_000_000_0000_00_00",
+    "title": "CURVAS DE NIVEL PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_nowcasting:descargas_electricas",
+    "title": "DESCARGAS ELECTRICAS",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_01_04:01_04_008_03_001_512_0000_00_00",
+    "title": "DESCENSO DE TMIN - AGOSTO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_01_04:01_04_007_03_001_512_0000_00_00",
+    "title": "DESCENSO DE TMIN - JULIO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_01_04:01_04_006_03_001_512_0000_00_00",
+    "title": "DESCENSO DE TMIN - JUNIO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_01_04:01_04_005_03_001_512_0000_00_00",
+    "title": "DESCENSO DE TMIN - MAYO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_00_07:desierto_costero",
+    "title": "DESIERTO COSTERO DEL PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_07:06_07_001_03_001_521_2020_00_00",
+    "title": "DISPONIBILIDAD HIDRICA ANUAL 2020 - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_07:06_07_001_03_001_521_2030_00_00",
+    "title": "DISPONIBILIDAD HIDRICA ANUAL 2030 - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_01_05:01_05_003_03_001_512_0000_00_00",
+    "title": "DURACION DE OLAS DE CALOR - INVIERNO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_01_05:01_05_002_03_001_512_0000_00_00",
+    "title": "DURACION DE OLAS DE CALOR - OTOÑO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_01_05:01_05_004_03_001_512_0000_00_00",
+    "title": "DURACION DE OLAS DE CALOR - PRIMAVERA",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_01_05:01_05_001_03_001_512_0000_00_00",
+    "title": "DURACION DE OLAS DE CALOR - VERANO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "midis:midis_04_02_etvpn_p65",
+    "title": "EMPRESA TRANSPORTADORA DE PAGO PENSION 65",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_08_04:08_04_001_03_001_514_0000_00_00",
+    "title": "ENERGIA SOLAR 01 ENERO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_08_04:08_04_002_03_001_514_0000_00_00",
+    "title": "ENERGIA SOLAR 02 FEBRERO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_08_04:08_04_003_03_001_514_0000_00_00",
+    "title": "ENERGIA SOLAR 03 MARZO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_08_04:08_04_004_03_001_514_0000_00_00",
+    "title": "ENERGIA SOLAR 04 ABRIL - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_08_04:08_04_005_03_001_514_0000_00_00",
+    "title": "ENERGIA SOLAR 05 MAYO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_08_04:08_04_006_03_001_514_0000_00_00",
+    "title": "ENERGIA SOLAR 06 JUNIO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_08_04:08_04_007_03_001_514_0000_00_00",
+    "title": "ENERGIA SOLAR 07 JULIO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_08_04:08_04_008_03_001_514_0000_00_00",
+    "title": "ENERGIA SOLAR 08 AGOSTO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_08_04:08_04_009_03_001_514_0000_00_00",
+    "title": "ENERGIA SOLAR 09 SEPTIEMBRE - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_08_04:08_04_010_03_001_514_0000_00_00",
+    "title": "ENERGIA SOLAR 10 OCTUBRE - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_08_04:08_04_011_03_001_514_0000_00_00",
+    "title": "ENERGIA SOLAR 11 NOVIEMBRE - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_08_04:08_04_012_03_001_514_0000_00_00",
+    "title": "ENERGIA SOLAR 12 DICIEMBRE - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_08_04:08_04_013_03_001_514_0000_00_00",
+    "title": "ENERGIA SOLAR 13 ANUAL - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_acti_quebrada:eess_filter",
+    "title": "ENTIDADES_SALUD_ACTIVACION_QUEBRADA",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_08_03:08_03_030_03_001_522_2010_12_31",
+    "title": "EROSION HIDRICA DEL SUELO 2010 - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_08_03:08_03_031_03_001_522_2011_12_31",
+    "title": "EROSION HIDRICA DEL SUELO 2011 - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_08_03:08_03_032_03_001_522_2012_12_31",
+    "title": "EROSION HIDRICA DEL SUELO 2012 - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_08_03:08_03_033_03_001_522_2013_12_31",
+    "title": "EROSION HIDRICA DEL SUELO 2013 - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_08_03:08_03_034_03_001_522_2014_12_31",
+    "title": "EROSION HIDRICA DEL SUELO 2014 - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_99_01:99_01_002_03_001_000_0000_00_00",
+    "title": "ESTACIONES HIDROLÓGICAS",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_99_01:99_01_003_03_001_000_0000_00_00",
+    "title": "ESTACIONES HIDROMETEOROLÓGICAS",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_99_01:99_01_001_03_001_000_0000_00_00",
+    "title": "ESTACIONES METEOROLÓGICAS",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_04_06:04_06_001_03_001_531_0000_00_00",
+    "title": "EVAPOTRANSPIRACION REFERENCIAL 1DEC - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_04_06:04_06_002_03_001_531_0000_00_00",
+    "title": "EVAPOTRANSPIRACION REFERENCIAL 2DEC - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_04_06:04_06_003_03_001_531_0000_00_00",
+    "title": "EVAPOTRANSPIRACION REFERENCIAL 3DEC - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_08_01:08_01_001_03_001_532_0000_00_00",
+    "title": "FRECUENCIA DE HELADAS 01 ENERO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_08_01:08_01_002_03_001_532_0000_00_00",
+    "title": "FRECUENCIA DE HELADAS 02 FEBRERO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_08_01:08_01_003_03_001_532_0000_00_00",
+    "title": "FRECUENCIA DE HELADAS 03 MARZO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_08_01:08_01_004_03_001_532_0000_00_00",
+    "title": "FRECUENCIA DE HELADAS 04 ABRIL - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_08_01:08_01_005_03_001_532_0000_00_00",
+    "title": "FRECUENCIA DE HELADAS 05 MAYO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_08_01:08_01_006_03_001_532_0000_00_00",
+    "title": "FRECUENCIA DE HELADAS 06 JUNIO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_08_01:08_01_007_03_001_532_0000_00_00",
+    "title": "FRECUENCIA DE HELADAS 07 JULIO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_08_01:08_01_008_03_001_532_0000_00_00",
+    "title": "FRECUENCIA DE HELADAS 08 AGOSTO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_08_01:08_01_009_03_001_532_0000_00_00",
+    "title": "FRECUENCIA DE HELADAS 09 SEPTIEMBRE - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_08_01:08_01_010_03_001_532_0000_00_00",
+    "title": "FRECUENCIA DE HELADAS 10 OCTUBRE - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_08_01:08_01_011_03_001_532_0000_00_00",
+    "title": "FRECUENCIA DE HELADAS 11 NOVIEMBRE - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_08_01:08_01_012_03_001_532_0000_00_00",
+    "title": "FRECUENCIA DE HELADAS 12 DICIEMBRE - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_08_01:08_01_013_03_001_532_0000_00_00",
+    "title": "FRECUENCIA DE HELADAS 13 ANUAL - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_08_01:a08_01_013_03_001_532_0000_00_00",
+    "title": "FRECUENCIA DE HELADAS 13 ANUAL - PERU2",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_09_02:09_02_001_03_002_511_0000_00_00",
+    "title": "FRECUENCIA DE NEVADAS - EVENTOS PROMEDIO 01 ENERO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_09_02:09_02_002_03_002_511_0000_00_00",
+    "title": "FRECUENCIA DE NEVADAS - EVENTOS PROMEDIO 02 FEBRERO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_09_02:09_02_003_03_002_511_0000_00_00",
+    "title": "FRECUENCIA DE NEVADAS - EVENTOS PROMEDIO 03 MARZO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_09_02:09_02_004_03_002_511_0000_00_00",
+    "title": "FRECUENCIA DE NEVADAS - EVENTOS PROMEDIO 04 ABRIL - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_09_02:09_02_005_03_002_511_0000_00_00",
+    "title": "FRECUENCIA DE NEVADAS - EVENTOS PROMEDIO 05 MAYO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_09_02:09_02_006_03_002_511_0000_00_00",
+    "title": "FRECUENCIA DE NEVADAS - EVENTOS PROMEDIO 06 JUNIO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_09_02:09_02_007_03_002_511_0000_00_00",
+    "title": "FRECUENCIA DE NEVADAS - EVENTOS PROMEDIO 07 JULIO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_09_02:09_02_008_03_002_511_0000_00_00",
+    "title": "FRECUENCIA DE NEVADAS - EVENTOS PROMEDIO 08 AGOSTO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_09_02:09_02_009_03_002_511_0000_00_00",
+    "title": "FRECUENCIA DE NEVADAS - EVENTOS PROMEDIO 09 SEPTIEMBRE - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_09_02:09_02_010_03_002_511_0000_00_00",
+    "title": "FRECUENCIA DE NEVADAS - EVENTOS PROMEDIO 10 OCTUBRE - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_09_02:09_02_011_03_002_511_0000_00_00",
+    "title": "FRECUENCIA DE NEVADAS - EVENTOS PROMEDIO 11 NOVIEMBRE - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_09_02:09_02_012_03_002_511_0000_00_00",
+    "title": "FRECUENCIA DE NEVADAS - EVENTOS PROMEDIO 12 DICIEMBRE - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_09_02:09_02_001_03_001_511_0000_00_00",
+    "title": "FRECUENCIA DE NEVADAS - PORCENTUAL 01 ENERO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_09_02:09_02_002_03_001_511_0000_00_00",
+    "title": "FRECUENCIA DE NEVADAS - PORCENTUAL 02 FEBRERO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_09_02:09_02_003_03_001_511_0000_00_00",
+    "title": "FRECUENCIA DE NEVADAS - PORCENTUAL 03 MARZO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_09_02:09_02_004_03_001_511_0000_00_00",
+    "title": "FRECUENCIA DE NEVADAS - PORCENTUAL 04 ABRIL - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_09_02:09_02_005_03_001_511_0000_00_00",
+    "title": "FRECUENCIA DE NEVADAS - PORCENTUAL 05 MAYO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_09_02:09_02_006_03_001_511_0000_00_00",
+    "title": "FRECUENCIA DE NEVADAS - PORCENTUAL 06 JUNIO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_09_02:09_02_007_03_001_511_0000_00_00",
+    "title": "FRECUENCIA DE NEVADAS - PORCENTUAL 07 JULIO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_09_02:09_02_008_03_001_511_0000_00_00",
+    "title": "FRECUENCIA DE NEVADAS - PORCENTUAL 08 AGOSTO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_09_02:09_02_009_03_001_511_0000_00_00",
+    "title": "FRECUENCIA DE NEVADAS - PORCENTUAL 09 SEPTIEMBRE - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_09_02:09_02_010_03_001_511_0000_00_00",
+    "title": "FRECUENCIA DE NEVADAS - PORCENTUAL 10 OCTUBRE - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_09_02:09_02_011_03_001_511_0000_00_00",
+    "title": "FRECUENCIA DE NEVADAS - PORCENTUAL 11 NOVIEMBRE - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_09_02:09_02_012_03_001_511_0000_00_00",
+    "title": "FRECUENCIA DE NEVADAS - PORCENTUAL 12 DICIEMBRE - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_01_06:01_06_003_03_001_512_0000_00_00",
+    "title": "FRECUENCIA DE OLAS DE CALOR - INVIERNO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_01_06:01_06_002_03_001_512_0000_00_00",
+    "title": "FRECUENCIA DE OLAS DE CALOR - OTOÑO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_01_06:01_06_004_03_001_512_0000_00_00",
+    "title": "FRECUENCIA DE OLAS DE CALOR - PRIMAVERA",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_01_06:01_06_001_03_001_512_0000_00_00",
+    "title": "FRECUENCIA DE OLAS DE CALOR - VERANO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_02_07:02_07_003_03_001_512_0000_00_00",
+    "title": "GLOBAL COSTERO POSITIVO 2017 - 2023",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_02_07:02_07_002_03_001_512_0000_00_00",
+    "title": "GLOBAL NEGATIVO 1983 - 1998 - 2016",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_02_07:02_07_001_03_001_512_0000_00_00",
+    "title": "GLOBAL POSITIVO 1983 - 1998 - 2016",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "ispi:HIDROELECTRICA_CONVENCIONAL_OPERATIVA",
+    "title": "HIDROELECTRICA CONVENCIONAL OPERATIVA - ISPI",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "ispi:HIDROELECTRICA_CONVENCIONAL_PROYECTADA",
+    "title": "HIDROELECTRICA CONVENCIONAL PROYECTADA - ISPI",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "ispi:HIDROELECTRICA_NOCONVENCIONAL_OPERATIVA",
+    "title": "HIDROELECTRICA NOCONVENCIONAL OPERATIVA - ISPI",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "ispi:HIDROELECTRICA_NOCONVENCIONAL_PROYECTADA",
+    "title": "HIDROELECTRICA NOCONVENCIONAL PROYECTADA - ISPI",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_00_05:00_05_001_03_000_000_0000_00_00",
+    "title": "HIDROGRAFIA - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "midis:midis_01_01_vpn_juntos",
+    "title": "HOGARES DE AFILIADOS PROGRAMA NACIONAL JUNTOS",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_16:06_16_001_03_001_513_0000_00_00",
+    "title": "IMC ssp5-8.5 - 2050",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_09_03:09_03_001_03_001_511_2016_12_00",
+    "title": "INCENDIO FORESTAL 2016 NACIONAL",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dma_sea:ince_urb_view",
+    "title": "INCENDIO URBANO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_04_07:04_07_001_03_001_531_0000_00_00",
+    "title": "INDICE DE HUMEDAD 1DEC - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_04_07:04_07_002_03_001_531_0000_00_00",
+    "title": "INDICE DE HUMEDAD 2DEC - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_04_07:04_07_003_03_001_531_0000_00_00",
+    "title": "INDICE DE HUMEDAD 3DEC - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_09_03:09_03_999_03_001_513_0000_00_00",
+    "title": "INDICE METEOROLOGICO DE INCENDIOS FWI ACTUAL",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "midis:midis_03_01_iepn_qaliwarma",
+    "title": "INSTITUCIONES EDUCATIVAS QALI WARMA",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_acti_quebrada:iiee_filter",
+    "title": "INSTITUCIONES_EDUCATIVAS_ACTIVACION_QUEBRADA",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_00_05:00_05_003_03_000_000_0000_00_00",
+    "title": "ISLAS - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_00_05:00_05_004_03_000_000_0000_00_00",
+    "title": "LAGO TITICACA",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_00_05:00_05_002_03_000_000_0000_00_00",
+    "title": "LAGOS - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "ispi:LAGUNAS",
+    "title": "LAGUNAS - ISPI",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_92:05_92_001_04_001_512_0000_00_00",
+    "title": "LIMA - PRECIPITACION - 01 MES DE ENERO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_92:05_92_002_04_001_512_0000_00_00",
+    "title": "LIMA - PRECIPITACION - 02 MES DE FEBRERO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_92:05_92_003_04_001_512_0000_00_00",
+    "title": "LIMA - PRECIPITACION - 03 MES DE MARZO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_92:05_92_004_04_001_512_0000_00_00",
+    "title": "LIMA - PRECIPITACION - 04 MES DE ABRIL",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_92:05_92_005_04_001_512_0000_00_00",
+    "title": "LIMA - PRECIPITACION - 05 MES DE MAYO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_92:05_92_006_04_001_512_0000_00_00",
+    "title": "LIMA - PRECIPITACION - 06 MES DE JUNIO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_92:05_92_007_04_001_512_0000_00_00",
+    "title": "LIMA - PRECIPITACION - 07 MES DE JULIO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_92:05_92_008_04_001_512_0000_00_00",
+    "title": "LIMA - PRECIPITACION - 08 MES DE AGOSTO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_92:05_92_009_04_001_512_0000_00_00",
+    "title": "LIMA - PRECIPITACION - 09 MES DE SEPTIEMBRE",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_92:05_92_010_04_001_512_0000_00_00",
+    "title": "LIMA - PRECIPITACION - 10 MES DE OCTUBRE",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_92:05_92_011_04_001_512_0000_00_00",
+    "title": "LIMA - PRECIPITACION - 11 MES DE NOVIEMBRE",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_92:05_92_012_04_001_512_0000_00_00",
+    "title": "LIMA - PRECIPITACION - 12 MES DE DICIEMBRE",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_92:05_92_013_04_001_512_0000_00_00",
+    "title": "LIMA - PRECIPITACION - 13 ANUAL",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_92:05_92_014_04_001_512_0000_00_00",
+    "title": "LIMA - PRECIPITACION - 14 VERANO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_92:05_92_015_04_001_512_0000_00_00",
+    "title": "LIMA - PRECIPITACION - 15 OTOÑO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_92:05_92_016_04_001_512_0000_00_00",
+    "title": "LIMA - PRECIPITACION - 16 INVIERNO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_92:05_92_017_04_001_512_0000_00_00",
+    "title": "LIMA - PRECIPITACION - 17 PRIMAVERA",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_94:05_94_001_04_001_512_0000_00_00",
+    "title": "LIMA - TEMP MAXIMA - 01 MES DE ENERO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_94:05_94_002_04_001_512_0000_00_00",
+    "title": "LIMA - TEMP MAXIMA - 02 MES DE FEBRERO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_94:05_94_003_04_001_512_0000_00_00",
+    "title": "LIMA - TEMP MAXIMA - 03 MES DE MARZO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_94:05_94_004_04_001_512_0000_00_00",
+    "title": "LIMA - TEMP MAXIMA - 04 MES DE ABRIL",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_94:05_94_005_04_001_512_0000_00_00",
+    "title": "LIMA - TEMP MAXIMA - 05 MES DE MAYO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_94:05_94_006_04_001_512_0000_00_00",
+    "title": "LIMA - TEMP MAXIMA - 06 MES DE JUNIO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_94:05_94_007_04_001_512_0000_00_00",
+    "title": "LIMA - TEMP MAXIMA - 07 MES DE JULIO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_94:05_94_008_04_001_512_0000_00_00",
+    "title": "LIMA - TEMP MAXIMA - 08 MES DE AGOSTO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_94:05_94_009_04_001_512_0000_00_00",
+    "title": "LIMA - TEMP MAXIMA - 09 MES DE SEPTIEMBRE",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_94:05_94_010_04_001_512_0000_00_00",
+    "title": "LIMA - TEMP MAXIMA - 10 MES DE OCTUBRE",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_94:05_94_011_04_001_512_0000_00_00",
+    "title": "LIMA - TEMP MAXIMA - 11 MES DE NOVIEMBRE",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_94:05_94_012_04_001_512_0000_00_00",
+    "title": "LIMA - TEMP MAXIMA - 12 MES DE DICIEMBRE",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_94:05_94_013_04_001_512_0000_00_00",
+    "title": "LIMA - TEMP MAXIMA - 13 ANUAL",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_94:05_94_014_04_001_512_0000_00_00",
+    "title": "LIMA - TEMP MAXIMA - 14 VERANO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_94:05_94_015_04_001_512_0000_00_00",
+    "title": "LIMA - TEMP MAXIMA - 15 OTOÑO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_94:05_94_016_04_001_512_0000_00_00",
+    "title": "LIMA - TEMP MAXIMA - 16 INVIERNO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_94:05_94_017_04_001_512_0000_00_00",
+    "title": "LIMA - TEMP MAXIMA - 17 PRIMAVERA",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_93:05_93_001_04_001_512_0000_00_00",
+    "title": "LIMA - TEMP MINIMA - 01 MES DE ENERO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_93:05_93_002_04_001_512_0000_00_00",
+    "title": "LIMA - TEMP MINIMA - 02 MES DE FEBRERO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_93:05_93_003_04_001_512_0000_00_00",
+    "title": "LIMA - TEMP MINIMA - 03 MES DE MARZO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_93:05_93_004_04_001_512_0000_00_00",
+    "title": "LIMA - TEMP MINIMA - 04 MES DE ABRIL",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_93:05_93_005_04_001_512_0000_00_00",
+    "title": "LIMA - TEMP MINIMA - 05 MES DE MAYO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_93:05_93_006_04_001_512_0000_00_00",
+    "title": "LIMA - TEMP MINIMA - 06 MES DE JUNIO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_93:05_93_007_04_001_512_0000_00_00",
+    "title": "LIMA - TEMP MINIMA - 07 MES DE JULIO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_93:05_93_008_04_001_512_0000_00_00",
+    "title": "LIMA - TEMP MINIMA - 08 MES DE AGOSTO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_93:05_93_009_04_001_512_0000_00_00",
+    "title": "LIMA - TEMP MINIMA - 09 MES DE SEPTIEMBRE",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_93:05_93_010_04_001_512_0000_00_00",
+    "title": "LIMA - TEMP MINIMA - 10 MES DE OCTUBRE",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_93:05_93_011_04_001_512_0000_00_00",
+    "title": "LIMA - TEMP MINIMA - 11 MES DE NOVIEMBRE",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_93:05_93_012_04_001_512_0000_00_00",
+    "title": "LIMA - TEMP MINIMA - 12 MES DE DICIEMBRE",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_93:05_93_013_04_001_512_0000_00_00",
+    "title": "LIMA - TEMP MINIMA - 13 ANUAL",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_93:05_93_014_04_001_512_0000_00_00",
+    "title": "LIMA - TEMP MINIMA - 14 VERANO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_93:05_93_015_04_001_512_0000_00_00",
+    "title": "LIMA - TEMP MINIMA - 15 OTOÑO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_93:05_93_016_04_001_512_0000_00_00",
+    "title": "LIMA - TEMP MINIMA - 16 INVIERNO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_93:05_93_017_04_001_512_0000_00_00",
+    "title": "LIMA - TEMP MINIMA - 17 PRIMAVERA",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_carto_fundamento:cuencas",
+    "title": "LIMITE DE CUENCAS - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_00_02:00_02_002_03_000_000_0000_00_00",
+    "title": "LIMITE DE DEPARTAMENTO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_carto_fundamento:departamentos",
+    "title": "LIMITE DE DEPARTAMENTO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_carto_fundamento:departamentos_ign",
+    "title": "LIMITE DE DEPARTAMENTOS IGN - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_00_02:00_02_004_03_000_000_0000_00_00",
+    "title": "LIMITE DE DISTRITO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_carto_fundamento:distritos",
+    "title": "LIMITE DE DISTRITO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_carto_fundamento:distritos_ign",
+    "title": "LIMITE DE DISTRITOS IGN - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_00_02:00_02_003_03_000_000_0000_00_00",
+    "title": "LIMITE DE PROVINCIA - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_carto_fundamento:provincias",
+    "title": "LIMITE DE PROVINCIA - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_carto_fundamento:provincias_ign",
+    "title": "LIMITE DE PROVINCIAS IGN - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_00_02:00_02_001_02_000_000_0000_00_00",
+    "title": "LIMITE DE SURAMERICA",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "ispi:LIMITE_DEPARTAMENTAL",
+    "title": "LIMITE DEPARTAMENTAL - ISPI",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "ispi:LIMITE_DISTRITAL",
+    "title": "LIMITE DISTRITAL - ISPI",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "ispi:LIMITE_NACIONAL",
+    "title": "LIMITE NACIONAL - ISPI",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "ispi:LIMITE_PROVINCIAL",
+    "title": "LIMITE PROVINCIAL - ISPI",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_00_03:00_03_001_03_000_000_0000_00_00",
+    "title": "NEVADOS - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_01_07:01_07_003_03_001_512_0000_00_00",
+    "title": "NUMERO DE EVENTOS DE OLAS DE CALOR - INVIERNO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_01_07:01_07_002_03_001_512_0000_00_00",
+    "title": "NUMERO DE EVENTOS DE OLAS DE CALOR - OTOÑO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_01_07:01_07_004_03_001_512_0000_00_00",
+    "title": "NUMERO DE EVENTOS DE OLAS DE CALOR - PRIMAVERA",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_01_07:01_07_001_03_001_512_0000_00_00",
+    "title": "NUMERO DE EVENTOS DE OLAS DE CALOR - VERANO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "midis:midis_01_02_opn_juntos",
+    "title": "OFICINAS TERRITORIALES PROGRAMA NACIONAL JUNTOS",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "midis:midis_03_02_opn_qaliwarma",
+    "title": "OFICINAS TERRITORIALES PROGRAMA NACIONAL QALI WARMA",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_04_08:04_08_007_03_000_522_0000_00_00",
+    "title": "PELIGRO DE MOVIMIENTOS EN MASA POR LLUVIAS INTENSAS 024 Hrs - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_04_08:04_08_006_03_000_522_0000_00_00",
+    "title": "PELIGRO DE MOVIMIENTOS EN MASA POR LLUVIAS INTENSAS 048 Hrs - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_04_08:04_08_005_03_000_522_0000_00_00",
+    "title": "PELIGRO DE MOVIMIENTOS EN MASA POR LLUVIAS INTENSAS 072 Hrs - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_04_08:04_08_004_03_000_522_0000_00_00",
+    "title": "PELIGRO DE MOVIMIENTOS EN MASA POR LLUVIAS INTENSAS 096 Hrs - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_04_08:04_08_003_03_000_522_0000_00_00",
+    "title": "PELIGRO DE MOVIMIENTOS EN MASA POR LLUVIAS INTENSAS 120 Hrs - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_04_08:04_08_002_03_000_522_0000_00_00",
+    "title": "PELIGRO DE MOVIMIENTOS EN MASA POR LLUVIAS INTENSAS 144 Hrs - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_04_08:04_08_001_03_000_522_0000_00_00",
+    "title": "PELIGRO DE MOVIMIENTOS EN MASA POR LLUVIAS INTENSAS 168 Hrs - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_dbphisis:estaciones_monitoreo",
+    "title": "PHISIS ESTACIONES MONITOREO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_dbphisis:reservorios",
+    "title": "PHISIS RESERVORIOS",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "midis:midis_06_01_ipn_tambos",
+    "title": "PLATAFORMAS FIJAS DE TAMBOS",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_03:05_03_006_pp_001_512_0000_00_00",
+    "title": "PP ANUAL PRUEBA - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_01:06_01_001_03_001_513_0000_00_00",
+    "title": "PRECIPITACION ANUAL 2030 - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_03:06_03_001_03_001_513_0000_00_00",
+    "title": "PRECIPITACION CAMBIO ANUAL 2030 - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_06:06_06_001_03_001_513_0000_00_00",
+    "title": "PRECIPITACION CAMBIO ANUAL 2050 - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_02_04:02_04_001_03_001_512_2017_00_00",
+    "title": "PRECIPITACIÓN NIÑO 2017 DEF",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_02_04:02_04_002_03_001_512_2017_00_00",
+    "title": "PRECIPITACIÓN NIÑO 2017 EFM",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_02_04:02_04_003_03_001_512_2017_00_00",
+    "title": "PRECIPITACIÓN NIÑO 2017 FMA",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_02_05:02_05_002_03_001_512_2023_00_00",
+    "title": "PRECIPITACIÓN NIÑO 2023 EFM",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_02_05:02_05_003_03_001_512_2023_00_00",
+    "title": "PRECIPITACIÓN NIÑO 2023 FMA",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_02_06:02_06_001_03_001_512_2024_00_00",
+    "title": "PRECIPITACIÓN NIÑO 2024 DEF",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_02_06:02_06_002_03_001_512_2024_00_00",
+    "title": "PRECIPITACIÓN NIÑO 2024 EFM",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_02_01:02_01_001_03_001_512_1983_00_00",
+    "title": "PRECIPITACIÓN NIÑO 82 - 83 DEF",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_02_01:02_01_002_03_001_512_1983_00_00",
+    "title": "PRECIPITACIÓN NIÑO 82 - 83 EFM",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_02_01:02_01_003_03_001_512_1983_00_00",
+    "title": "PRECIPITACIÓN NIÑO 82 - 83 FMA",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_02_02:02_02_001_03_001_512_1998_00_00",
+    "title": "PRECIPITACIÓN NIÑO 97 - 98 DEF",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_02_02:02_02_002_03_001_512_1998_00_00",
+    "title": "PRECIPITACIÓN NIÑO 97 - 98 EFM",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_02_02:02_02_003_03_001_512_1998_00_00",
+    "title": "PRECIPITACIÓN NIÑO 97 - 98 FMA",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_03_05:03_05_001_03_000_513_0000_00_00",
+    "title": "PREDICCION NUMERICA PP - 24 HRS",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_03_05:03_05_002_03_000_513_0000_00_00",
+    "title": "PREDICCION NUMERICA PP - 48 HRS",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_03_05:03_05_003_03_000_513_0000_00_00",
+    "title": "PREDICCION NUMERICA PP - 72 HRS",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "ispi:PRESAS",
+    "title": "PRESAS - ISPI",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_03_02:03_02_001_03_000_512_0000_00_00",
+    "title": "PROBABILIDAD DE OCURRENCIA PP - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_03_02:03_02_003_03_000_512_0000_00_00",
+    "title": "PROBABILIDAD DE OCURRENCIA TMAX - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_03_02:03_02_002_03_000_512_0000_00_00",
+    "title": "PROBABILIDAD DE OCURRENCIA TMIN - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "spc:prono_mensual_poligono_pp1",
+    "title": "PRONOSTICO MENSUAL SECTORES - PP 01",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "spc:prono_mensual_poligono_pp2",
+    "title": "PRONOSTICO MENSUAL SECTORES - PP 02",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "spc:prono_mensual_poligono_pp3",
+    "title": "PRONOSTICO MENSUAL SECTORES - PP 03",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "spc:prono_mensual_poligono_pp4",
+    "title": "PRONOSTICO MENSUAL SECTORES - PP 04",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "spc:prono_mensual_poligono_pp5",
+    "title": "PRONOSTICO MENSUAL SECTORES - PP 05",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "spc:prono_mensual_poligono_tmax1",
+    "title": "PRONOSTICO MENSUAL SECTORES - TMAX 01",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "spc:prono_mensual_poligono_tmax2",
+    "title": "PRONOSTICO MENSUAL SECTORES - TMAX 02",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "spc:prono_mensual_poligono_tmax3",
+    "title": "PRONOSTICO MENSUAL SECTORES - TMAX 03",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "spc:prono_mensual_poligono_tmax4",
+    "title": "PRONOSTICO MENSUAL SECTORES - TMAX 04",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "spc:prono_mensual_poligono_tmax5",
+    "title": "PRONOSTICO MENSUAL SECTORES - TMAX 05",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "spc:prono_mensual_poligono_tmin1",
+    "title": "PRONOSTICO MENSUAL SECTORES - TMIN 01",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "spc:prono_mensual_poligono_tmin2",
+    "title": "PRONOSTICO MENSUAL SECTORES - TMIN 02",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "spc:prono_mensual_poligono_tmin3",
+    "title": "PRONOSTICO MENSUAL SECTORES - TMIN 03",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "spc:prono_mensual_poligono_tmin4",
+    "title": "PRONOSTICO MENSUAL SECTORES - TMIN 04",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "spc:prono_mensual_poligono_tmin5",
+    "title": "PRONOSTICO MENSUAL SECTORES - TMIN 05",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "spc:prono_trim_punto_pp1",
+    "title": "PRONOSTICO TRIMESTRAL ESTACION - PP 01",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "spc:prono_trim_punto_tmax1",
+    "title": "PRONOSTICO TRIMESTRAL ESTACION - TMAX 01",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "spc:prono_trim_punto_tmin1",
+    "title": "PRONOSTICO TRIMESTRAL ESTACION - TMIN 01",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "spc:prono_trim_poligono_pp1",
+    "title": "PRONOSTICO TRIMESTRAL SECTORES - PP 01",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "spc:prono_trim_poligono_tmax1",
+    "title": "PRONOSTICO TRIMESTRAL SECTORES - TMAX 01",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "spc:prono_trim_poligono_tmin1",
+    "title": "PRONOSTICO TRIMESTRAL SECTORES - TMIN 01",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_03_04:03_04_001_03_001_513_0000_00_00",
+    "title": "PRONOSTICO UV - 48 HRS",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_03_04:03_04_002_03_001_513_0000_00_00",
+    "title": "PRONOSTICO UV - 72 HRS",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "spc:prono_verano_poligono",
+    "title": "PRONOSTICO VERANO - PP",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_01_97:01_97_001_04_001_512_2022_00_00",
+    "title": "PUNO - AÑOS SECOS ANTES DE 1960 (1940)",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_01_97:01_97_002_04_001_512_2022_00_00",
+    "title": "PUNO - AÑOS SECOS ANTES DE 1960 (1941)",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_01_97:01_97_003_04_001_512_2022_00_00",
+    "title": "PUNO - AÑOS SECOS ANTES DE 1960 (1956)",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_01_97:01_97_004_04_001_512_2022_00_00",
+    "title": "PUNO - AÑOS SECOS DESPUES DE 1960 (1966)",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_01_97:01_97_005_04_001_512_2022_00_00",
+    "title": "PUNO - AÑOS SECOS DESPUES DE 1960 (1983)",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_01_97:01_97_006_04_001_512_2022_00_00",
+    "title": "PUNO - AÑOS SECOS DESPUES DE 1960 (1990)",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_01_97:01_97_007_04_001_512_2022_00_00",
+    "title": "PUNO - AÑOS SECOS DESPUES DE 1960 (1992)",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_98:05_98_003_04_001_512_2022_00_00",
+    "title": "PUNO - DURACION DE LLUVIAS",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_98:05_98_002_04_001_512_2022_00_00",
+    "title": "PUNO - FIN DE LLUVIAS",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_98:05_98_001_04_001_512_2022_00_00",
+    "title": "PUNO - INICIO DE LLUVIAS",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_01_99:01_99_003_04_001_512_2022_00_00",
+    "title": "PUNO - PERIODO DE RETORNO DE SEQUIAS SPI EXTREMA",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_01_99:01_99_001_04_001_512_2022_00_00",
+    "title": "PUNO - PERIODO DE RETORNO DE SEQUIAS SPI MODERADA",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_01_99:01_99_002_04_001_512_2022_00_00",
+    "title": "PUNO - PERIODO DE RETORNO DE SEQUIAS SPI SEVERA",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_01_98:01_98_001_04_001_512_2022_00_00",
+    "title": "PUNO - TENDENCIA DE SEQUIAS SPI 1964 - 2019",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_99:05_99_003_04_001_512_2022_00_00",
+    "title": "PUNO - TENDENCIA LLUVIAS DURACION 1964-1965 A 2018-2019",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_99:05_99_006_04_001_512_2022_00_00",
+    "title": "PUNO - TENDENCIA LLUVIAS DURACION 1989-1990 A 2018-2019",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_99:05_99_002_04_001_512_2022_00_00",
+    "title": "PUNO - TENDENCIA LLUVIAS FIN 1964-1965 A 2018-2019",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_99:05_99_005_04_001_512_2022_00_00",
+    "title": "PUNO - TENDENCIA LLUVIAS FIN 1989-1990 A 2018-2019",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_99:05_99_001_04_001_512_2022_00_00",
+    "title": "PUNO - TENDENCIA LLUVIAS INICIO 1964-1965 A 2018-2019",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_99:05_99_004_04_001_512_2022_00_00",
+    "title": "PUNO - TENDENCIA LLUVIAS INICIO 1989-1990 A 2018-2019",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "midis:midis_01_03_ppn_juntos",
+    "title": "PUNTOS DE PAGO PROGRAMA NACIONAL JUNTOS",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "midis:midis_04_01_abpn_p65",
+    "title": "PUNTOS DE PAGO PROGRAMA NACIONAL PENSION 65",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_03_02:03_02_004_03_000_512_0000_00_00",
+    "title": "Probabilidad_Pp_Prueba_SPC",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_03_02:03_02_006_03_000_512_0000_00_00",
+    "title": "Probabilidad_Tmax_Prueba_SPC",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_03_02:03_02_005_03_000_512_0000_00_00",
+    "title": "Probabilidad_Tmin_Prueba_SPC",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:regiones_peru",
+    "title": "REGIONES DEL PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "ispi:RESERVORIOS",
+    "title": "RESERVORIOS - ISPI",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_11_01:11_01_001_03_001_531_0000_00_00",
+    "title": "RIESGO AGROCLIMATICO DE ARROZ",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_11_04:11_04_001_03_001_531_0000_00_00",
+    "title": "RIESGO AGROCLIMATICO DE CACAO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_11_05:11_05_001_03_001_531_0000_00_00",
+    "title": "RIESGO AGROCLIMATICO DE CAFE",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_11_09:11_09_001_03_001_531_0000_00_00",
+    "title": "RIESGO AGROCLIMATICO DE CEBOLLA",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_11_10:11_10_001_03_001_531_0000_00_00",
+    "title": "RIESGO AGROCLIMATICO DE FRIJOL GRANO SECO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_11_02:11_02_001_03_001_531_0000_00_00",
+    "title": "RIESGO AGROCLIMATICO DE MAIZ",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_11_08:11_08_001_03_001_531_0000_00_00",
+    "title": "RIESGO AGROCLIMATICO DE PALTO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_11_03:11_03_001_03_001_531_0000_00_00",
+    "title": "RIESGO AGROCLIMATICO DE PAPA",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_11_06:11_06_001_03_001_531_0000_00_00",
+    "title": "RIESGO AGROCLIMATICO DE PASTO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_11_07:11_07_001_03_001_531_0000_00_00",
+    "title": "RIESGO AGROCLIMATICO DE QUINUA",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "ispi:RIOS",
+    "title": "RIOS - ISPI",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_carto_fundamento:rios_area_ign",
+    "title": "RIOS AREA IGN - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_carto_fundamento:rios_linea_ign",
+    "title": "RIOS LINEA IGN - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_95:05_95_001_04_001_512_0000_00_00",
+    "title": "SAN MARTIN - PRECIPITACION - 01 MES DE ENERO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_95:05_95_002_04_001_512_0000_00_00",
+    "title": "SAN MARTIN - PRECIPITACION - 02 MES DE FEBRERO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_95:05_95_003_04_001_512_0000_00_00",
+    "title": "SAN MARTIN - PRECIPITACION - 03 MES DE MARZO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_95:05_95_004_04_001_512_0000_00_00",
+    "title": "SAN MARTIN - PRECIPITACION - 04 MES DE ABRIL",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_95:05_95_005_04_001_512_0000_00_00",
+    "title": "SAN MARTIN - PRECIPITACION - 05 MES DE MAYO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_95:05_95_006_04_001_512_0000_00_00",
+    "title": "SAN MARTIN - PRECIPITACION - 06 MES DE JUNIO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_95:05_95_007_04_001_512_0000_00_00",
+    "title": "SAN MARTIN - PRECIPITACION - 07 MES DE JULIO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_95:05_95_008_04_001_512_0000_00_00",
+    "title": "SAN MARTIN - PRECIPITACION - 08 MES DE AGOSTO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_95:05_95_009_04_001_512_0000_00_00",
+    "title": "SAN MARTIN - PRECIPITACION - 09 MES DE SEPTIEMBRE",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_95:05_95_010_04_001_512_0000_00_00",
+    "title": "SAN MARTIN - PRECIPITACION - 10 MES DE OCTUBRE",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_95:05_95_011_04_001_512_0000_00_00",
+    "title": "SAN MARTIN - PRECIPITACION - 11 MES DE NOVIEMBRE",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_95:05_95_012_04_001_512_0000_00_00",
+    "title": "SAN MARTIN - PRECIPITACION - 12 MES DE DICIEMBRE",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_95:05_95_013_04_001_512_0000_00_00",
+    "title": "SAN MARTIN - PRECIPITACION - 13 ANUAL",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_95:05_95_014_04_001_512_0000_00_00",
+    "title": "SAN MARTIN - PRECIPITACION - 14 VERANO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_95:05_95_015_04_001_512_0000_00_00",
+    "title": "SAN MARTIN - PRECIPITACION - 15 OTOÑO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_95:05_95_016_04_001_512_0000_00_00",
+    "title": "SAN MARTIN - PRECIPITACION - 16 INVIERNO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_95:05_95_017_04_001_512_0000_00_00",
+    "title": "SAN MARTIN - PRECIPITACION - 17 PRIMAVERA",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_97:05_97_001_04_001_512_0000_00_00",
+    "title": "SAN MARTIN - TEMP MAXIMA - 01 MES DE ENERO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_97:05_97_002_04_001_512_0000_00_00",
+    "title": "SAN MARTIN - TEMP MAXIMA - 02 MES DE FEBRERO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_97:05_97_003_04_001_512_0000_00_00",
+    "title": "SAN MARTIN - TEMP MAXIMA - 03 MES DE MARZO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_97:05_97_004_04_001_512_0000_00_00",
+    "title": "SAN MARTIN - TEMP MAXIMA - 04 MES DE ABRIL",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_97:05_97_005_04_001_512_0000_00_00",
+    "title": "SAN MARTIN - TEMP MAXIMA - 05 MES DE MAYO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_97:05_97_006_04_001_512_0000_00_00",
+    "title": "SAN MARTIN - TEMP MAXIMA - 06 MES DE JUNIO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_97:05_97_007_04_001_512_0000_00_00",
+    "title": "SAN MARTIN - TEMP MAXIMA - 07 MES DE JULIO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_97:05_97_008_04_001_512_0000_00_00",
+    "title": "SAN MARTIN - TEMP MAXIMA - 08 MES DE AGOSTO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_97:05_97_009_04_001_512_0000_00_00",
+    "title": "SAN MARTIN - TEMP MAXIMA - 09 MES DE SEPTIEMBRE",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_97:05_97_010_04_001_512_0000_00_00",
+    "title": "SAN MARTIN - TEMP MAXIMA - 10 MES DE OCTUBRE",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_97:05_97_011_04_001_512_0000_00_00",
+    "title": "SAN MARTIN - TEMP MAXIMA - 11 MES DE NOVIEMBRE",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_97:05_97_012_04_001_512_0000_00_00",
+    "title": "SAN MARTIN - TEMP MAXIMA - 12 MES DE DICIEMBRE",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_97:05_97_013_04_001_512_0000_00_00",
+    "title": "SAN MARTIN - TEMP MAXIMA - 13 ANUAL",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_97:05_97_014_04_001_512_0000_00_00",
+    "title": "SAN MARTIN - TEMP MAXIMA - 14 VERANO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_97:05_97_015_04_001_512_0000_00_00",
+    "title": "SAN MARTIN - TEMP MAXIMA - 15 OTOÑO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_97:05_97_016_04_001_512_0000_00_00",
+    "title": "SAN MARTIN - TEMP MAXIMA - 16 INVIERNO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_97:05_97_017_04_001_512_0000_00_00",
+    "title": "SAN MARTIN - TEMP MAXIMA - 17 PRIMAVERA",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_96:05_96_001_04_001_512_0000_00_00",
+    "title": "SAN MARTIN - TEMP MINIMA - 01 MES DE ENERO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_96:05_96_002_04_001_512_0000_00_00",
+    "title": "SAN MARTIN - TEMP MINIMA - 02 MES DE FEBRERO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_96:05_96_003_04_001_512_0000_00_00",
+    "title": "SAN MARTIN - TEMP MINIMA - 03 MES DE MARZO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_96:05_96_004_04_001_512_0000_00_00",
+    "title": "SAN MARTIN - TEMP MINIMA - 04 MES DE ABRIL",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_96:05_96_005_04_001_512_0000_00_00",
+    "title": "SAN MARTIN - TEMP MINIMA - 05 MES DE MAYO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_96:05_96_006_04_001_512_0000_00_00",
+    "title": "SAN MARTIN - TEMP MINIMA - 06 MES DE JUNIO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_96:05_96_007_04_001_512_0000_00_00",
+    "title": "SAN MARTIN - TEMP MINIMA - 07 MES DE JULIO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_96:05_96_008_04_001_512_0000_00_00",
+    "title": "SAN MARTIN - TEMP MINIMA - 08 MES DE AGOSTO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_96:05_96_009_04_001_512_0000_00_00",
+    "title": "SAN MARTIN - TEMP MINIMA - 09 MES DE SEPTIEMBRE",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_96:05_96_010_04_001_512_0000_00_00",
+    "title": "SAN MARTIN - TEMP MINIMA - 10 MES DE OCTUBRE",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_96:05_96_011_04_001_512_0000_00_00",
+    "title": "SAN MARTIN - TEMP MINIMA - 11 MES DE NOVIEMBRE",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_96:05_96_012_04_001_512_0000_00_00",
+    "title": "SAN MARTIN - TEMP MINIMA - 12 MES DE DICIEMBRE",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_96:05_96_013_04_001_512_0000_00_00",
+    "title": "SAN MARTIN - TEMP MINIMA - 13 ANUAL",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_96:05_96_014_04_001_512_0000_00_00",
+    "title": "SAN MARTIN - TEMP MINIMA - 14 VERANO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_96:05_96_015_04_001_512_0000_00_00",
+    "title": "SAN MARTIN - TEMP MINIMA - 15 OTOÑO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_96:05_96_016_04_001_512_0000_00_00",
+    "title": "SAN MARTIN - TEMP MINIMA - 16 INVIERNO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_96:05_96_017_04_001_512_0000_00_00",
+    "title": "SAN MARTIN - TEMP MINIMA - 17 PRIMAVERA",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_carto_fundamento:sectores_climaticos",
+    "title": "SECTORES CLIMATICOS A NIVEL NACIONAL",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_00_02:sectores_climaticos",
+    "title": "SECTORES CLIMATICOS DEL PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_carto_fundamento:sectores_climaticos_senamhi",
+    "title": "SECTORES_CLIMATICOS_SENAMHI",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_carto_fundamento:sectores_climaticos_senamhi_v2",
+    "title": "SECTORES_CLIMATICOS_SENAMHI_V2",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "ispi:VIEW_SEQUIA_AGRICOLA_FRECUENCIA_1",
+    "title": "SEQUIA AGRICOLA FRECUENCIA 1",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "ispi:VIEW_SEQUIA_AGRICOLA_FRECUENCIA_12",
+    "title": "SEQUIA AGRICOLA FRECUENCIA 12",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "ispi:VIEW_SEQUIA_AGRICOLA_FRECUENCIA_3",
+    "title": "SEQUIA AGRICOLA FRECUENCIA 3",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "ispi:VIEW_SEQUIA_AGRICOLA_FRECUENCIA_6",
+    "title": "SEQUIA AGRICOLA FRECUENCIA 6",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "ispi:VIEW_SEQUIA_HIDROLOGICA_FRECUENCIA_1",
+    "title": "SEQUIA HIDROLOGICA FRECUENCIA 1",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "ispi:VIEW_SEQUIA_HIDROLOGICA_FRECUENCIA_12",
+    "title": "SEQUIA HIDROLOGICA FRECUENCIA 12",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "ispi:VIEW_SEQUIA_HIDROLOGICA_FRECUENCIA_3",
+    "title": "SEQUIA HIDROLOGICA FRECUENCIA 3",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "ispi:VIEW_SEQUIA_HIDROLOGICA_FRECUENCIA_6",
+    "title": "SEQUIA HIDROLOGICA FRECUENCIA 6",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "ispi:VIEW_SEQUIA_INTEGRADA_FRECUENCIA_1",
+    "title": "SEQUIA INTEGRADA DE FRECUENCIA 1",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "ispi:VIEW_SEQUIA_INTEGRADA_FRECUENCIA_12",
+    "title": "SEQUIA INTEGRADA DE FRECUENCIA 12",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "ispi:VIEW_SEQUIA_INTEGRADA_FRECUENCIA_3",
+    "title": "SEQUIA INTEGRADA DE FRECUENCIA 3",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "ispi:VIEW_SEQUIA_METEOROLOGICA_FRECUENCIA_1",
+    "title": "SEQUIA METEOROLOGICA FRECUENCIA 1",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "ispi:VIEW_SEQUIA_METEOROLOGICA_FRECUENCIA_12",
+    "title": "SEQUIA METEOROLOGICA FRECUENCIA 12",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "ispi:VIEW_SEQUIA_METEOROLOGICA_FRECUENCIA_3",
+    "title": "SEQUIA METEOROLOGICA FRECUENCIA 3",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "ispi:VIEW_SEQUIA_METEOROLOGICA_FRECUENCIA_6",
+    "title": "SEQUIA METEOROLOGICA FRECUENCIA 6",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "silvia:cuencas_nivel_12_prono1_silvia",
+    "title": "SILVIA PRONOSTICO 1",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "silvia:cuencas_nivel_12_prono2_silvia",
+    "title": "SILVIA PRONOSTICO 2",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "silvia:cuencas_nivel_12_prono3_silvia",
+    "title": "SILVIA PRONOSTICO 3",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-CCPP",
+    "title": "SONICS - CCPP",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-CCPP-PRONOSTICO-01",
+    "title": "SONICS - CCPP - PRONOSTICO DIA 01",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-CCPP-PRONOSTICO-02",
+    "title": "SONICS - CCPP - PRONOSTICO DIA 02",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-CCPP-PRONOSTICO-03",
+    "title": "SONICS - CCPP - PRONOSTICO DIA 03",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-CCPP-PRONOSTICO-04",
+    "title": "SONICS - CCPP - PRONOSTICO DIA 04",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-CCPP-PRONOSTICO-05",
+    "title": "SONICS - CCPP - PRONOSTICO DIA 05",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-CCPP-PRONOSTICO-06",
+    "title": "SONICS - CCPP - PRONOSTICO DIA 06",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-CCPP-PRONOSTICO-07",
+    "title": "SONICS - CCPP - PRONOSTICO DIA 07",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-EESS",
+    "title": "SONICS - EESS",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-EESS-PRONOSTICO-01",
+    "title": "SONICS - EESS - PRONOSTICO DIA 01",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-EESS-PRONOSTICO-02",
+    "title": "SONICS - EESS - PRONOSTICO DIA 02",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-EESS-PRONOSTICO-03",
+    "title": "SONICS - EESS - PRONOSTICO DIA 03",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-EESS-PRONOSTICO-04",
+    "title": "SONICS - EESS - PRONOSTICO DIA 04",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-EESS-PRONOSTICO-05",
+    "title": "SONICS - EESS - PRONOSTICO DIA 05",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-EESS-PRONOSTICO-06",
+    "title": "SONICS - EESS - PRONOSTICO DIA 06",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-EESS-PRONOSTICO-07",
+    "title": "SONICS - EESS - PRONOSTICO DIA 07",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-IIEE",
+    "title": "SONICS - IIEE",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-IIEE-PRONOSTICO-01",
+    "title": "SONICS - IIEE - PRONOSTICO DIA 01",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-IIEE-PRONOSTICO-02",
+    "title": "SONICS - IIEE - PRONOSTICO DIA 02",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-IIEE-PRONOSTICO-03",
+    "title": "SONICS - IIEE - PRONOSTICO DIA 03",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-IIEE-PRONOSTICO-04",
+    "title": "SONICS - IIEE - PRONOSTICO DIA 04",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-IIEE-PRONOSTICO-05",
+    "title": "SONICS - IIEE - PRONOSTICO DIA 05",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-IIEE-PRONOSTICO-06",
+    "title": "SONICS - IIEE - PRONOSTICO DIA 06",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-IIEE-PRONOSTICO-07",
+    "title": "SONICS - IIEE - PRONOSTICO DIA 07",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS",
+    "title": "SONICS - NIVEL",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-VIAL-DEPARTAMENTAL",
+    "title": "SONICS - VIAL - DEPARTAMENTAL",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-VIAL-NACIONAL",
+    "title": "SONICS - VIAL - NACIONAL",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-VIAL-VECINAL",
+    "title": "SONICS - VIAL - VECINAL",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-VIAL-DEPARTAMENTAL-PRONOSTICO-01",
+    "title": "SONICS - VIAL DEPARTAMENTAL - PRONOSTICO DIA 01",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-VIAL-DEPARTAMENTAL-PRONOSTICO-02",
+    "title": "SONICS - VIAL DEPARTAMENTAL - PRONOSTICO DIA 02",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-VIAL-DEPARTAMENTAL-PRONOSTICO-03",
+    "title": "SONICS - VIAL DEPARTAMENTAL - PRONOSTICO DIA 03",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-VIAL-DEPARTAMENTAL-PRONOSTICO-04",
+    "title": "SONICS - VIAL DEPARTAMENTAL - PRONOSTICO DIA 04",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-VIAL-DEPARTAMENTAL-PRONOSTICO-05",
+    "title": "SONICS - VIAL DEPARTAMENTAL - PRONOSTICO DIA 05",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-VIAL-DEPARTAMENTAL-PRONOSTICO-06",
+    "title": "SONICS - VIAL DEPARTAMENTAL - PRONOSTICO DIA 06",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-VIAL-DEPARTAMENTAL-PRONOSTICO-07",
+    "title": "SONICS - VIAL DEPARTAMENTAL - PRONOSTICO DIA 07",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-VIAL-NACIONAL-PRONOSTICO-01",
+    "title": "SONICS - VIAL NACIONAL - PRONOSTICO DIA 01",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-VIAL-NACIONAL-PRONOSTICO-02",
+    "title": "SONICS - VIAL NACIONAL - PRONOSTICO DIA 02",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-VIAL-NACIONAL-PRONOSTICO-03",
+    "title": "SONICS - VIAL NACIONAL - PRONOSTICO DIA 03",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-VIAL-NACIONAL-PRONOSTICO-04",
+    "title": "SONICS - VIAL NACIONAL - PRONOSTICO DIA 04",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-VIAL-NACIONAL-PRONOSTICO-05",
+    "title": "SONICS - VIAL NACIONAL - PRONOSTICO DIA 05",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-VIAL-NACIONAL-PRONOSTICO-06",
+    "title": "SONICS - VIAL NACIONAL - PRONOSTICO DIA 06",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-VIAL-NACIONAL-PRONOSTICO-07",
+    "title": "SONICS - VIAL NACIONAL - PRONOSTICO DIA 07",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-VIAL-VECINAL-PRONOSTICO-01",
+    "title": "SONICS - VIAL VECINAL - PRONOSTICO DIA 01",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-VIAL-VECINAL-PRONOSTICO-02",
+    "title": "SONICS - VIAL VECINAL - PRONOSTICO DIA 02",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-VIAL-VECINAL-PRONOSTICO-03",
+    "title": "SONICS - VIAL VECINAL - PRONOSTICO DIA 03",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-VIAL-VECINAL-PRONOSTICO-04",
+    "title": "SONICS - VIAL VECINAL - PRONOSTICO DIA 04",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-VIAL-VECINAL-PRONOSTICO-05",
+    "title": "SONICS - VIAL VECINAL - PRONOSTICO DIA 05",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-VIAL-VECINAL-PRONOSTICO-06",
+    "title": "SONICS - VIAL VECINAL - PRONOSTICO DIA 06",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-VIAL-VECINAL-PRONOSTICO-07",
+    "title": "SONICS - VIAL VECINAL - PRONOSTICO DIA 07",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-PRONOSTICO-01",
+    "title": "SONICS PRONOSTICO DIA 01",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-PRONOSTICO-02",
+    "title": "SONICS PRONOSTICO DIA 02",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-PRONOSTICO-03",
+    "title": "SONICS PRONOSTICO DIA 03",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-PRONOSTICO-04",
+    "title": "SONICS PRONOSTICO DIA 04",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-PRONOSTICO-05",
+    "title": "SONICS PRONOSTICO DIA 05",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-PRONOSTICO-06",
+    "title": "SONICS PRONOSTICO DIA 06",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:SONICS-PRONOSTICO-07",
+    "title": "SONICS PRONOSTICO DIA 07",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "ispi:SUPERFICIE_AGRICOLA",
+    "title": "SUPERFICIE AGRICOLA - ISPI",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_04_03:04_03_002_03_006_512_2017_06_00",
+    "title": "TEMP MIN ABSOLUTA 1DEC - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_04_03:04_03_003_03_006_512_2017_06_00",
+    "title": "TEMP MIN ABSOLUTA 2DEC - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_04_03:04_03_004_03_006_512_2017_06_00",
+    "title": "TEMP MIN ABSOLUTA 3DEC - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_04_03:04_03_001_03_006_512_2017_06_00",
+    "title": "TEMP MIN ABSOLUTA MES - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_01:06_01_003_03_001_513_0000_00_00",
+    "title": "TEMPERATURA MAXIMA ANUAL 2030 - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_03:06_03_003_03_001_513_0000_00_00",
+    "title": "TEMPERATURA MAXIMA CAMBIO ANUAL 2030 - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_06:06_06_003_03_001_513_0000_00_00",
+    "title": "TEMPERATURA MAXIMA CAMBIO ANUAL 2050 - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_01:06_01_002_03_001_513_0000_00_00",
+    "title": "TEMPERATURA MINIMA ANUAL 2030 - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_03:06_03_002_03_001_513_0000_00_00",
+    "title": "TEMPERATURA MINIMA CAMBIO ANUAL 2030 - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_06:06_06_002_03_001_513_0000_00_00",
+    "title": "TEMPERATURA MINIMA CAMBIO ANUAL 2050 - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_01_03:01_03_008_03_001_512_0000_00_00",
+    "title": "TEMPERATURA MINIMA EXTREMA P1 - AGOSTO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_01_03:01_03_007_03_001_512_0000_00_00",
+    "title": "TEMPERATURA MINIMA EXTREMA P1 - JULIO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_01_03:01_03_006_03_001_512_0000_00_00",
+    "title": "TEMPERATURA MINIMA EXTREMA P1 - JUNIO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_01_03:01_03_005_03_001_512_0000_00_00",
+    "title": "TEMPERATURA MINIMA EXTREMA P1 - MAYO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_01_01:01_01_008_03_001_512_0000_00_00",
+    "title": "TEMPERATURA MINIMA EXTREMA P10 - AGOSTO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_01_01:01_01_007_03_001_512_0000_00_00",
+    "title": "TEMPERATURA MINIMA EXTREMA P10 - JULIO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_01_01:01_01_006_03_001_512_0000_00_00",
+    "title": "TEMPERATURA MINIMA EXTREMA P10 - JUNIO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_01_01:01_01_005_03_001_512_0000_00_00",
+    "title": "TEMPERATURA MINIMA EXTREMA P10 - MAYO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_01_02:01_02_008_03_001_512_0000_00_00",
+    "title": "TEMPERATURA MINIMA EXTREMA P5 - AGOSTO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_01_02:01_02_007_03_001_512_0000_00_00",
+    "title": "TEMPERATURA MINIMA EXTREMA P5 - JULIO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_01_02:01_02_006_03_001_512_0000_00_00",
+    "title": "TEMPERATURA MINIMA EXTREMA P5 - JUNIO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_01_02:01_02_005_03_001_512_0000_00_00",
+    "title": "TEMPERATURA MINIMA EXTREMA P5 - MAYO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_10:06_10_001_03_001_512_0000_00_00",
+    "title": "TENDENCIA DE TEMP MAXIMA 01 ENERO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_10:06_10_002_03_001_512_0000_00_00",
+    "title": "TENDENCIA DE TEMP MAXIMA 02 FEBRERO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_10:06_10_003_03_001_512_0000_00_00",
+    "title": "TENDENCIA DE TEMP MAXIMA 03 MARZO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_10:06_10_004_03_001_512_0000_00_00",
+    "title": "TENDENCIA DE TEMP MAXIMA 04 ABRIL - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_10:06_10_005_03_001_512_0000_00_00",
+    "title": "TENDENCIA DE TEMP MAXIMA 05 MAYO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_10:06_10_006_03_001_512_0000_00_00",
+    "title": "TENDENCIA DE TEMP MAXIMA 06 JUNIO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_10:06_10_007_03_001_512_0000_00_00",
+    "title": "TENDENCIA DE TEMP MAXIMA 07 JULIO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_10:06_10_008_03_001_512_0000_00_00",
+    "title": "TENDENCIA DE TEMP MAXIMA 08 AGOSTO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_10:06_10_009_03_001_512_0000_00_00",
+    "title": "TENDENCIA DE TEMP MAXIMA 09 SEPTIEMBRE - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_10:06_10_010_03_001_512_0000_00_00",
+    "title": "TENDENCIA DE TEMP MAXIMA 10 OCTUBRE - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_10:06_10_011_03_001_512_0000_00_00",
+    "title": "TENDENCIA DE TEMP MAXIMA 11 NOVIEMBRE - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_10:06_10_012_03_001_512_0000_00_00",
+    "title": "TENDENCIA DE TEMP MAXIMA 12 DICIEMBRE - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_10:06_10_013_03_001_512_0000_00_00",
+    "title": "TENDENCIA DE TEMP MAXIMA 13 ANUAL - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_09:06_09_001_03_001_512_0000_00_00",
+    "title": "TENDENCIA DE TEMP MEDIA 01 ENERO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_09:06_09_002_03_001_512_0000_00_00",
+    "title": "TENDENCIA DE TEMP MEDIA 02 FEBRERO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_09:06_09_003_03_001_512_0000_00_00",
+    "title": "TENDENCIA DE TEMP MEDIA 03 MARZO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_09:06_09_004_03_001_512_0000_00_00",
+    "title": "TENDENCIA DE TEMP MEDIA 04 ABRIL - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_09:06_09_005_03_001_512_0000_00_00",
+    "title": "TENDENCIA DE TEMP MEDIA 05 MAYO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_09:06_09_006_03_001_512_0000_00_00",
+    "title": "TENDENCIA DE TEMP MEDIA 06 JUNIO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_09:06_09_007_03_001_512_0000_00_00",
+    "title": "TENDENCIA DE TEMP MEDIA 07 JULIO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_09:06_09_008_03_001_512_0000_00_00",
+    "title": "TENDENCIA DE TEMP MEDIA 08 AGOSTO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_09:06_09_009_03_001_512_0000_00_00",
+    "title": "TENDENCIA DE TEMP MEDIA 09 SEPTIEMBRE - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_09:06_09_010_03_001_512_0000_00_00",
+    "title": "TENDENCIA DE TEMP MEDIA 10 OCTUBRE - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_09:06_09_011_03_001_512_0000_00_00",
+    "title": "TENDENCIA DE TEMP MEDIA 11 NOVIEMBRE - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_09:06_09_012_03_001_512_0000_00_00",
+    "title": "TENDENCIA DE TEMP MEDIA 12 DICIEMBRE - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_09:06_09_013_03_001_512_0000_00_00",
+    "title": "TENDENCIA DE TEMP MEDIA 13 ANUAL - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_08:06_08_001_03_001_512_0000_00_00",
+    "title": "TENDENCIA DE TEMP MINIMA 01 ENERO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_08:06_08_002_03_001_512_0000_00_00",
+    "title": "TENDENCIA DE TEMP MINIMA 02 FEBRERO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_08:06_08_003_03_001_512_0000_00_00",
+    "title": "TENDENCIA DE TEMP MINIMA 03 MARZO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_08:06_08_004_03_001_512_0000_00_00",
+    "title": "TENDENCIA DE TEMP MINIMA 04 ABRIL - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_08:06_08_005_03_001_512_0000_00_00",
+    "title": "TENDENCIA DE TEMP MINIMA 05 MAYO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_08:06_08_006_03_001_512_0000_00_00",
+    "title": "TENDENCIA DE TEMP MINIMA 06 JUNIO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_08:06_08_007_03_001_512_0000_00_00",
+    "title": "TENDENCIA DE TEMP MINIMA 07 JULIO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_08:06_08_008_03_001_512_0000_00_00",
+    "title": "TENDENCIA DE TEMP MINIMA 08 AGOSTO - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_08:06_08_009_03_001_512_0000_00_00",
+    "title": "TENDENCIA DE TEMP MINIMA 09 SEPTIEMBRE - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_08:06_08_010_03_001_512_0000_00_00",
+    "title": "TENDENCIA DE TEMP MINIMA 10 OCTUBRE - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_08:06_08_011_03_001_512_0000_00_00",
+    "title": "TENDENCIA DE TEMP MINIMA 11 NOVIEMBRE - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_08:06_08_012_03_001_512_0000_00_00",
+    "title": "TENDENCIA DE TEMP MINIMA 12 DICIEMBRE - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_06_08:06_08_013_03_001_512_0000_00_00",
+    "title": "TENDENCIA DE TEMP MINIMA 13 ANUAL - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_00_04:00_04_002_03_000_000_0000_00_00",
+    "title": "TRANSPORTE TROCHAS - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_00_04:00_04_001_03_000_000_0000_00_00",
+    "title": "TRANSPORTE VIAS - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_umbrales:umbrales_precipitacion",
+    "title": "UMBRALES DE PRECIPITRACION - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "ispi:UNIDADES_HIDROGRAFICAS",
+    "title": "UNIDADES HIDROGRAFICAS - ISPI",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_acti_quebrada:vial_departamental_filter",
+    "title": "VIA_DEPARTAMENTAL_ACTIVACION_QUEBRADA",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_acti_quebrada:vial_nacional_filter",
+    "title": "VIA_NACIONAL_ACTIVACION_QUEBRADA",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_acti_quebrada:vial_vecinal_filter",
+    "title": "VIA_VECINAL_ACTIVACION_QUEBRADA",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "sinmosa:VIEW_SEQUIA_AGRICOLA_NUM_ET_ANOM",
+    "title": "VIEW_SEQUIA_AGRICOLA_NUM_ET_ANOM",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "sinmosa:VIEW_SEQUIA_AGRICOLA_NUM_NDWI_ANOM",
+    "title": "VIEW_SEQUIA_AGRICOLA_NUM_NDWI_ANOM",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "sinmosa:VIEW_SEQUIA_AGRICOLA_NUM_NIVEL_CADI",
+    "title": "VIEW_SEQUIA_AGRICOLA_NUM_NIVEL_CADI",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "sinmosa:VIEW_SEQUIA_AGRICOLA_NUM_SMI",
+    "title": "VIEW_SEQUIA_AGRICOLA_NUM_SMI",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "sinmosa:VIEW_SEQUIA_AGRICOLA_NUM_SPI_3",
+    "title": "VIEW_SEQUIA_AGRICOLA_NUM_SPI_3",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "sinmosa:VIEW_SEQUIA_AGRICOLA_NUM_VHI_ROBUSTO",
+    "title": "VIEW_SEQUIA_AGRICOLA_NUM_VHI_ROBUSTO",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "midis:midis_04_03_vupn_p65",
+    "title": "VIVIENDA DE USUARIOS DEL PROGRAMA NACIONAL PENSION 65",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_05_06:05_06_001_03_001_521_0000_00_00",
+    "title": "ZONAS DE VIDA - PERU",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_nowcasting_desc_electrica:analysis",
+    "title": "analysis",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi_sequias:anomalia",
+    "title": "anomalia",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "Pruebas:arroz_prueba_edit",
+    "title": "arroz_prueba_edit",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi_sequias:cuencas_oasis",
+    "title": "cuencas",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "silvia:cuencas_nivel_12_silvia",
+    "title": "cuencas_nivel_12_silvia",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_carto_fundamento:dz",
+    "title": "dz",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_carto_fundamento:ejemplo",
+    "title": "ejemplo",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_nowcasting_desc_electrica:forecast1",
+    "title": "forecast1",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_nowcasting_desc_electrica:forecast2",
+    "title": "forecast2",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_piscopp:g_piscopp",
+    "title": "g_piscopp",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi:gpo_departamentos",
+    "title": "gpo_departamentos",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi:gpo_provincias",
+    "title": "gpo_provincias",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi:gpo_regiones_hidrograficas",
+    "title": "gpo_regiones_hidrograficas",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi:gpo_regiones_pp",
+    "title": "gpo_regiones_pp",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi_sequias:limite_nacional",
+    "title": "limite_nacional",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_dbphisis:aviso_hidro_priv",
+    "title": "phisis - aviso hidrológico - privado",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_dbphisis:aviso_hidro_pub",
+    "title": "phisis - aviso hidrológico - público",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_10_ac07d_all_points",
+    "title": "prec_10_ac07d_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_10_all_points",
+    "title": "prec_10_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_10_char",
+    "title": "prec_10_char",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_10_tops",
+    "title": "prec_10_tops",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_11_ac07d_all_points",
+    "title": "prec_11_ac07d_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_11_all_points",
+    "title": "prec_11_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_11_char",
+    "title": "prec_11_char",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_11_tops",
+    "title": "prec_11_tops",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_12_ac07d_all_points",
+    "title": "prec_12_ac07d_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_12_all_points",
+    "title": "prec_12_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_12_char",
+    "title": "prec_12_char",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_12_tops",
+    "title": "prec_12_tops",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_13_ac07d_all_points",
+    "title": "prec_13_ac07d_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_13_all_points",
+    "title": "prec_13_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_13_char",
+    "title": "prec_13_char",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_13_tops",
+    "title": "prec_13_tops",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_14_ac07d_all_points",
+    "title": "prec_14_ac07d_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_14_all_points",
+    "title": "prec_14_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_14_char",
+    "title": "prec_14_char",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_14_tops",
+    "title": "prec_14_tops",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_15_ac07d_all_points",
+    "title": "prec_15_ac07d_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_15_all_points",
+    "title": "prec_15_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_15_char",
+    "title": "prec_15_char",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_15_tops",
+    "title": "prec_15_tops",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_16_ac07d_all_points",
+    "title": "prec_16_ac07d_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_1_ac07d_all_points",
+    "title": "prec_1_ac07d_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_1_all_points",
+    "title": "prec_1_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_1_char",
+    "title": "prec_1_char",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_1_tops",
+    "title": "prec_1_tops",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_2_ac07d_all_points",
+    "title": "prec_2_ac07d_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_2_all_points",
+    "title": "prec_2_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_2_char",
+    "title": "prec_2_char",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_2_tops",
+    "title": "prec_2_tops",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_3_ac07d_all_points",
+    "title": "prec_3_ac07d_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_3_all_points",
+    "title": "prec_3_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_3_char",
+    "title": "prec_3_char",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_3_tops",
+    "title": "prec_3_tops",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_4_ac07d_all_points",
+    "title": "prec_4_ac07d_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_4_all_points",
+    "title": "prec_4_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_4_char",
+    "title": "prec_4_char",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_4_tops",
+    "title": "prec_4_tops",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_5_ac07d_all_points",
+    "title": "prec_5_ac07d_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_5_all_points",
+    "title": "prec_5_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_5_char",
+    "title": "prec_5_char",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_5_tops",
+    "title": "prec_5_tops",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_6_ac07d_all_points",
+    "title": "prec_6_ac07d_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_6_all_points",
+    "title": "prec_6_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_6_char",
+    "title": "prec_6_char",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_6_tops",
+    "title": "prec_6_tops",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_7_ac07d_all_points",
+    "title": "prec_7_ac07d_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_7_all_points",
+    "title": "prec_7_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_7_char",
+    "title": "prec_7_char",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_7_tops",
+    "title": "prec_7_tops",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_8_ac07d_all_points",
+    "title": "prec_8_ac07d_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_8_all_points",
+    "title": "prec_8_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_8_char",
+    "title": "prec_8_char",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_8_tops",
+    "title": "prec_8_tops",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_9_ac07d_all_points",
+    "title": "prec_9_ac07d_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_9_all_points",
+    "title": "prec_9_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_9_char",
+    "title": "prec_9_char",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:prec_9_tops",
+    "title": "prec_9_tops",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_dbphisis:pronostico",
+    "title": "pronostico - phisis",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi_sequias:pronostico_sequia_hidrologica",
+    "title": "pronostico_sequia_hidrologica",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi_sequias:rios",
+    "title": "rios",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi_sequias:rios_oasis",
+    "title": "rios_oasis",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi_sequias:subcuencas",
+    "title": "subcuencas",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmax_10_all_points",
+    "title": "tmax_10_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmax_10_char",
+    "title": "tmax_10_char",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmax_10_tops",
+    "title": "tmax_10_tops",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmax_11_all_points",
+    "title": "tmax_11_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmax_11_char",
+    "title": "tmax_11_char",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmax_11_tops",
+    "title": "tmax_11_tops",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmax_12_all_points",
+    "title": "tmax_12_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmax_12_char",
+    "title": "tmax_12_char",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmax_12_tops",
+    "title": "tmax_12_tops",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmax_13_all_points",
+    "title": "tmax_13_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmax_13_char",
+    "title": "tmax_13_char",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmax_13_tops",
+    "title": "tmax_13_tops",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmax_14_all_points",
+    "title": "tmax_14_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmax_14_char",
+    "title": "tmax_14_char",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmax_14_tops",
+    "title": "tmax_14_tops",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmax_15_all_points",
+    "title": "tmax_15_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmax_15_char",
+    "title": "tmax_15_char",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmax_15_tops",
+    "title": "tmax_15_tops",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmax_1_all_points",
+    "title": "tmax_1_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmax_1_char",
+    "title": "tmax_1_char",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmax_1_tops",
+    "title": "tmax_1_tops",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmax_2_all_points",
+    "title": "tmax_2_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmax_2_char",
+    "title": "tmax_2_char",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmax_2_tops",
+    "title": "tmax_2_tops",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmax_3_all_points",
+    "title": "tmax_3_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmax_3_char",
+    "title": "tmax_3_char",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmax_3_tops",
+    "title": "tmax_3_tops",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmax_4_all_points",
+    "title": "tmax_4_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmax_4_char",
+    "title": "tmax_4_char",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmax_4_tops",
+    "title": "tmax_4_tops",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmax_5_all_points",
+    "title": "tmax_5_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmax_5_char",
+    "title": "tmax_5_char",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmax_5_tops",
+    "title": "tmax_5_tops",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmax_6_all_points",
+    "title": "tmax_6_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmax_6_char",
+    "title": "tmax_6_char",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmax_6_tops",
+    "title": "tmax_6_tops",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmax_7_all_points",
+    "title": "tmax_7_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmax_7_char",
+    "title": "tmax_7_char",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmax_7_tops",
+    "title": "tmax_7_tops",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmax_8_all_points",
+    "title": "tmax_8_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmax_8_char",
+    "title": "tmax_8_char",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmax_8_tops",
+    "title": "tmax_8_tops",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmax_9_all_points",
+    "title": "tmax_9_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmax_9_char",
+    "title": "tmax_9_char",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmax_9_tops",
+    "title": "tmax_9_tops",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmin_0_all_points",
+    "title": "tmin_0_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmin_0_char",
+    "title": "tmin_0_char",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmin_0_tops",
+    "title": "tmin_0_tops",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmin_10_all_points",
+    "title": "tmin_10_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmin_10_char",
+    "title": "tmin_10_char",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmin_10_tops",
+    "title": "tmin_10_tops",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmin_11_all_points",
+    "title": "tmin_11_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmin_11_char",
+    "title": "tmin_11_char",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmin_11_tops",
+    "title": "tmin_11_tops",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmin_12_all_points",
+    "title": "tmin_12_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmin_12_char",
+    "title": "tmin_12_char",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmin_12_tops",
+    "title": "tmin_12_tops",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmin_13_all_points",
+    "title": "tmin_13_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmin_13_char",
+    "title": "tmin_13_char",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmin_13_tops",
+    "title": "tmin_13_tops",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmin_14_all_points",
+    "title": "tmin_14_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmin_14_char",
+    "title": "tmin_14_char",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmin_14_tops",
+    "title": "tmin_14_tops",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmin_15_all_points",
+    "title": "tmin_15_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmin_15_char",
+    "title": "tmin_15_char",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmin_15_tops",
+    "title": "tmin_15_tops",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmin_1_all_points",
+    "title": "tmin_1_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmin_1_char",
+    "title": "tmin_1_char",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmin_1_tops",
+    "title": "tmin_1_tops",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmin_2_all_points",
+    "title": "tmin_2_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmin_2_char",
+    "title": "tmin_2_char",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmin_2_tops",
+    "title": "tmin_2_tops",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmin_3_all_points",
+    "title": "tmin_3_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmin_3_char",
+    "title": "tmin_3_char",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmin_3_tops",
+    "title": "tmin_3_tops",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmin_4_all_points",
+    "title": "tmin_4_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmin_4_char",
+    "title": "tmin_4_char",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmin_4_tops",
+    "title": "tmin_4_tops",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmin_5_all_points",
+    "title": "tmin_5_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmin_5_char",
+    "title": "tmin_5_char",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmin_5_tops",
+    "title": "tmin_5_tops",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmin_6_all_points",
+    "title": "tmin_6_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmin_6_char",
+    "title": "tmin_6_char",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmin_6_tops",
+    "title": "tmin_6_tops",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmin_7_all_points",
+    "title": "tmin_7_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmin_7_char",
+    "title": "tmin_7_char",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmin_7_tops",
+    "title": "tmin_7_tops",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmin_8_all_points",
+    "title": "tmin_8_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmin_8_char",
+    "title": "tmin_8_char",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmin_8_tops",
+    "title": "tmin_8_tops",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmin_9_all_points",
+    "title": "tmin_9_all_points",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmin_9_char",
+    "title": "tmin_9_char",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "monitoreo_meteorologico:tmin_9_tops",
+    "title": "tmin_9_tops",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "movil_v2:tmin_model_num",
+    "title": "tmin_model_num",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi_sequias:vertientes",
+    "title": "vertientes",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_100_01:view_aviso_24horas_5dias_ultimos",
+    "title": "view_aviso_24horas_5dias_ultimos",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_aviso:AVISO METEOROLÓGICO NACIONAL - V2",
+    "title": "view_aviso_v2",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_semap_esta_ctrl_calidad:view_materialized_semap_esta",
+    "title": "view_materialized_semap_esta",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_nowcasting:view_nowcasting",
+    "title": "view_nowcasting",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_nowcasting_desc_electrica:view_nowcasting_desc_electrica",
+    "title": "view_nowcasting_desc_electrica",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "g_semap_esta_ctrl_calidad:view_semap_esta",
+    "title": "view_semap_esta",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  },
+  {
+    "name": "dhi-seh-sonics:AREAS_NATURALES_PROTEGIDAS",
+    "title": "ÁREAS NATURALES PROTEGIDAS",
+    "crs": "urn:ogc:def:crs:EPSG::4326"
+  }
+]

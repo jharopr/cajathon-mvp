@@ -1,0 +1,125 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "518a6532-7ece-49e1-ab75-b54f0b4c1800",
+      "properties": {
+        "id": "518a6532-7ece-49e1-ab75-b54f0b4c1800",
+        "name": "Corredor este",
+        "source": "ClimaShield · polígono hipotético, no oficial",
+        "synthetic": true,
+        "issued_at": "2026-11-24T12:00:00Z",
+        "valid_from": "2026-11-24T00:00:00Z",
+        "valid_until": "2026-11-30T23:59:59Z"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -79.04,
+              -8.115
+            ],
+            [
+              -78.975,
+              -8.115
+            ],
+            [
+              -78.975,
+              -8.045
+            ],
+            [
+              -79.04,
+              -8.045
+            ],
+            [
+              -79.04,
+              -8.115
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "a0241c87-1517-4593-a1ef-2ee074ab41f8",
+      "properties": {
+        "id": "a0241c87-1517-4593-a1ef-2ee074ab41f8",
+        "name": "Corredor Moche",
+        "source": "ClimaShield · polígono hipotético, no oficial",
+        "synthetic": true,
+        "issued_at": "2026-11-24T12:00:00Z",
+        "valid_from": "2026-11-24T00:00:00Z",
+        "valid_until": "2026-11-30T23:59:59Z"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -79.025,
+              -8.2
+            ],
+            [
+              -78.97,
+              -8.2
+            ],
+            [
+              -78.97,
+              -8.135
+            ],
+            [
+              -79.025,
+              -8.135
+            ],
+            [
+              -79.025,
+              -8.2
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "729b0ba8-3a36-4b73-a8ed-57ea607a0d25",
+      "properties": {
+        "id": "729b0ba8-3a36-4b73-a8ed-57ea607a0d25",
+        "name": "Corredor norte",
+        "source": "ClimaShield · polígono hipotético, no oficial",
+        "synthetic": true,
+        "issued_at": "2026-11-24T12:00:00Z",
+        "valid_from": "2026-11-24T00:00:00Z",
+        "valid_until": "2026-11-30T23:59:59Z"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -79.075,
+              -8.1
+            ],
+            [
+              -79.015,
+              -8.1
+            ],
+            [
+              -79.015,
+              -8.045
+            ],
+            [
+              -79.075,
+              -8.045
+            ],
+            [
+              -79.075,
+              -8.1
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

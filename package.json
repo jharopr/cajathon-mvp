@@ -1,0 +1,52 @@
+{
+  "name": "climashield-ai",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -k -n API,WEB \"npm:dev:api\" \"npm:dev:web\"",
+    "dev:web": "vite --host 127.0.0.1",
+    "dev:api": "tsx --tsconfig tsconfig.api.json watch apps/api/src/main.ts",
+    "build": "npm run build:api && npm run build:web",
+    "build:api": "tsc -p tsconfig.api.json",
+    "build:web": "tsc -b && vite build",
+    "start:api": "node dist-api/main.js",
+    "db:migrate": "tsx scripts/migrate.ts",
+    "db:seed": "tsx scripts/seed.ts",
+    "data:export": "tsx scripts/export-data.ts",
+    "data:cenepred": "tsx --tsconfig tsconfig.api.json scripts/ingest-cenepred.ts",
+    "data:senamhi": "tsx --tsconfig tsconfig.api.json scripts/fetch-senamhi.ts",
+    "test": "tsx --tsconfig tsconfig.api.json --test tests/unit.test.ts",
+    "test:integration": "tsx --tsconfig tsconfig.api.json --test tests/integration.test.ts",
+    "preview": "vite preview --host 127.0.0.1",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "@google/genai": "^3.6.1",
+    "@nestjs/common": "^11.1.9",
+    "@nestjs/core": "^11.1.9",
+    "@nestjs/platform-express": "^11.1.9",
+    "decimal.js": "^10.6.0",
+    "dotenv": "^17.2.3",
+    "lucide-react": "^0.468.0",
+    "maplibre-gl": "^6.19.0",
+    "pg": "^8.16.3",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2",
+    "zod": "^4.1.12"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.56.1",
+    "@types/node": "^24.10.0",
+    "@types/pg": "^8.15.6",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^5.1.1",
+    "concurrently": "^9.2.1",
+    "tsx": "^4.20.6",
+    "typescript": "~5.9.3",
+    "vite": "^7.2.2"
+  }
+}

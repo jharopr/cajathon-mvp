@@ -1,0 +1,25 @@
+{
+  "checked_at": "2026-11-25T02:46:03.107274+00:00",
+  "hazard_source": "official",
+  "mode": "gemini",
+  "provider": "gemini-3.5-flash-lite",
+  "tools": [
+    {
+      "tool": "get_data_sources",
+      "status": "ok"
+    },
+    {
+      "tool": "get_climate_alerts",
+      "status": "ok"
+    },
+    {
+      "tool": "get_exposed_businesses",
+      "status": "ok"
+    }
+  ],
+  "evidence_count": 12,
+  "answer": "Basado en los datos oficiales y las herramientas del sistema, los detalles de la evaluación son los siguientes:\n\n### 1. Fuentes oficiales utilizadas y vigencia\n* **CENEPRED · Escenario de riesgo por lluvias (SHAPE 102)** *(Fuente oficial estática)*\n  * **Editor / Publicador:** CENEPRED · SIGRID (`cenepred-102@24995312568d`)\n  * **Vigencia:** Desde el **01/11/2026** hasta el **01/02/2027**.\n  * **Supuestos e incertidumbres:** La susceptibilidad representa una condición territorial y no un evento en curso. Los niveles (GRIDCODE 1–5) se interpretan de muy bajo a muy alto, requiriendo confirmación con la entidad.\n* **SENAMHI · Avisos IDESEP (WFS)** *(Fuente oficial de alertas dinámicas)*\n  * **Editor / Publicador:** SENAMHI\n  * **Vigencia:** Consulta en tiempo real (estado actual al **25/11/2026**).\n\n---\n\n### 2. Avisos SENAMHI vigentes\nExiste **1 aviso vigente** registrado en el área de demostración:\n* **ID:** `76e45ee1-31a1-4bb3-aa5d-cf72cae3cc5e`\n* **Nivel:** Nivel 1\n* **Vigencia:** Del **24/11/2026, 05:00 UTC** al **25/11/2026, 05:00 UTC**.\n* **Texto oficial:** *\"Ante el pronóstico de lluvias es probable la activación de quebradas de magnitud moderada en las zonas identificadas o alrededor de las mismas, con posible afectación de la población bajo la influencia de las quebradas.\"*\n\n---\n\n### 3. Negocios expuestos\n* **Negocios expuestos totales:** **719** de un total de 1,000 en la cartera simulada.\n  * Expuestos a inundación: **713**\n  * Expuestos a movimientos en masa: **73**\n  * Ubicados bajo zona de aviso SENAMHI vigente: **978** (considerando la cobertura territorial del aviso).\n* **Saldo expuesto total:** S/. 20,070,200.00.\n\n---\n\n### ⚠️ Limitaciones y Notas importantes\n* *La cartera evaluada es estrictamente **ficticia** (simulación interna).*\n* *El índice de riesgo es experimental y no constituye una probabilidad de mora ni un rating crediticio.*\n* *Las intervenciones y recomendaciones requieren revisión humana obligatoria.*",
+  "warnings": [
+    "Cartera ficticia; amenazas con procedencia declarada. Revisión humana obligatoria."
+  ]
+}

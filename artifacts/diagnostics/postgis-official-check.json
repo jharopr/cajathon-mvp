@@ -1,0 +1,96 @@
+[
+  {
+    "filename": "wfs-current-2.json",
+    "total": 1029,
+    "downloaded": 3,
+    "geometries": [
+      {
+        "valid": true,
+        "geometry_type": "ST_MultiPolygon",
+        "srid": 4326,
+        "bounds": "BOX(-78.63891726 -4.79517176,-78.63320248 -4.7866021)",
+        "intersects_demo_area": false,
+        "date": "2026-11-24Z"
+      },
+      {
+        "valid": true,
+        "geometry_type": "ST_MultiPolygon",
+        "srid": 4326,
+        "bounds": "BOX(-78.64166667 -4.76666667,-78.6064657 -4.66661275)",
+        "intersects_demo_area": false,
+        "date": "2026-11-24Z"
+      },
+      {
+        "valid": true,
+        "geometry_type": "ST_MultiPolygon",
+        "srid": 4326,
+        "bounds": "BOX(-77.77074686 -5.83053364,-77.76339229 -5.82832652)",
+        "intersects_demo_area": false,
+        "date": "2026-11-24Z"
+      }
+    ]
+  },
+  {
+    "filename": "current-rain.geojson",
+    "total": 7,
+    "downloaded": 7,
+    "geometries": [
+      {
+        "valid": true,
+        "geometry_type": "ST_MultiPolygon",
+        "srid": 4326,
+        "bounds": "BOX(-75.01668346 -18.35092774,-70.12130861 -15.45199287)",
+        "intersects_demo_area": false,
+        "date": "2026-11-24Z"
+      },
+      {
+        "valid": true,
+        "geometry_type": "ST_MultiPolygon",
+        "srid": 4326,
+        "bounds": "BOX(-78.82775558 -13.813097,-68.6522791 -0.03860597)",
+        "intersects_demo_area": false,
+        "date": "2026-11-24Z"
+      },
+      {
+        "valid": true,
+        "geometry_type": "ST_MultiPolygon",
+        "srid": 4326,
+        "bounds": "BOX(-81.32823049 -17.70036654,-68.82667573 -4.15906014)",
+        "intersects_demo_area": false,
+        "date": "2026-11-24Z"
+      },
+      {
+        "valid": true,
+        "geometry_type": "ST_MultiPolygon",
+        "srid": 4326,
+        "bounds": "BOX(-80.80967539 -5.41447457,-79.69043497 -3.38177335)",
+        "intersects_demo_area": false,
+        "date": "2026-11-24Z"
+      },
+      {
+        "valid": true,
+        "geometry_type": "ST_MultiPolygon",
+        "srid": 4326,
+        "bounds": "BOX(-74.28536452 -16.80448422,-68.81421685 -13.22836106)",
+        "intersects_demo_area": false,
+        "date": "2026-11-24Z"
+      },
+      {
+        "valid": true,
+        "geometry_type": "ST_MultiPolygon",
+        "srid": 4326,
+        "bounds": "BOX(-81.19477924 -18.30524977,-69.74717773 -5.10994299)",
+        "intersects_demo_area": true,
+        "date": "2026-11-24Z"
+      },
+      {
+        "valid": true,
+        "geometry_type": "ST_MultiPolygon",
+        "srid": 4326,
+        "bounds": "BOX(-81.11768575 -5.95311937,-79.06830651 -3.48521885)",
+        "intersects_demo_area": false,
+        "date": "2026-11-24Z"
+      }
+    ]
+  }
+]

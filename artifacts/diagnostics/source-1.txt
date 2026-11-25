@@ -1,0 +1,937 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Servicio Nacional de Meteorolog&iacute;a e Hidrolog&iacute;a del Per&uacute; - SENAMHI">
+    <link rel="icon" href="favicon.ico">
+    <title>SENAMHI - Aviso Meteorologico Vigente</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800,900" rel="stylesheet">
+    <link href="public/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="public/css/style.css" rel="stylesheet">
+    <script src="public/lib/jquery/jquery-3.2.1.min.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8407SG8D31"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-8407SG8D31');
+        gtag('config', 'G-7G3WVK3HHH');
+    </script>
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-W2TVBHD');
+    </script>
+</head>
+<body>
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W2TVBHD" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<div id="cabeweb" class="container bg-header d-none d-sm-block cabe-web">
+    <div class="row">
+        <div class="col-sm-8">
+            <a class="navbar-brand" href="https://www.gob.pe/minam" target="_blank" rel="noopener"><img
+                        src="public/images/logo-minam.png" height="45px" class="logo d-inline-block align-middle"
+                        alt="logo MINAM"/></a>
+            <a class="navbar-brand" href="https://www.senamhi.gob.pe"><img src="public/images/logo-senamhi.svg"
+                                                                           height="48px"
+                                                                           class="logo align-middle d-none d-xl-inline-block"
+                                                                           alt="logo SENAMHI"/></a>
+        </div>
+        <div class="col-sm-4 text-right">
+            <a class="navbar-brand" href="https://www.transparencia.gob.pe/enlaces/pte_transparencia_enlaces.aspx?id_entidad=87" target="_blank" rel="noopener"><img src="public/images/logo-portal-pte.png" height="39px"
+                                    class="logo d-inline-block align-middle" alt="Portal de Transparencia"/></a>
+        </div>
+    </div>
+</div>
+
+<!DOCTYPE html>
+<html>
+<style>
+        :root {
+                --snm-bg: #e6e6e6;
+                --snm-text: #4a4a4a;
+                --snm-hover-text: #1a1a1a;
+                --snm-border: #cccccc;
+                --snm-dropdown-bg: #ffffff;
+                --snm-dropdown-text: #505050;
+                --snm-dropdown-hover-bg: #f5f8fc;
+                --snm-dropdown-hover-text: #0056b3;
+                --snm-speed: 0.25s;
+        }
+
+        .snm-nav *,
+        .snm-nav *::before,
+        .snm-nav *::after {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+        }
+
+        .snm-nav {
+                background-color: var(--snm-bg);
+                border-bottom: 1px solid var(--snm-border);
+                position: relative;
+                z-index: 1002;
+        }
+
+        .snm-nav__container {
+                max-width: 1200px;
+                margin: 0 auto;
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+                padding: 0 16px;
+        }
+
+        .snm-nav__brand {
+                display: none;
+        }
+
+        .snm-nav__brand img {
+                height: 44px;
+                width: auto;
+        }
+
+        .snm-nav__toggle {
+                display: none;
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                cursor: pointer;
+                padding: 16px;
+                flex-direction: column;
+                gap: 5px;
+                margin-right: auto;
+                margin-left: 0;
+                outline: none !important;
+                -webkit-tap-highlight-color: transparent;
+                align-items: flex-start;
+                text-decoration: none;
+        }
+
+        .snm-nav__toggle-bar {
+                display: block;
+                width: 26px;
+                height: 3px;
+                background-color: var(--snm-text);
+                border-radius: 2px;
+                transition: all 0.3s ease-in-out;
+        }
+
+        .snm-nav__toggle.snm-is-active .snm-nav__toggle-bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+        }
+
+        .snm-nav__toggle.snm-is-active .snm-nav__toggle-bar:nth-child(2) {
+                opacity: 0;
+        }
+
+        .snm-nav__toggle.snm-is-active .snm-nav__toggle-bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+        }
+
+        .snm-nav__list {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                width: 100%;
+        }
+
+        .snm-nav__item {
+                position: relative;
+                display: flex;
+        }
+
+
+
+        .snm-nav__item--select {
+                display: flex;
+                align-items: center;
+                margin-left: 0.5rem;
+                margin-right: 0.25rem;
+                padding: 12px 0;
+        }
+
+        .snm-select {
+                appearance: none;
+                -webkit-appearance: none;
+                background-color: #ffffff;
+                border: 1px solid #ced4da;
+                border-radius: 6px;
+                padding: 6px 28px 6px 10px;
+                font-size: 13.5px;
+                font-weight: 500;
+                color: #495057;
+                cursor: pointer;
+                outline: none;
+                transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+                background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="%236c757d"><path d="M7 10l5 5 5-5z"/></svg>');
+                background-repeat: no-repeat;
+                background-position: right 10px center;
+                background-size: 18px;
+        }
+
+        .snm-select:hover {
+                border-color: #3b82f6;
+        }
+
+        .snm-select:focus {
+                outline: 0 none;
+                box-shadow: 0 0 0 0.2rem #bfdbfe;
+                border-color: #3b82f6;
+        }
+
+        .snm-nav__link {
+                display: flex;
+                align-items: center;
+                padding: 18px 10px;
+                color: var(--snm-text);
+                text-decoration: none !important;
+                outline: none !important;
+                font-size: 13.5px;
+                font-weight: 500;
+                white-space: nowrap;
+                transition: color var(--snm-speed);
+        }
+
+        .snm-nav__link:hover {
+                color: var(--snm-hover-text);
+                text-decoration: none !important;
+        }
+
+        .snm-nav__arrow {
+                margin-left: 4px;
+                font-size: 18px;
+                line-height: 1;
+                transition: transform 0.3s ease;
+                opacity: 0.9;
+        }
+
+        .snm-nav__dropdown {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: var(--snm-dropdown-bg);
+                min-width: 280px;
+                border: 1px solid var(--snm-border);
+                border-radius: 0 0 6px 6px;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(12px);
+                transition: opacity var(--snm-speed) ease, transform var(--snm-speed) ease, visibility var(--snm-speed);
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                z-index: 99999;
+        }
+
+        .snm-nav__item:nth-last-child(-n+3) .snm-nav__dropdown {
+                left: auto;
+                right: 0;
+        }
+
+        .snm-nav__item--has-dropdown::after {
+                content: '';
+                position: absolute;
+                bottom: -12px;
+                left: 0;
+                width: 100%;
+                height: 12px;
+        }
+
+        @media screen and (min-width: 1201px) {
+                .snm-nav__item--has-dropdown:hover .snm-nav__dropdown {
+                        opacity: 1;
+                        visibility: visible;
+                        transform: translateY(0);
+                }
+
+                .snm-nav__item--has-dropdown:hover .snm-nav__arrow {
+                        transform: rotate(180deg);
+                }
+        }
+
+        .snm-nav__dropdown-item {
+                border-bottom: 1px solid #f2f2f2;
+        }
+
+        .snm-nav__dropdown-item:last-child {
+                border-bottom: none;
+        }
+
+        .snm-nav__dropdown-link {
+                display: block;
+                padding: 11px 20px;
+                color: var(--snm-dropdown-text);
+                text-decoration: none !important;
+                outline: none !important;
+                font-size: 13.5px;
+                transition: all var(--snm-speed);
+        }
+
+        .snm-nav__dropdown-link:hover {
+                background-color: var(--snm-dropdown-hover-bg);
+                color: var(--snm-dropdown-hover-text);
+                text-decoration: none !important;
+        }
+
+        @media screen and (max-width: 1200px) {
+                .snm-nav__brand {
+                        display: flex;
+                        align-items: center;
+                        position: absolute;
+                        top: 0;
+                        height: 51px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        pointer-events: none;
+                }
+
+                .snm-nav__container {
+                        position: relative;
+                }
+
+                .snm-nav__toggle {
+                        display: flex;
+                }
+
+                .snm-nav__list {
+                        display: none;
+                        width: 100%;
+                        flex-direction: column;
+                        background-color: #ffffff;
+                        border-top: 1px solid var(--snm-border);
+                        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+                }
+
+                .snm-nav__list.snm-is-active {
+                        display: flex;
+                }
+
+                .snm-nav__item {
+                        width: 100%;
+                        flex-direction: column;
+                        border-bottom: 1px solid #eeeeee;
+                }
+
+                .snm-nav__item:last-child {
+                        border-bottom: none;
+                }
+
+                .snm-nav__item--select {
+                        margin: 0;
+                        padding: 16px 24px;
+                        background-color: #fdfdfd;
+                        border-left: 4px solid #2a2a2a;
+                        border-bottom: 1px solid #eeeeee;
+                }
+
+                .snm-select {
+                        width: 100%;
+                }
+
+                .snm-nav__link {
+                        padding: 14px 20px;
+                        justify-content: space-between;
+                        text-align: left;
+                        width: 100%;
+                }
+
+                .snm-nav__dropdown {
+                        position: static;
+                        width: 100%;
+                        box-shadow: none;
+                        border: none;
+                        border-top: 1px solid #f0f0f0;
+                        border-radius: 0;
+                        background-color: #f8fbff;
+                        display: none;
+                        opacity: 1;
+                        visibility: visible;
+                        transform: none;
+                }
+
+                .snm-nav__item.snm-is-open .snm-nav__dropdown {
+                        display: block;
+                }
+
+                .snm-nav__item.snm-is-open .snm-nav__arrow {
+                        transform: rotate(180deg);
+                }
+
+                .snm-nav__item.snm-is-open .snm-nav__link {
+                        background-color: #f2f7fc;
+                        color: var(--snm-dropdown-hover-text);
+                }
+
+                .snm-nav__dropdown-link {
+                        padding: 12px 24px 12px 32px;
+                }
+
+                .snm-nav__dropdown-link:hover {
+                        background-color: #ebf2fa;
+                }
+
+                .snm-nav__item--has-dropdown::after {
+                        display: none;
+                }
+        }
+
+        .alert
+        {
+            margin-bottom: 2px !important;
+        }        
+</style>
+
+<style>
+        .snm-avisos {
+                background: #e8f1fb;
+                border-bottom: 1px solid #c9dcf1;
+                color: #12324f;
+                font-size: .9rem;
+        }
+
+        .snm-avisos[hidden] {
+                display: none;
+        }
+
+        .snm-avisos__fila {
+                display: flex;
+                align-items: center;
+                gap: .75rem;
+                min-height: 44px;
+        }
+
+        .snm-avisos__icono {
+                flex: 0 0 auto;
+                display: flex;
+        }
+
+        .snm-avisos__ventana {
+                flex: 1 1 auto;
+                min-width: 0;
+                overflow: hidden;
+                touch-action: pan-y;
+        }
+
+        .snm-avisos__pista {
+                display: flex;
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                transition: transform .45s ease;
+        }
+
+        .snm-avisos__item {
+                display: flex;
+                align-items: center;
+                gap: .5rem;
+                flex: 0 0 100%;
+                min-width: 0;
+                padding: .55rem 0;
+                line-height: 1.35;
+        }
+
+        .snm-avisos__texto {
+                min-width: 0;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+        }
+
+        .snm-avisos__item a {
+                display: inline-flex;
+                align-items: center;
+                gap: .35rem;
+                flex: 0 0 auto;
+                padding: .3rem .85rem;
+                border-radius: 999px;
+                background: #0056ac;
+                color: #fff;
+                font-size: .72rem;
+                font-weight: 700;
+                letter-spacing: .06em;
+                line-height: 1.2;
+                text-transform: uppercase;
+                text-decoration: none;
+                white-space: nowrap;
+                box-shadow: 0 1px 2px rgba(0, 40, 90, .2);
+                transition: background-color .15s ease, transform .15s ease;
+        }
+
+        .snm-avisos__item a::after {
+                content: "\203A";
+                font-size: 1rem;
+                line-height: 1;
+        }
+
+        .snm-avisos__item a:hover,
+        .snm-avisos__item a:focus-visible {
+                background: #003c78;
+                color: #fff;
+                text-decoration: none;
+                transform: translateX(2px);
+                outline: none;
+        }
+
+        .snm-avisos__controles {
+                flex: 0 0 auto;
+                display: flex;
+                align-items: center;
+                gap: .35rem;
+        }
+
+        .snm-avisos__boton {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 28px;
+                height: 28px;
+                padding: 0;
+                border: 0;
+                border-radius: 50%;
+                background: transparent;
+                color: #0056ac;
+                cursor: pointer;
+        }
+
+        .snm-avisos__boton:hover,
+        .snm-avisos__boton:focus-visible {
+                background: #d3e4f7;
+                outline: none;
+        }
+
+        .snm-avisos__puntos {
+                display: flex;
+                gap: 6px;
+                margin: 0 .25rem;
+        }
+
+        .snm-avisos__punto {
+                width: 8px;
+                height: 8px;
+                padding: 0;
+                border: 0;
+                border-radius: 50%;
+                background: #a9c5e6;
+                cursor: pointer;
+        }
+
+        .snm-avisos__punto[aria-current="true"] {
+                width: 20px;
+                border-radius: 4px;
+                background: #0056ac;
+        }
+
+        .snm-avisos--uno .snm-avisos__nav {
+                display: none;
+        }
+
+        @media (max-width: 575.98px) {
+                .snm-avisos__fila {
+                        gap: .5rem;
+                }
+
+                .snm-avisos__icono,
+                .snm-avisos__boton--flecha {
+                        display: none;
+                }
+
+                .snm-avisos {
+                        font-size: .85rem;
+                }
+
+                .snm-avisos__item {
+                        display: block;
+                        padding: .45rem 0;
+                }
+
+                .snm-avisos__texto {
+                        white-space: normal;
+                }
+
+                .snm-avisos__item a {
+                        margin-top: .35rem;
+                }
+        }
+</style>
+
+<section class="snm-avisos" id="snm-avisos" aria-label="Avisos" aria-roledescription="carrusel">
+        <div class="container">
+                <div class="snm-avisos__fila">
+                        <span class="snm-avisos__icono" aria-hidden="true">
+                                <svg width="20" height="20" viewBox="0 0 22 22" fill="none">
+                                        <path d="M11 0C4.928 0 0 4.928 0 11C0 17.072 4.928 22 11 22C17.072 22 22 17.072 22 11C22 4.928 17.072 0 11 0ZM12.1 16.5H9.9V9.9H12.1V16.5ZM12.1 7.7H9.9V5.5H12.1V7.7Z" fill="#0056AC"></path>
+                                </svg>
+                        </span>
+                        <div class="snm-avisos__ventana">
+                                <ul class="snm-avisos__pista">
+                                        <li class="snm-avisos__item" aria-roledescription="aviso">
+                                                <span class="snm-avisos__texto">Accede a nuestros productos y servicios en el Observatorio Nacional del Tiempo, Agua y Clima del Perú.</span>
+                                                <a href="https://observatorio.senamhi.gob.pe/" target="_blank" rel="noopener">Ir al Observatorio</a>
+                                        </li>
+                                        <li class="snm-avisos__item" aria-roledescription="aviso">
+                                                <span class="snm-avisos__texto">Infórmate sobre el Fenómeno El Niño 2026-2027.</span>
+                                                <a href="?p=fenomeno-el-nino">Ver más</a>
+                                        </li>
+                                </ul>
+                        </div>
+                        <div class="snm-avisos__controles">
+                                <button type="button" class="snm-avisos__boton snm-avisos__boton--flecha snm-avisos__nav" data-avisos="anterior" aria-label="Aviso anterior">
+                                        <svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M10.8 1.6 4.4 8l6.4 6.4 1.2-1.2L6.8 8 12 2.8z"/></svg>
+                                </button>
+                                <div class="snm-avisos__puntos snm-avisos__nav" role="tablist" aria-label="Elegir aviso"></div>
+                                <button type="button" class="snm-avisos__boton snm-avisos__boton--flecha snm-avisos__nav" data-avisos="siguiente" aria-label="Aviso siguiente">
+                                        <svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M5.2 1.6 4 2.8 9.2 8 4 13.2l1.2 1.2L11.6 8z"/></svg>
+                                </button>
+                                <button type="button" class="snm-avisos__boton" data-avisos="cerrar" aria-label="Cerrar avisos">
+                                        <svg width="12" height="12" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M14.4 2.8 13.2 1.6 8 6.8 2.8 1.6 1.6 2.8 6.8 8l-5.2 5.2 1.2 1.2L8 9.2l5.2 5.2 1.2-1.2L9.2 8z"/></svg>
+                                </button>
+                        </div>
+                </div>
+        </div>
+</section>
+
+<script>
+        (function () {
+                var raiz = document.getElementById('snm-avisos');
+                if (!raiz) {
+                        return;
+                }
+                try {
+                        if (sessionStorage.getItem('snm-avisos-cerrados') === '1') {
+                                raiz.hidden = true;
+                                return;
+                        }
+                } catch (e) {
+                }
+                var pista = raiz.querySelector('.snm-avisos__pista');
+                var items = raiz.querySelectorAll('.snm-avisos__item');
+                var puntos = raiz.querySelector('.snm-avisos__puntos');
+                var total = items.length;
+                var actual = 0;
+                var temporizador = null;
+                var reducido = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+                if (total < 2) {
+                        raiz.classList.add('snm-avisos--uno');
+                }
+
+                for (var i = 0; i < total; i++) {
+                        var punto = document.createElement('button');
+                        punto.type = 'button';
+                        punto.className = 'snm-avisos__punto';
+                        punto.setAttribute('aria-label', 'Aviso ' + (i + 1) + ' de ' + total);
+                        punto.setAttribute('data-indice', i);
+                        puntos.appendChild(punto);
+                }
+
+                function mostrar(indice) {
+                        actual = (indice + total) % total;
+                        pista.style.transform = 'translateX(' + (-100 * actual) + '%)';
+                        Array.prototype.forEach.call(items, function (item, n) {
+                                item.setAttribute('aria-hidden', n === actual ? 'false' : 'true');
+                                Array.prototype.forEach.call(item.querySelectorAll('a'), function (a) {
+                                        a.tabIndex = n === actual ? 0 : -1;
+                                });
+                        });
+                        Array.prototype.forEach.call(puntos.children, function (p, n) {
+                                p.setAttribute('aria-current', n === actual ? 'true' : 'false');
+                        });
+                }
+
+                function detener() {
+                        clearInterval(temporizador);
+                        temporizador = null;
+                }
+
+                function iniciar() {
+                        detener();
+                        if (total > 1 && !reducido) {
+                                temporizador = setInterval(function () {
+                                        mostrar(actual + 1);
+                                }, 3000);
+                        }
+                }
+
+                raiz.addEventListener('click', function (e) {
+                        var boton = e.target.closest('button');
+                        if (!boton) {
+                                return;
+                        }
+                        var accion = boton.getAttribute('data-avisos');
+                        if (accion === 'anterior') {
+                                mostrar(actual - 1);
+                                iniciar();
+                        } else if (accion === 'siguiente') {
+                                mostrar(actual + 1);
+                                iniciar();
+                        } else if (accion === 'cerrar') {
+                                detener();
+                                raiz.hidden = true;
+                                try {
+                                        sessionStorage.setItem('snm-avisos-cerrados', '1');
+                                } catch (err) {
+                                }
+                        } else if (boton.hasAttribute('data-indice')) {
+                                mostrar(parseInt(boton.getAttribute('data-indice'), 10));
+                                iniciar();
+                        }
+                });
+
+                raiz.addEventListener('mouseenter', detener);
+                raiz.addEventListener('mouseleave', iniciar);
+                raiz.addEventListener('focusin', detener);
+                raiz.addEventListener('focusout', iniciar);
+
+                var inicioX = null;
+                var ventana = raiz.querySelector('.snm-avisos__ventana');
+                ventana.addEventListener('touchstart', function (e) {
+                        inicioX = e.touches[0].clientX;
+                        detener();
+                }, {passive: true});
+                ventana.addEventListener('touchend', function (e) {
+                        if (inicioX === null) {
+                                return;
+                        }
+                        var dx = e.changedTouches[0].clientX - inicioX;
+                        if (Math.abs(dx) > 40) {
+                                mostrar(actual + (dx < 0 ? 1 : -1));
+                        }
+                        inicioX = null;
+                        iniciar();
+                });
+
+                mostrar(0);
+                iniciar();
+        })();
+</script>
+
+
+<nav class="snm-nav">
+        <div class="snm-nav__container">
+                <button class="snm-nav__toggle" id="snm-toggle" aria-label="Alternar menú">
+                        <span class="snm-nav__toggle-bar"></span>
+                        <span class="snm-nav__toggle-bar"></span>
+                        <span class="snm-nav__toggle-bar"></span>
+                </button>
+                <a href="#" class="snm-nav__brand">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c0/Logo_SENAMHI.svg" alt="SENAMHI">
+                </a>
+                <ul class="snm-nav__list" id="snm-menu-list">
+                        <li class="snm-nav__item snm-nav__item--select">
+                                <select class="snm-select" id="snm-region-select" aria-label="Seleccionar departamento">
+                                </select>
+                        </li>
+                </ul>
+        </div>
+</nav>
+
+<script>
+        const BASE_URL = 'https://www.senamhi.gob.pe/';
+
+        const regions = [
+                { value: '', label: 'Perú' },
+                { value: 'amazonas', label: 'Amazonas' },
+                { value: 'ancash', label: 'Áncash' },
+                { value: 'apurimac', label: 'Apurímac' },
+                { value: 'arequipa', label: 'Arequipa' },
+                { value: 'ayacucho', label: 'Ayacucho' },
+                { value: 'cajamarca', label: 'Cajamarca' },
+                { value: 'cusco', label: 'Cusco' },
+                { value: 'huancavelica', label: 'Huancavelica' },
+                { value: 'huanuco', label: 'Huánuco' },
+                { value: 'ica', label: 'Ica' },
+                { value: 'junin', label: 'Junín' },
+                { value: 'la-libertad', label: 'La Libertad' },
+                { value: 'lambayeque', label: 'Lambayeque' },
+                { value: 'lima', label: 'Lima / Callao' },
+                { value: 'loreto', label: 'Loreto' },
+                { value: 'madre-de-dios', label: 'Madre de Dios' },
+                { value: 'moquegua', label: 'Moquegua' },
+                { value: 'pasco', label: 'Pasco' },
+                { value: 'piura', label: 'Piura' },
+                { value: 'puno', label: 'Puno' },
+                { value: 'san-martin', label: 'San Martín' },
+                { value: 'tacna', label: 'Tacna' },
+                { value: 'tumbes', label: 'Tumbes' },
+                { value: 'ucayali', label: 'Ucayali' }
+        ];
+
+        document.addEventListener('DOMContentLoaded', () => {
+                const menuList = document.getElementById('snm-menu-list');
+                const regionSelect = document.getElementById('snm-region-select');
+                const hamburger = document.getElementById('snm-toggle');
+
+                // Populate region select
+                const currentRegion = new URLSearchParams(window.location.search).get('dp') || '';
+                regions.forEach(region => {
+                        const option = document.createElement('option');
+                        option.value = region.value;
+                        option.textContent = region.label;
+                        if (region.value === currentRegion) option.selected = true;
+                        regionSelect.appendChild(option);
+                });
+
+                regionSelect.addEventListener('change', () => {
+                        const params = new URLSearchParams(window.location.search);
+                        if (regionSelect.value) {
+                                params.set('dp', regionSelect.value);
+                        } else {
+                                params.delete('dp');
+                        }
+                        const queryString = params.toString();
+                        window.location.href = window.location.pathname + (queryString ? '?' + queryString : '');
+                });
+
+                const menuData = [
+                        { title: 'Avisos', url: BASE_URL + '?p=monitoreo-regional' },
+                        {
+                                title: 'Tiempo', url: null,
+                                dropdown: [
+                                        { title: 'Monitoreo de temperatura', url: BASE_URL + '?p=monitoreo-de-temperatura' },
+                                        { title: 'Pronóstico meteorológico', url: BASE_URL + '?p=pronostico-meteorologico' },
+                                        { title: 'Pronóstico y tiempo actual Lima', url: BASE_URL + '?p=pronostico-lima' },
+                                        { title: 'Monitoreo meteorológico', url: BASE_URL + '?p=monitoreo-meteorologico' },
+                                        { title: 'Aviso de lluvia a muy corto plazo', url: BASE_URL + '?p=reportes-nowcasting' },
+                                        { title: 'Aviso de lluvia a corto plazo (24 H)', url: BASE_URL + '?p=aviso-24H' },
+                                        { title: 'Aviso meteorológico', url: BASE_URL + '?p=aviso-meteorologico' },
+                                        { title: 'Radiación UV', url: BASE_URL + '?p=radiacion-uv-monitoreo' },
+                                        { title: 'Calidad del aire', url: BASE_URL + '?p=calidad-del-aire' },
+                                        { title: 'Imágenes de satélites, radares y sondajes', url: BASE_URL + '?p=satelites-goes19' },
+                                        { title: 'Vigilancia de volcanes', url: BASE_URL + 'site/volcan/' },
+                                        { title: 'Incendios forestales', url: BASE_URL + 'site/incendio/' },
+                                        { title: 'Aviso ambiental atmosférico', url: BASE_URL + '?p=incendio-urbano' }
+                                ]
+                        },
+                        { title: 'Clima', url: BASE_URL + 'site/vigilancia-climatica' },
+                        {
+                                title: 'Predicción numérica', url: null,
+                                dropdown: [
+                                        { title: 'Predicción numérica del tiempo', url: BASE_URL + '?p=prediccion-tiempo' },
+                                        { title: 'Predicción numérica del clima', url: BASE_URL + '?p=prediccion-clima' },
+                                        { title: 'Predicción numérica de calidad del aire', url: BASE_URL + '?p=pronostico-numerico-calidad-de-aire' },
+                                        { title: 'HPC - NUNA', url: BASE_URL + 'hpcnuna/' },
+                                        { title: 'IUV', url: BASE_URL + '?p=pronostico-radiacion-uv-numerico' },
+                                        { title: 'Volcanes', url: BASE_URL + 'site/volcan/?p=___Sabancaya' },
+                                        { title: 'Tendhis', url: BASE_URL + 'tendenciashistoricas/' },
+                                        { title: 'Cambio climático', url: 'https://idesep.senamhi.gob.pe/geovisoridesep/go?accion=06.13.001.03.001.513.0000.00.00' }
+                                ]
+                        },
+                        {
+                                title: 'Hidrología', url: null,
+                                dropdown: [
+                                        { title: 'Aviso hidrológico - PHISIS', url: BASE_URL + '?p=avisos-hidrologicos' },
+                                        { title: 'Monitoreo hidrológico - PHISIS', url: BASE_URL + '?p=monitoreo-hidrologico' },
+                                        { title: 'Pronóstico de caudales - PHISIS', url: BASE_URL + '?p=pronostico-hidrologico' },
+                                        { title: 'Anomalías de caudal', url: BASE_URL + '?p=mapa-anomalias' },
+                                        { title: 'Reservorios - PHISIS', url: BASE_URL + '?p=mapa-reservorios' },
+                                        { title: 'CHIRILU - PHISIS', url: BASE_URL + '?p=monitoreo-chirilu' },
+                                        { title: 'Urubamba - PHISIS', url: BASE_URL + '?p=monitoreo-urubamba' },
+                                        { title: 'Piura - PHISIS', url: BASE_URL + '?p=monitoreo-piura' },
+                                        { title: 'Aviso ante posible activación de quebradas', url: BASE_URL + '?p=aviso-activacion-quebrada' },
+                                        { title: 'Pronóstico de inundaciones fluviales - SONICS-PBI', url: BASE_URL + '?p=sonics-pbi' },
+                                        { title: 'Pronóstico de inundaciones urbanas - ARES', url: BASE_URL + '?p=ares' },
+                                        { title: 'Indicadores de sequías', url: BASE_URL + '?p=sequias' },
+                                        { title: 'Visor (curvas de intensidad-duración-frecuencia)', url: 'https://idesep.senamhi.gob.pe/dhi-idf/' }
+                                ]
+                        },
+                        {
+                                title: 'Agrometeorología', url: null,
+                                dropdown: [
+                                        { title: 'Monitoreo agroclimático', url: BASE_URL + '?p=boletin-agro' },
+                                        { title: 'Pronóstico y monitoreo agrometeorológico', url: BASE_URL + '?p=impacto-en-la-agricultura' },
+                                        { title: 'Pronóstico de riesgo agroclimático', url: BASE_URL + '?p=riesgo-agro' },
+                                        { title: 'Sistema de información agrometeorológica - SIA', url: 'http://sia.senamhi.gob.pe/' }
+                                ]
+                        },
+                        {
+                                title: 'Datos', url: null,
+                                dropdown: [
+                                        { title: 'Datos espaciales - IDESEP', url: 'https://idesep.senamhi.gob.pe/portalidesep/' },
+                                        { title: 'Datos de radiosondeo', url: BASE_URL + '?p=estaciones-radiosondeo' },
+                                        { title: 'Datos hidrometeorológicos', url: BASE_URL + '?p=estaciones' },
+                                        { title: 'Descarga de datos', url: BASE_URL + 'site/descarga-datos/' },
+                                        { title: 'Solicitud de datos', url: BASE_URL + '?p=solicitud-servicio' }
+                                ]
+                        },
+                        {
+                                title: 'Servicios al ciudadano', url: null,
+                                dropdown: [
+                                        { title: 'Servicios (TUSNE)', url: BASE_URL + '?p=tusne' },
+                                        { title: 'Servicios con fines académicos', url: BASE_URL + '?p=tusne-tesis' },
+                                        { title: 'Evaluación de documentos técnicos', url: BASE_URL + '?p=servicios-sea' },
+                                        { title: 'TUPA', url: BASE_URL + '?p=tupa' },
+                                        // { title: 'Libro de reclamaciones', url: 'https://reclamos.servicios.gob.pe/?institution_id=203' },
+                                        { title: 'Libro de reclamaciones', url: BASE_URL + '?p=libro-reclamaciones' },
+                                        { title: 'Consulta tu trámite', url: 'https://www.senamhi.gob.pe/consultatutramite/inicio.do' },
+                                        { title: 'Estudios e investigaciones', url: BASE_URL + '?p=estudios' },
+                                        { title: 'Boletines', url: BASE_URL + '?p=boletines' },
+                                        { title: 'Material gráfico', url: BASE_URL + '?p=material-grafico' },
+                                        { title: 'Repositorio institucional', url: 'https://repositorio.senamhi.gob.pe/' }
+                                ]
+                        }
+                ];
+
+                const menuHTML = menuData.map(menuItem => {
+                        if (menuItem.dropdown) {
+                                const parentHref = menuItem.url || 'javascript:void(0)';
+                                return `
+                                <li class="snm-nav__item snm-nav__item--has-dropdown">
+                                        <a href="${parentHref}" class="snm-nav__link">${menuItem.title} <span class="snm-nav__arrow">▾</span></a>
+                                        <ul class="snm-nav__dropdown">
+                                                ${menuItem.dropdown.map(subItem => `
+                                                        <li class="snm-nav__dropdown-item"><a href="${subItem.url}" class="snm-nav__dropdown-link">${subItem.title}</a></li>
+                                                `).join('')}
+                                        </ul>
+                                </li>`;
+                        }
+                        return `<li class="snm-nav__item"><a href="${menuItem.url}" class="snm-nav__link">${menuItem.title}</a></li>`;
+                }).join('');
+
+                menuList.insertAdjacentHTML('beforeend', menuHTML);
+
+                const dropdownItems = document.querySelectorAll('.snm-nav__item--has-dropdown');
+
+                hamburger.addEventListener('click', () => {
+                        hamburger.classList.toggle('snm-is-active');
+                        menuList.classList.toggle('snm-is-active');
+                });
+
+                dropdownItems.forEach(dropdownItem => {
+                        const trigger = dropdownItem.querySelector('.snm-nav__link');
+                        trigger.addEventListener('click', (e) => {
+                                if (window.innerWidth <= 1200) {
+                                        e.preventDefault();
+                                        dropdownItems.forEach(other => {
+                                                if (other !== dropdownItem) other.classList.remove('snm-is-open');
+                                        });
+                                        dropdownItem.classList.toggle('snm-is-open');
+                                }
+                        });
+                });
+
+                window.addEventListener('resize', () => {
+                        if (window.innerWidth > 1200) {
+                                hamburger.classList.remove('snm-is-active');
+                                menuList.classList.remove('snm-is-active');
+                                dropdownItems.forEach(dropdownItem => dropdownItem.classList.remove('snm-is-open'));
+                        }
+                });
+        });
+</script>
+<script type="text/javascript">window.location="./";</script>

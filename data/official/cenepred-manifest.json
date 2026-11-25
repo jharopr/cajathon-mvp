@@ -1,0 +1,66 @@
+{
+  "dataset": "cenepred-102",
+  "publisher": "CENEPRED · SIGRID",
+  "title": "Escenario de riesgo ante lluvias, noviembre 2026 – enero 2027 (paquete SHAPE 102)",
+  "document_url": "https://sigrid.cenepred.gob.pe/sigridv3/documento/23277",
+  "package": "102_shape.zip",
+  "package_bytes": 1254988114,
+  "package_sha256": "24995312568dfd2bb51c0fc65753255ce3933d818791142abd7cf70ea141dee3",
+  "retrieved_at": "2026-11-25T02:02:38.432Z",
+  "scenario_valid_from": "2026-11-01T00:00:00-05:00",
+  "scenario_valid_until": "2027-02-01T00:00:00-05:00",
+  "files": [
+    {
+      "name": "Suscep_Inund.shp",
+      "modified": "2026-11-04T20:20:25.000Z",
+      "records": 368,
+      "selected": 6
+    },
+    {
+      "name": "Suscep_MMasa.shp",
+      "modified": "2026-11-04T20:20:37.000Z",
+      "records": 712,
+      "selected": 8
+    },
+    {
+      "name": "Dist_Riesgo_Inundacion_.shp",
+      "modified": "2026-11-19T14:51:36.000Z",
+      "records": 1893,
+      "selected": 12
+    },
+    {
+      "name": "Dist_Riesgo_MMasa_.shp",
+      "modified": "2026-11-19T14:55:22.000Z",
+      "records": 1893,
+      "selected": 12
+    }
+  ],
+  "area_of_interest": {
+    "bbox": [
+      -79.2,
+      -8.25,
+      -78.9,
+      -7.98
+    ],
+    "description": "Trujillo metropolitano y periurbano, La Libertad (recorte de demo)"
+  },
+  "processing": {
+    "script": "scripts/ingest-cenepred.ts",
+    "generated_at": "2026-11-25T02:32:27.162Z",
+    "simplify_tolerance_deg": 0.00005,
+    "district_simplify_tolerance_deg": 0.0002,
+    "coordinate_precision": 6,
+    "min_part_area_m2": 50,
+    "crs": "EPSG:4326"
+  },
+  "outputs": {
+    "susceptibility_features": 3484,
+    "districts": 12
+  },
+  "assumptions": [
+    "GRIDCODE 1–5 se interpreta como susceptibilidad muy baja, baja, media, alta y muy alta; el XML del paquete no trae la leyenda y debe confirmarse con CENEPRED.",
+    "La susceptibilidad es cartografía de condición del territorio, no un aviso ni un evento ocurrido.",
+    "Geometrías recortadas al área de interés y simplificadas; no sustituyen la cartografía original para decisiones de campo."
+  ],
+  "license_note": "Datos públicos de CENEPRED/SIGRID. Conservar atribución y revisar condiciones de uso de la entidad antes de redistribuir o usar en producción."
+}

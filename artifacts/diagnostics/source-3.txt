@@ -1,0 +1,10 @@
+{
+ "currentVersion": 10.81,
+ "folders": [],
+ "services": [
+  {
+   "name": "sigrid/Elementos_Expuestos",
+   "type": "MapServer"
+  }
+ ]
+}

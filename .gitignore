@@ -1,0 +1,21 @@
+.env
+.env.*
+!.env.example
+.venv/
+node_modules/
+dist/
+dist-api/
+__pycache__/
+.pytest_cache/
+*.pyc
+*.db
+*.db-*
+coverage/
+*.tsbuildinfo
+test-results/
+playwright-report/
+artifacts/qa/
+artifacts/*.png
+.agents
+# Paquetes oficiales descargados (GB); solo se versiona el recorte en data/official
+data/raw/

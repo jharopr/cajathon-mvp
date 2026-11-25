@@ -1,0 +1,13 @@
+{
+  "checked_at": "2026-11-25T01:52:21.977Z",
+  "provider": "gemini-3.5-flash-lite",
+  "mode": "gemini",
+  "tools": [
+    {
+      "tool": "get_exposed_businesses",
+      "status": "ok"
+    }
+  ],
+  "evidence_count": 12,
+  "answer": "De acuerdo con los datos obtenidos de la herramienta `get_exposed_businesses`, se identifican **591 negocios expuestos** de un total de 1,000 evaluados, con un saldo expuesto global de **16,740,600.00** (cabe destacar que el saldo expuesto no representa una pérdida real). Del total de negocios, 145 se encuentran clasificados con prioridad **ALTA**.\n\n### Ejemplos de Negocios Sintéticos Expuestos (Prioridad Alta)\n* **Agricultura demo 0778** (Código: `CS-0778`, Sector: Agricultura, Distrito: Moche) - Score: 89.1, Saldo: 23,000.00.\n* **Servicios demo 0499** (Código: `CS-0499`, Sector: Servicios, Distrito: La Esperanza) - Score: 87.32, Saldo: 10,200.00.\n* **Servicios demo 0663** (Código: `CS-0663`, Sector: Servicios, Distrito: Moche) - Score: 87.3, Saldo: 29,500.00.\n* **Servicios demo 0111** (Código: `CS-0111`, Sector: Servicios, Distrito: El Porvenir) - Score: 85.97, Saldo: 43,700.00.\n* **Servicios demo 0591** (Código: `CS-0591`, Sector: Servicios, Distrito: El Porvenir) - Score: 85.95, Saldo: 28,000.00.\n\nTodos estos negocios intersecan la amenaza hipotética evaluada bajo los parámetros del escenario.\n\n### Evidencias\n* **ID de Evidencia Global / Lote:** `de0efc35-8f9e-4166-9376-8a74cb81ef7f` (asociado a cada negocio listado, por ejemplo, `de0efc35-8f9e-4166-9376-8a74cb81ef7f:2f9a83a9-321d-419d-a7d2-11c1f4e74da8`).\n* **Supuestos:** Se basan en la intersección espacial con la amenaza hipotética del escenario, considerando puntajes compuestos (H, V, C). \n\n### Limitaciones e Incertidumbres\n* El reloj del escenario está fijado en el **24/11/2026**, por lo que no refleja necesariamente las condiciones meteorológicas en tiempo real del pronóstico contextual en vivo.\n* Los datos presentados son **completamente sintéticos** y no deben ser interpretados como alertas oficiales de autoridades reales.\n* El índice de exposición y los saldos expuestos **no constituyen** una probabilidad de mora, un rating crediticio ni una pérdida financiera efectiva, sino estimaciones bajo un modelo hipotético que requieren **revisión humana** especializada antes de tomar cualquier decisión de intervención o continuidad operativa."
+}

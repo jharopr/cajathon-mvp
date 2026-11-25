@@ -1,0 +1,61 @@
+{
+  "executed_at": "2026-11-25T02:45:17.794Z",
+  "risk": {
+    "total": 1000,
+    "exposed": 591,
+    "high": 145,
+    "unknown": 1,
+    "partial": 1,
+    "exposed_balance": "16740600.00",
+    "elapsed_ms": 230.79,
+    "hazard_source": "synthetic"
+  },
+  "official": {
+    "total": 1000,
+    "exposed": 719,
+    "high": 22,
+    "unknown": 1,
+    "partial": 159,
+    "exposed_balance": "20070200.00",
+    "elapsed_ms": 230,
+    "hazard_source": "official",
+    "point_zone": 86,
+    "exposed_flood": 713,
+    "exposed_mass_movement": 73,
+    "under_alert": 978,
+    "location_issues": 158
+  },
+  "official_sources": [
+    {
+      "name": "SENAMHI · avisos IDESEP (WFS)",
+      "version": null,
+      "status": "current",
+      "last_checked_at": "2026-11-25T02:32:59.111Z"
+    },
+    {
+      "name": "CENEPRED · escenario de riesgo por lluvias (SHAPE 102)",
+      "version": "cenepred-102@24995312568d",
+      "status": "current",
+      "last_checked_at": "2026-11-25T02:33:19.119Z"
+    }
+  ],
+  "plan": {
+    "solver_status": "OPTIMAL",
+    "metrics": {
+      "coverage": 33,
+      "high_coverage": 10,
+      "cost": "1500.00",
+      "minutes": 470,
+      "net_benefit": "60596.02"
+    },
+    "baseline": {
+      "coverage": 48,
+      "high_coverage": 10,
+      "cost": "960.00",
+      "minutes": 480,
+      "net_benefit": "25444.76"
+    },
+    "pruned": false,
+    "elapsed_ms": 955
+  }
+}
