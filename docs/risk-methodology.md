@@ -1,4 +1,24 @@
-# Metodología experimental
+# Metodología vigente y referencias históricas
+
+Actualización del 26/11/2026: el índice territorial descrito abajo sigue como referencia. Su prioridad y el antiguo optimizador **no determinan el plan por evento actual**. La predicción de crédito es un motor distinto.
+
+## Flujo actual por evento
+
+- Población: clientes con ubicación/finanzas revisables, dentro del evento y con atraso ≤30 días al corte; incompletos, fuera del evento y ya deteriorados quedan separados.
+- Entradas: historia anterior al corte, cuota/ventas, reserva/cuota, atrasos previos, entidades, señal climática puntual o contexto distrital y sensibilidad sectorial.
+- Modelo: regresión logística regularizada TypeScript. Cortes 6/10 para entrenar, 14 para validar y 18/21 para probar, con ventanas de resultado separadas entre conjuntos; clientes no vistos como evaluación adicional. Métricas/errores/calibración por zona/segmento son sintéticos.
+- Salida: P(atraso >30 días en 90 días), experimental. Prioridad ALTA ≥0.45, MEDIA ≥0.20, BAJA por debajo; umbrales de demo versionados, sin validación institucional.
+- Clima: nivel puntual/5 multiplicado por intensidad; sin punto, contexto de población distrital expuesta ×0.25. No asignar a un local la certeza derivada de una tasa poblacional. El aviso delimita el evento y no se convierte en índice de mora.
+- Incertidumbre: 500 realizaciones pareadas, semilla fija y componente regional compartido. Se varían interrupción/daño; se muestran percentiles de liquidez y frecuencia de brecha, distintos de la probabilidad del modelo.
+- Pérdida modelada: saldo × probabilidad × severidad sintética condicional 0.25. No es LGD calibrada, pérdida observada ni provisión. El dato histórico del 10% del Word no se usa como constante.
+- Acciones: evaluar reprogramación de dos cuotas o visita de liquidez. El efecto sobre recuperación es un supuesto del escenario, no resultado causal del modelo. La reprogramación difiere cuotas al final sin reducir daño físico ni condonar capital.
+- Objetivo: reducción modelada de pérdida menos costo operativo de la Caja; alivio del cliente como desempate. Una propuesta por negocio, recursos y cobertura mínima. Referencias por mayor saldo y sector/zona con iguales restricciones; no prácticas internas confirmadas.
+- Finanzas: calendario hipotético, principal e intereses separados, costo contabilizado una vez. Persistencia NUMERIC y Decimal; beneficios del solver comparados en centavos BigInt.
+
+Fuente de verdad implementada: `analysis/model.ts`, `analysis/impact.ts`, `planning/policy.ts` y `planning/event-plan.ts`. Detalle de límites en [refactor-implementation.md](refactor-implementation.md) y resultados en [validation-report.md](validation-report.md).
+
+## Referencia del 24/11 conservada
+
 
 ## Riesgo territorial
 

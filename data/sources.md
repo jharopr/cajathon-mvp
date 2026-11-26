@@ -1,3 +1,5 @@
+> Actualización 26/11/2026: Open-Meteo se retiró del producto. Sus entradas de abajo documentan la integración histórica. SENAMHI usa `EVENT_SOURCE_REFRESH_MINUTES` (30 por defecto). CENEPRED exige revisión mensual registrada y la cartera/historia siguen siendo sintéticas; el procesador conserva cortes mensuales inmutables.
+
 # Fuentes y procedencia
 
 Corte: **24/11/2026, America/Lima**. Regla del proyecto: **clima real, cartera ficticia**. Ninguna fuente climática contiene clientes, ventas ni saldos; esos datos siguen siendo sintéticos.

@@ -1,11 +1,11 @@
 import 'dotenv/config';
 import { pool,transaction } from '../apps/api/src/database.js';
 import { generate,hazards,uid } from '../apps/api/src/data.js';
-import { loadCenepred,loadSenamhiSnapshot,upsertSyntheticAndForecastSources } from '../apps/api/src/official.js';
+import { loadCenepred,loadSenamhiSnapshot,upsertSyntheticSource } from '../apps/api/src/official.js';
 export async function seed() {
   await transaction(async c=>{
     await c.query('SELECT pg_advisory_xact_lock(2026112402)');
-    await upsertSyntheticAndForecastSources(c);
+    await upsertSyntheticSource(c);
     const existing=await c.query('SELECT count(*) FROM climashield.businesses');
     if(+existing.rows[0].count>0) console.log('Cartera ficticia ya existe: no se sobrescribe.');
     else {

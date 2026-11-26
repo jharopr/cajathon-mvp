@@ -18,13 +18,13 @@ export const DISTRICT_RESOLUTION = 0.8;
 export const CENEPRED_DOCUMENT_URL = 'https://sigrid.cenepred.gob.pe/sigridv3/documento/23277';
 export const CENEPRED_VALID_FROM = '2026-11-01T00:00:00-05:00';
 export const CENEPRED_VALID_UNTIL = '2027-02-01T00:00:00-05:00';
-export const SOURCE_IDS = { synthetic: uid('source'), cenepred: uid('source:cenepred-102'), senamhi: uid('source:senamhi-idesep-wfs'), openmeteo: uid('source:open-meteo') };
+export const SOURCE_IDS = { synthetic: uid('source'), cenepred: uid('source:cenepred-102'), senamhi: uid('source:senamhi-idesep-wfs') };
 export const SENAMHI_WFS = 'https://idesep.senamhi.gob.pe/geoserver/ows';
 export const SENAMHI_LAYERS = [
   { typeName: 'g_prono_pp_24h:view_aviso24h', layer: 'senamhi_aviso_lluvia', hazard_type: 'rain', title: 'Aviso por lluvias, pronóstico 24 h' },
   { typeName: 'g_acti_quebrada:view_av_activ_qdra', layer: 'senamhi_activacion_quebrada', hazard_type: 'mass_movement', title: 'Aviso de activación de quebradas' },
 ] as const;
-/** Política de actualización propuesta. Solo SENAMHI tiene refresco opcional automatizado (SENAMHI_REFRESH_MINUTES). */
+/** Política de actualización propuesta. SENAMHI usa el procesador de eventos; CENEPRED requiere revisión mensual registrada. */
 export const UPDATE_POLICY = [
   { source: 'Paquete CENEPRED (escenario nov 2026 – ene 2027)', policy: 'Revisar mensualmente si existe nueva versión; descargar solo cuando cambie (checksum).', automated: false },
   { source: 'Cartografía de susceptibilidad CENEPRED', policy: 'Reemplazar cuando la entidad publique una revisión; sin frecuencia anual asumida.', automated: false },
@@ -165,15 +165,10 @@ export async function loadSenamhiSnapshot(c: PoolClient, folder = 'data/official
   return { loaded: true, ...(await persistSenamhi(c, snapshot)) };
 }
 
-export async function upsertSyntheticAndForecastSources(c: PoolClient) {
+export async function upsertSyntheticSource(c: PoolClient) {
   await upsertSource(c, { id: SOURCE_IDS.synthetic, name: 'Escenario sintético ClimaShield', url: null, data_kind: 'synthetic', publisher: 'Equipo ClimaShield (ficticio)', version: 'seed-42',
     license_note: 'Datos ficticios del equipo; no representan cartera real de Caja Trujillo', status: 'current', retrieved: false,
     metadata: { seed: 42, scenario_clock: '2026-11-24', spatial_note: 'Cartera y polígonos hipotéticos; no límites distritales' } });
-}
-
-export async function recordOpenMeteo(c: PoolClient, status: 'current' | 'unavailable', metadata: unknown) {
-  await upsertSource(c, { id: SOURCE_IDS.openmeteo, name: 'Open-Meteo · pronóstico puntual', url: 'https://open-meteo.com/en/docs', data_kind: 'forecast', publisher: 'Open-Meteo',
-    license_note: 'Contexto puntual; no alimenta el índice. Revisar términos para uso comercial.', status, retrieved: status === 'current', metadata: { last_result: metadata } });
 }
 
 /** Estado derivado: una fuente con vigencia vencida se informa como 'stale' aunque su última consulta haya funcionado. */

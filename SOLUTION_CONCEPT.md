@@ -1,144 +1,49 @@
 # ClimaShield AI
 
-## Inteligencia climática que se convierte en prevención
+## Prevención climática por evento con revisión humana
 
-**Solution Concept · Cajathon 2026 · 24 de noviembre de 2026**
+**Concepto actualizado · 26 de noviembre de 2026 · prototipo local previo al presencial**
 
-**Propuesta para Caja Trujillo.** ClimaShield AI conecta la exposición territorial de los negocios financiados con su vulnerabilidad, su capacidad de sostener caja y las acciones preventivas que un equipo de asesores puede atender. El resultado es una cartera priorizada y un plan revisable, respaldado por evidencias.
+ClimaShield transforma avisos de SENAMHI y cartografía CENEPRED en una evaluación de cartera ficticia, un escenario financiero para la institución y un plan de propuestas revisables. La preparación repetitiva se automatiza; las decisiones permanecen en el coordinador y los analistas.
 
-### Problema abordado
+### Qué resuelve
 
-Una alerta de lluvias no identifica por sí sola qué microempresarios podrían interrumpir ventas, perder inventario o enfrentar una brecha de liquidez. Cuando el presupuesto y las horas de atención son limitados, una lista de clientes expuestos tampoco indica cómo distribuir la prevención. La hipótesis de negocio es que unir información territorial, financiera y operativa permite actuar con mayor oportunidad y consistencia.
+Una alerta regional no identifica por sí sola quién podría deteriorarse, cuánto representa para la cartera ni qué acciones atender con presupuesto y minutos limitados. El flujo integra evento, resolución espacial, comportamiento de pagos, escenarios de caja y recursos operativos.
 
-Los usuarios son el analista de riesgos, que examina la cartera; el coordinador, que revisa y aprueba el plan; y el asesor, que registra atención y resultado. El beneficiario final es el microempresario. Los flujos deberán validarse con Caja Trujillo: no se atribuyen procesos o deficiencias internas no confirmadas.
+### Recorrido implementado
 
-### Concepto de solución y diferenciador
+Aviso nuevo/revisado → evento con snapshot → job persistido → exposición → modelo experimental → impacto → plan → notificación interna → revisión → seguimiento registrado.
 
-El recorrido integra seis pasos: amenaza oficial → negocios expuestos → índice explicable → escenario de caja → asignación de recursos → aprobación y seguimiento. El mapa localiza; el simulador cuantifica escenarios; el optimizador ayuda a escoger acciones; Gemini consulta herramientas y explica la evidencia.
+Se reutilizan NestJS/TypeScript, React/Vite y PostgreSQL/PostGIS. El modelo logístico entrena e infiere en TypeScript. Gemini explica evidencia del evento mediante herramientas limitadas; es opcional, no calcula ni aprueba. Un informe determinista está identificado como “sin IA”.
 
-El diferencial está en vincular una señal climática con el impacto económico hipotético y una decisión operativa limitada por recursos. La IA no sustituye al motor financiero ni toma decisiones crediticias. Cada evaluación conserva fuentes, supuestos, versión, fecha y un snapshot reproducible.
+### Demostración y datos
 
-### Alcance de esta entrega
+Cartera de 1,000 negocios y 1,001 créditos, completamente inventados. Se añaden 24 meses ficticios de pagos, perfiles de endeudamiento, segmentos micro/pequeña y sensibilidad sectorial. Los cortes son versionados y anteriores al evento. CENEPRED/SENAMHI son fuentes oficiales; una reproducción histórica se rotula y no se presenta como alerta actual.
 
-MVP ejecutable con **clima real y cartera ficticia**: cartografía CENEPRED del escenario de lluvias nov 2026 – ene 2027 (susceptibilidad a inundación y movimientos en masa, riesgo de 12 distritos de Trujillo) y avisos SENAMHI vigentes, cruzados con 1,000 negocios inventados que simulan una Caja. Cada fuente muestra publicación, vigencia y última consulta. No utiliza cartera real, no acredita predicción de mora y no está preparada para producción. El PDF, la maqueta funcional y el diagrama son complementos; el formato de presentación deberá confirmarse con la organización.
+El índice climático continúa siendo una referencia explicativa. Un modelo distinto estima entrada en atraso >30 días en 90 días para quienes no estaban ya deteriorados al corte. La evaluación temporal, los clientes no vistos, la calibración y los errores por grupo usan solo datos sintéticos. No acreditan rendimiento institucional.
 
-<!-- pagebreak -->
+### Impacto y decisión
 
-## Funcionamiento y arquitectura tecnológica
+Se distinguen saldo expuesto, saldo ponderado por deterioro, pérdida modelada y cobros de la institución. El calendario hipotético separa principal, intereses, costos, caja y margen; diferir cuotas no condona el capital. No se calculan provisiones regulatorias ni se utiliza como severidad universal el dato del 10% histórico citado en el documento de mejoras.
 
-### Arquitectura de seis capas
+El optimizador busca reducción modelada de pérdida de cartera menos costo operativo, con presupuesto, minutos y cobertura mínima. Compara mayor saldo y sector/zona bajo recursos equivalentes. Propone evaluar reprogramación de cuotas o realizar una visita de liquidez; los casos ya deteriorados se derivan. Los efectos son supuestos, no eficacia causal ni facilidades preaprobadas.
 
-| Capa | Componentes y responsabilidad |
-| --- | --- |
-| Fuentes | CENEPRED/SIGRID (SHAPE 102, recorte versionado con checksum) y avisos SENAMHI vía WFS. Open-Meteo como contexto. Cartera ficticia y escenario sintético de referencia. |
-| Integración y datos | NestJS, Zod, lector shapefile propio, PostgreSQL/PostGIS en Docker; destino Supabase por .env. Migraciones SQL versionadas. |
-| Inteligencia climática | ST_Covers contra zonas y distritos oficiales, vulnerabilidad individual, control de ubicación e índice experimental explicable. |
-| Inteligencia financiera | Simulación mensual con Decimal y optimización bajo presupuesto, minutos y cobertura mínima. |
-| Asistente IA | Gemini con herramientas, evidencias y límites; fallback determinista identificado. |
-| Aplicaciones | React, MapLibre y API REST: riesgo, negocios, simulador, intervenciones y asistente. |
+Se simulan 500 realizaciones pareadas por cliente, con componente regional compartido. Percentiles y frecuencia de brecha de caja no son intervalos de confianza ni probabilidad de mora. La ficha del modelo y los supuestos quedan disponibles junto a la evidencia.
 
-La supervisión humana, la auditoría y la trazabilidad atraviesan las capas. El backend guarda montos NUMERIC, geometrías WGS84 y fechas con zona horaria. El esquema privado climashield evita acceso directo desde React. La demo usa credencial de coordinador; la autenticación institucional es futura.
+### Interfaz y control
 
-### Detección explicable
+Cinco vistas por evento: Eventos y alertas, Clientes, Impacto de cartera, Plan y seguimiento, Fuentes. La tabla y el detalle funcionan sin WebGL. Se retiran el chat abierto, la pantalla de arquitectura, el simulador libre y Open-Meteo.
 
-**R = 100 × H × E × V × (1 − 0.5 × C)**. H combina la intensidad del escenario con el nivel de susceptibilidad CENEPRED; E vale 1 si el punto está dentro de la zona o, si no hay zona puntual, la proporción oficial de población expuesta del distrito (con factor 0.8 por menor resolución). V y C son vulnerabilidad y adaptación. Hipótesis versionadas, no calibradas. Alta ≥ 65; media 30–64.99; baja < 30. Sin ubicación, UNKNOWN. Un aviso SENAMHI vigente activa seguimiento, pero no altera el índice.
+Los eventos y versiones son inmutables. Un job admite recuperación mediante lease y reintentos; predicciones, plan y aviso se confirman de forma transaccional. Las intervenciones exigen revisión autenticada con la credencial local y guardan auditoría. No hay contactos externos ni ejecución de operaciones financieras.
 
-Se incluyen puntos en borde. En superposiciones se conserva evidencia y se usa el máximo índice por negocio; el saldo se suma una sola vez. **Exposición, pérdida y probabilidad de incumplimiento son conceptos distintos.**
+### Alcance pendiente y condiciones de piloto
 
-### Asistencia con evidencia
+Faltan otros eventos/segmentos, validación con datos autorizados, eficacia de acciones, importación, Auth institucional, privilegios mínimos, core bancario, fondeo y conectores de comunicación. CENEPRED requiere revisión humana registrada; no se prometen actualizaciones automáticas de publicaciones sin un feed confirmado. Deben confirmarse leyenda GRIDCODE, vigencia SENAMHI y condiciones de uso. Supabase remoto no fue verificado.
 
-Gemini consulta fuentes y vigencias, avisos, expuestos, riesgo, simulación y optimización. NestJS calcula; el modelo explica. Las herramientas no aprueban ni contactan. Ejecución real verificada el 24/11 con evaluación oficial; sin clave se muestra un resumen local rotulado sin IA.
+No se atribuye como avance presencial nada ya construido: toda la base y esta refactorización del 26/11 son preexistentes. El alcance presencial se acordará con el Challenge Owner y se registrará con commits y evidencia nuevos. No se afirma haber recibido cartera, ejecutado un piloto, logrado ahorros reales o enviado la propuesta.
 
-<!-- pagebreak -->
+### Evidencia
 
-## Caso representativo e impacto esperado
+[Arquitectura](docs/architecture.md), [cambios y cobertura](docs/refactor-implementation.md), [validación](docs/validation-report.md), [modelo versionado](data/models/deterioration-v1.json), [guion de demo](docs/demo-script.md) y [preexistentes](docs/preexisting-components.md).
 
-### Bodega Horizonte: del mapa a la prevención
-
-Negocio ficticio CS-0001. PostGIS confirma que su coordenada está en el distrito oficial El Porvenir, con riesgo de inundación alto y 100 % de población expuesta según CENEPRED, y dentro del aviso SENAMHI vigente. H = 0.9 × 0.75 × 0.8 = 0.54, E = 1, V = 0.9 y C = 0.2 producen **R = 43.74**, prioridad media; en el escenario sintético de estrés, R = 72.9. Saldo S/24,000; no se interpreta como pérdida.
-
-Supuestos mensuales: ventas S/12,000; costos fijos S/8,000; costo variable 0%; cuota S/1,500; liquidez inicial cero; interrupción 10 días; daño S/1,200. Una intervención hipotética de S/200 reduce 40% de días y daño.
-
-| Resultado del escenario | Importe |
-| --- | --- |
-| Flujo normal | S/2,500 |
-| Flujo con evento | −S/2,700 |
-| Flujo con prevención, incluido su costo | −S/820 |
-| Beneficio bruto hipotético | S/2,080 |
-| Beneficio neto hipotético | S/1,880 |
-
-Queda una brecha de S/820 que requiere revisión. No se concluye que una llamada genere este beneficio: la eficacia es un supuesto por validar.
-
-### Valor para Caja Trujillo y sus clientes
-
-Para la Caja: priorización trazable sobre fuentes oficiales, detección de coordenadas mal geocodificadas (158 en la cartera ficticia), comparación de acciones y mejor uso de capacidad preventiva. Para el microempresario: atención oportuna, escenarios de caja y acompañamiento para continuidad, sujeto a medidas seguras y autorizadas.
-
-### Medición del impacto
-
-| Indicador propuesto | Medición / validación |
-| --- | --- |
-| Cobertura preventiva | Prioritarios atendidos / prioritarios expuestos. Separar borradores, aprobados y completados. |
-| Oportunidad | Tiempo de aviso a aprobación y primera atención. Línea base pendiente con la Caja. |
-| Eficiencia | Beneficio modelado por minuto/sol frente a FIFO con recursos y elegibilidad equivalentes. |
-| Calidad y trazabilidad | Datos completos y evaluaciones con fuente, versión y supuestos. |
-| Resultado de piloto | Continuidad y liquidez observadas; establecer comparación antes de atribuir causalidad. |
-
-KPI institucional y línea base por acordar. No se promete reducción de mora ni ahorro real a partir de una cartera ficticia.
-
-<!-- pagebreak -->
-
-## Viabilidad y tecnología preexistente
-
-### Base técnica y recursos
-
-Monolito modular con Node.js y PostgreSQL/PostGIS. Un equipo de hasta cuatro integrantes puede dividir interfaz, datos, motores y validación. La demo funciona sin IA ni pronóstico externo; mantiene vectores si fallan las teselas del mapa.
-
-Supabase usa las mismas migraciones cambiando conexión y TLS en .env. Requiere credenciales propias y permisos PostGIS. La integración remota está preparada, pero no verificada contra un proyecto del equipo.
-
-CENEPRED y SENAMHI ya están integrados y probados; falta confirmar la leyenda GRIDCODE, las condiciones de uso y la vigencia oficial de los avisos (hoy se asume 24 h). El paquete de 1.25 GB no se descarga a diario: se compara checksum y se reprocesa solo si cambia. No hay entrega de datos de Caja Trujillo confirmada. Gemini depende de clave, cuota y proveedor autorizado.
-
-### Preexistentes al 24/11/2026
-
-| Componente | Titularidad / condición |
-| --- | --- |
-| Código actual ClimaShield | Preparado en este repositorio antes del presencial. Base previa, no avance presencial. Titularidad a formalizar por el equipo. |
-| React, NestJS, Vite, Zod, Decimal.js y pg | Software de terceros con licencias distribuidas y versiones en lockfile; se reutiliza sin reivindicar autoría. |
-| PostgreSQL, PostGIS, MapLibre y mapa base | Software/cartografía de terceros; conservar condiciones y atribuciones. Revisar distribución y licencia Docker Desktop. |
-| Gemini / SDK Google | Servicio y SDK de terceros; acceso, cuota y términos. La clave no integra los entregables. |
-| CENEPRED, SENAMHI, Supabase | Datos públicos y plataformas de terceros; se versiona solo un recorte derivado con manifiesto. Atribución, condiciones y costos por confirmar para piloto. |
-| Habilidades de desarrollo | Instrucciones .agents/skills agregadas por el usuario; apoyo al desarrollo, no agentes autónomos del producto. |
-
-Declaración ampliada en docs/preexisting-components.md. Conservar un commit/etiqueta de corte y registrar cambios del presencial. Al inicio el repositorio tenía solo README; todo el MVP actual, incluida la integración CENEPRED/SENAMHI, se preparó antes de esas jornadas. No se atribuye como novedad futura lo ya implementado.
-
-<!-- pagebreak -->
-
-## Funcionalidad crítica nueva y plan presencial
-
-### Adaptación sustantiva propuesta
-
-**Pasar de la evaluación con fuentes oficiales a la prevención por evento validada con el Challenge Owner.** Convertir un aviso SENAMHI vigente en un evento operativo, aplicar políticas acordadas y comparar el plan con las atenciones y sus resultados.
-
-Nuevo alcance: evento seleccionable con el aviso que lo originó; reevaluación y plan por evento; pesos, catálogo y costos versionados con la Caja; reporte de cobertura y tiempos; importación validada de una cartera autorizada o anonimizada. Hoy existen los conectores y el modo oficial, pero no el evento operativo, esas políticas ni ese reporte.
-
-### Dos jornadas
-
-| Momento | Desarrollo nuevo / evidencia |
-| --- | --- |
-| Día 1, inicio | Acordar KPI, acciones seguras, datos y criterios. Registrar baseline y commit inicial. |
-| Día 1, construcción | Evento operativo desde avisos vigentes; recálculo con política versionada; importación validada de cartera de prueba. |
-| Día 2, construcción | Plan por evento, seguimiento y comparación de cobertura/tiempos. Con credenciales/autorización, probar Supabase remoto y Gemini con cuota institucional. |
-| Día 2, validación | Caso integral con Challenge Owner; pruebas y evidencias de commits, resultados y límites. |
-
-Si no hay aviso vigente en Trujillo durante el presencial, se reproducirá la última instantánea SENAMHI rotulada como vencida. Ratificar prioridades con mentor y Challenge Owner.
-
-### Resultado esperado
-
-Aviso oficial → evento → evaluación → simulación → plan limitado por recursos → aprobación → atención registrada → comparación operativa. Fuentes, supuestos y versiones visibles. Seguirá requiriendo calibración y cartera autorizada antes de un piloto real.
-
-### Dependencias y cierre de propuesta
-
-Confirmar formato/canal de entrega, datos permitidos, KPI y línea base, capacidad, costos/eficacia de acciones, proveedor IA y propiedad intelectual. La entrega conceptual no depende de una integración productiva.
-
-Referencia: [bases oficiales](https://cajathon.cajatrujillo.com.pe/bases/), consultadas el 24/11/2026. Conceptos hasta 24/11; evaluación 25–29/11; presencial 3–4/12. Hora exacta y cambios por verificar en canales oficiales.
-
-Evidencias: README, migraciones, arquitectura, metodología, dataset, aplicación y reporte de pruebas. Esta preparación no acredita envío ni aceptación por la organización.
+El [concepto del 24/11](docs/archive/solution-concept-20261124.md) y su PDF son evidencia histórica. Las propuestas del documento de mejoras se tomaron como insumo: no se presentan sus ejemplos ilustrativos como resultados reales ni sus atribuciones al expediente como verificación primaria independiente.

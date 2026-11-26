@@ -19,3 +19,15 @@
 
 Pendientes: KPI/línea base, acciones permitidas, costos/eficacia, confirmación de leyenda GRIDCODE y condiciones de uso CENEPRED/SENAMHI, proveedores IA, acceso Supabase, formato/hora de entrega y titularidad del código del equipo. No bloquean una demo sintética.
 
+
+## Decisiones del 26/11/2026
+
+- Aplicar el plan solicitado sobre su alcance recortado y conservar evidencia previa en Git/documentos archivados; sin push/despliegue.
+- Mantener monolito NestJS, React y PostGIS. Regresión logística nativa TypeScript; sin API Python ni otro runtime ML.
+- Evento, snapshot, política y modelo versionados; trabajos PostgreSQL con lease/reintentos; plan y alerta interna transaccionales. Reintento manual autenticado después de fallo terminal.
+- Pérdida de escenario separada de deterioro/exposición y provisión. No aplicar el 10% agregado del Word como severidad universal.
+- Propuestas de reprogramación/visita sujetas a revisión; no contacto real, preaprobación ni ejecución crediticia. Efecto hipotético, no causal.
+- Retirar Open-Meteo, chat abierto y pantallas de arquitectura/simulador. Mantener referencia histórica de caja y georreferenciación.
+- Comparadores mayor saldo/sector-zona; BigInt en beneficios del solver, NUMERIC en proyecciones y totales de planes.
+- SENAMHI con variable nueva EVENT_SOURCE_REFRESH_MINUTES, por defecto 30; actualización mensual sintética y tarea/revisión humana CENEPRED.
+- Segundo evento, otros segmentos, importador, fondeo, Auth y Supabase remoto continúan pendientes. Todo lo implementado aquí es previo al presencial.

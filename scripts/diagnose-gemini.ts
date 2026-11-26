@@ -1,22 +1,27 @@
-/** Diagnóstico con datos sintéticos: no imprime secretos ni modifica .env. */
-import 'reflect-metadata';
-import 'dotenv/config';
-import {mkdir,writeFile} from 'node:fs/promises';
-import {pool} from '../apps/api/src/database.js';
-import {Repository} from '../apps/api/src/repository.js';
-import {runAgent} from '../apps/api/src/agent.js';
-const repo=new Repository();
+/** Diagnóstico opcional; consume Gemini solo al ejecutarse explícitamente. */
+import "reflect-metadata";
+import { createApp } from "../apps/api/src/main.js";
+import { AnalysisService } from "../apps/api/src/analysis/analysis.service.js";
+import { pool } from "../apps/api/src/database.js";
+const app = await createApp({ background: false });
 try {
-  const {rows}=await pool.query('SELECT id FROM climashield.evaluation_runs ORDER BY assessed_at DESC LIMIT 1');
-  if(!rows[0])throw new Error('Falta evaluación sintética para el diagnóstico');
-  const run=await repo.run(rows[0].id);
-  const response=await runAgent('Consulta get_exposed_businesses y explica brevemente qué negocios sintéticos están expuestos. Cita las evidencias y aclara las limitaciones.',run,repo);
-  const result={checked_at:new Date().toISOString(),provider:response.provider,mode:response.mode,tools:response.trace,evidence_count:response.evidence.length,answer:response.answer};
-  await mkdir('artifacts/diagnostics',{recursive:true});
-  await writeFile('artifacts/diagnostics/gemini-agent.json',JSON.stringify(result,null,2));
-  console.log(JSON.stringify({ok:true,mode:response.mode,provider:response.provider,tools:response.trace,evidence_count:response.evidence.length}));
-}catch(error) {
-  const e=error as {status?:number;name?:string};
-  console.log(JSON.stringify({ok:false,status:e.status??null,error_type:e.name??'Error',note:'No se imprimen detalles que puedan contener credenciales.'}));
-  process.exitCode=1;
-}finally{await pool.end();}
+  await app.init();
+  const row = (
+    await pool.query(
+      "SELECT id FROM climashield.analysis_runs WHERE status='COMPLETED' ORDER BY created_at DESC LIMIT 1",
+    )
+  ).rows[0];
+  if (!row) throw new Error("Falta análisis");
+  const report = await app.get(AnalysisService).enrichReport(row.id);
+  console.log(
+    JSON.stringify({ ok: true, mode: report.mode, tools: report.trace }),
+  );
+} catch {
+  console.error(
+    "Diagnóstico no completado. Verifique análisis, configuración y cuota.",
+  );
+  process.exitCode = 1;
+} finally {
+  await app.close();
+  await pool.end();
+}

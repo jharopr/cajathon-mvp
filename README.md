@@ -1,185 +1,136 @@
 # ClimaShield AI
 
-Inteligencia climática para microfinanzas resilientes: conecta amenazas con negocios expuestos, escenarios de caja y acciones preventivas bajo recursos limitados, con evidencia y aprobación humana.
+Prototipo de prevención por evento climático para microfinanzas. Une **aviso → exposición → predicción experimental → impacto modelado → plan → alerta interna → revisión humana**.
 
-**Cajathon 2026 · Solution Concept · Clima real, cartera ficticia.** Las amenazas provienen de cartografía oficial de CENEPRED (escenario de lluvias nov 2026 – ene 2027) y avisos vigentes de SENAMHI, con fuente, publicación, vigencia y última consulta visibles. La cartera de 1,000 negocios y sus créditos es inventada y simula una Caja: no se recibió cartera real. El índice experimental no es probabilidad de mora; saldo expuesto no es pérdida. Los beneficios son escenarios modelados, no ahorros observados.
+**Cartera y pagos exclusivamente ficticios.** CENEPRED y SENAMHI aportan cartografía/avisos oficiales con procedencia y vigencia. El índice climático no es probabilidad de mora. El modelo separado estima atraso >30 días en 90 días usando historia sintética; no está calibrado para clientes reales. Saldo expuesto no es pérdida y la pérdida modelada no es una provisión regulatoria.
 
-## Entregables
+## Cambio del 26/11/2026
 
-- [Solution Concept](SOLUTION_CONCEPT.md) y [PDF ejecutivo de 5 páginas](artifacts/ClimaShield_AI_Solution_Concept.pdf).
-- [Arquitectura](docs/architecture.md) y [diagrama SVG](docs/architecture.svg).
-- [Componentes preexistentes](docs/preexisting-components.md), [metodología](docs/risk-methodology.md), [diccionario](docs/data-dictionary.md) y [fuentes](data/sources.md).
-- [Guion de demo](docs/demo-script.md), [validación real](docs/validation-report.md) y [decisiones](docs/decisions.md).
-- [Cartera ficticia reproducible](data/synthetic/portfolio.json) y [amenazas hipotéticas](data/synthetic/hazards.geojson).
-- [Recorte oficial CENEPRED y snapshot SENAMHI](data/official/) con [manifiesto de procedencia](data/official/cenepred-manifest.json).
-- Maqueta funcional verificada: [escritorio](docs/mockup-desktop.png), [fuentes de datos](docs/mockup-sources.png) y [móvil sin mapa base](docs/mockup-mobile.png).
+Se implementó el alcance recortado del [plan de refactorización](docs/plan-refactorizacion-puntos-mejora.md). [Cambios y pendientes](docs/refactor-implementation.md), [arquitectura actual](docs/architecture.md), [validación ejecutada](docs/validation-report.md) y [guion de demo](docs/demo-script.md).
 
-## Stack y estructura
+La aplicación tiene cinco vistas: Eventos y alertas, Clientes, Impacto de cartera, Plan y seguimiento, Fuentes. Se retiraron el chat abierto, la pantalla de arquitectura, el simulador libre y Open-Meteo. Gemini genera opcionalmente el informe de un evento con herramientas de lectura. No aprueba, contacta, envía mensajes ni calcula importes.
+
+## Stack
 
 | Capa | Implementación |
 | --- | --- |
-| Frontend | React 19 + TypeScript + Vite; MapLibre; Lucide; estilos propios |
-| Backend | NestJS 11; Zod; SQL parametrizado con pg |
-| Base | PostgreSQL 16 + PostGIS en Docker; destino PostgreSQL de Supabase |
-| Migraciones | SQL versionado; checksum SHA-256, bloqueo y transacción |
-| Datos oficiales | Lector shapefile propio (TypeScript), recorte PostGIS, conector WFS SENAMHI con validación Zod |
-| Motores | Índice explicable, Decimal.js, programación dinámica TypeScript |
-| IA | Gemini, SDK oficial @google/genai e Interactions con herramientas; store:false |
-| Pruebas | Node/tsx, integración PostGIS real y Playwright |
+| Aplicación | React 19 + TypeScript + Vite; vistas y MapLibre diferidos |
+| Backend | NestJS 11, Zod y SQL parametrizado con pg |
+| Datos | PostgreSQL 16 + PostGIS local en Docker; destino Supabase por variables |
+| Dinero y planes | Decimal.js, NUMERIC y optimizador TS con centavos/BigInt |
+| Modelo | Regresión logística TS, artefacto y datos sintéticos reproducibles |
+| Automatización | Jobs PostgreSQL con lease/reintentos y alertas dentro de la aplicación |
+| IA | SDK oficial `@google/genai`, Interactions, `store:false`, herramientas limitadas |
 
 ```text
-apps/api/src/        NestJS, repositorio, motores y Gemini
-apps/web/src/        React, mapa, simulador, planes y asistente
-supabase/migrations/ SQL para PostgreSQL local y Supabase
-scripts/            migraciones, seed, ingesta CENEPRED/SENAMHI, exportación y arranque
-data/official/      recorte CENEPRED, manifiesto y snapshot SENAMHI (versionados)
-data/raw/           paquete original de CENEPRED (no versionado)
-data/synthetic/     JSON, CSV y GeoJSON ficticios
-docs/               arquitectura, metodología, decisiones y demo
-tests/              unitarias, integración y navegador
-artifacts/          PDF y resultados verificables
-.agents/skills/     habilidades agregadas por el usuario
+apps/api/src/portfolio/  cortes e historia por crédito
+apps/api/src/climate/    fuentes, exposición y eventos
+apps/api/src/analysis/   modelo, escenarios, impacto y procesador
+apps/api/src/planning/   catálogo, optimizador y seguimiento
+apps/api/src/agent/      informe con evidencia
+apps/web/src/app/        navegación y contexto del evento
+apps/web/src/features/   cinco vistas operativas
+supabase/migrations/    migraciones SQL versionadas
+scripts/                setup, ingesta, generación y entrenamiento TS
+data/models/            modelo de demo versionado
+data/official/          recorte y snapshot oficiales con manifiesto
+docs/archive/           concepto, arquitectura y propuesta previos
 ```
 
-No hay API Python ni SQLite. Python se usa solo como herramienta opcional para generar el PDF.
+No hay API Python ni SQLite. Los scripts Python existentes se conservan solo para documentación histórica.
 
 ## Arranque local en Windows
 
-Requisitos: Node.js 24, npm y Docker Desktop con motor Linux activo. Puertos: **5180 React**, **8081 NestJS**, **54322 PostgreSQL**; se eligieron para evitar servicios de otros proyectos.
+Node.js 24, npm y Docker Desktop con motor Linux activo. Puertos: **5180 web, 8081 API, 54322 PostgreSQL**.
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File scripts/setup.ps1
 npm run dev
 ```
 
-Abrir **http://127.0.0.1:5180**. Salud: **http://127.0.0.1:8081/api/v1/health**.
+Abrir **http://127.0.0.1:5180**. Salud: http://127.0.0.1:8081/api/v1/health.
 
-El script instala con lockfile, crea `.env` solo si no existe, genera una credencial de coordinador, levanta la base, aplica migraciones y carga datos: cartera ficticia, recorte CENEPRED y última instantánea SENAMHI desde `data/official/`. No necesita el zip de 1.25 GB ni red. No sobrescribe claves existentes.
-
-Equivalente manual:
+Arranque manual, conservando `.env` si ya existe:
 
 ```powershell
 npm ci
 # Solo si .env todavía no existe:
 Copy-Item .env.example .env
-# Editar DEMO_COORDINATOR_TOKEN con un valor local propio.
+# Configurar una credencial local propia en DEMO_COORDINATOR_TOKEN.
 docker compose up -d --wait db
 npm run db:migrate
 npm run db:seed
-npm run data:export
 npm run dev
 ```
 
-Datos oficiales (opcionales, ya versionados):
+El modelo entrenado ya está en `data/models/deterioration-v1.json`. El procesador prepara el corte y la historia ficticia, crea una reproducción rotulada si no hay un aviso para demostrar y genera análisis/plan/alerta sin una consulta de chat. No necesita red ni Gemini para ese recorrido precargado.
 
-```powershell
-# Avisos SENAMHI vigentes del área de Trujillo: guarda snapshot y lo persiste
-npm run data:senamhi
-# Reprocesar CENEPRED solo si cambia el paquete: extraer 102_shape.zip en data/raw/cenepred-102/
-npm run data:cenepred -- --dir data/raw/cenepred-102 --zip $HOME/Downloads/102_shape.zip
-npm run db:seed   # carga la nueva versión si cambió el checksum
-```
+El seed conserva negocios y créditos existentes. Las migraciones 0001–0003 permanecen intactas; 0004 agrega nueve tablas; 0005 agrega períodos financieros NUMERIC y totales en planes para versiones, historia, eventos, análisis, jobs y notificaciones. El runner verifica SHA-256 y usa bloqueo/transacciones. No utiliza sincronización, reset ni reversión destructiva.
 
-También se puede ejecutar la API en Docker:
-
-```powershell
-docker compose up -d --build --wait
-npm run dev:web
-```
-
-En ese modo no ejecutar `dev:api`: la API del contenedor ya ocupa 8081. Al iniciar aplica migraciones y seed. `Ctrl+C` detiene el desarrollo; `docker compose stop` detiene los contenedores del proyecto sin borrar su volumen. El seed conserva la cartera si ya existe.
-
-Para servir también React desde Docker, sin servidor Vite:
+También puede ejecutarse todo en Docker:
 
 ```powershell
 docker compose --profile full up -d --build --wait
 ```
 
-Abrir la misma dirección http://127.0.0.1:5180. El perfil full añade Nginx y proxy /api; no ejecutar servidores npm en los mismos puertos mientras esté activo.
+Usar los mismos puertos; no mantener servidores npm ocupándolos. `docker compose stop` detiene los contenedores sin borrar el volumen.
 
-## Variables y Gemini
+## Configuración
 
-`.env` está excluido de Git. Contiene conexión PostgreSQL, credencial de coordinador y, en este equipo, la clave Gemini; nunca se imprime ni se versiona.
+`.env` está excluido de Git. No usar variables `VITE_` para secretos ni exponer claves de Gemini en React.
 
 | Variable | Uso |
 | --- | --- |
-| DATABASE_URL | Conexión PostgreSQL de NestJS, local o Supabase |
-| DIRECT_URL | Migraciones: conexión directa o session pooler |
-| DATABASE_SSL | false local; true en Supabase con validación TLS |
-| POSTGRES_PASSWORD | Contraseña del contenedor local |
-| GEMINI_API_KEY | Clave privada, leída solo en backend |
-| GEMINI_MODEL | gemini-3.5-flash-lite por defecto, configurable según acceso/cuota |
-| DEMO_COORDINATOR_TOKEN | Credencial para aprobar y cambiar estados |
-| CORS_ORIGINS / PORT | Orígenes permitidos y puerto de NestJS |
-| SENAMHI_REFRESH_MINUTES | 0 desactiva; ≥5 consulta avisos SENAMHI periódicamente (política propuesta: 30) |
-| SUPABASE_URL / SUPABASE_PUBLISHABLE_KEY | Reservadas para futura Auth/Storage; el MVP no las usa todavía |
+| `DATABASE_URL` | PostgreSQL de la API |
+| `DIRECT_URL` | Migraciones: conexión directa o session pooler |
+| `DATABASE_SSL` | `false` local; `true` con validación de certificado en remoto |
+| `POSTGRES_PASSWORD` | Credencial del contenedor local |
+| `DEMO_COORDINATOR_TOKEN` | Revisión y acciones operativas locales; solo en memoria de la página |
+| `GEMINI_API_KEY`, `GEMINI_MODEL` | Informe opcional desde backend; modelo por defecto `gemini-3.5-flash-lite` |
+| `EVENT_WORKER_ENABLED` | `true` por defecto; `false` detiene scheduler/procesador |
+| `EVENT_SOURCE_REFRESH_MINUTES` | `30` por defecto; mínimo 5 para consultar; `0` desactiva red para pruebas/demo sin conexión |
+| `DEMO_EVENTS_ENABLED` | `true` por defecto; crea un replay/ficticio explícito de respaldo |
+| `CORS_ORIGINS`, `PORT` | Orígenes permitidos y puerto NestJS |
 
-Pegar la clave en `GEMINI_API_KEY` y reiniciar NestJS. Sin clave, el asistente muestra un **resumen determinista sin IA**. Con clave pero proveedor no disponible, devuelve 503; no presenta un fallback como respuesta Gemini.
+La variable antigua `SENAMHI_REFRESH_MINUTES` fue reemplazada por `EVENT_SOURCE_REFRESH_MINUTES`. No se sobrescribieron claves del `.env` existente.
 
-El agente consulta fuentes y vigencias, avisos SENAMHI, negocios expuestos, riesgo, simulación, optimización y pautas generales. No tiene herramientas de aprobación ni contacto. Máximo 5 iteraciones, 8 llamadas por turno, timeout y 6 consultas/minuto globales. La cartera es ficticia y así se rotula; secretos nunca se incluyen en contexto ni frontend.
+Sin Gemini, el informe muestra **Informe sin IA**. Una solicitud de informe con proveedor fallido devuelve 503 y conserva el informe anterior y el plan. El protocolo limita iteraciones, llamadas y tiempo; las herramientas solo leen evidencia del análisis seleccionado.
 
-La prueba unitaria verifica tool calling con cliente controlado. La ejecución real se comprobó el 24/11/2026 sobre la evaluación oficial (tres herramientas, cifras coincidentes): [evidencia](artifacts/diagnostics/gemini-agent-official.json). Las pruebas automáticas no consumen cuota.
+## Datos, modelo y actualización
 
-## Conectar Supabase
+```powershell
+npm run history:generate   # corte/historia ficticios, versionados e idempotentes
+npm run model:train        # entrenamiento reproducible; no consume Gemini
+npm run data:senamhi       # consulta y guarda snapshot oficial
+npm run data:cenepred -- --dir data/raw/cenepred-102 --zip "$HOME/Downloads/102_shape.zip"
+```
 
-1. Crear un proyecto propio y copiar las cadenas PostgreSQL desde Connect. Una clave pública no basta para SQL/migraciones.
-2. Cambiar DATABASE_URL a conexión directa o session pooler, y DIRECT_URL a conexión directa o session pooler. No usar transaction pooler para migraciones.
-3. Configurar DATABASE_SSL=true, conservando validación de certificado. Si se requiere una CA, configurarla en Node.
-4. Ejecutar `npm run db:migrate` con permisos para crear el esquema/habilitar PostGIS; después `npm run db:seed` en la base destinada exclusivamente a demo.
-5. Reiniciar NestJS. El frontend sigue consultando la API, sin claves privilegiadas de Supabase.
+El entrenamiento no se ejecuta al arrancar. Si cambian generador, variables o parámetros del modelo, crear una nueva versión y archivo, ajustar el cargador y conservar la anterior. No sobrescribir un artefacto ya registrado con el mismo ID. La política tiene la misma protección.
 
-Esquema privado `climashield`, RLS habilitado y sin políticas anónimas. La conexión de demo usa el propietario. Para piloto faltan cuenta de aplicación de privilegios mínimos, Supabase Auth y permisos por usuario. La compatibilidad actual es con PostgreSQL de Supabase; Auth/Storage no están integrados. No se ha probado un proyecto remoto en esta sesión.
+Los cortes nuevos usan el último mes completo en Lima, con 24 meses de pagos inventados; los replays toman el corte anterior al evento. SENAMHI se consulta periódicamente. CENEPRED requiere una revisión mensual humana registrada en Fuentes: una tarea interna recuerda la comprobación, pero no afirma haber descubierto o descargado una publicación nueva.
 
-## Migraciones y tablas base
+## API actual
 
-`npm run db:migrate` usa DIRECT_URL y registra versión/checksum/fecha en schema_migrations. Reejecutar es idempotente. Si se modifica SQL ya aplicado, falla: añadir una nueva migración. No usa sincronización automática, reset ni reversión destructiva.
+Prefijo `/api/v1`, validación Zod y errores `{code,message,details}`. Las escrituras operativas requieren `X-Coordinator-Token`.
 
-| Migración | Alcance |
-| --- | --- |
-| 202611240001_base.sql | 10 tablas de dominio, FK, CHECK, índices GiST/B-tree y RLS |
-| 202611240002_intervention_guard.sql | Máquina de estados protegida con trigger |
-| 202611240003_official_sources.sql | Procedencia/vigencia/estado en data_sources; zonas oficiales MultiPolygon; riesgo distrital; hazard_source por evaluación |
-
-Tablas: data_sources, businesses, loans, climate_hazards, official_hazard_zones, district_risk_scenarios, evaluation_runs, risk_assessments, financial_scenarios, optimization_plans, interventions, audit_events. El runner agrega schema_migrations: 13 en total. Montos NUMERIC, fechas timestamptz, geometrías SRID 4326. Ubicación ausente implica UNKNOWN.
-
-## Demostración
-
-1. Evaluar con amenaza **Oficial (CENEPRED + SENAMHI)** e intensidad severa: capas de inundación, movimientos en masa, distritos y aviso vigente; franja de procedencia, calidad de ubicación y saldo deduplicado. Resultado del 24/11: 719 expuestos, 22 alta, 978 bajo aviso, 158 ubicaciones a revisar.
-2. Abrir **Fuentes de datos**: publicación, versión con checksum, vigencia, última consulta, supuestos y política de actualización. Con la credencial, actualizar avisos SENAMHI.
-3. Seleccionar **Bodega Horizonte / CS-0001**: distrito oficial El Porvenir, riesgo distrital alto, R=43.74 con fórmula visible. Simular: flujo normal S/2,500; estrés −S/2,700; mitigado −S/820; beneficio bruto S/2,080 y neto S/1,880.
-4. Optimizar con S/1,500 y 480 minutos; comparar contra FIFO con recursos/eligibilidad equivalentes. La cobertura mínima de alta prioridad es editable.
-5. Crear borradores y aprobar individualmente ingresando DEMO_COORDINATOR_TOKEN en la bandeja. La credencial permanece en memoria de la página.
-6. Registrar asignación, contacto y resultado: son registros locales; no se envían mensajes.
-7. Consultar el asistente, revisar evidencias y exportar JSON (incluye fuentes).
-8. Opcional: cambiar a amenaza **Sintética** para reproducir las cifras de referencia (591 expuestos, 145 alta, CS-0001 = 72.9).
-
-## API
-
-Prefijo `/api/v1`; JSON; errores `{code,message,details}`; IDs UUID. Zod valida entradas.
-
-| Método | Ruta | Función |
+| Método | Ruta | Uso |
 | --- | --- | --- |
-| GET | /health | Base y configuración IA, sin secretos |
-| GET | /businesses | limit/offset, distrito, sector y búsqueda; máximo 100 |
-| GET | /businesses/:id | Negocio y créditos activos agregados |
-| GET | /climate/hazards.geojson?source=official\|synthetic | Zonas CENEPRED y avisos SENAMHI vigentes, o escenario sintético |
-| GET | /climate/districts.geojson | Riesgo distrital CENEPRED de la provincia de Trujillo |
-| GET | /climate/alerts | Avisos SENAMHI vigentes y recientes con estado de la fuente |
-| GET | /sources | Fuentes, versión, publicación, vigencia, última consulta, frescura y política |
-| POST | /sources/senamhi/refresh | Consulta WFS SENAMHI; X-Coordinator-Token, máximo 1/min, auditado |
-| GET | /climate/live | Open-Meteo opcional, live/unavailable explícito |
-| POST | /risk/assess | {scenario_id:"severo", hazard_source:"official"}; evaluación y snapshot con versiones de fuentes |
-| GET | /risk/portfolio?run_id=UUID | Recuperar evaluación |
-| GET | /risk/businesses.geojson?run_id=UUID | Puntos con prioridad |
-| POST | /simulation/run | business_id y supuestos financieros |
-| POST | /optimization/run | run_id, budget_pen, capacity_minutes, min_high_priority |
-| POST | /interventions/drafts | plan_id; creación idempotente |
-| GET | /interventions | Bandeja, máximo 1000 registros |
-| PATCH | /interventions/:id | status/reason y X-Coordinator-Token |
-| POST | /agent/run | question/run_id; respuesta, evidencia y trazas |
-| GET | /audit | Últimos 100 eventos |
+| GET | `/health`, `/businesses`, `/businesses/:id` | Salud y cartera ficticia |
+| GET | `/sources`, `/climate/alerts`, `/climate/hazards.geojson`, `/climate/districts.geojson` | Procedencia y cartografía |
+| POST | `/sources/senamhi/refresh`, `/sources/cenepred/review` | Consulta o registro de revisión |
+| GET | `/events`, `/events/:id`, `/events/:id/geometry` | Eventos y alcance geográfico |
+| POST | `/events/:id/analyses` | Encolar análisis con recursos; devuelve ID/estado |
+| POST | `/analyses/:id/retry` | Reintento manual autenticado de una ejecución fallida |
+| GET | `/analyses/:id`, `/analyses/:id/clients/:clientId` | Estado, cifras, escenarios y evidencia |
+| GET / POST | `/analyses/:id/report` | Leer informe / generar con Gemini |
+| GET | `/notifications` | Alertas internas |
+| PATCH | `/notifications/:id/read` | Marcar como leída |
+| POST | `/interventions/drafts` | Crear borradores idempotentes desde un plan |
+| GET / PATCH | `/interventions`, `/interventions/:id` | Revisión y seguimiento |
+| POST | `/demo/events` | Preparar replay o evento ficticio de respaldo |
+| GET | `/audit` | Últimos eventos de auditoría |
 
-Estados: DRAFT → APPROVED → ASSIGNED → CONTACTED → COMPLETED. Cancelar requiere motivo; completar requiere resultado. El backend autoriza y el trigger PostgreSQL protege transiciones.
+La aprobación registra una propuesta local; no ejecuta contratos de crédito. Estados DRAFT → APPROVED → ASSIGNED → CONTACTED → COMPLETED; cancelación y cierre requieren motivo/resultado. El trigger y las transacciones siguen protegiendo el flujo.
 
 ## Verificación
 
@@ -191,16 +142,12 @@ npx playwright install chromium
 npm run test:e2e
 ```
 
-Integración y navegador requieren PostgreSQL migrado y seed. Usar una base de demo: las pruebas crean evaluaciones, planes y borradores sintéticos. `artifacts/demo-results.json` contiene una ejecución real, no un benchmark productivo. Ver el reporte para resultados y límites.
+Integración y navegador usan PostgreSQL de demo con migraciones y seed; generan datos sintéticos adicionales. Las pruebas no hacen llamadas reales a Gemini. El reporte contiene resultados reales, métricas y límites; el workflow CI se conserva, pero no se presupone ejecutado en GitHub.
 
-Regenerar documentos (herramienta opcional Python, independiente de NestJS): `python -m pip install -r requirements-docs.txt`, luego `python scripts/build-documents.py`. El PDF se construye desde SOLUTION_CONCEPT.md y comprueba cinco páginas. Inventario de dependencias: `node scripts/dependency-licenses.mjs`.
+## Supabase y límites
 
-## Alcance y participación
+Cambiar `DATABASE_URL`, `DIRECT_URL` y `DATABASE_SSL=true` manteniendo validación TLS, habilitar PostGIS y aplicar las mismas migraciones. No usar transaction pooler para migraciones. React sigue detrás de NestJS, sin claves privilegiadas. Supabase remoto, Auth y Storage no están verificados/integrados.
 
-No hay modelo predictivo entrenado, importación de cartera real, roles institucionales, notificaciones externas ni despliegue productivo. Las capas CENEPRED son un recorte simplificado de Trujillo; la leyenda GRIDCODE 1–5 es una interpretación por confirmar y los pesos del índice no están calibrados. La vigencia SENAMHI de 24 h es un supuesto. La comprobación de nuevas versiones CENEPRED es manual y el refresco SENAMHI programado está desactivado por defecto. Open-Meteo da contexto puntual, no alimenta el score. El mapa conserva vectores sin teselas; MapLibre se carga diferido por su tamaño.
+La demo cubre lluvias/inundación, micro y pequeña empresa. No cubre todavía sequía/friaje/temperaturas extremas, otros segmentos validados, importador CSV/Parquet, cartera real, fondeo de contingencia, core bancario o canales de contacto externos. El cálculo comparte el proceso Node y no acredita concurrencia productiva. Las leyendas GRIDCODE y la vigencia de 24 h SENAMHI siguen como hipótesis por confirmar.
 
-Todos los componentes actuales, incluida la integración CENEPRED/SENAMHI del 24/11/2026, se declaran previos al presencial. La adaptación nueva propuesta es el evento operativo a partir de avisos vigentes, política operativa versionada, comparación por evento con el Challenge Owner e importación validada de una cartera autorizada. No presentar como nuevo el software ya construido.
-
-Repositorio de origen: https://github.com/jharopr/cajathon-mvp. Los cambios se prepararon localmente; no se presupone push ni envío a la organización.
-
-Las [bases oficiales](https://cajathon.cajatrujillo.com.pe/bases/), consultadas el 24/11/2026, publican conceptos hasta el 24/11, evaluación 25–29/11 y presencial 3–4/12. La tabla no precisa hora de cierre. Verificar ampliaciones y mecanismo de entrega por canales oficiales. El PDF es un complemento, no un formato oficial confirmado.
+Todo el código actual, incluida esta refactorización, es **previo al presencial**. [Declaración de preexistentes](docs/preexisting-components.md). El [concepto actualizado](SOLUTION_CONCEPT.md) describe el alcance real. El [PDF del 24/11](artifacts/ClimaShield_AI_Solution_Concept.pdf), las capturas anteriores y el SVG previo se conservan como evidencia histórica y no representan esta versión.

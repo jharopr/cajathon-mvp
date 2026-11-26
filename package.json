@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "concurrently -k -n API,WEB \"npm:dev:api\" \"npm:dev:web\"",
     "dev:web": "vite --host 127.0.0.1",
-    "dev:api": "tsx --tsconfig tsconfig.api.json watch apps/api/src/main.ts",
+    "dev:api": "tsx watch --tsconfig tsconfig.api.json apps/api/src/main.ts",
     "build": "npm run build:api && npm run build:web",
     "build:api": "tsc -p tsconfig.api.json",
     "build:web": "tsc -b && vite build",
@@ -16,10 +16,12 @@
     "data:export": "tsx scripts/export-data.ts",
     "data:cenepred": "tsx --tsconfig tsconfig.api.json scripts/ingest-cenepred.ts",
     "data:senamhi": "tsx --tsconfig tsconfig.api.json scripts/fetch-senamhi.ts",
-    "test": "tsx --tsconfig tsconfig.api.json --test tests/unit.test.ts",
+    "test": "tsx --tsconfig tsconfig.api.json --test tests/unit.test.ts tests/event-analysis.test.ts",
     "test:integration": "tsx --tsconfig tsconfig.api.json --test tests/integration.test.ts",
     "preview": "vite preview --host 127.0.0.1",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "model:train": "tsx scripts/train-deterioration-model.ts",
+    "history:generate": "tsx --tsconfig tsconfig.api.json scripts/generate-credit-history.ts"
   },
   "dependencies": {
     "@google/genai": "^3.6.1",

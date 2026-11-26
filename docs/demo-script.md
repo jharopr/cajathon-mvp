@@ -1,16 +1,22 @@
-# Demo de cinco minutos
+# Demo por evento · ClimaShield AI
 
-Preparar Docker, migraciones, seed y `npm run dev`; abrir http://127.0.0.1:5180. Mantener .env fuera de pantalla compartida. Configurar Gemini si se demuestra IA real; de lo contrario anunciar resumen local sin IA. Pegar credencial de coordinador solo en el campo password.
+Versión local del 26/11/2026. Cartera/historia ficticias; predicción e impacto experimentales. No ejecutar sobre cartera real.
 
-| Tiempo | Acción / mensaje |
-| --- | --- |
-| 0:00–0:40 | Problema: una alerta no basta para decidir a quién atender; unimos exposición, caja y recursos. |
-| 0:40–1:20 | Mapa con capas CENEPRED (inundación, movimientos en masa, distritos) y aviso SENAMHI vigente. Cartera ficticia; franja de procedencia y calidad de ubicación. Abrir Fuentes de datos: publicación, vigencia, última consulta y política. |
-| 1:20–2:10 | CS-0001: distrito oficial El Porvenir, riesgo inundación alto, R=43.74 explicado. Simular 2500 / −2700 / −820; beneficio neto 1880, brecha 820. |
-| 2:10–3:20 | Plan con 1500 soles/480 minutos; comparar FIFO, cobertura y beneficio hipotético; explicar estado solver. |
-| 3:20–4:10 | Asistente, herramientas y evidencias. Distinguir Gemini real del resumen sin IA. |
-| 4:10–4:40 | Crear borradores, aprobar uno con credencial. Contacto es registro local. |
-| 4:40–5:00 | Arquitectura y nuevo trabajo presencial por evento; esta base se declara previa. |
+1. Arrancar PostgreSQL, migrar, cargar seed e iniciar API/web según README. El modelo ya está versionado. Abrir `http://127.0.0.1:5180`.
+2. Esperar el análisis del evento. Si se usa el aviso del 24/11, señalar **Reproducción de aviso** y fechas vencidas: no es alerta actual. El procesador prepara el análisis sin pregunta al chat.
+3. En Eventos y alertas, distinguir clientes con predicción, saldo expuesto, pérdida modelada y propuestas. Mostrar los casos derivados, incompletos y sin ubicación.
+4. En Clientes, buscar `CS-0001`. Mostrar probabilidad experimental, índice climático separado, factores en logit y percentiles de liquidez. Las cifras se leen de la ejecución, no del ejemplo del Word.
+5. Comparar las dos propuestas del catálogo y sus costos. La reprogramación desplaza cuotas; no reduce la lluvia ni condona capital. La visita tiene un efecto de recuperación hipotético declarado.
+6. Abrir el mapa solo si sirve. Si falla WebGL o las teselas, continuar con tabla y detalle.
+7. En Impacto de cartera, mostrar pérdida sin/con plan, concentración, calendario de principal/intereses/costos, ficha del modelo, comparación sin clima y métricas por grupo. No llamar provisión a la pérdida de escenario.
+8. En Plan y seguimiento, comparar mayor saldo y sector/zona. Explicar que son referencias propuestas, no prácticas de la institución confirmadas. El beneficio neto descuenta el costo operativo de la Caja.
+9. Abrir Coordinador, ingresar la credencial local y crear borradores. Aprobar una propuesta; asignar, registrar contacto y completar con resultado. Estos pasos no envían mensajes ni ejecutan créditos.
+10. Mostrar el informe sin IA. Con clave/cuota, el botón Gemini genera otro informe contextual con evidencia. No es necesario para completar el recorrido ni se usa en las pruebas automáticas.
+11. En Fuentes, mostrar versión, última revisión y vigencia. La revisión CENEPRED exige comprobación humana real y un comentario; no marcarla como realizada solo para decorar la demo.
+12. Exportar evidencia JSON del evento y análisis. Para repetir sin red, usar datos precargados y `EVENT_SOURCE_REFRESH_MINUTES=0` en el entorno de arranque; no mostrar un replay como aviso vigente.
 
-Sin red externa el flujo principal funciona con PostgreSQL local y la instantánea SENAMHI versionada (sus avisos aparecen como vencidos); pueden faltar teselas. El modo Sintética reproduce las cifras de referencia (591 expuestos, 145 alta, CS-0001 = 72.9). Sin WebGL usar Negocios. Exportar JSON de evidencia. La prueba de protocolo con cliente controlado no acredita ejecución del proveedor.
+## Respaldo y límites
 
+La grabación de respaldo está en `artifacts/ClimaShield_event_demo.webm`; las capturas verificadas están en `docs/mockup-events.png` y `docs/mockup-event-mobile.png`. La grabación es una ejecución reproducida, no conexión en vivo. Las cifras verificadas están en `artifacts/event-results.json` y el reporte de validación.
+
+Todos estos componentes y la preparación de esta demo son anteriores al presencial. La demo no demuestra calibración real, ahorro observado, eficacia causal, cobertura de sequía u otros segmentos ni despliegue productivo.

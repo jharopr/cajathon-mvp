@@ -1,5 +1,7 @@
 # Reporte de validación
 
+La validación vigente de la refactorización está en el último anexo del **26/11/2026**. Las secciones del 24/11 y el primer anexo documental se conservan como evidencia histórica; PostgreSQL se inició posteriormente y sí se ejecutaron integración y navegador.
+
 Ejecutado **24/11/2026, America/Lima** (21:00–22:00) en Windows, Node 24.13.0 y Docker Desktop. PostgreSQL 16/PostGIS 3.4 local, imágenes reconstruidas para API NestJS y frontend React/Nginx. Cartera ficticia seed 42: 1000 negocios y 1001 créditos. Amenazas: cartografía CENEPRED (SHAPE 102) y avisos SENAMHI reales, más el escenario sintético de referencia. No se usó cartera real.
 
 ## Comandos y resultados observados
@@ -72,3 +74,111 @@ Estas cifras no acreditan ahorro real, eficacia causal, predicción de mora ni d
 - No se hizo push, despliegue público ni envío a la organización.
 
 Capturas: [escritorio](mockup-desktop.png), [fuentes](mockup-sources.png), [móvil sin teselas](mockup-mobile.png).
+
+## Anexo: revisión documental del 26/11/2026
+
+Se añadió [el plan de refactorización según los puntos de mejora](plan-refactorizacion-puntos-mejora.md), contrastando el Word del usuario con el concepto, la arquitectura, el historial Git y el código actual. Es una propuesta; no se implementaron predicción, eventos, alertas ni eliminaciones de funcionalidad. Todos los componentes actuales siguen declarados previos al presencial.
+
+| Comando / comprobación | Resultado observado en esta sesión |
+| --- | --- |
+| `npm test` | 12 pruebas aprobadas; 0 fallos |
+| `npm run build` | API NestJS y frontend React/Vite compilan; Vite advierte sobre el chunk de MapLibre de aproximadamente 1.10 MB antes de gzip |
+| `docker compose ps --format json` | No pudo conectar al motor Linux de Docker Desktop; named pipe no disponible |
+| Conexión a PostgreSQL configurado, `SELECT` de disponibilidad | Conexión rechazada: `ECONNREFUSED`; no se imprimieron credenciales ni se cambió la configuración |
+| `npm run test:integration` | No ejecutado: PostgreSQL no disponible |
+| `npm run test:e2e` | No ejecutado: requiere API con PostgreSQL disponible |
+
+Los resultados del 24/11 de las secciones anteriores se conservan como evidencia histórica, no como ejecuciones repetidas hoy. Las pruebas y el build de este anexo validan la base existente; no validan capacidades descritas como futuras en el plan. No se ejecutaron migraciones, seed, reset, llamadas reales a Gemini ni despliegues.
+
+## Refactorización implementada y validada: 26/11/2026
+
+Base previa: `cd9303d`. Trabajo local del 26/11, antes del presencial. El Word de mejoras se usó como insumo y se implementó el alcance recortado del [plan](plan-refactorizacion-puntos-mejora.md). Se preservan los documentos previos en `docs/archive/` y las evidencias del 24/11; no se reinterpretan como resultados del nuevo motor.
+
+Docker Desktop se inició de forma local y PostgreSQL/PostGIS quedó disponible. La limitación de conexión descrita en el anexo documental anterior quedó resuelta para estas pruebas. No se modificaron secretos ni las migraciones ya aplicadas; no hubo reset ni borrado de cartera.
+
+| Comando / comprobación | Resultado observado |
+| --- | --- |
+| `npm run db:migrate` | 0001–0003 verificadas por checksum; 0004 y 0005 aplicadas como migraciones nuevas; reejecución idempotente |
+| `npm run db:seed` | Conserva 1,000 negocios y 1,001 créditos; CENEPRED sin cambios por checksum; snapshot SENAMHI anterior conservado |
+| `npm run model:train` | Modelo logístico TS reproducible, artefacto versionado; sin Python ni cuota de IA |
+| `npm test` | **23 aprobadas, 0 fallos**: incluye temporalidad, corte mensual Lima, centavos BigInt, escenarios pareados, objetivo de cartera, identidad de aviso, activación automática y protocolo Gemini controlado |
+| `npm run build` | API NestJS y frontend React/Vite compilan. Se repitió `build:web` tras los últimos ajustes de etiquetas y métricas |
+| `npm run test:integration` | **11 aprobadas, 0 fallos** (10 subpruebas + contenedor padre), PostgreSQL/PostGIS reales; aproximadamente 27 s |
+| `npm run test:e2e` | **3 aprobadas, 0 fallos**, ejecución final ≈17 s: recorrido completo y apertura de plan desde alerta, reutilización de análisis con restricciones, móvil sin WebGL y mapa sin teselas |
+| `git diff --check` | Sin errores de whitespace; avisos de normalización LF/CRLF de Git en Windows |
+| Migraciones antiguas / `.env` | Sin diff en 0001–0003; `.env` continúa excluido de Git |
+
+### Casos comprobados en integración
+
+- Inmutabilidad de eventos/modelos, evento de replay identificado y geometría recuperable. Las rutas del chat abierto y Open-Meteo ya no existen.
+- 24 períodos por cada uno de 1,001 créditos: **24,024 filas por snapshot**. El seed no reescribe la cartera.
+- Un análisis/job para las mismas entradas; validación de restricciones y rechazo sin credencial.
+- Predicciones, plan y notificación guardados en una transacción, con unicidad e importes financieros NUMERIC conciliados contra la evidencia JSON.
+- Recuperación de un lease vencido y finalización sin duplicar plan/notificación. Tras el tercer intento interrumpido, estado FAILED; reintento explícito autenticado y recuperación comprobados.
+- Borradores idempotentes, aprobación autorizada, transición inválida rechazada y auditoría registrada. Ninguna aprobación automática o contacto externo.
+- Se conserva la referencia espacial de 591 expuestos sintéticos, punto en borde incluido, UNKNOWN sin ubicación y saldo sin duplicación con varios créditos/peligros.
+
+### Ejecución del nuevo motor
+
+Salida: [event-results.json](../artifacts/event-results.json). Evento reproducido de SENAMHI del 24/11, intensidad de demo 0.45, cartera ficticia y corte anterior al evento. No es aviso vigente ni cartera real.
+
+| Magnitud | Resultado de referencia |
+| --- | --- |
+| Cartera total | 1,000 negocios, 1,001 créditos |
+| Clientes con predicción experimental | 777 |
+| Datos/geocodificación por revisar | 159 |
+| Ya deteriorados, derivados | 63 |
+| Sin ubicación | 1 |
+| Expuestos espaciales únicos | 719 |
+| Saldo expuesto deduplicado | S/20,070,200.00; no es pérdida |
+| Saldo ponderado por deterioro | S/3,424,559.05; no es pérdida |
+| Pérdida modelada sin plan | S/856,139.86 |
+| Pérdida modelada con plan | S/844,906.79 |
+| Reducción bruta / neta modelada | S/11,233.07 / S/9,753.07 |
+| Plan | 13 propuestas: 1 evaluación de reprogramación, 12 visitas de liquidez |
+| Recursos usados | S/1,480.00 de S/1,500 y 375 de 480 minutos; mínimo de alta 0 |
+| Comparación mayor saldo / sector-zona | Beneficio neto de escenario S/3,630.12 / S/4,972.07, mismos recursos y elegibilidad |
+| Estado del solver | OPTIMAL para esta ejecución; otras restricciones pueden activar poda y perder certificación |
+
+Bodega Horizonte: índice territorial de referencia **21.87**, distinto del 43.74 del escenario severo histórico; se usó la intensidad del aviso reproducido. Probabilidad experimental **16.46%**, pérdida de escenario **S/987.76**. No se reutilizaron las cifras ilustrativas 68% o S/480,000 del Word.
+
+### Modelo: métricas sintéticas reales
+
+Artefacto: [deterioration-v1.json](../data/models/deterioration-v1.json). Regresión logística regularizada y normalización exportada. Hash `d055e7bb83775206925213bcb7d8b38b976ed10510f139194ede74c3451c4c60`.
+
+| Evaluación | N | ROC-AUC | PR-AUC | Brier |
+| --- | --- | --- | --- | --- |
+| Entrenamiento | 1,464 | 0.6963 | 0.5388 | 0.1556 |
+| Validación temporal | 693 | 0.7432 | 0.5423 | 0.1312 |
+| Prueba temporal | 1,398 | 0.6065 | 0.3853 | 0.1533 |
+| Clientes no vistos | 191 | 0.6164 | 0.4258 | 0.1324 |
+| Tasa base, misma prueba | 1,398 | 0.5000 | 0.2017 | 0.1620 |
+| Sin variables climáticas, misma prueba | 1,398 | 0.5963 | 0.2949 | 0.1596 |
+
+Con umbral 0.35 en prueba: precisión 0.4167 y recall 0.2837. El umbral de prioridad operativa alta de demo es 0.45 y se declara por separado. Se publican bins de calibración y métricas por zona/segmento con sus tamaños. Estos resultados muestran discriminación modesta y calibración imperfecta incluso en datos ficticios; no acreditan predicción institucional ni ausencia de sesgos reales. Las ventanas de prueba de un mismo cliente están relacionadas; se incluye evaluación adicional con clientes no vistos y no se afirma independencia de todas las filas.
+
+### Limitaciones vigentes
+
+- Modelo, historia, política, costos, severidad 25% y efecto de facilidades son sintéticos. El 10% histórico citado en el Word no se usa como severidad universal.
+- Calendario financiero hipotético con principal 88% e interés 12% de cuota por período; no representa un contrato o tasa real. Pérdida de escenario no es provisión regulatoria ni estados financieros certificados.
+- El simulador reporta percentiles y frecuencia de brecha; no intervalos de confianza del modelo ni efecto causal de una acción.
+- No se validó una nueva emisión SENAMHI en vivo en estas pruebas; usan snapshot y cliente WFS controlado. CENEPRED requiere revisión humana registrada; falta confirmar GRIDCODE, vigencia SENAMHI y condiciones de uso.
+- El procesador comparte el proceso Node: los cálculos completos observados tardaron aproximadamente 7–8 s y pueden bloquear temporalmente HTTP. No se acredita capacidad productiva.
+- MapLibre conserva chunk de aproximadamente 1.10 MB antes de gzip; se carga al abrir el mapa. El JS principal bajó aproximadamente de 266.69 KB a 234.76 KB antes de gzip, sin medir rendimiento de usuario final.
+- Sin segundo evento, otros segmentos validados, importador, cartera real, fondeo de contingencia, Auth institucional, core, contactos externos ni Supabase remoto comprobado.
+- Gemini se probó con un cliente controlado y límites/herramientas; no se realizó una nueva llamada real al proveedor, ni consumo de cuota, durante esta refactorización.
+- El workflow de GitHub se conserva pero no se ejecutó remotamente. No hubo push, despliegue, envío al organizador ni aprobación crediticia real.
+
+Todos los componentes añadidos el 26/11 son **previos al presencial**, como se registra en [preexisting-components.md](preexisting-components.md).
+
+### Evidencias visuales y respaldo
+
+Se inspeccionaron las capturas de escritorio, impacto, revisión del plan y móvil de la última ejecución. El recorrido verifica la ausencia de errores de página, la apertura del análisis correcto desde una alerta y la conservación de la restricción elegida al reutilizar una ejecución anterior. Móvil probado a 375 px, escritorio a 1440 px e intermedio a 768 px; la tabla y el detalle siguen disponibles sin WebGL/teselas y no hay desbordamiento horizontal del documento en esos casos.
+
+Capturas de esta versión: [eventos](mockup-events.png), [impacto](mockup-event-impact.png) y [móvil sin WebGL](mockup-event-mobile.png). Grabación del recorrido: [demo reproducida](../artifacts/ClimaShield_event_demo.webm). El video contiene una demo con cartera ficticia, sin contacto externo ni llamada real a Gemini. No sustituye la validación de un aviso en vivo o de un piloto institucional.
+
+### Arranque de desarrollo comprobado posteriormente, 26/11/2026
+
+Se corrigió `dev:api` a `tsx watch --tsconfig tsconfig.api.json apps/api/src/main.ts`: el orden anterior interpretaba `watch` como archivo e impedía iniciar `npm run dev`. Web y API quedaron activos localmente; ambos respondieron HTTP 200 en `http://127.0.0.1:5180` y `http://127.0.0.1:8081/api/v1/health`. PostgreSQL sigue en Docker, puerto local 54322.
+
+Se repitieron unitarias (23 aprobadas), build (correcto), integración (11 aprobadas, aproximadamente 20 s) y navegador reutilizando los servidores de desarrollo (3 aprobadas, aproximadamente 11 s). La primera repetición de integración detectó una suposición incorrecta del fixture de fallo: exigía cero notificaciones incluso para un análisis ya ejecutado anteriormente. Se corrigió para comprobar que no aumente el conteo y para esperar la recuperación del job cuando hay otro procesador activo. La ejecución posterior pasó; no se cambiaron resultados financieros ni reglas del producto por ese ajuste de pruebas.

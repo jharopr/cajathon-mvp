@@ -1,106 +1,448 @@
-import 'reflect-metadata';
-import 'dotenv/config';
-import test from 'node:test';
-import assert from 'node:assert/strict';
-import { writeFile,mkdir } from 'node:fs/promises';
-import { createApp } from '../apps/api/src/main.js';
-import { pool } from '../apps/api/src/database.js';
-import { uid } from '../apps/api/src/data.js';
-import { migrate } from '../scripts/migrate.js';
-import { loadCenepred,persistSenamhi,SOURCE_IDS } from '../apps/api/src/official.js';
+import "reflect-metadata";
+import "dotenv/config";
+import test from "node:test";
+import assert from "node:assert/strict";
+import { mkdir, writeFile } from "node:fs/promises";
+import { Decimal } from "decimal.js";
+import { createApp } from "../apps/api/src/main.js";
+import { pool, transaction } from "../apps/api/src/database.js";
+import { AnalysisService } from "../apps/api/src/analysis/analysis.service.js";
+import { EventsService } from "../apps/api/src/climate/events.service.js";
+import { Repository } from "../apps/api/src/climate/exposure.repository.js";
+import { migrate } from "../scripts/migrate.js";
+import { seed } from "../scripts/seed.js";
 
-test('integración PostgreSQL/PostGIS y flujo HTTP NestJS',async t=>{
-  await migrate(); // volver a aplicar verifica idempotencia y checksums.
-  const app=await createApp();await app.listen(0,'127.0.0.1');
-  const base=await app.getUrl();
-  async function request(path:string,body?:unknown,method='POST',token?:string) {
-    const res=await fetch(base+'/api/v1'+path,{method:body===undefined?'GET':method,headers:{'Content-Type':'application/json',...(token?{'X-Coordinator-Token':token}:{})},body:body===undefined?undefined:JSON.stringify(body)});
-    return {status:res.status,data:await res.json() as any};
+test("flujo por evento con PostgreSQL/PostGIS reales", async (t) => {
+  await migrate();
+  await seed();
+  const app = await createApp({ background: false });
+  await app.listen(0, "127.0.0.1");
+  const base = await app.getUrl(),
+    service = app.get(AnalysisService),
+    events = app.get(EventsService),
+    repo = app.get(Repository),
+    token = process.env.DEMO_COORDINATOR_TOKEN ?? "";
+  async function request(
+    path: string,
+    body?: unknown,
+    method = "POST",
+    credential?: string,
+  ) {
+    const response = await fetch(base + "/api/v1" + path, {
+      method: body === undefined ? "GET" : method,
+      headers: {
+        "Content-Type": "application/json",
+        ...(credential ? { "X-Coordinator-Token": credential } : {}),
+      },
+      body: body === undefined ? undefined : JSON.stringify(body),
+    });
+    return { status: response.status, data: (await response.json()) as any };
   }
-  let run:any,plan:any,official:any;
+  let eventId: string, analysisId: string, detail: any;
+  async function complete(id:string) {
+    const deadline=Date.now()+30000;
+    while(Date.now()<deadline){
+      if((await service.detail(id)).status==='COMPLETED')return;
+      await service.processOne();
+      await new Promise(resolve=>setTimeout(resolve,100));
+    }
+    assert.fail('La ejecución no terminó en 30 segundos');
+  }
   try {
-    await t.test('salud y tablas base',async()=>{assert.equal((await request('/health')).status,200);const tables=await pool.query("SELECT count(*) FROM information_schema.tables WHERE table_schema='climashield'");assert.equal(+tables.rows[0].count,13);});
-    await t.test('cruce espacial, borde, desconocido y saldo deduplicado',async()=>{
-      const r=await request('/risk/assess',{scenario_id:'severo',hazard_source:'synthetic'});assert.equal(r.status,201);run=r.data;
-      assert.equal(run.summary.total,1000);assert.equal(run.summary.unknown,1);assert.equal(run.items.find((b:any)=>b.code==='CS-0001').score,72.9);
-      assert.equal(run.items.find((b:any)=>b.code==='CS-0002').exposed,true);assert.equal(run.items.find((b:any)=>b.code==='CS-0003').score,null);assert.equal(run.items.find((b:any)=>b.code==='CS-0005').exposed,false);
-      const total=run.items.filter((b:any)=>b.exposed).reduce((sum:number,b:any)=>sum+Math.round(+b.balance*100),0);
-      assert.equal(+run.summary.exposed_balance*100,total);assert.ok(run.items.some((b:any)=>b.evaluations.filter((e:any)=>e.exposure===1).length>1));
-      assert.equal(+run.items.find((b:any)=>b.code==='CS-0006').balance,+(await request('/businesses/'+uid('5'))).data.balance);
-      const saved=await request('/risk/portfolio?run_id='+run.id);assert.equal(saved.data.items.length,1000);
-    });
-    await t.test('geometrías inválidas rechazadas y vigencia separada',async()=>{
-      const c=await pool.connect();try {await c.query('BEGIN');await assert.rejects(c.query("UPDATE climashield.climate_hazards SET geometry=ST_GeomFromText('POLYGON((0 0,1 1,1 0,0 1,0 0))',4326) WHERE id=$1",[uid('hazard0')]));}finally {await c.query('ROLLBACK');c.release();}
-      const expired=await pool.query("SELECT count(*) FROM climashield.climate_hazards WHERE '2027-01-01'::timestamptz BETWEEN valid_from AND valid_until");assert.equal(+expired.rows[0].count,0);
-    });
-    await t.test('cartografía oficial: carga idempotente, geometrías válidas y procedencia',async()=>{
-      const c=await pool.connect();try {await c.query('BEGIN');assert.equal((await loadCenepred(c)).loaded,false);}finally {await c.query('ROLLBACK');c.release();}
-      const zones=await pool.query("SELECT layer,count(*)::int AS n,bool_and(ST_IsValid(geometry)) AS valid,bool_and(NOT synthetic) AS official FROM climashield.official_hazard_zones WHERE source_id=$1 GROUP BY layer",[SOURCE_IDS.cenepred]);
-      assert.deepEqual(zones.rows.map(r=>r.layer).sort(),['cenepred_suscep_inundacion','cenepred_suscep_mmasa']);assert.ok(zones.rows.every(r=>r.valid&&r.official&&r.n>100));
-      assert.equal(+(await pool.query('SELECT count(DISTINCT ubigeo) FROM climashield.district_risk_scenarios WHERE source_id=$1',[SOURCE_IDS.cenepred])).rows[0].count,12);
-      const sources=(await request('/sources')).data,cenepred=sources.items.find((s:any)=>s.data_kind==='official_static');
-      assert.equal(cenepred.freshness,'current');assert.match(cenepred.version,/^cenepred-102@/);assert.equal(sources.policy.length,4);
-      const layer=(await request('/climate/hazards.geojson')).data;assert.equal(layer.features.filter((f:any)=>f.properties.kind==='susceptibility').length,zones.rows.reduce((s,r)=>s+r.n,0));
-      assert.equal((await request('/climate/districts.geojson')).data.features.length,12);assert.equal((await request('/climate/hazards.geojson?source=otro')).status,422);
-    });
-    await t.test('evaluación oficial: distrito, respaldo distrital, ubicación, UNKNOWN y saldo deduplicado',async()=>{
-      const r=await request('/risk/assess',{scenario_id:'severo'});assert.equal(r.status,201);official=r.data;
-      assert.equal(official.hazard_source,'official');assert.equal(official.summary.total,1000);assert.equal(official.summary.unknown,1);
-      const b1=official.items.find((b:any)=>b.code==='CS-0001');
-      assert.equal(b1.official_district,'EL PORVENIR');assert.equal(b1.district_risk.flood,'Alto');assert.equal(b1.score,43.74);assert.equal(b1.exposed,true);
-      assert.equal(official.items.find((b:any)=>b.code==='CS-0003').score,null);assert.match(official.items.find((b:any)=>b.code==='CS-0002').location_issue,/Laredo.*TRUJILLO/);
-      assert.ok(official.summary.location_issues>0&&official.summary.point_zone>0&&official.summary.exposed>0);
-      for(const b of official.items) for(const e of b.evaluations) {
-        if(e.kind==='susceptibility')assert.equal(e.exposure,1);
-        if(e.kind==='district')assert.ok(e.exposure>=0&&e.exposure<=1);
-        if(e.kind==='alert')assert.equal(e.score,null);
-      }
-      const total=official.items.filter((b:any)=>b.exposed).reduce((sum:number,b:any)=>sum+Math.round(+b.balance*100),0);assert.equal(Math.round(+official.summary.exposed_balance*100),total);
-      const saved=await pool.query('SELECT hazard_source,source_versions FROM climashield.evaluation_runs WHERE id=$1',[official.id]);
-      assert.equal(saved.rows[0].hazard_source,'official');assert.ok(saved.rows[0].source_versions.some((s:any)=>s.id===SOURCE_IDS.cenepred));
-      assert.equal((await request('/risk/assess',{scenario_id:'severo',hazard_source:'inventada'})).status,422);
-    });
-    await t.test('SENAMHI: persistencia recortada, conservación ante caída y refresco autorizado',async()=>{
-      const c=await pool.connect();
-      try {
-        await c.query('BEGIN');
-        const feature={type:'Feature',geometry:{type:'Polygon',coordinates:[[[-80,-9],[-80,-7],[-78,-7],[-80,-9]]]},properties:{gid:'test-1',nivel:'Nivel 3',fecha:'2026-11-24Z'}};
-        const saved=await persistSenamhi(c,{status:'live',retrieved_at:'2099-01-01T00:00:00Z',layers:[{typeName:'g_prono_pp_24h:view_aviso24h',layer:'senamhi_aviso_lluvia',status:'live',total:1,rejected:0,features:[feature as any]}]});
-        assert.equal(saved.stored,1);
-        const row=(await c.query("SELECT level,ST_CoveredBy(geometry,ST_Buffer(ST_MakeEnvelope(-79.2,-8.25,-78.9,-7.98,4326),1e-9)) AS inside FROM climashield.official_hazard_zones WHERE external_id='senamhi_aviso_lluvia:2026-11-24:test-1'")).rows[0];
-        assert.equal(row.level,3);assert.equal(row.inside,true);
-        const count=async()=>+(await c.query("SELECT count(*) FROM climashield.official_hazard_zones WHERE layer LIKE 'senamhi%'")).rows[0].count,before=await count();
-        await persistSenamhi(c,{status:'unavailable',retrieved_at:new Date().toISOString(),layers:[]});
-        assert.equal(await count(),before);assert.equal((await c.query('SELECT status FROM climashield.data_sources WHERE id=$1',[SOURCE_IDS.senamhi])).rows[0].status,'unavailable');
-      }finally {await c.query('ROLLBACK');c.release();}
-      assert.equal((await request('/sources/senamhi/refresh',{})).status,403);
-    });
-    await t.test('simulación y validaciones API',async()=>{
-      const r=await request('/simulation/run',{business_id:uid('0')});assert.equal(r.status,201);assert.equal(r.data.net_benefit,'1880.00');assert.equal(r.data.mitigated_cash,'-820.00');
-      assert.equal((await request('/simulation/run',{business_id:uid('3')})).status,400);assert.equal((await request('/simulation/run',{business_id:uid('0'),days_closed:31})).status,422);
-      assert.equal((await request('/businesses/'+uid('nonexistent'))).status,404);
-    });
-    await t.test('optimización, recursos y cobertura',async()=>{
-      const r=await request('/optimization/run',{run_id:run.id,budget_pen:1500,capacity_minutes:480,min_high_priority:2});assert.equal(r.status,201);plan=r.data;
-      assert.ok(['OPTIMAL','FEASIBLE'].includes(plan.solver_status));assert.ok(+plan.metrics.cost<=1500);assert.ok(plan.metrics.minutes<=480);assert.ok(plan.metrics.high_coverage>=2);assert.ok(+plan.metrics.net_benefit>=+plan.baseline.net_benefit);
-      assert.equal(new Set(plan.selected.map((c:any)=>c.business_id)).size,plan.selected.length);
-      const no=await request('/optimization/run',{run_id:run.id,budget_pen:0,capacity_minutes:0,min_high_priority:1});assert.equal(no.data.solver_status,'INFEASIBLE');
-    });
-    await t.test('borradores idempotentes, autorización y auditoría',async()=>{
-      const draft=await request('/interventions/drafts',{plan_id:plan.id});assert.equal(draft.data.created,plan.selected.length);assert.equal((await request('/interventions/drafts',{plan_id:plan.id})).data.created,0);
-      const list=(await request('/interventions')).data.items,id=list.find((i:any)=>i.plan_id===plan.id).id;
-      assert.equal((await request('/interventions/'+id,{status:'APPROVED'},'PATCH')).status,403);
-      const token=process.env.DEMO_COORDINATOR_TOKEN;assert.ok(token,'Configurar DEMO_COORDINATOR_TOKEN en .env para esta prueba');
-      assert.equal((await request('/interventions/'+id,{status:'COMPLETED'},'PATCH',token)).status,409);
-      for(const status of ['APPROVED','ASSIGNED','CONTACTED','COMPLETED'])assert.equal((await request('/interventions/'+id,{status,reason:'Resultado de prueba sintético'},'PATCH',token)).status,200);
-      const audit=(await request('/audit')).data.items;assert.ok(audit.some((e:any)=>e.entity_id===id&&e.action==='STATUS_CHANGED'));
-    });
-    await t.test('asistente sin clave usa fallback explícito',async()=>{
-      if(process.env.GEMINI_API_KEY||process.env.LLM_API_KEY) return t.diagnostic('Hay clave: la prueba live se ejecuta por separado, no se consume cuota automáticamente.');
-      const r=await request('/agent/run',{run_id:run.id,question:'Resume la exposición'});assert.equal(r.status,201);assert.equal(r.data.mode,'deterministic');assert.ok(r.data.evidence.length);
-    });
-    await mkdir('artifacts',{recursive:true});
-    await writeFile('artifacts/demo-results.json',JSON.stringify({executed_at:new Date().toISOString(),risk:run.summary,official:official?.summary,official_sources:official?.source_versions?.map((x:any)=>({name:x.name,version:x.version,status:x.status,last_checked_at:x.last_checked_at})),plan:{solver_status:plan.solver_status,metrics:plan.metrics,baseline:plan.baseline,pruned:plan.pruned,elapsed_ms:plan.elapsed_ms}},null,2));
-  }finally {await app.close();await pool.end();}
+    await t.test(
+      "migraciones aditivas verificadas, PostGIS y datos conservados",
+      async () => {
+        assert.equal((await request("/health")).status, 200);
+        assert.equal(
+          +(
+            await pool.query(
+              "SELECT count(*) FROM climashield.schema_migrations",
+            )
+          ).rows[0].count,
+          5,
+        );
+        assert.equal(
+          +(await pool.query("SELECT count(*) FROM climashield.businesses"))
+            .rows[0].count,
+          1000,
+        );
+        const r = await pool.query(
+          "SELECT ST_Covers(ST_MakeEnvelope(0,0,1,1,4326),ST_SetSRID(ST_MakePoint(1,1),4326)) AS border",
+        );
+        assert.equal(r.rows[0].border, true);
+      },
+    );
+    await t.test(
+      "evento de reproducción inmutable e idempotente; API retira pantallas antiguas",
+      async () => {
+        eventId = await events.ensureDemo();
+        assert.equal(await events.ensureDemo(), eventId);
+        assert.equal((await request("/climate/live")).status, 404);
+        assert.equal((await request("/agent/run", {})).status, 404);
+        const event = (await request("/events/" + eventId)).data;
+        assert.ok(["REPLAY", "SYNTHETIC"].includes(event.mode));
+        assert.equal(event.active, false);
+        assert.equal(
+          (await request("/events/" + eventId + "/geometry")).data.features
+            .length,
+          1,
+        );
+        await assert.rejects(
+          transaction((c) =>
+            c.query(
+              "UPDATE climashield.climate_events SET name=$2 WHERE id=$1",
+              [eventId, "Mutación"],
+            ),
+          ),
+        );
+      },
+    );
+    await t.test(
+      "enfila una sola ejecución para los mismos datos, política y recursos",
+      async () => {
+        assert.equal(
+          (await request("/events/" + eventId + "/analyses", {})).status,
+          403,
+        );
+        const queued = await request(
+          "/events/" + eventId + "/analyses",
+          {},
+          "POST",
+          token,
+        );
+        assert.equal(queued.status, 201);
+        analysisId = queued.data.id;
+        const duplicate = await request(
+          "/events/" + eventId + "/analyses",
+          {},
+          "POST",
+          token,
+        );
+        assert.equal(duplicate.data.id, analysisId);
+        assert.equal(
+          +(
+            await pool.query(
+              "SELECT count(*) FROM climashield.event_jobs WHERE analysis_id=$1",
+              [analysisId],
+            )
+          ).rows[0].count,
+          1,
+        );
+        assert.equal(
+          (
+            await request(
+              "/events/" + eventId + "/analyses",
+              { budget_pen: -1 },
+              "POST",
+              token,
+            )
+          ).status,
+          422,
+        );
+      },
+    );
+    await t.test(
+      "historia 24 meses por crédito y snapshots versionados, sin alterar cartera",
+      async () => {
+        const count = await pool.query(
+          "SELECT count(*) AS n FROM climashield.loan_payment_history h JOIN climashield.analysis_runs a ON a.snapshot_id=h.snapshot_id WHERE a.id=$1",
+          [analysisId],
+        );
+        assert.equal(+count.rows[0].n, 1001 * 24);
+        assert.equal(
+          +(await pool.query("SELECT count(*) FROM climashield.loans")).rows[0]
+            .count,
+          1001,
+        );
+        await assert.rejects(
+          transaction((c) =>
+            c.query("UPDATE climashield.model_versions SET artifact=$1", [
+              "{}",
+            ]),
+          ),
+        );
+      },
+    );
+    await t.test(
+      "procesador publica plan y alerta en una transacción; UNKNOWN separado",
+      async () => {
+        await complete(analysisId);
+        detail = (await request("/analyses/" + analysisId)).data;
+        assert.equal(detail.status, "COMPLETED", JSON.stringify(detail.job));
+        assert.equal(detail.clients.length, 1000);
+        assert.equal(detail.report.mode, "deterministic");
+        assert.equal(
+          detail.clients.find((c: any) => c.code === "CS-0003").probability,
+          null,
+        );
+        assert.equal(
+          detail.clients.find((c: any) => c.code === "CS-0004").status,
+          "INCOMPLETE",
+        );
+        assert.ok(
+          detail.clients.every(
+            (c: any) =>
+              c.probability === null ||
+              (c.probability >= 0 && c.probability <= 1),
+          ),
+        );
+        const loss = detail.clients.reduce(
+          (s: Decimal, c: any) => s.plus(c.modeled_loss ?? 0),
+          new Decimal(0),
+        );
+        assert.ok(loss.eq(detail.result.summary.modeled_loss));
+        assert.equal(
+          +(
+            await pool.query(
+              "SELECT count(*) FROM climashield.notifications WHERE analysis_id=$1",
+              [analysisId],
+            )
+          ).rows[0].count,
+          1,
+        );
+        assert.equal(
+          +(
+            await pool.query(
+              "SELECT count(*) FROM climashield.optimization_plans WHERE analysis_id=$1",
+              [analysisId],
+            )
+          ).rows[0].count,
+          1,
+        );
+        assert.ok(+detail.plan.metrics.cost <= 1500);
+        assert.ok(detail.plan.metrics.minutes <= 480);
+        assert.equal(
+          new Set(detail.plan.selected.map((c: any) => c.business_id)).size,
+          detail.plan.selected.length,
+        );
+        assert.ok(detail.model.metrics.test.n > 0);
+        assert.ok(detail.model.group_metrics.zone.length > 0);
+        const periods = (
+          await pool.query(
+            "SELECT *,pg_typeof(principal_without)::text AS storage_type FROM climashield.financial_projection_periods WHERE analysis_id=$1 ORDER BY month",
+            [analysisId],
+          )
+        ).rows;
+        assert.equal(periods.length, detail.result.bridge.length);
+        assert.equal(periods[0].storage_type, "numeric");
+        assert.equal(periods[0].cash_delta, detail.result.bridge[0].cash_delta);
+      },
+    );
+    await t.test(
+      "recupera un trabajo tras reinicio sin duplicar plan o alerta",
+      async () => {
+        const q = await service.enqueue(eventId, {
+          budget_pen: 1499,
+          capacity_minutes: 470,
+        });
+        await pool.query(
+          "UPDATE climashield.event_jobs SET status='RUNNING',attempts=1,lease_until=now()-interval '1 minute' WHERE analysis_id=$1",
+          [q.id],
+        );
+        await pool.query("UPDATE climashield.analysis_runs SET status='RUNNING' WHERE id=$1",[q.id]);
+        await complete(q.id);
+        const recovered = await service.detail(q.id);
+        assert.equal(recovered.status, "COMPLETED");
+        assert.equal(
+          +(
+            await pool.query(
+              "SELECT count(*) FROM climashield.notifications WHERE analysis_id=$1",
+              [q.id],
+            )
+          ).rows[0].count,
+          1,
+        );
+      },
+    );
+    await t.test(
+      "un tercer intento interrumpido termina en FAILED sin publicar otro aviso",
+      async () => {
+        const q = await service.enqueue(eventId, {
+          budget_pen: 1498,
+          capacity_minutes: 460,
+        });
+        const previousNotifications=+(await pool.query('SELECT count(*) FROM climashield.notifications WHERE analysis_id=$1',[q.id])).rows[0].count;
+        await pool.query(
+          "UPDATE climashield.event_jobs SET status='RUNNING',attempts=3,lease_until=now()-interval '1 minute' WHERE analysis_id=$1",
+          [q.id],
+        );
+        await service.processOne();
+        assert.equal((await service.detail(q.id)).status, "FAILED");
+        assert.equal(
+          +(
+            await pool.query(
+              "SELECT count(*) FROM climashield.notifications WHERE analysis_id=$1",
+              [q.id],
+            )
+          ).rows[0].count,
+          previousNotifications,
+        );
+        assert.equal(
+          (await request("/analyses/" + q.id + "/retry", {})).status,
+          403,
+        );
+        assert.equal(
+          (await request("/analyses/" + q.id + "/retry", {}, "POST", token))
+            .status,
+          201,
+        );
+        await complete(q.id);
+        assert.equal((await service.detail(q.id)).status, "COMPLETED");
+      },
+    );
+    await t.test(
+      "saldo de referencia deduplicado por negocio y borde incluido",
+      async () => {
+        const run = await repo.assess("severo", "synthetic");
+        assert.equal(run.summary.exposed, 591);
+        const sum = run.items
+          .filter((c) => c.exposed)
+          .reduce((s, c) => s.plus(c.balance), new Decimal(0));
+        assert.ok(sum.eq(run.summary.exposed_balance));
+        assert.equal(
+          run.items.find((c) => c.code === "CS-0002")!.exposed,
+          true,
+        );
+        assert.equal(run.items.find((c) => c.code === "CS-0003")!.score, null);
+      },
+    );
+    await t.test(
+      "borradores idempotentes y autorización, estados y auditoría reales",
+      async () => {
+        assert.ok(detail.plan.selected.length > 0);
+        assert.equal(
+          (await request("/interventions/drafts", { plan_id: detail.plan.id }))
+            .status,
+          403,
+        );
+        assert.equal(
+          (
+            await request(
+              "/interventions/drafts",
+              { plan_id: detail.plan.id },
+              "POST",
+              token,
+            )
+          ).status,
+          201,
+        );
+        assert.equal(
+          (
+            await request(
+              "/interventions/drafts",
+              { plan_id: detail.plan.id },
+              "POST",
+              token,
+            )
+          ).data.created,
+          0,
+        );
+        const first = (
+          await request("/interventions?analysis_id=" + analysisId)
+        ).data.items[0];
+        assert.equal(
+          (
+            await request(
+              "/interventions/" + first.id,
+              { status: "APPROVED" },
+              "PATCH",
+            )
+          ).status,
+          403,
+        );
+        if (first.status === "DRAFT")
+          assert.equal(
+            (
+              await request(
+                "/interventions/" + first.id,
+                { status: "APPROVED" },
+                "PATCH",
+                token,
+              )
+            ).data.status,
+            "APPROVED",
+          );
+        const draft = (
+          await request("/interventions?analysis_id=" + analysisId)
+        ).data.items.find((i: any) => i.status === "DRAFT");
+        if (draft)
+          assert.equal(
+            (
+              await request(
+                "/interventions/" + draft.id,
+                { status: "COMPLETED", reason: "sin aprobación" },
+                "PATCH",
+                token,
+              )
+            ).status,
+            409,
+          );
+        const notification = (
+          await pool.query(
+            "SELECT id FROM climashield.notifications WHERE analysis_id=$1",
+            [analysisId],
+          )
+        ).rows[0];
+        assert.equal(
+          (
+            await request(
+              "/notifications/" + notification.id + "/read",
+              {},
+              "PATCH",
+              token,
+            )
+          ).status,
+          200,
+        );
+        assert.ok(
+          (await request("/audit")).data.items.some((e: any) =>
+            ["EVENT_PLAN_READY", "STATUS_CHANGED"].includes(e.action),
+          ),
+        );
+      },
+    );
+    await t.test(
+      "frescura y resultados del evento conservan fuentes, modelos y límites",
+      async () => {
+        assert.equal(
+          (await request("/sources/senamhi/refresh", {})).status,
+          403,
+        );
+        assert.equal(
+          (
+            await request(
+              "/analyses/" +
+                analysisId +
+                "/clients/00000000-0000-4000-a000-000000000000",
+            )
+          ).status,
+          404,
+        );
+        assert.ok(detail.source_snapshot);
+        assert.ok(detail.model.hash);
+        assert.ok(detail.result.bridge.length > 0);
+        await mkdir("artifacts", { recursive: true });
+        await writeFile(
+          "artifacts/event-results.json",
+          JSON.stringify(
+            {
+              checked_at: new Date().toISOString(),
+              analysis_id: analysisId,
+              event_id: eventId,
+              summary: detail.result.summary,
+              model: detail.model,
+              plan: detail.plan,
+              bodega: detail.clients.find((c: any) => c.code === "CS-0001"),
+              limitations: detail.result.limitations,
+            },
+            null,
+            2,
+          ) + "\n",
+        );
+      },
+    );
+  } finally {
+    await app.close();
+    await pool.end();
+  }
 });
-
