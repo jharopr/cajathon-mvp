@@ -191,8 +191,9 @@ export default function EventsPage() {
           <div className="attention-list">
             <p>
               <strong>{summary?.high ?? "—"}</strong> clientes con prioridad
-              alta experimental
+              alta o crítica en la puntuación operativa
             </p>
+            <p><strong>{summary?.critical ?? "—"}</strong> con criticidad crítica; revisión en 24 horas</p>
             <p>
               <strong>{summary?.already_deteriorated ?? "—"}</strong> ya tienen
               atraso &gt;30 días y se derivan al analista
@@ -208,7 +209,7 @@ export default function EventsPage() {
           </div>
           <div className="explanation">
             <p>
-              Se estima atraso mayor a 30 días en los siguientes 90 días. La
+              La prioridad combina exposición, capacidad de pago, reserva, comportamiento y señal del modelo. Se estima atraso mayor a 30 días en los siguientes 90 días. La
               historia y la cartera son ficticias; las probabilidades no están
               calibradas para clientes reales.
             </p>

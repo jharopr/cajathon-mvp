@@ -18,6 +18,8 @@ interface Workspace {
   sources: Sources | null;
   token: string;
   setToken: (v: string) => void;
+  clientId: string;
+  selectClient: (id: string) => void;
   selectEvent: (id: string) => void;
   openAnalysis: (id: string) => Promise<void>;
   busy: string;
@@ -41,6 +43,7 @@ export function EventProvider({ children }: { children: ReactNode }) {
     [token, setToken] = useState(""),
     [gemini, setGemini] = useState(false);
   const [busy, setBusy] = useState(""),
+    [clientId, setClientId] = useState(""),
     [error, setError] = useState(""),
     [notice, setNotice] = useState("");
   const selected = useRef(""),
@@ -49,6 +52,7 @@ export function EventProvider({ children }: { children: ReactNode }) {
     mounted = useRef(true),
     detailId = useRef(""),
     pending = useRef(false);
+  useEffect(() => { setClientId(""); }, [analysis?.id]);
   const loadDetail = useCallback(async (id: string, followEvent = false) => {
     const seq = ++generation.current;
     const result = await api<Analysis>("/analyses/" + id);
@@ -154,6 +158,8 @@ export function EventProvider({ children }: { children: ReactNode }) {
         sources,
         token,
         setToken,
+        clientId,
+        selectClient: setClientId,
         selectEvent,
         openAnalysis: async (id: string) => {
           pinned.current = id;

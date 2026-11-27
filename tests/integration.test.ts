@@ -17,6 +17,8 @@ import {
   KNOWLEDGE,
   KNOWLEDGE_HASH,
   deterministicContent,
+  knowledgeForPolicy,
+  digest,
 } from "../apps/api/src/recommendations/protocols.js";
 
 test("flujo por evento con PostgreSQL/PostGIS reales", async (t) => {
@@ -65,18 +67,17 @@ test("flujo por evento con PostgreSQL/PostGIS reales", async (t) => {
           c.status === "PREDICTED" &&
           c.in_event &&
           c.location &&
-          c.projections.length,
+          c.projections.some((p: any) => p.eligible === true),
       )
       .slice(0, 9)
       .map((c: any) => ({ ...c, priority: high ? "ALTA" : "MEDIA" }));
-    const selected = clients
-      .slice(0, 8)
-      .map((c: any) => ({
-        business_id: c.business_id,
-        action_code: "LIQUIDITY_VISIT",
-        action: "Visita de evaluación de liquidez",
-        priority: c.priority,
-      }));
+    const selected = clients.slice(0, 8).map((c: any) => ({
+      business_id: c.business_id,
+      action_code: c.projections.find((p: any) => p.eligible === true)
+        .action_code,
+      action: c.projections.find((p: any) => p.eligible === true).action,
+      priority: c.priority,
+    }));
     await transaction(async (c) => {
       await c.query(
         `INSERT INTO climashield.analysis_runs(id,event_id,snapshot_id,model_id,policy_id,evaluation_id,input_hash,seed,constraints,status,result,report,created_at,completed_at)
@@ -104,6 +105,7 @@ test("flujo por evento con PostgreSQL/PostGIS reales", async (t) => {
         );
     });
     return {
+      selected,
       id,
       planId,
       clients,
@@ -122,7 +124,7 @@ test("flujo por evento con PostgreSQL/PostGIS reales", async (t) => {
               "SELECT count(*) FROM climashield.schema_migrations",
             )
           ).rows[0].count,
-          6,
+          7,
         );
         assert.equal(
           +(await pool.query("SELECT count(*) FROM climashield.businesses"))
@@ -289,6 +291,60 @@ test("flujo por evento con PostgreSQL/PostGIS reales", async (t) => {
         assert.equal(periods.length, detail.result.bridge.length);
         assert.equal(periods[0].storage_type, "numeric");
         assert.equal(periods[0].cash_delta, detail.result.bridge[0].cash_delta);
+        const scored = detail.clients.find((c: any) => c.decision);
+        assert.ok(scored);
+        const persisted = (
+          await pool.query(
+            "SELECT decision_score,dscr_base,pg_typeof(other_debt_service)::text AS storage_type FROM climashield.client_predictions WHERE analysis_id=$1 AND business_id=$2",
+            [analysisId, scored.business_id],
+          )
+        ).rows[0];
+        assert.equal(+persisted.decision_score, scored.decision.score);
+        assert.equal(persisted.storage_type, "numeric");
+        assert.ok(+detail.plan.metrics.liquidity_commitment <= 5000);
+        assert.ok(
+          detail.plan.selected.every(
+            (a: any) =>
+              detail.clients
+                .find((c: any) => c.business_id === a.business_id)
+                .projections.find((p: any) => p.action_code === a.action_code)
+                .eligible,
+          ),
+        );
+      },
+    );
+    await t.test(
+      "consulta contextual autenticada conserva evidencia y no crea intervenciones",
+      async () => {
+        const client = detail.clients.find((c: any) => c.decision);
+        const path = `/analyses/${analysisId}/consultations`,
+          body = {
+            question: "Explica la criticidad y las alternativas",
+            client_id: client.business_id,
+            mode: "deterministic",
+          };
+        assert.equal((await request(path, body)).status, 403);
+        const before = +(
+          await pool.query("SELECT count(*) FROM climashield.interventions")
+        ).rows[0].count;
+        const r = await request(path, body, "POST", token);
+        assert.equal(r.status, 201);
+        assert.equal(r.data.mode, "deterministic");
+        assert.match(r.data.text, /Criticidad/);
+        assert.equal(
+          (
+            await pool.query(
+              "SELECT analysis_id FROM climashield.consultation_reports WHERE id=$1",
+              [r.data.id],
+            )
+          ).rows[0].analysis_id,
+          analysisId,
+        );
+        assert.equal(
+          +(await pool.query("SELECT count(*) FROM climashield.interventions"))
+            .rows[0].count,
+          before,
+        );
       },
     );
     await t.test(
@@ -584,10 +640,10 @@ test("flujo por evento con PostgreSQL/PostGIS reales", async (t) => {
           key = process.env.GEMINI_API_KEY,
           daily = process.env.PREVENTION_DAILY_LIMIT;
         let calls = 0;
-        writer.write = async (e) => {
+        writer.write = async (e, _model, _client, knowledge) => {
           calls++;
           return {
-            content: deterministicContent(e.action_code),
+            content: deterministicContent(e.action_code, knowledge),
             usage: { total_input_tokens: 500, total_output_tokens: 200 },
           };
         };
@@ -628,6 +684,7 @@ test("flujo por evento con PostgreSQL/PostGIS reales", async (t) => {
         const f = await preventionFixture(),
           id = randomUUID();
         const initial = (await request(f.path(0))).data;
+        const knowledge = knowledgeForPolicy(detail.policy_id);
         await pool.query(
           `INSERT INTO climashield.preventive_recommendations
         (id,analysis_id,plan_id,business_id,context_hash,slot,protocol_version,protocol_hash,protocol_snapshot,context,selection_mode,status,provider_attempted,lease_token,lease_until)
@@ -638,10 +695,10 @@ test("flujo por evento con PostgreSQL/PostGIS reales", async (t) => {
             f.planId,
             f.clients[0].business_id,
             initial.context_hash,
-            KNOWLEDGE.version,
-            KNOWLEDGE_HASH,
-            JSON.stringify(KNOWLEDGE),
-            JSON.stringify({ action_code: "LIQUIDITY_VISIT" }),
+            knowledge.version,
+            digest(knowledge),
+            JSON.stringify(knowledge),
+            JSON.stringify({ action_code: f.selected[0].action_code }),
             randomUUID(),
           ],
         );

@@ -10,6 +10,8 @@ import {
   deterministicContent,
   digest,
   protocolSteps,
+  KNOWLEDGE_V2,
+  knowledgeForPolicy,
 } from "../apps/api/src/recommendations/protocols.js";
 import { recommendationGate } from "../apps/api/src/recommendations/recommendations.service.js";
 import type { ClientAnalysis } from "../apps/api/src/shared/contracts.js";
@@ -73,6 +75,36 @@ const output = () => ({
     id: s.id,
     instruction: s.instruction,
   })),
+});
+test("el merge conserva protocolos v1 y permite continuidad v2 sin habilitar alternativas descartadas", () => {
+  assert.equal(knowledgeForPolicy("prevention-synthetic-1"), KNOWLEDGE);
+  assert.equal(knowledgeForPolicy("prevention-synthetic-2"), KNOWLEDGE_V2);
+  assert.throws(() => protocolSteps("CONTINUITY", KNOWLEDGE));
+  const steps = protocolSteps("CONTINUITY", KNOWLEDGE_V2);
+  assert.equal(steps.length, 4);
+  assert.equal(steps[2].id, "PLAN_CONTINUITY");
+  assert.equal(
+    validateWriting(
+      { steps: steps.map((s) => ({ id: s.id, instruction: s.instruction })) },
+      "CONTINUITY",
+      KNOWLEDGE_V2,
+    ).steps[3].id,
+    "RECORD_CONTINUITY",
+  );
+  const action = [{ ...selection[0], action_code: "CONTINUITY" }];
+  const v2 = {
+    ...client,
+    decision: { level: "CRITICA" },
+    projections: [{ action_code: "CONTINUITY", eligible: true }],
+  } as unknown as ClientAnalysis;
+  assert.equal(gate(v2, action).eligible, true);
+  assert.equal(
+    gate(
+      { ...v2, projections: [{ ...v2.projections[0], eligible: false }] },
+      action,
+    ).eligible,
+    false,
+  );
 });
 test("contrato de redacción rechaza acciones, orden, cifras, enlaces y aprobaciones", () => {
   const valid = validateWriting(output(), "LIQUIDITY_VISIT");

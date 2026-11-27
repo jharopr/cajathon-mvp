@@ -5,16 +5,15 @@ import { Decimal } from "decimal.js";
 import { pool, transaction } from "../database.js";
 import { Repository } from "../climate/exposure.repository.js";
 import {
-  generateHistory,
   profile,
   currentCutoff,
-  HISTORY_VERSION,
   type Payment,
 } from "./history.js";
 import type { Model } from "../analysis/model.js";
 import type { Business } from "../data.js";
 import { POLICY, policyHash } from "../planning/policy.js";
 import { money } from "../shared/money.js";
+import { generateCapacityHistory, CAPACITY_VERSION } from "./capacity.js";
 
 export interface PortfolioRecord {
   business: Business;
@@ -26,7 +25,7 @@ export interface PortfolioRecord {
 export class PortfolioService {
   async prepare(cutoff = currentCutoff()) {
     const model = JSON.parse(
-      await readFile("data/models/deterioration-v1.json", "utf8"),
+      await readFile("data/models/deterioration-v2.json", "utf8"),
     ) as Model;
     const { hash, ...content } = model;
     if (
@@ -50,7 +49,7 @@ export class PortfolioService {
     }
     const inputHash = createHash("sha256")
       .update(
-        JSON.stringify({ businesses, loans, version: HISTORY_VERSION, cutoff }),
+        JSON.stringify({ businesses, loans, version: CAPACITY_VERSION, cutoff }),
       )
       .digest("hex");
     return transaction(async (c) => {
@@ -96,7 +95,7 @@ export class PortfolioService {
       const records: PortfolioRecord[] = businesses.map((b) => {
         const own = byBusiness.get(b.id) ?? [],
           histories = own.map((l) => {
-            const rows = generateHistory(
+            const rows = generateCapacityHistory(
               b,
               l.balance,
               l.monthly_installment,
@@ -136,7 +135,7 @@ export class PortfolioService {
       });
       await c.query(
         "INSERT INTO climashield.portfolio_snapshots(id,input_hash,cutoff,generator_version,records) VALUES($1,$2,$3,$4,$5)",
-        [id, inputHash, cutoff, HISTORY_VERSION, JSON.stringify(records)],
+        [id, inputHash, cutoff, CAPACITY_VERSION, JSON.stringify(records)],
       );
       await c.query(
         `INSERT INTO climashield.loan_payment_history(snapshot_id,loan_id,period,amount_due,amount_paid,principal,interest,balance,days_past_due)

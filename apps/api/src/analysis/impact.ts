@@ -1,9 +1,11 @@
 import { Decimal } from "decimal.js";
 import { money } from "../shared/money.js";
-import { random, historyFeatures } from "../portfolio/history.js";
+import { random } from "../portfolio/history.js";
 import type { PortfolioRecord } from "../portfolio/portfolio.service.js";
 import type { RiskItem } from "../climate/risk.js";
-import { predict, type Model } from "./model.js";
+import { predict, modelFeatures, type Model } from "./model.js";
+import { capacity } from "../portfolio/capacity.js";
+import { decisionScore } from "./decision.js";
 import type { Policy } from "../planning/policy.js";
 
 import type { Projection, ClientAnalysis } from "../shared/contracts.js";
@@ -70,6 +72,7 @@ export function analyzeClient(
     reasons: [...item.reasons],
     current_dpd: last.dpd,
     entities: record.profile.entities,
+    spatial_exposed: item.exposed,
   };
   if (!b.location)
     return {
@@ -109,21 +112,25 @@ export function analyzeClient(
         "Fuera del alcance geográfico del evento; no implica ausencia de otros riesgos.",
       ],
     };
-  const features = historyFeatures(
+  const features = modelFeatures(
       b,
       record.history,
       intensity,
       point,
       district,
+      model.weights.length,
     ),
     prediction = predict(model, features),
     p = prediction.probability;
+  const capacityData = capacity(b), v2 = policy.decision_version === 2,
+    climate = Math.min(1, intensity * Math.max(point, district)),
+    severity = v2 ? Math.min(0.65, 0.15 + 0.2 * climate + 0.1 * Math.max(0, 1 - capacityData.buffer_months)) : policy.severity_conditional_30d;
   const balance = new Decimal(b.balance),
-    loss = balance.mul(p).mul(policy.severity_conditional_30d),
+    loss = balance.mul(p).mul(severity),
     r = random(`event:${seed}:${b.district}`);
   const idiosyncratic = random(`client:${seed}:${b.id}`),
     cash: Decimal[] = [],
-    rescheduled: Decimal[] = [];
+    rescheduled: Decimal[] = [], continuity: Decimal[] = [];
   const quota = new Decimal(b.monthly_installment),
     margin = new Decimal(1).minus(b.variable_cost_ratio!),
     reserve = new Decimal(b.cash_reserve!);
@@ -134,44 +141,70 @@ export function analyzeClient(
     const days = Math.min(
       30,
       intensity *
-        (point || district || 0.08) *
+        (point || district || (v2 ? 0 : 0.08)) *
         (4 + r() * 18) *
         record.profile.sensitivity,
     );
     const damage = new Decimal(b.inventory_value!)
       .mul(days / 30)
       .mul(0.12 + idiosyncratic() * 0.18);
+    const deductions = v2 ? new Decimal(capacityData.household_expenses).plus(capacityData.other_debt_service) : new Decimal(0);
     const flow = new Decimal(b.monthly_revenue!)
       .mul(new Decimal(1).minus(new Decimal(days).div(30)))
       .mul(margin)
       .minus(b.monthly_fixed_cost!)
       .minus(quota)
       .minus(damage)
+      .minus(deductions)
       .plus(reserve);
+    // Same realizations, half of an assumed 20% interruption / 25% damage improvement.
+    const protectedFlow = new Decimal(b.monthly_revenue!)
+      .mul(new Decimal(1).minus(new Decimal(days).mul(0.9).div(30)))
+      .mul(margin).minus(b.monthly_fixed_cost!).minus(quota)
+      .minus(damage.mul(0.875)).minus(deductions).plus(reserve);
     const after = flow.plus(quota);
     cash.push(flow);
     rescheduled.push(after);
+    continuity.push(protectedFlow);
     if (flow.isNegative()) gaps++;
     if (after.isNegative()) gapsAfter++;
   }
   cash.sort((a, b) => a.cmp(b));
   rescheduled.sort((a, b) => a.cmp(b));
+  continuity.sort((a, b) => a.cmp(b));
+  const centralAvailable = cash[Math.floor((cash.length - 1) * 0.5)].minus(reserve).plus(v2 ? capacityData.debt : quota);
+  const decision = v2 ? decisionScore(b, record.history, p, climate, centralAvailable, severity) : undefined;
   const projections = policy.actions.map((a) => {
     // Diferencia de escenario, NO efecto causal del modelo ni nueva probabilidad de deterioro.
     const gapRelief = a.defer_months
       ? Math.max(0, (gaps - gapsAfter) / policy.scenario_count)
       : 0;
-    const severity = Math.max(
+    const isContinuity = a.code === "CONTINUITY";
+    const reduction = v2 ?
+      (isContinuity ? Math.min(0.08, climate * 0.1) : a.defer_months ? gapRelief * 0.65 * policy.efficacy_haircut : 0) :
+      gapRelief * 0.65;
+    const actionSeverity = Math.max(
       0,
-      policy.severity_conditional_30d * (1 - gapRelief * 0.65) -
-        a.collection_support,
+      severity * (1 - reduction) - (v2 ? 0 : a.collection_support),
     );
-    const actionLoss = balance.mul(p).mul(severity),
-      net = loss.minus(actionLoss).minus(a.cost);
+    const actionLoss = balance.mul(p).mul(actionSeverity);
     const deferred = a.defer_months
         ? quota.mul(a.defer_months)
         : new Decimal(0),
-      flows = a.defer_months ? rescheduled : cash;
+      flows = a.defer_months ? rescheduled : isContinuity ? continuity : cash,
+      funding = v2 && a.defer_months ? deferred.mul(new Decimal(1).minus(new Decimal(1).plus(policy.funding_discount_monthly).pow(-balance.div(Decimal.max(1, quota.mul(0.88))).ceil().toNumber()))) : new Decimal(0),
+      net = loss.minus(actionLoss).minus(a.cost).minus(funding),
+      gain = new Decimal(percentile(flows, 0.5)).minus(percentile(cash, 0.5)),
+      checks = [
+        { label: "Evidencia territorial del evento disponible", passed: climate > 0 },
+        { label: "Mejora de caja central del cliente positiva", passed: gain.gt(0) },
+        { label: "Liquidez adversa del cliente no empeora", passed: new Decimal(percentile(flows, 0.1)).gte(percentile(cash, 0.1)) && flows.filter((f) => f.isNegative()).length <= gaps },
+        { label: "Beneficio institucional neto conservador positivo", passed: net.gt(0) },
+        ...(a.defer_months ? [
+          { label: "Capacidad de recuperación base ≥ 1.10", passed: capacityData.dscr >= policy.min_recovery_dscr },
+          { label: "Diferimiento ≤ 20% del saldo y sin nuevo capital", passed: deferred.lte(balance.mul(policy.max_deferred_balance_ratio)) },
+        ] : []),
+      ];
     return {
       action_code: a.code,
       action: a.name,
@@ -179,23 +212,32 @@ export function analyzeClient(
       minutes: a.minutes,
       modeled_loss: money(actionLoss),
       portfolio_benefit: money(net),
-      client_benefit: money(a.defer_months ? quota : 0),
+      client_benefit: money(v2 ? gain : a.defer_months ? quota : 0),
       deferred_principal: money(deferred.mul(0.88)),
       deferred_interest: money(deferred.mul(0.12)),
-      p_cash_gap: (a.defer_months ? gapsAfter : gaps) / policy.scenario_count,
+      p_cash_gap: flows.filter((f) => f.isNegative()).length / policy.scenario_count,
       cash_p10: percentile(flows, 0.1),
       cash_p50: percentile(flows, 0.5),
       cash_p90: percentile(flows, 0.9),
-      collection_rate: 1 - p * severity,
+      collection_rate: 1 - p * actionSeverity,
+      ...(v2 ? {
+        eligible: checks.every((c) => c.passed), checks,
+        liquidity_commitment: money(deferred), funding_cost: money(funding),
+        conservative_benefit: money(net), client_cash_gain: money(gain),
+        residual_risk: flows.some((f) => f.isNegative()) ? "Persisten escenarios con brecha de caja: verificar suficiencia de la medida y derivar necesidad de apoyo adicional; no ofrecer nuevo crédito automático." : "Sin brecha en las realizaciones de esta demo; verificar con datos del cliente.",
+        steps: a.defer_months ? ["Verificar obligaciones externas y capacidad después del evento.", "Revisar cronograma completo con el cliente y el coordinador; sin deuda adicional.", "Controlar cumplimiento a 7 y 30 días."] :
+          ["Verificar seguridad del local y rutas de abastecimiento con el asesor.", "Acordar protección de mercadería y continuidad sin nuevo financiamiento.", "Verificar continuidad y caja en 7 días; registrar resultado al mes."],
+      } : {}),
     };
   });
   return {
     ...base,
     status: "PREDICTED",
     probability: p,
+    decision,
     features,
     explanation: prediction.explanation,
-    priority:
+    priority: decision ? (decision.level === "CRITICA" ? "ALTA" : decision.level) :
       p >= policy.threshold_high
         ? "ALTA"
         : p >= policy.threshold_medium

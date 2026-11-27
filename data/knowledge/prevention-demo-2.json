@@ -1,0 +1,106 @@
+{
+  "version": "prevention-demo-2",
+  "status": "DEMO",
+  "reviewed_on": "2026-11-27",
+  "hazard_type": "rain_flood",
+  "audience": "ASESOR",
+  "notice": "Procedimientos ficticios para demostrar el flujo. No son políticas aprobadas por Caja Trujillo. Los pasos desarrollan la atención seleccionada; no autorizan nuevas visitas, costos ni facilidades.",
+  "protocols": [
+    {
+      "id": "PREV-COMMON",
+      "title": "Comprobación previa a la evaluación",
+      "action_code": "COMMON",
+      "source": {
+        "id": "DEMO-OPS-001",
+        "title": "Procedimiento operativo sintético de ClimaShield",
+        "kind": "DEMO"
+      },
+      "steps": [
+        {
+          "id": "CHECK_SAFETY",
+          "title": "Comprobar condiciones de seguridad",
+          "instruction": "Comprobar las condiciones de acceso antes de coordinar la atención prevista.",
+          "guardrail": "No ingresar a zonas inundadas ni realizar desplazamientos inseguros. Seguir las indicaciones de las autoridades."
+        },
+        {
+          "id": "VERIFY_OPERATION",
+          "title": "Verificar continuidad del negocio",
+          "instruction": "Contrastar el estado operativo declarado del negocio y registrar los datos pendientes de verificación.",
+          "guardrail": "La exposición geográfica no demuestra que el negocio haya sufrido daños."
+        }
+      ]
+    },
+    {
+      "id": "PREV-LIQUIDITY",
+      "title": "Visita de evaluación de liquidez",
+      "action_code": "LIQUIDITY_VISIT",
+      "source": {
+        "id": "DEMO-FIN-001",
+        "title": "Guía financiera sintética de evaluación",
+        "kind": "DEMO"
+      },
+      "steps": [
+        {
+          "id": "REVIEW_LIQUIDITY",
+          "title": "Contrastar el escenario de liquidez",
+          "instruction": "Revisar la liquidez modelada y contrastar ingresos, gastos y disponibilidad de caja con información actualizada.",
+          "guardrail": "El escenario es sintético y no equivale a una pérdida observada ni a certeza de mora."
+        },
+        {
+          "id": "RECORD_FINDINGS",
+          "title": "Registrar hallazgos de la atención",
+          "instruction": "Registrar los hallazgos y datos pendientes dentro de la atención seleccionada para revisión del analista.",
+          "guardrail": "No prometer productos, plazos o desembolsos. Una atención adicional requiere revisar capacidad y presupuesto."
+        }
+      ]
+    },
+    {
+      "id": "PREV-RESCHEDULE",
+      "title": "Evaluación de una propuesta de reprogramación",
+      "action_code": "RESCHEDULE",
+      "source": {
+        "id": "DEMO-FIN-002",
+        "title": "Guía sintética de derivación financiera",
+        "kind": "DEMO"
+      },
+      "steps": [
+        {
+          "id": "ASSESS_RESCHEDULE",
+          "title": "Revisar la necesidad de evaluación financiera",
+          "instruction": "Contrastar la necesidad de alivio de liquidez y derivar la propuesta seleccionada al analista para evaluación.",
+          "guardrail": "No existe una política institucional aprobada en esta demo. La propuesta no constituye una facilidad preaprobada ni modifica contratos."
+        },
+        {
+          "id": "RECORD_ASSESSMENT",
+          "title": "Documentar la evaluación pendiente",
+          "instruction": "Registrar antecedentes, datos por completar y la evaluación humana pendiente dentro de la atención seleccionada.",
+          "guardrail": "No establecer tasas, cuotas o condiciones nuevas. La aprobación financiera usa el flujo independiente de intervenciones."
+        }
+      ]
+    },
+    {
+      "id": "PREV-CONTINUITY",
+      "title": "Continuidad y protecci?n de mercader?a",
+      "action_code": "CONTINUITY",
+      "source": {
+        "id": "DEMO-OPS-002",
+        "title": "Gu?a sint?tica de continuidad dentro de la atenci?n seleccionada",
+        "kind": "DEMO"
+      },
+      "steps": [
+        {
+          "id": "PLAN_CONTINUITY",
+          "title": "Contrastar las medidas de continuidad",
+          "instruction": "Contrastar con el asesor las medidas de protecci?n de mercader?a y las alternativas de abastecimiento dentro del plan seleccionado.",
+          "guardrail": "No ingresar a zonas inseguras ni ofrecer nuevo financiamiento. Confirmar viabilidad y aceptaci?n antes de ejecutar medidas."
+        },
+        {
+          "id": "RECORD_CONTINUITY",
+          "title": "Registrar acuerdos y revisi?n pendiente",
+          "instruction": "Registrar los acuerdos, limitaciones y datos pendientes de la atenci?n para revisi?n del asesor y coordinador.",
+          "guardrail": "La criticidad no se resuelve autom?ticamente con esta gu?a. Conservar la derivaci?n y los plazos de revisi?n del motor; nuevas atenciones requieren presupuesto y capacidad."
+        }
+      ]
+    }
+  ]
+}

@@ -3,6 +3,7 @@ export async function api<T>(
   body?: unknown,
   method = "POST",
   token?: string,
+  signal?: AbortSignal,
 ): Promise<T> {
   const res = await fetch("/api/v1" + path, {
     method: body === undefined ? "GET" : method,
@@ -14,6 +15,7 @@ export async function api<T>(
             ...(token ? { "X-Coordinator-Token": token } : {}),
           },
     body: body === undefined ? undefined : JSON.stringify(body),
+    signal,
   });
   const data = await res
     .json()

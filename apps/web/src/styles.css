@@ -76,6 +76,110 @@
 .prevention .panel-actions button {
   white-space: normal;
 }
+.client-detail {
+  min-width: 0;
+  display: grid;
+  align-content: start;
+  gap: 24px;
+}
+.decision-summary {
+  padding: 22px 0;
+  margin: 12px 0 24px;
+  border-bottom: 1px solid var(--border);
+}
+.decision-title {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 12px;
+}
+.decision-score {
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 6px 0 16px;
+  font-variant-numeric: tabular-nums;
+}
+.decision-score span {
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--muted);
+}
+.score-factors {
+  display: grid;
+  gap: 16px;
+  margin: 18px 0;
+}
+.score-factors > div > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 14px;
+}
+.score-factors progress {
+  width: 100%;
+  height: 8px;
+  accent-color: var(--green);
+}
+.score-factors small {
+  display: block;
+}
+.decision-steps {
+  padding-left: 22px;
+  line-height: 1.6;
+}
+.decision-steps li {
+  margin-bottom: 9px;
+}
+.priority-filter {
+  margin: 16px 0;
+}
+.consultation-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 14px;
+  margin: 14px 0;
+}
+.consultation-controls label {
+  flex: 1;
+  min-width: 210px;
+}
+.consultation-reply {
+  border-top: 1px solid var(--border);
+  padding-top: 20px;
+  margin-top: 20px;
+  overflow-wrap: anywhere;
+}
+.action-checks {
+  padding-left: 20px;
+  line-height: 1.6;
+  font-size: 14px;
+}
+.action-checks .failed {
+  color: var(--red);
+}
+.action-checks .passed {
+  color: var(--green);
+}
+.badge.critica,
+.badge.blocked {
+  background: #fbe9e6;
+  color: #942b23;
+}
+.badge.eligible {
+  background: #e0f3eb;
+  color: #165b46;
+}
+@media (max-width: 600px) {
+  .score-factors > div > div {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .consultation-controls > button {
+    width: 100%;
+  }
+}
 * {
   box-sizing: border-box;
 }
@@ -637,7 +741,7 @@ main {
 }
 .client-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.8fr);
+  grid-template-columns: minmax(320px, 0.85fr) minmax(0, 1.25fr);
   gap: 24px;
   align-items: start;
 }

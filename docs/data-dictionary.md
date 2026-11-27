@@ -1,5 +1,13 @@
 # Diccionario
 
+## Ampliación v2 del 27/11/2026
+
+La migración 0006 añade a `client_predictions`: `decision_score NUMERIC(6,2)` (0–100), `dscr_base/dscr_stress NUMERIC(18,8)`, `household_expenses/other_debt_service NUMERIC(16,2)` y `conditional_severity NUMERIC(9,8)`. Los campos históricos permanecen nulos para ejecuciones previas. La evidencia JSONB guarda los componentes, pesos, controles, pasos y riesgo residual de cada alternativa.
+
+`optimization_plans` incorpora `liquidity_commitment` y `funding_cost`, ambos NUMERIC(16,2). `consultation_reports` registra UUID, análisis, cliente opcional, modo determinista/Gemini, pregunta de 5–1200 caracteres, respuesta/traza JSONB y fecha; se habilita RLS. La migración está preparada, pendiente de validación contra PostgreSQL en este entorno. Ver [metodología](decision-model-v2.md).
+
+El resto del diccionario describe los datos de la base inicial.
+
 Cartera ficticia en PEN. Amenazas oficiales (CENEPRED, SENAMHI) o sintéticas, siempre con fuente. IDs de seed y capas oficiales deterministas; operaciones con UUID aleatorios. Montos NUMERIC(16,2), ratios NUMERIC(5,4), fechas timestamptz, geometrías SRID 4326 y JSONB para evidencia/snapshots.
 
 | Tabla | Campos y reglas principales |

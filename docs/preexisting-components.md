@@ -1,5 +1,13 @@
 # Declaración de preexistentes
 
+Integración del 27/11/2026: el merge de decisión v2 con el MVP preventivo conserva ambas implementaciones. Añade únicamente su acoplamiento: protocolos por versión de política, continuidad v2 y validación de alternativas antes de redactar. Esta integración, sus pruebas y documentación también son previas al presencial.
+
+## Ampliación previa del 27/11/2026
+
+Se añaden perfil y pagos sintéticos v2, regresión logística de doce variables con signos restringidos, artefacto `logistic-synthetic-2`, score operativo desglosado, DSCR bajo estrés, controles de viabilidad, costo de diferimiento, límite de liquidez, cola de revisión y agente de consulta por análisis/cliente. El frontend incorpora ficha de decisión y consulta contextual. Se añade migración 0006 sin reescribir las anteriores.
+
+**Todo es previo al presencial.** Esta ampliación no debe atribuirse a las jornadas futuras. Las propuestas para esas jornadas son validar pesos y políticas con el responsable del reto, contrastar costos/eficacia, acordar criterios de viabilidad y documentar resultados observados con insumos autorizados. La migración y el recorrido con PostgreSQL de esta versión no se verificaron en el entorno de ampliación; ver el reporte vigente.
+
 Corte original: **24/11/2026**. Ampliación: **26/11/2026, America/Lima**. No sustituye revisión de licencias ni acuerdos del equipo.
 
 ## Base preparada antes del presencial

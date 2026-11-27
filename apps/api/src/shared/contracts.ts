@@ -1,3 +1,4 @@
+import type { Decision } from "../analysis/decision.js";
 export interface Projection {
   action_code: string;
   action: string;
@@ -13,6 +14,14 @@ export interface Projection {
   cash_p50: string;
   cash_p90: string;
   collection_rate: number;
+  eligible?: boolean;
+  checks?: { label: string; passed: boolean }[];
+  liquidity_commitment?: string;
+  funding_cost?: string;
+  conservative_benefit?: string;
+  steps?: string[];
+  client_cash_gain?: string;
+  residual_risk?: string;
 }
 export interface ClientAnalysis {
   business_id: string;
@@ -46,4 +55,7 @@ export interface ClientAnalysis {
   reasons: string[];
   current_dpd: number;
   entities: number;
+  decision?: Decision;
+  spatial_exposed?: boolean;
+  attention?: { status: string; reason: string };
 }

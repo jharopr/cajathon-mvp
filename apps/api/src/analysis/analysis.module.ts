@@ -21,6 +21,7 @@ import { RuntimeService } from "./runtime.service.js";
 import { coordinator } from "../shared/authorization.js";
 import { pool, transaction } from "../database.js";
 import { audit } from "../climate/exposure.repository.js";
+import { ConsultationInput } from "../agent/report.js";
 const uuid = z.string().uuid();
 @Controller("api/v1")
 class AnalysisController {
@@ -90,6 +91,23 @@ class AnalysisController {
     return (await this.analysis.detail(uuid.parse(id))).report;
   }
   private reports = 0;
+  private consulting = false;
+  private consultAfter = 0;
+  @Post("analyses/:id/consultations") async consult(
+    @Param("id") id: string, @Body() body: unknown,
+    @Headers("x-coordinator-token") token: string,
+  ) {
+    coordinator(token);
+    uuid.parse(id);
+    const input = ConsultationInput.parse(body);
+    if (this.consulting || Date.now() < this.consultAfter) throw new HttpException("Consulta en curso; espere unos segundos", 429);
+    this.consulting = true;
+    try { return await this.analysis.consult(id, input); }
+    catch (e) {
+      if (e instanceof HttpException) throw e;
+      throw new HttpException("No se pudo generar la consulta. Revise migraciones y configuración de Gemini; el plan calculado se conserva.", 503);
+    } finally { this.consulting = false; this.consultAfter = Date.now() + 3000; }
+  }
   @Post("analyses/:id/report") async enrich(
     @Param("id") id: string,
     @Headers("x-coordinator-token") token: string,

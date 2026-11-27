@@ -1,14 +1,22 @@
 # ClimaShield AI
 
-Prototipo de prevención por evento climático para microfinanzas. Une **aviso → exposición → predicción experimental → impacto modelado → plan → alerta interna → revisión humana**.
+Prototipo de prevención por evento climático para microfinanzas. Une **aviso → exposición → capacidad de pago → criticidad explicada → plan viable → alerta interna → revisión humana**.
 
 **Cartera y pagos exclusivamente ficticios.** CENEPRED y SENAMHI aportan cartografía/avisos oficiales con procedencia y vigencia. El índice climático no es probabilidad de mora. El modelo separado estima atraso >30 días en 90 días usando historia sintética; no está calibrado para clientes reales. Saldo expuesto no es pérdida y la pérdida modelada no es una provisión regulatoria.
 
-## Cambio del 26/11/2026
+## Replanteamiento del 27/11/2026
+
+La [metodología de decisión v2](docs/decision-model-v2.md) documenta parámetros, fórmulas y límites. Se añade un score operativo de 0–100 separado del índice territorial y de la probabilidad logística. Incluye cobertura de deuda propia/externa, gastos del hogar sintéticos, reserva, pagos y señal del modelo. El artefacto nuevo `data/models/deterioration-v2.json` conserva intacta la versión 1.
+
+Las acciones deben mejorar la caja del cliente, superar controles de recuperación y aportar valor institucional neto después de costos operativos y financieros. El optimizador limita también cuotas diferidas y mantiene una cola de revisión para casos críticos o incompletos sin acción. Gemini responde consultas con contexto fijo de análisis/cliente y herramientas de lectura, desde la ficha o el plan. La visita diagnóstica no recibe una mejora financiera automática.
+
+Aplicar `npm run db:migrate`: conserva las versiones existentes y añade `202611260006_decision_context.sql` junto a `202611270006_preventive_recommendations.sql`, con identificadores completos distintos. Ambas se verificaron con PostgreSQL/PostGIS durante la integración de la rama v2 con `main`. `npm run test:ui` verifica interfaz con respuestas interceptadas; el recorrido con base real se verifica aparte con integración y e2e. Resultados en [validación](docs/validation-report.md).
+
+## Base del 26/11/2026
 
 Se implementó el alcance recortado del [plan de refactorización](docs/plan-refactorizacion-puntos-mejora.md). [Cambios y pendientes](docs/refactor-implementation.md), [arquitectura actual](docs/architecture.md), [validación ejecutada](docs/validation-report.md) y [guion de demo](docs/demo-script.md).
 
-La aplicación tiene cinco vistas: Eventos y alertas, Clientes, Impacto de cartera, Plan y seguimiento, Fuentes. Se retiraron el chat abierto, la pantalla de arquitectura, el simulador libre y Open-Meteo. Gemini genera opcionalmente el informe de un evento con herramientas de lectura y, desde el 27/11, una secuencia preventiva bajo solicitud para casos seleccionados. No aprueba, contacta, envía mensajes ni calcula importes.
+La aplicación tiene cinco vistas: Eventos y alertas, Clientes, Impacto de cartera, Plan y seguimiento, Fuentes. Gemini redacta informes y consultas contextuales, además de secuencias preventivas bajo solicitud para casos seleccionados. No aprueba, contacta, envía mensajes ni calcula importes. Se conserva fuera de alcance el chat genérico sin contexto, el simulador libre y Open-Meteo.
 
 ## Stack
 
@@ -65,7 +73,7 @@ npm run db:seed
 npm run dev
 ```
 
-El modelo entrenado ya está en `data/models/deterioration-v1.json`. El procesador prepara el corte y la historia ficticia, crea una reproducción rotulada si no hay un aviso para demostrar y genera análisis/plan/alerta sin una consulta de chat. No necesita red ni Gemini para ese recorrido precargado.
+El modelo entrenado actual está en `data/models/deterioration-v2.json`. El procesador prepara el corte y la historia ficticia, crea una reproducción rotulada si no hay un aviso para demostrar y genera análisis/plan/alerta sin una consulta al agente. No necesita red ni Gemini para ese recorrido precargado.
 
 El seed conserva negocios y créditos existentes. Las migraciones 0001–0003 permanecen intactas; 0004 agrega nueve tablas; 0005 agrega períodos financieros NUMERIC y totales en planes para versiones, historia, eventos, análisis, jobs y notificaciones. El runner verifica SHA-256 y usa bloqueo/transacciones. No utiliza sincronización, reset ni reversión destructiva.
 
@@ -129,6 +137,7 @@ Prefijo `/api/v1`, validación Zod y errores `{code,message,details}`. Las escri
 | GET | `/analyses/:id`, `/analyses/:id/clients/:clientId` | Estado, cifras, escenarios y evidencia |
 | GET / POST | `/analyses/:id/report` | Leer informe / generar con Gemini |
 | GET / POST | `/analyses/:id/clients/:clientId/prevention` | Consultar / preparar una secuencia preventiva guardada, hasta cinco por análisis |
+| POST | `/analyses/:id/consultations` | Consulta con pregunta y cliente opcional; modo Gemini o ficha sin IA explícito |
 | GET | `/notifications` | Alertas internas |
 | PATCH | `/notifications/:id/read` | Marcar como leída |
 | POST | `/interventions/drafts` | Crear borradores idempotentes desde un plan |
@@ -146,6 +155,7 @@ npm run build
 npm run test:integration
 npx playwright install chromium
 npm run test:e2e
+npm run test:ui   # Interfaz con fixture sintético e interceptación HTTP; Chrome instalado
 ```
 
 Integración y navegador usan PostgreSQL de demo con migraciones y seed; generan datos sintéticos adicionales. Las pruebas no hacen llamadas reales a Gemini. El reporte contiene resultados reales, métricas y límites; el workflow CI se conserva, pero no se presupone ejecutado en GitHub.

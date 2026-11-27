@@ -19,8 +19,7 @@ import {
 } from "../agent/prevention-writer.js";
 import type { ClientAnalysis } from "../shared/contracts.js";
 import {
-  KNOWLEDGE,
-  KNOWLEDGE_HASH,
+  knowledgeForPolicy,
   deterministicContent,
   digest,
 } from "./protocols.js";
@@ -68,7 +67,9 @@ export function recommendationGate(
     };
   if (
     hazard !== "rain_flood" ||
-    !["LIQUIDITY_VISIT", "RESCHEDULE"].includes(action.action_code)
+    !["LIQUIDITY_VISIT", "RESCHEDULE", "CONTINUITY"].includes(
+      action.action_code,
+    )
   )
     return {
       eligible: false,
@@ -93,6 +94,18 @@ export function recommendationGate(
       manual_allowed: false,
       reason:
         "El aviso oficial venció. Revise un evento vigente antes de preparar acciones.",
+    };
+  if (
+    client.decision &&
+    !client.projections.some(
+      (p) => p.action_code === action.action_code && p.eligible === true,
+    )
+  )
+    return {
+      eligible: false,
+      manual_allowed: false,
+      reason:
+        "La alternativa no supera los controles individuales del modelo v2; requiere revisión humana.",
     };
   if (client.priority === "ALTA")
     return {
@@ -170,6 +183,8 @@ export class RecommendationsService {
     const client = row.client as ClientAnalysis;
     const selected = row.plan.selected as SelectedAction[];
     const action = selected.find((s) => s.business_id === businessId);
+    const knowledge = knowledgeForPolicy(row.policy_id);
+    const knowledgeHash = digest(knowledge);
     const gate = ["OPTIMAL", "FEASIBLE"].includes(row.plan.solver_status)
       ? recommendationGate(
           client,
@@ -208,6 +223,8 @@ export class RecommendationsService {
       client,
       gate,
       model,
+      knowledge,
+      knowledgeHash,
       plan_id: row.plan_id,
       hash: digest({
         analysisId,
@@ -215,7 +232,7 @@ export class RecommendationsService {
         input_hash: row.input_hash,
         context,
         model,
-        knowledge: KNOWLEDGE_HASH,
+        knowledge: knowledgeHash,
         writer: WRITER_VERSION,
         config: WRITER_CONFIG,
       }),
@@ -245,9 +262,9 @@ export class RecommendationsService {
       used: +count.rows[0].count,
       limit: RECOMMENDATION_LIMIT,
       gemini_configured: !!process.env.GEMINI_API_KEY,
-      protocol_version: KNOWLEDGE.version,
+      protocol_version: e.knowledge.version,
       context_hash: e.hash,
-      protocol_notice: KNOWLEDGE.notice,
+      protocol_notice: e.knowledge.notice,
       high_unselected: +e.high_unselected,
       recommendation: publicRecord(record.rows[0]),
     };
@@ -356,9 +373,9 @@ export class RecommendationsService {
             businessId,
             e.hash,
             count + 1,
-            KNOWLEDGE.version,
-            KNOWLEDGE_HASH,
-            JSON.stringify(KNOWLEDGE),
+            e.knowledge.version,
+            e.knowledgeHash,
+            JSON.stringify(e.knowledge),
             JSON.stringify(e.context),
             e.gate.manual_allowed ? "MANUAL" : "HIGH",
             e.gate.manual_allowed ? options.manual_reason : "",
@@ -384,7 +401,7 @@ export class RecommendationsService {
     if (reservation.cached) return this.get(analysisId, businessId);
     const row = reservation.row!;
     let fallback = reservation.fallback ?? null;
-    let content = deterministicContent(e.context.action_code),
+    let content = deterministicContent(e.context.action_code, e.knowledge),
       usage: unknown = null;
     if (!fallback) {
       try {
@@ -397,7 +414,12 @@ export class RecommendationsService {
             ? "NEGATIVE"
             : "NON_NEGATIVE",
         };
-        const generated = await this.writer.write(writing, e.model);
+        const generated = await this.writer.write(
+          writing,
+          e.model,
+          undefined,
+          e.knowledge,
+        );
         usage = generated.usage;
         if (generated.content) content = generated.content;
         else fallback = "INVALID_OUTPUT";

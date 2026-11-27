@@ -1,15 +1,14 @@
 import { createHash } from "node:crypto";
 import { generate, type Business } from "../data.js";
 import {
-  generateHistory,
   profile,
   forecast,
   historyFeatures,
-  HISTORY_VERSION,
   HISTORY_CUTOFF,
 } from "../portfolio/history.js";
+import { capacityFeatures, generateCapacityHistory, CAPACITY_VERSION } from "../portfolio/capacity.js";
 
-export const FEATURES = [
+export const LEGACY_FEATURES = [
   "Cuota / ventas",
   "Reserva / cuota",
   "Pagos con atraso previos",
@@ -18,6 +17,11 @@ export const FEATURES = [
   "Contexto distrital",
   "Sensibilidad sectorial",
 ];
+export const FEATURES = [...LEGACY_FEATURES, "Déficit de cobertura de deuda total", "Obligaciones totales / ventas", "Déficit de reserva mensual", "Fracción de cuota no pagada", "Máximo atraso reciente / 30"];
+export function modelFeatures(b: Business, rows: Parameters<typeof historyFeatures>[1], intensity: number, point: number, district: number, size = FEATURES.length) {
+  const legacy = historyFeatures(b, rows, intensity, point, district);
+  return size === LEGACY_FEATURES.length ? legacy : [...legacy, ...capacityFeatures(b, rows)];
+}
 export interface Sample {
   client: string;
   cut: number;
@@ -52,7 +56,7 @@ export function trainingSamples(businesses: Business[] = generate()): Sample[] {
   return businesses
     .filter((b) => b.monthly_revenue !== null)
     .flatMap((b) => {
-      const rows = generateHistory(b),
+        const rows = generateCapacityHistory(b),
         p = profile(b);
       return [6, 10, 14, 18, 21]
         .filter((cut) => rows[cut - 1].dpd <= 30)
@@ -61,7 +65,7 @@ export function trainingSamples(businesses: Business[] = generate()): Sample[] {
           cut,
           label_end: cut + 3,
           heldout: p.heldout,
-          x: historyFeatures(
+          x: modelFeatures(
             b,
             rows.slice(0, cut),
             forecast(cut + 1, b.district),
@@ -88,7 +92,7 @@ export function predict(
       model.intercept + contributions.reduce((s, v) => s + v, 0),
     ),
     explanation: contributions
-      .map((value, i) => ({ factor: FEATURES[i], value, raw: x[i] }))
+      .map((value, i) => ({ factor: FEATURES[i] ?? `Variable ${i + 1}`, value, raw: x[i] }))
       .sort((a, b) => Math.abs(b.value) - Math.abs(a.value)),
     explanation_scale:
       "Contribución al logit, no puntos porcentuales ni causalidad",
@@ -187,6 +191,8 @@ function fit(rows: Sample[], withoutClimate = false) {
     weights.forEach(
       (w, i) => (weights[i] -= 0.12 * (grad[i] / rows.length + 0.015 * w)),
     );
+    // Monotone financial pressure signals; reserve coverage has the reverse sign.
+    weights.forEach((w, i) => { weights[i] = i === 1 ? Math.min(0, w) : Math.max(0, w); });
   }
   return { weights, intercept, mean, scale };
 }
@@ -200,7 +206,7 @@ export function trainModel(rows = trainingSamples()): Model {
   const fitted = fit(train),
     noClimate = fit(train, true);
   const dataset_hash = createHash("sha256")
-    .update(JSON.stringify({ version: HISTORY_VERSION, rows }))
+    .update(JSON.stringify({ version: CAPACITY_VERSION, rows }))
     .digest("hex");
   const prevalence = train.reduce((s, r) => s + r.y, 0) / train.length;
   const base = {
@@ -221,7 +227,7 @@ export function trainModel(rows = trainingSamples()): Model {
     ]),
   );
   const model = {
-    version: "logistic-synthetic-1",
+    version: "logistic-synthetic-2",
     dataset_hash,
     synthetic: true as const,
     cutoff: HISTORY_CUTOFF,

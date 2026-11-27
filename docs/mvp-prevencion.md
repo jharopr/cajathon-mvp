@@ -2,6 +2,14 @@
 
 Implementado el **27/11/2026**, con datos exclusivamente sintéticos. Es una adaptación nueva respecto del corte del 26/11 y sigue siendo material previo a la fase presencial. La [arquitectura de generación por grupos](propuesta-redaccion-preventiva.md) continúa siendo el objetivo posterior.
 
+## Integración con decisión v2
+
+El merge con `feat/decision-model-v2` conserva el catálogo `prevention-demo-1` y sus hashes para los análisis con política v1. Los análisis con `prevention-synthetic-2` usan [prevention-demo-2.json](../data/knowledge/prevention-demo-2.json): cuatro protocolos, incluido continuidad y protección de mercadería. No se sobrescribió el archivo original ni la recomendación histórica de CS-0810.
+
+La prioridad v2 procede del score operativo 0–100, separado de la probabilidad logística. La prioridad interna ALTA incluye el nivel visual CRITICA para priorizar atención; esto no aprueba una facilidad. La redacción exige además que la proyección de la acción seleccionada sea elegible. El diagnóstico sin beneficio atribuible o un diferimiento descartado no se habilitan por pedir un texto. Se conservan cinco reservas, selección manual justificada cuando el plan no incluye prioridad alta y resultados guardados. Los filtros de criticidad y seleccionados pueden combinarse. La consulta contextual v2 y la secuencia preventiva son funciones distintas en la misma ficha.
+
+Las secciones siguientes describen el MVP original; este apartado registra su adaptación a v2, también previa al presencial.
+
 ## Qué se implementó
 
 En Clientes, la ficha incorpora **Acciones preventivas**. La evaluación individual y el optimizador siguen funcionando mediante código. Después del plan, un coordinador puede preparar una secuencia de cuatro pasos para una atención seleccionada. Puede utilizar Gemini o solicitar expresamente el protocolo sin IA.

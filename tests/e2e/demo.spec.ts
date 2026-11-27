@@ -35,6 +35,9 @@ test("evento, explicación, impacto, plan y aprobación humana", async ({
   await page.getByRole("link", { name: "Clientes", exact: true }).click();
   await page.getByRole("searchbox").fill("CS-0001");
   await expect(page.locator(".client-probability")).toContainText("%");
+  await page
+    .getByText("Factores de la predicción experimental", { exact: true })
+    .click();
   await expect(
     page.getByRole("heading", { name: "Factores de la predicción" }),
   ).toBeVisible();

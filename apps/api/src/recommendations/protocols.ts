@@ -25,7 +25,12 @@ export const KnowledgeSchema = z
           .object({
             id: z.string(),
             title: z.string(),
-            action_code: z.enum(["COMMON", "LIQUIDITY_VISIT", "RESCHEDULE"]),
+            action_code: z.enum([
+              "COMMON",
+              "LIQUIDITY_VISIT",
+              "RESCHEDULE",
+              "CONTINUITY",
+            ]),
             source: z
               .object({
                 id: z.string(),
@@ -37,7 +42,8 @@ export const KnowledgeSchema = z
           })
           .strict(),
       )
-      .length(3),
+      .min(3)
+      .max(4),
   })
   .strict();
 export const KNOWLEDGE = KnowledgeSchema.parse(
@@ -48,8 +54,19 @@ export const KNOWLEDGE = KnowledgeSchema.parse(
 export const digest = (value: unknown) =>
   createHash("sha256").update(JSON.stringify(value)).digest("hex");
 export const KNOWLEDGE_HASH = digest(KNOWLEDGE);
+export const KNOWLEDGE_V2 = KnowledgeSchema.parse(
+  JSON.parse(
+    readFileSync(resolve("data/knowledge/prevention-demo-2.json"), "utf8"),
+  ),
+);
+export function knowledgeForPolicy(policyId: string) {
+  return policyId === "prevention-synthetic-2" ? KNOWLEDGE_V2 : KNOWLEDGE;
+}
 export function protocolSteps(actionCode: string, knowledge = KNOWLEDGE) {
-  if (!["LIQUIDITY_VISIT", "RESCHEDULE"].includes(actionCode))
+  if (
+    actionCode === "COMMON" ||
+    !knowledge.protocols.some((p) => p.action_code === actionCode)
+  )
     throw new Error("Acción sin protocolo");
   return knowledge.protocols
     .filter((p) => p.action_code === "COMMON" || p.action_code === actionCode)

@@ -1,6 +1,11 @@
 # Arquitectura actual de ClimaShield AI
 
 Ampliación del 27/11: [redacción preventiva acotada del MVP](mvp-prevencion.md), implementada bajo solicitud con protocolos JSON y cinco reservas por análisis. La [arquitectura de plantillas por grupo](propuesta-redaccion-preventiva.md) sigue propuesta. La evaluación y la selección permanecen individuales.
+## Ampliación de decisión del 27/11/2026
+
+`portfolio/capacity.ts` genera el perfil sintético v2 y calcula capacidad. `analysis/model.ts` entrena/infiere doce variables y conserva lectura del artefacto v1. `analysis/decision.ts` desglosa el score operativo. `impact.ts` evalúa escenarios y controles por acción; `event-plan.ts` y el optimizador limitan costo, minutos, cobertura y cuotas diferidas. `agent/report.ts` atiende consultas con contexto fijo y herramientas de lectura. React añade `DecisionSummary` y `ConsultationPanel`; la selección de cliente se comparte para navegar desde el plan a la ficha.
+
+`202611260006_decision_context.sql` añade métricas NUMERIC y `consultation_reports` con RLS. Se integró y verificó con PostgreSQL/PostGIS junto a la migración independiente `202611270006_preventive_recommendations.sql`; ambas mantienen su nombre y checksum. Los protocolos se eligen por política: v1 conserva su contenido y v2 añade continuidad. [Metodología vigente](decision-model-v2.md) y [validación](validation-report.md). El resto del documento describe la arquitectura base conservada.
 
 Refactorización por eventos del 26/11/2026. Monolito modular **NestJS + TypeScript**, **React + Vite** y **PostgreSQL/PostGIS** en Docker. Supabase sigue siendo destino PostgreSQL configurable; no se verificó un despliegue remoto. Gemini se llama exclusivamente desde NestJS.
 
@@ -80,7 +85,7 @@ erDiagram
   OPTIMIZATION_PLANS ||--o{ INTERVENTIONS : propone
 ```
 
-Con la migración `202611270006_preventive_recommendations.sql` hay 24 tablas en el esquema, incluida `schema_migrations`. `preventive_recommendations` relaciona análisis, plan y cliente, congela protocolos/contexto y protege cinco reservas y resultados finales. Los triggers también protegen versiones/snapshots/eventos inmutables y las transiciones de intervención. RLS sigue habilitado sin acceso anónimo. El rol propietario de la demo requiere sustitución por privilegios mínimos y Auth antes de un piloto.
+Con ambas ampliaciones hay 25 tablas en el esquema, incluida `schema_migrations` y la nueva `consultation_reports`. `preventive_recommendations` relaciona análisis, plan y cliente, congela protocolos/contexto y protege cinco reservas y resultados finales. Los triggers también protegen versiones/snapshots/eventos inmutables y las transiciones de intervención. RLS sigue habilitado sin acceso anónimo. El rol propietario de la demo requiere sustitución por privilegios mínimos y Auth antes de un piloto.
 
 ## Invariantes de cálculo y ejecución
 
