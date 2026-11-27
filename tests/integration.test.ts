@@ -59,7 +59,7 @@ test("flujo por evento con PostgreSQL/PostGIS reales", async (t) => {
               "SELECT count(*) FROM climashield.schema_migrations",
             )
           ).rows[0].count,
-          5,
+          6,
         );
         assert.equal(
           +(await pool.query("SELECT count(*) FROM climashield.businesses"))
@@ -226,8 +226,27 @@ test("flujo por evento con PostgreSQL/PostGIS reales", async (t) => {
         assert.equal(periods.length, detail.result.bridge.length);
         assert.equal(periods[0].storage_type, "numeric");
         assert.equal(periods[0].cash_delta, detail.result.bridge[0].cash_delta);
+        const scored = detail.clients.find((c: any) => c.decision);
+        assert.ok(scored);
+        const persisted = (await pool.query("SELECT decision_score,dscr_base,pg_typeof(other_debt_service)::text AS storage_type FROM climashield.client_predictions WHERE analysis_id=$1 AND business_id=$2", [analysisId, scored.business_id])).rows[0];
+        assert.equal(+persisted.decision_score, scored.decision.score);
+        assert.equal(persisted.storage_type, "numeric");
+        assert.ok(+detail.plan.metrics.liquidity_commitment <= 5000);
+        assert.ok(detail.plan.selected.every((a: any) => detail.clients.find((c: any) => c.business_id === a.business_id).projections.find((p: any) => p.action_code === a.action_code).eligible));
       },
     );
+    await t.test("consulta contextual autenticada conserva evidencia y no crea intervenciones", async () => {
+      const client = detail.clients.find((c: any) => c.decision);
+      const path = `/analyses/${analysisId}/consultations`, body = { question: "Explica la criticidad y las alternativas", client_id: client.business_id, mode: "deterministic" };
+      assert.equal((await request(path, body)).status, 403);
+      const before = +(await pool.query("SELECT count(*) FROM climashield.interventions")).rows[0].count;
+      const r = await request(path, body, "POST", token);
+      assert.equal(r.status, 201);
+      assert.equal(r.data.mode, "deterministic");
+      assert.match(r.data.text, /Criticidad/);
+      assert.equal((await pool.query("SELECT analysis_id FROM climashield.consultation_reports WHERE id=$1", [r.data.id])).rows[0].analysis_id, analysisId);
+      assert.equal(+(await pool.query("SELECT count(*) FROM climashield.interventions")).rows[0].count, before);
+    });
     await t.test(
       "recupera un trabajo tras reinicio sin duplicar plan o alerta",
       async () => {

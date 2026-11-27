@@ -2,6 +2,8 @@
 
 Este documento prevalece sobre MASTER para la aplicación. La búsqueda inicial sugirió un sitio promocional de sostenibilidad; se descarta ese patrón porque la tarea es una consola de riesgo para analistas.
 
+Actualización del 27/11/2026: en la ficha, la pieza dominante es ahora la decisión y su desglose. La columna de detalle recibe más ancho que la lista; mapa bajo demanda. La lectura sigue criticidad → capacidad → alternativas y controles → consulta contextual. El plan mantiene visibles compromiso de liquidez y casos sin propuesta. Se conserva la paleta y tipografía siguientes.
+
 Dirección: cartografía operativa, evidencia visible y un recorrido claro desde amenaza hasta intervención. Un mapa amplio es la pieza dominante; alrededor, cifras sobrias y un panel de decisión.
 
 Paleta: petróleo #102c35 para navegación, blanco #ffffff para superficies, gris frío #f3f6f7 para fondo, verde #147d64 para acciones, ámbar #9a5b08 para prioridad media, rojo #bc3d36 para prioridad alta. Texto principal #19333b y secundario #536771.

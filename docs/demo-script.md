@@ -1,5 +1,18 @@
 # Demo por evento · ClimaShield AI
 
+## Recorrido de decisión v2 del 27/11/2026
+
+1. Con PostgreSQL disponible, configurar entorno local según README y aplicar 0006 después de las cinco migraciones previas; seed idempotente. El artefacto v2 ya está generado. No se verificó ese arranque en el entorno de ampliación.
+2. Abrir el evento y distinguir su vigencia o etiqueta de reproducción. Ver prioridad alta/crítica y casos derivados.
+3. En Clientes, explicar los cinco componentes del score, DSCR base/estrés, reserva y severidad por cliente. Distinguir score, índice territorial y probabilidad logística.
+4. Comparar mejora de caja, costos, beneficio neto, motivos de descarte y brecha residual. Una medida que ayuda puede ser insuficiente.
+5. En Plan, revisar presupuesto, minutos, cobertura, compromiso de cuotas diferidas y casos críticos sin acción. Abrir la ficha desde el código del cliente.
+6. Ingresar credencial local y consultar por qué el cliente requiere atención y qué plan debe evaluar el asesor. Sin proveedor, elegir resumen calculado sin IA. Gemini exige lectura de evento/plan y ficha fijada.
+7. Crear borradores y continuar revisión/seguimiento. Proponer verificaciones a 7 y 30 días, sin contratos o contactos externos.
+8. Exportar evidencia de esta ejecución. `npm run test:ui` ofrece un fixture de interfaz con 20 clientes sintéticos, sin PostgreSQL; no es la demo de 1,000 negocios sobre fuentes oficiales.
+
+El recorrido siguiente se conserva como guion histórico de la primera versión.
+
 Versión local del 26/11/2026. Cartera/historia ficticias; predicción e impacto experimentales. No ejecutar sobre cartera real.
 
 1. Arrancar PostgreSQL, migrar, cargar seed e iniciar API/web según README. El modelo ya está versionado. Abrir `http://127.0.0.1:5180`.

@@ -1,49 +1,41 @@
 # ClimaShield AI
 
-## Prevención climática por evento con revisión humana
+## Decisión preventiva con evidencia climática y capacidad de pago
 
-**Concepto actualizado · 26 de noviembre de 2026 · prototipo local previo al presencial**
+Concepto actualizado al 27 de noviembre de 2026. Prototipo local previo a la fase presencial.
 
-ClimaShield transforma avisos de SENAMHI y cartografía CENEPRED en una evaluación de cartera ficticia, un escenario financiero para la institución y un plan de propuestas revisables. La preparación repetitiva se automatiza; las decisiones permanecen en el coordinador y los analistas.
+ClimaShield ayuda a determinar qué clientes necesitan revisión ante un evento climático, por qué requieren atención y qué medidas pueden evaluarse. La ficha combina ubicación, actividad, capacidad de pago total, gastos esenciales, reserva e historia de pagos con un modelo experimental. El resultado conecta criticidad con una acción verificable o una derivación explícita.
 
-### Qué resuelve
+### Evaluación individual
 
-Una alerta regional no identifica por sí sola quién podría deteriorarse, cuánto representa para la cartera ni qué acciones atender con presupuesto y minutos limitados. El flujo integra evento, resolución espacial, comportamiento de pagos, escenarios de caja y recursos operativos.
+La ubicación se cruza con el evento y las capas de susceptibilidad en PostGIS. Sin ubicación, el resultado es UNKNOWN; las inconsistencias de geocodificación se derivan. Una alerta regional por sí sola no acredita pérdida individual. CENEPRED y SENAMHI conservan fuente, versión y vigencia; los eventos reproducidos se identifican como históricos.
 
-### Recorrido implementado
+La regresión logística logistic-synthetic-2 usa doce variables de presión financiera, pagos y clima para estimar entrada en atraso mayor a 30 días en 90 días. La versión anterior se conserva. La historia y la cartera son ficticias: las métricas sintéticas no acreditan precisión institucional.
 
-Aviso nuevo/revisado → evento con snapshot → job persistido → exposición → modelo experimental → impacto → plan → notificación interna → revisión → seguimiento registrado.
+La prioridad operativa se muestra en una escala separada de 0 a 100: 20% amenaza/exposición, 30% déficit de capacidad bajo estrés, 15% déficit de reserva, 15% comportamiento y 20% señal logística. Cada componente muestra puntos y fundamento. Baja <30, media 30–49.99, alta 50–69.99, crítica ≥70. Pesos y umbrales son una política experimental. El índice territorial anterior continúa como referencia explicativa.
 
-Se reutilizan NestJS/TypeScript, React/Vite y PostgreSQL/PostGIS. El modelo logístico entrena e infiere en TypeScript. Gemini explica evidencia del evento mediante herramientas limitadas; es opcional, no calcula ni aprueba. Un informe determinista está identificado como “sin IA”.
+### Acción y valor para la institución
 
-### Demostración y datos
+Se calcula caja disponible después de gastos operativos y del hogar, cobertura de cuotas propias y externas, liquidez adversa y central y severidad sintética por cliente. Los efectos del evento se representan con 500 realizaciones pareadas. Saldo expuesto, pérdida modelada, cobros, costos y margen mantienen significados distintos.
 
-Cartera de 1,000 negocios y 1,001 créditos, completamente inventados. Se añaden 24 meses ficticios de pagos, perfiles de endeudamiento, segmentos micro/pequeña y sensibilidad sectorial. Los cortes son versionados y anteriores al evento. CENEPRED/SENAMHI son fuentes oficiales; una reproducción histórica se rotula y no se presenta como alerta actual.
+Se comparan evaluar diferimiento de dos cuotas, diagnóstico de liquidez y continuidad con protección de mercadería. Una acción debe mejorar caja del cliente, no empeorar escenarios adversos y aportar beneficio neto después de costo operativo y financiero. El diferimiento exige capacidad base de recuperación y un límite relativo al saldo. El diagnóstico por sí solo no recibe una reducción financiera automática.
 
-El índice climático continúa siendo una referencia explicativa. Un modelo distinto estima entrada en atraso >30 días en 90 días para quienes no estaban ya deteriorados al corte. La evaluación temporal, los clientes no vistos, la calibración y los errores por grupo usan solo datos sintéticos. No acreditan rendimiento institucional.
+La selección respeta presupuesto, minutos, cobertura mínima y límite agregado de cuotas diferidas. Cuando una acción no es viable o faltan recursos, el cliente permanece visible en revisión. La criticidad y la insuficiencia de una medida deben conducir a verificación del asesor; el prototipo no garantiza eliminar el riesgo.
 
-### Impacto y decisión
+Cada propuesta conserva motivos, condiciones y pasos de revisión, con seguimiento a 7 y 30 días. La aprobación local registra un borrador autorizado; no cambia contratos ni contacta personas.
 
-Se distinguen saldo expuesto, saldo ponderado por deterioro, pérdida modelada y cobros de la institución. El calendario hipotético separa principal, intereses, costos, caja y margen; diferir cuotas no condona el capital. No se calculan provisiones regulatorias ni se utiliza como severidad universal el dato del 10% histórico citado en el documento de mejoras.
+### Agente e interfaz
 
-El optimizador busca reducción modelada de pérdida de cartera menos costo operativo, con presupuesto, minutos y cobertura mínima. Compara mayor saldo y sector/zona bajo recursos equivalentes. Propone evaluar reprogramación de cuotas o realizar una visita de liquidez; los casos ya deteriorados se derivan. Los efectos son supuestos, no eficacia causal ni facilidades preaprobadas.
+Cinco vistas: Eventos y alertas, Clientes, Impacto de cartera, Plan y seguimiento, Fuentes. La ficha individual muestra criticidad, capacidad y alternativas, y permite consultar al agente. El plan muestra valor neto, compromiso de liquidez, restricciones y cola de revisión. La tabla y el detalle funcionan sin WebGL.
 
-Se simulan 500 realizaciones pareadas por cliente, con componente regional compartido. Percentiles y frecuencia de brecha de caja no son intervalos de confianza ni probabilidad de mora. La ficha del modelo y los supuestos quedan disponibles junto a la evidencia.
+Gemini opera desde NestJS con herramientas de lectura del evento, plan y ficha de cliente. Cada consulta fija análisis y cliente opcional; el agente explica factores, criticidad, alternativas descartadas, beneficio, riesgo residual y pasos. No modifica cálculos ni ejecuta aprobaciones, SQL libre, URLs arbitrarias o contactos. El modo calculado sin proveedor se identifica como informe sin IA.
 
-### Interfaz y control
+### Implementación y validación
 
-Cinco vistas por evento: Eventos y alertas, Clientes, Impacto de cartera, Plan y seguimiento, Fuentes. La tabla y el detalle funcionan sin WebGL. Se retiran el chat abierto, la pantalla de arquitectura, el simulador libre y Open-Meteo.
+Se conservan NestJS/TypeScript, React/Vite y PostgreSQL/PostGIS local, con destino Supabase por variables. El modelo, cálculos y optimización usan TypeScript; dinero con Decimal/NUMERIC. La migración 0006 amplía los registros sin modificar las cinco anteriores.
 
-Los eventos y versiones son inmutables. Un job admite recuperación mediante lease y reintentos; predicciones, plan y aviso se confirman de forma transaccional. Las intervenciones exigen revisión autenticada con la credencial local y guardan auditoría. No hay contactos externos ni ejecución de operaciones financieras.
+La ampliación se verificó con unitarias, build y navegador sobre un fixture sintético. Este entorno carece de configuración PostgreSQL/Docker; la migración y el recorrido completo con base real quedan pendientes aquí. No se realizó una llamada nueva a Gemini real ni un despliegue remoto. Las pruebas del 26/11 son evidencia histórica de la primera base.
 
-### Alcance pendiente y condiciones de piloto
+Todos los componentes actuales y esta ampliación son previos al presencial. Las adaptaciones nuevas que se acuerden entonces deben registrar su propio corte, commits y evidencia. Quedan pendientes datos autorizados, calibración, eficacia observada de acciones, otros fenómenos y segmentos, cronogramas reales, seguridad institucional, core bancario y canales externos.
 
-Faltan otros eventos/segmentos, validación con datos autorizados, eficacia de acciones, importación, Auth institucional, privilegios mínimos, core bancario, fondeo y conectores de comunicación. CENEPRED requiere revisión humana registrada; no se prometen actualizaciones automáticas de publicaciones sin un feed confirmado. Deben confirmarse leyenda GRIDCODE, vigencia SENAMHI y condiciones de uso. Supabase remoto no fue verificado.
-
-No se atribuye como avance presencial nada ya construido: toda la base y esta refactorización del 26/11 son preexistentes. El alcance presencial se acordará con el Challenge Owner y se registrará con commits y evidencia nuevos. No se afirma haber recibido cartera, ejecutado un piloto, logrado ahorros reales o enviado la propuesta.
-
-### Evidencia
-
-[Arquitectura](docs/architecture.md), [cambios y cobertura](docs/refactor-implementation.md), [validación](docs/validation-report.md), [modelo versionado](data/models/deterioration-v1.json), [guion de demo](docs/demo-script.md) y [preexistentes](docs/preexisting-components.md).
-
-El [concepto del 24/11](docs/archive/solution-concept-20261124.md) y su PDF son evidencia histórica. Las propuestas del documento de mejoras se tomaron como insumo: no se presentan sus ejemplos ilustrativos como resultados reales ni sus atribuciones al expediente como verificación primaria independiente.
+Metodología y referencias: [modelo y decisión v2](docs/decision-model-v2.md). Resultados reales y limitaciones: [validación](docs/validation-report.md). Origen de componentes: [preexistentes](docs/preexisting-components.md).

@@ -4,6 +4,7 @@ export interface Plan {
     budget_pen: number;
     capacity_minutes: number;
     min_high_priority: number;
+    max_liquidity_commitment_pen?: number;
   };
   id: string;
   solver_status: string;
@@ -13,6 +14,8 @@ export interface Plan {
     cost: string;
     minutes: number;
     portfolio_benefit: string;
+    liquidity_commitment?: string;
+    funding_cost?: string;
   };
   selected: {
     business_id: string;
@@ -38,6 +41,7 @@ export interface Plan {
   modeled_loss_with: string;
   modeled_loss_avoided: string;
   client_liquidity_relief: string;
+  review_queue?: { business_id: string; code: string; reason: string; deadline_hours: number }[];
   objective: string;
   assumptions: string;
 }
@@ -80,6 +84,8 @@ export interface Analysis {
       predicted: number;
       unknown: number;
       high: number;
+      critical?: number;
+      pending_review?: number;
       already_deteriorated: number;
       incomplete: number;
       outside_event: number;

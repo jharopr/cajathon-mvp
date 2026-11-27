@@ -1,5 +1,11 @@
 # Arquitectura actual de ClimaShield AI
 
+## Ampliación de decisión del 27/11/2026
+
+`portfolio/capacity.ts` genera el perfil sintético v2 y calcula capacidad. `analysis/model.ts` entrena/infiere doce variables y conserva lectura del artefacto v1. `analysis/decision.ts` desglosa el score operativo. `impact.ts` evalúa escenarios y controles por acción; `event-plan.ts` y el optimizador limitan costo, minutos, cobertura y cuotas diferidas. `agent/report.ts` atiende consultas con contexto fijo y herramientas de lectura. React añade `DecisionSummary` y `ConsultationPanel`; la selección de cliente se comparte para navegar desde el plan a la ficha.
+
+La migración aditiva 0006 añade métricas NUMERIC y `consultation_reports` con RLS. No se aplicó en este entorno por ausencia de PostgreSQL. Las cinco migraciones previas permanecen intactas. [Metodología vigente](decision-model-v2.md) y [validación](validation-report.md). El resto del documento describe la arquitectura base conservada.
+
 Refactorización por eventos del 26/11/2026. Monolito modular **NestJS + TypeScript**, **React + Vite** y **PostgreSQL/PostGIS** en Docker. Supabase sigue siendo destino PostgreSQL configurable; no se verificó un despliegue remoto. Gemini se llama exclusivamente desde NestJS.
 
 La [propuesta y comparación antes/actual](plan-refactorizacion-puntos-mejora.md) y el [informe de implementación](refactor-implementation.md) explican las eliminaciones y límites. La [arquitectura anterior](archive/architecture-20261124.md) y su [SVG histórico](architecture.svg) se conservan como evidencia previa.

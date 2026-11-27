@@ -3,6 +3,7 @@ import { useEvent } from "../../app/EventContext";
 import { api, pen } from "../../api";
 import type { Intervention } from "../../app/types";
 import { Badge, Empty, Panel, Metric } from "../../shared/ui";
+import { ConsultationPanel } from "./ConsultationPanel";
 const NEXT: Record<string, { status: string; label: string }> = {
   DRAFT: { status: "APPROVED", label: "Aprobar propuesta" },
   APPROVED: { status: "ASSIGNED", label: "Asignar asesor" },
@@ -10,11 +11,12 @@ const NEXT: Record<string, { status: string; label: string }> = {
   CONTACTED: { status: "COMPLETED", label: "Completar atención" },
 };
 export default function PlansPage() {
-  const { event, analysis, token, busy, action, gemini, openAnalysis } =
+  const { event, analysis, token, busy, action, gemini, openAnalysis, selectClient } =
       useEvent(),
     [budget, setBudget] = useState(1500),
     [capacity, setCapacity] = useState(480),
     [minimum, setMinimum] = useState(0),
+    [liquidity, setLiquidity] = useState(5000),
     [interventions, setInterventions] = useState<Intervention[]>([]),
     [notes, setNotes] = useState<Record<string, string>>({});
   const [loadError, setLoadError] = useState("");
@@ -24,6 +26,7 @@ export default function PlansPage() {
       setBudget(c.budget_pen);
       setCapacity(c.capacity_minutes);
       setMinimum(c.min_high_priority);
+      setLiquidity(c.max_liquidity_commitment_pen ?? 5000);
     }
   }, [analysis?.plan?.id]);
   const id = analysis?.id;
@@ -85,6 +88,7 @@ export default function PlansPage() {
                       budget_pen: budget,
                       capacity_minutes: capacity,
                       min_high_priority: minimum,
+                      max_liquidity_commitment_pen: liquidity,
                     },
                     "POST",
                     token,
@@ -129,6 +133,7 @@ export default function PlansPage() {
               onChange={(e) => setMinimum(+e.target.value)}
             />
           </label>
+          <label>Límite de cuotas diferidas (S/)<input type="number" min="0" max="10000000" step="0.01" value={liquidity} required onChange={(e) => setLiquidity(+e.target.value)} /></label>
           <button className="primary" disabled={!!busy || !token}>
             Preparar otro plan
           </button>
@@ -156,8 +161,9 @@ export default function PlansPage() {
         <Metric
           label="Beneficio neto de cartera"
           value={pen(plan.metrics.portfolio_benefit)}
-          note="Reducción de pérdida menos costo operativo"
+          note="Después de costo operativo y costo financiero"
         />
+        <Metric label="Compromiso de cuotas diferidas" value={pen(plan.metrics.liquidity_commitment ?? 0)} note={`Costo financiero estimado ${pen(plan.metrics.funding_cost ?? 0)}`} />
         <Metric
           label="Costo operativo de la Caja"
           value={pen(plan.metrics.cost)}
@@ -166,7 +172,7 @@ export default function PlansPage() {
         <Metric
           label="Alivio de liquidez del cliente"
           value={pen(plan.client_liquidity_relief)}
-          note="Primer mes; cuotas diferidas, no condonadas"
+          note="Mejora de caja central del primer mes en el escenario"
         />
       </div>
       <Panel title="Comparación con referencias">
@@ -210,7 +216,7 @@ export default function PlansPage() {
               {plan.selected.map((c) => (
                 <tr key={c.business_id}>
                   <td>
-                    {c.code}
+                    <button className="client-link" onClick={() => { selectClient(c.business_id); location.hash = "clients"; }}>{c.code}</button>
                     <small>{c.name}</small>
                   </td>
                   <td>{c.action}</td>
@@ -250,6 +256,13 @@ export default function PlansPage() {
         </div>
         <p>{plan.assumptions}</p>
       </Panel>
+      {plan.review_queue && <Panel title="Casos que requieren una decisión del asesor">
+        <p>{plan.review_queue.length} casos sin propuesta asignada. La falta de una acción rentable no elimina la necesidad de atención.</p>
+        <div className="table-wrap"><table><thead><tr><th>Cliente</th><th>Motivo</th><th>Plazo de revisión</th></tr></thead><tbody>
+          {plan.review_queue.slice(0, 20).map((c) => <tr key={c.business_id}><td><button className="client-link" onClick={() => { selectClient(c.business_id); location.hash = "clients"; }}>{c.code}</button></td><td>{c.reason}</td><td>{c.deadline_hours} horas</td></tr>)}
+        </tbody></table></div><small>Primeros 20 casos; el análisis conserva la cola completa.</small>
+      </Panel>}
+      <ConsultationPanel key={analysis.id} />
       <Panel title="Aprobación y seguimiento">
         {loadError && (
           <p role="alert" className="feedback error">

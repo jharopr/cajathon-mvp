@@ -1,5 +1,15 @@
 # Decisiones
 
+## Decisiones del 27/11/2026
+
+- Separar evidencia espacial, probabilidad logística y puntuación de prioridad operativa para explicar la decisión.
+- Incorporar capacidad después de gastos esenciales y obligaciones externas sintéticas, con trazabilidad de supuestos.
+- Versionar el modelo v2 y política v2; preservar artefacto v1 y migraciones aplicadas.
+- Filtrar medidas por alivio al cliente, no empeoramiento adverso, recuperación, valor neto y liquidez; conservar cola priorizada para casos sin medida asignada.
+- Usar un agente Gemini de lectura contextual dentro de NestJS, sin herramientas de aprobación, navegador, SQL o contactos. Alternativa determinista explícita.
+- Verificar interfaz con motor sintético y HTTP interceptado mientras PostgreSQL no está disponible; reportar el límite sin atribuir integración aprobada.
+- Declarar la ampliación completa como previa al presencial, con adaptaciones futuras sujetas a evidencia nueva.
+
 | Fecha Lima | Decisión y consecuencia |
 | --- | --- |
 | 24/11/2026 | NestJS + React + PostgreSQL/PostGIS y Supabase destino por instrucción del usuario. Se retiró scaffold API Python; no hay SQLite. |

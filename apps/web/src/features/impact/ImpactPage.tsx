@@ -39,7 +39,7 @@ export default function ImpactPage() {
         <Metric
           label="Reducción neta modelada"
           value={pen(plan.metrics.portfolio_benefit)}
-          note="Después del costo operativo"
+          note="Después del costo operativo y financiero"
         />
       </div>
       <Panel title="Concentración y cobertura por zona">
@@ -254,9 +254,7 @@ export default function ImpactPage() {
       </Panel>
       <Panel title="Límites del análisis">
         <p>
-          Severidad condicional de escenario:{" "}
-          {pct(analysis.policy.severity_conditional_30d)}. Es un supuesto
-          ficticio, no una tasa de pérdida calibrada.
+          La severidad condicional v2 se calcula por cliente con intensidad, susceptibilidad y reserva. Sus valores se muestran en la ficha individual. Es una hipótesis de escenario, sin calibración institucional.
         </p>
         <p>{analysis.policy.note}</p>
         <ul>

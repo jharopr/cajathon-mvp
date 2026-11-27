@@ -7,9 +7,10 @@ export const OptimizeSchema = z
     budget_pen: z.number().min(0).max(1e6).multipleOf(0.01).default(1500),
     capacity_minutes: z.number().int().min(0).max(100000).default(480),
     min_high_priority: z.number().int().min(0).max(1000).default(0),
+    max_liquidity_commitment_pen: z.number().min(0).max(1e7).multipleOf(0.01).default(5000),
   })
   .strict();
-export type OptimizeInput = z.infer<typeof OptimizeSchema>;
+export type OptimizeInput = Omit<z.infer<typeof OptimizeSchema>, "max_liquidity_commitment_pen"> & { max_liquidity_commitment_pen?: number };
 export interface Candidate {
   business_id: string;
   code: string;
@@ -22,6 +23,9 @@ export interface Candidate {
   portfolio_benefit: string;
   client_benefit?: string;
   evidence_id: string;
+  liquidity_commitment?: string;
+  funding_cost?: string;
+  modeled_loss?: string;
 }
 export function metrics(items: Candidate[]) {
   return {
@@ -29,6 +33,8 @@ export function metrics(items: Candidate[]) {
     high_coverage: items.filter((c) => c.priority === "ALTA").length,
     cost: money(items.reduce((s, c) => s.plus(c.cost), new Decimal(0))),
     minutes: items.reduce((s, c) => s + c.minutes, 0),
+    liquidity_commitment: money(items.reduce((s, c) => s.plus(c.liquidity_commitment ?? 0), new Decimal(0))),
+    funding_cost: money(items.reduce((s, c) => s.plus(c.funding_cost ?? 0), new Decimal(0))),
     portfolio_benefit: money(
       items.reduce((s, c) => s.plus(c.portfolio_benefit), new Decimal(0)),
     ),
@@ -47,6 +53,7 @@ export function optimizeGroups(
     high: number;
     benefit: bigint;
     clientBenefit: bigint;
+    liquidity: number;
     previous?: State;
     item?: Candidate;
   };
@@ -63,7 +70,7 @@ export function optimizeGroups(
   let states = new Map<string, State>([
       [
         "0:0:0",
-        { cost: 0, minutes: 0, high: 0, benefit: 0n, clientBenefit: 0n },
+        { cost: 0, minutes: 0, high: 0, benefit: 0n, clientBenefit: 0n, liquidity: 0 },
       ],
     ]),
     pruned = false;
@@ -76,6 +83,7 @@ export function optimizeGroups(
       return {
         item,
         cost,
+        liquidity: new Decimal(item.liquidity_commitment ?? 0).mul(100).toNumber(),
         benefit: BigInt(
           new Decimal(item.portfolio_benefit).mul(100).toFixed(0),
         ),
@@ -89,15 +97,16 @@ export function optimizeGroups(
       for (const choice of choices) {
         const c = choice.item;
         const cost = s.cost + choice.cost,
+          liquidity = s.liquidity + choice.liquidity,
           minutes = s.minutes + c.minutes,
           high = Math.min(
             p.min_high_priority,
             s.high + (c.priority === "ALTA" ? 1 : 0),
           );
-        if (cost > budget || minutes > p.capacity_minutes) continue;
+        if (cost > budget || minutes > p.capacity_minutes || liquidity > (p.max_liquidity_commitment_pen ?? 5000) * 100) continue;
         const benefit = s.benefit + choice.benefit,
           clientBenefit = s.clientBenefit + choice.clientBenefit,
-          key = `${cost}:${minutes}:${high}`,
+          key = `${cost}:${minutes}:${high}:${liquidity}`,
           prior = next.get(key);
         if (
           !prior ||
@@ -108,6 +117,7 @@ export function optimizeGroups(
             cost,
             minutes,
             high,
+            liquidity,
             benefit,
             clientBenefit,
             previous: s,
@@ -125,7 +135,7 @@ export function optimizeGroups(
         ...byHigh.slice(0, Math.floor(stateLimit / 4)),
         ...sorted.slice(0, Math.ceil((stateLimit * 3) / 4)),
       ];
-      next = new Map(kept.map((s) => [`${s.cost}:${s.minutes}:${s.high}`, s]));
+      next = new Map(kept.map((s) => [`${s.cost}:${s.minutes}:${s.high}:${s.liquidity}`, s]));
     }
     states = next;
   }

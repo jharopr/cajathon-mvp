@@ -1,6 +1,6 @@
 # Reporte de validación
 
-La validación vigente de la refactorización está en el último anexo del **26/11/2026**. Las secciones del 24/11 y el primer anexo documental se conservan como evidencia histórica; PostgreSQL se inició posteriormente y sí se ejecutaron integración y navegador.
+La ampliación vigente es **Decisión v2 del 27/11/2026**, documentada al final. Las ejecuciones del 24/11 y 26/11 se conservan como evidencia histórica de la base previa; no validan la nueva migración ni el motor v2.
 
 Ejecutado **24/11/2026, America/Lima** (21:00–22:00) en Windows, Node 24.13.0 y Docker Desktop. PostgreSQL 16/PostGIS 3.4 local, imágenes reconstruidas para API NestJS y frontend React/Nginx. Cartera ficticia seed 42: 1000 negocios y 1001 créditos. Amenazas: cartografía CENEPRED (SHAPE 102) y avisos SENAMHI reales, más el escenario sintético de referencia. No se usó cartera real.
 
@@ -182,3 +182,62 @@ Capturas de esta versión: [eventos](mockup-events.png), [impacto](mockup-event-
 Se corrigió `dev:api` a `tsx watch --tsconfig tsconfig.api.json apps/api/src/main.ts`: el orden anterior interpretaba `watch` como archivo e impedía iniciar `npm run dev`. Web y API quedaron activos localmente; ambos respondieron HTTP 200 en `http://127.0.0.1:5180` y `http://127.0.0.1:8081/api/v1/health`. PostgreSQL sigue en Docker, puerto local 54322.
 
 Se repitieron unitarias (23 aprobadas), build (correcto), integración (11 aprobadas, aproximadamente 20 s) y navegador reutilizando los servidores de desarrollo (3 aprobadas, aproximadamente 11 s). La primera repetición de integración detectó una suposición incorrecta del fixture de fallo: exigía cero notificaciones incluso para un análisis ya ejecutado anteriormente. Se corrigió para comprobar que no aumente el conteo y para esperar la recuperación del job cuando hay otro procesador activo. La ejecución posterior pasó; no se cambiaron resultados financieros ni reglas del producto por ese ajuste de pruebas.
+
+## Decisión v2 implementada y verificada el 27/11/2026
+
+Esta ampliación es previa al presencial. La [metodología vigente](decision-model-v2.md) documenta los pesos y parámetros como hipótesis sintéticas. Las cifras de cartera y planes del 24/11 y 26/11 anteriores no son resultados de este motor.
+
+Se incorporaron perfil financiero v2, modelo logístico de doce variables, puntuación desglosada, capacidad bajo estrés, severidad por cliente, controles de alternativas, costo financiero, límite de cuotas diferidas, cola de revisión y consultas Gemini con análisis/cliente fijados. La migración 0006 amplía tipos NUMERIC y guarda consultas con RLS. No se reescribieron migraciones anteriores ni el artefacto v1.
+
+### Comandos y resultados reales
+
+| Verificación | Resultado |
+| --- | --- |
+| npm ci | 273 dependencias instaladas. Se requirió ejecutar fuera del sandbox por restricciones de red y acceso a caché; no se cambiaron las versiones del lockfile. |
+| npm run model:train | Generó logistic-synthetic-2 y deterioration-v2.json sin alterar v1. El script rechaza sobrescribir un artefacto distinto con el mismo nombre. |
+| npm test | **31 aprobadas, 0 fallos**, ejecución final aproximadamente 1.05 s. |
+| npm run build | **Correcto**, NestJS y React/Vite. Compilación web final aproximadamente 3.98 s. Persiste advertencia de MapLibre de aproximadamente 1.10 MB, cargado bajo demanda. |
+| npm run test:ui | **3 aprobadas, 0 fallos**, aproximadamente 7.7 s. Chrome sin interfaz, anchos 1440/768/375 px. |
+| npm run test:integration | **Intentado, bloqueado por entorno:** ECONNREFUSED en 127.0.0.1:54322; ningún caso de integración aprobado en esta ampliación. |
+| npm run test:e2e | **Intentado, bloqueado por entorno:** la API indica PostgreSQL no disponible y Playwright alcanza el límite de espera de 30 s del servidor. No se ejecutó el recorrido con base real. |
+| Disponibilidad local | Sin .env; Docker/psql no localizados y puerto 54322 cerrado. No se instalaron servicios de base de datos ni se inventaron credenciales operativas. |
+| git diff --check | Sin errores de whitespace. Las migraciones 0001–0005 y el artefacto v1 no tienen cambios. |
+
+El sandbox también bloqueó inicialmente tsx al consultar el perfil de Windows y Vite al leer la configuración; las verificaciones aprobadas se ejecutaron con autorización fuera del sandbox. Estos fallos del entorno se distinguen de los resultados funcionales.
+
+### Qué verifican las pruebas
+
+Las unitarias comprueban forma de las doce variables, lectura del modelo v1, reproducibilidad y separación temporal, sentido monotónico de la señal climática, suma del score sin dependencia directa del saldo/nombre distrital, descarte de diferimientos sin recuperación, visitas sin beneficio atribuible, conciliación del beneficio después de costos y respeto al límite de liquidez.
+
+También comprueban que sin evidencia territorial no se añada daño climático de respaldo ni se ofrezcan medidas climáticas, que las herramientas rechacen operaciones no permitidas, argumentos adicionales y clientes fuera del contexto, y que Gemini deba consultar evento, plan y ficha fijada antes de finalizar. Se usa un proveedor controlado para éxito y falta de evidencia; no una llamada nueva a Gemini real.
+
+Las tres pruebas de interfaz usan un fixture de **20 negocios ficticios**, calculado por el motor v2, con un caso de criticidad controlado. Interceptan HTTP y comprueban desglose, capacidad, consulta contextual identificada sin IA, ausencia de errores de página y desbordamiento del documento, controles de liquidez, cola de revisión y apertura del cliente correcto desde el plan. **No verifican persistencia PostgreSQL, migraciones, cartografía oficial ni integración con Gemini real.** Las capturas se guardan en artifacts/qa/decision-v2-{ancho}.png y plan-v2-{ancho}.png; la revisión visual motivó ampliar la ficha y hacer visible la brecha residual.
+
+Se ampliaron las pruebas de integración para reconciliar NUMERIC, elegibilidad y consulta autenticada/persistida sin crear intervenciones. Esas comprobaciones quedan pendientes de ejecución con PostgreSQL.
+
+### Métricas sintéticas del modelo nuevo
+
+Artefacto: data/models/deterioration-v2.json. Hash SHA-256: 5cc992e7d4c8b4a1c93d1059d2303a2e568dd4039e3a1d52b4a688b2d235ff3f.
+
+| Conjunto | N | ROC-AUC | PR-AUC | Brier |
+| --- | --- | --- | --- | --- |
+| Entrenamiento | 1393 | 0.6701 | 0.5604 | 0.2037 |
+| Validación temporal | 669 | 0.6726 | 0.5490 | 0.1900 |
+| Prueba temporal | 1344 | 0.6077 | 0.4381 | 0.2049 |
+| Clientes no vistos | 182 | 0.6056 | 0.4346 | 0.1929 |
+| Tasa base sobre la misma prueba | 1344 | 0.5000 | 0.3043 | 0.2132 |
+| Sin variables climáticas, misma prueba | 1344 | 0.5953 | 0.3874 | 0.2105 |
+
+Con umbral predictivo de evaluación 0.35, precisión 0.3963 y recall 0.4670 en prueba. Ese umbral no determina la criticidad operativa: esta usa 30/50/70 puntos. Persisten errores y calibración imperfecta. Los datos y etiquetas cambiaron respecto de v1; no corresponde comparar ambos AUC como si fueran la misma muestra. La discriminación sigue siendo modesta. La mejora verificada es del flujo y sus controles; no se acredita superioridad estadística sobre clientes reales.
+
+### Pendientes y límites de esta entrega
+
+- Aplicar 0006 y repetir integración y E2E con PostgreSQL/PostGIS local configurado. No se marca la migración como aplicada ni como probada.
+- Configurar Gemini solo en backend y comprobar una consulta real con cuota autorizada. Sin proveedor está disponible el resumen calculado, expresamente sin IA.
+- Validar fuentes, leyendas, vigencias y condiciones de uso; no se consultó una emisión climática nueva para esta ampliación.
+- Validar pesos, umbrales, obligaciones externas, gastos del hogar, tasas de fondeo, severidad y efectos de medidas con datos autorizados. Son supuestos de demo.
+- El calendario conserva la aproximación 88/12; no representa cronogramas reales. Ni pérdida modelada ni beneficio de escenario constituyen provisiones, resultados contables o ahorro observado.
+- La cola conserva revisión de capacidad y casos sin asignación; una medida con beneficio positivo puede dejar brecha residual y no garantiza continuidad del negocio.
+- No hay cartera real, piloto institucional, cronogramas contractuales, Auth institucional, concurrencia productiva validada, otros fenómenos/segmentos, Supabase remoto, contactos externos, despliegue ni push.
+
+Toda la ampliación y las pruebas anteriores son previas a la fase presencial. Las adaptaciones futuras deberán conservar corte y evidencia propios.

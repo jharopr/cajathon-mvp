@@ -211,7 +211,7 @@ export default function RiskMap({
             : "Aviso oficial"}
       </div>
       <div className="map-legend">
-        Prioridad experimental: <span>Alta</span>
+        Prioridad operativa: <span>Alta o crítica</span>
         <span>Media</span>
         <span>Baja</span>
         <span>Revisar</span>

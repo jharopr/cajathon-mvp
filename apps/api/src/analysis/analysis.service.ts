@@ -31,7 +31,7 @@ import {
 import { currentCutoff } from "../portfolio/history.js";
 
 export const AnalysisInput = OptimizeSchema.omit({ run_id: true });
-export const ENGINE_VERSION = "event-engine-1";
+export const ENGINE_VERSION = "decision-engine-2";
 @Injectable()
 export class AnalysisService {
   constructor(
@@ -40,7 +40,7 @@ export class AnalysisService {
   ) {}
   async enqueueNew(eventId: string) {
     const existing = await pool.query(
-      "SELECT 1 FROM climashield.analysis_runs WHERE event_id=$1 LIMIT 1",
+      "SELECT 1 FROM climashield.analysis_runs WHERE event_id=$1 AND policy_id='prevention-synthetic-2' LIMIT 1",
       [eventId],
     );
     if (!existing.rowCount) return this.enqueue(eventId);
@@ -162,7 +162,7 @@ export class AnalysisService {
   async detail(id: string) {
     const row = (
       await pool.query(
-        `SELECT a.*,e.name AS event_name,e.mode,e.source_snapshot,s.cutoff,m.artifact,p.policy
+        `SELECT a.*,e.name AS event_name,e.mode,e.source_snapshot,e.valid_from AS event_valid_from,e.valid_until AS event_valid_until,s.cutoff,m.artifact,p.policy
       FROM climashield.analysis_runs a JOIN climashield.climate_events e ON e.id=a.event_id JOIN climashield.portfolio_snapshots s ON s.id=a.snapshot_id
       JOIN climashield.model_versions m ON m.id=a.model_id JOIN climashield.policy_versions p ON p.id=a.policy_id WHERE a.id=$1`,
         [id],
@@ -171,7 +171,7 @@ export class AnalysisService {
     if (!row) throw new NotFoundException("Análisis no encontrado");
     const clients = (
       await pool.query(
-        "SELECT result FROM climashield.client_predictions WHERE analysis_id=$1 ORDER BY probability DESC NULLS LAST,business_id",
+      "SELECT result FROM climashield.client_predictions WHERE analysis_id=$1 ORDER BY decision_score DESC NULLS LAST,probability DESC NULLS LAST,business_id",
         [id],
       )
     ).rows.map((r) => r.result);
@@ -282,6 +282,15 @@ export class AnalysisService {
     );
     const plan = eventPlan(clients, { run_id: run.id, ...row.constraints }),
       bridge = financialBridge(records, clients, plan.selected);
+    const selected = new Map(plan.selected.map((c) => [c.business_id, c]));
+    for (const client of clients) {
+      const action = selected.get(client.business_id);
+      client.attention = action ? { status: "SELECTED", reason: `${action.action}; pendiente de verificación del asesor y autorización del coordinador.` } :
+        client.status !== "PREDICTED" ? { status: "REFER", reason: client.reasons[0] ?? "Revisar datos antes de recomendar." } :
+        client.projections.some((a) => a.eligible && new Decimal(a.portfolio_benefit).gt(0)) ?
+        { status: "WAITING_RESOURCES", reason: "Alternativa elegible; sin asignación con los recursos disponibles. No ignorar el caso." } :
+        { status: "MANUAL_REVIEW", reason: "Ninguna alternativa supera los controles de beneficio y viabilidad; revisión individual, sin deuda adicional automática." };
+    }
     const predicted = clients.filter((c) => c.probability !== null),
       loss = predicted.reduce(
         (s, c) => s.plus(c.modeled_loss!),
@@ -297,6 +306,8 @@ export class AnalysisService {
       incomplete: clients.filter((c) => c.status === "INCOMPLETE").length,
       outside_event: clients.filter((c) => c.status === "OUTSIDE_EVENT").length,
       high: predicted.filter((c) => c.priority === "ALTA").length,
+      critical: predicted.filter((c) => c.decision?.level === "CRITICA").length,
+      pending_review: plan.review_queue.length,
       exposed: run.summary.exposed,
       exposed_balance: run.summary.exposed_balance,
       modeled_loss: money(loss),
@@ -358,6 +369,8 @@ export class AnalysisService {
         prediction:
           "P(atraso >30 días en los siguientes 90 días), condicionado a no estar ya deteriorado.",
         loss: "Saldo × p_atraso_30d_90d × severidad condicional sintética. No LGD calibrada.",
+        decision: "100 × (0.20 amenaza-exposición + 0.30 déficit DSCR estrés + 0.15 déficit reserva + 0.15 comportamiento + 0.20 señal logística). Prioridad: 30/50/70. Score operativo correlacionado, no probabilidad ni escala regulatoria.",
+        capacity: "DSCR = caja antes de deuda y después de hogar / (cuotas propias + obligaciones externas). Datos extra generados sintéticamente; capacidad de recuperación mínima 1.10 para evaluar diferimiento.",
         bridge:
           "Calendario hipotético amortiza capital con 88% de cuota y 12% de interés fijo por período; se muestran cobros esperados. Reprogramación difiere las primeras dos cuotas al final, no condona.",
       },
@@ -379,8 +392,12 @@ export class AnalysisService {
       ).rows[0];
       if (!owned) throw new ConflictException("Lease no vigente");
       await c.query(
-        `INSERT INTO climashield.client_predictions(analysis_id,business_id,probability,modeled_loss,result)
-        SELECT $1,x.business_id,x.probability,x.modeled_loss,x.result FROM jsonb_to_recordset($2::jsonb) AS x(business_id uuid,probability numeric,modeled_loss numeric,result jsonb)
+        `INSERT INTO climashield.client_predictions(analysis_id,business_id,probability,modeled_loss,result,decision_score,dscr_base,dscr_stress,household_expenses,other_debt_service,conditional_severity)
+        SELECT $1,x.business_id,x.probability,x.modeled_loss,x.result,
+          (x.result#>>'{decision,score}')::numeric,(x.result#>>'{decision,metrics,dscr_base}')::numeric,
+          (x.result#>>'{decision,metrics,dscr_stress}')::numeric,(x.result#>>'{decision,metrics,household_expenses}')::numeric,
+          (x.result#>>'{decision,metrics,other_debt_service}')::numeric,(x.result#>>'{decision,metrics,conditional_severity}')::numeric
+        FROM jsonb_to_recordset($2::jsonb) AS x(business_id uuid,probability numeric,modeled_loss numeric,result jsonb)
         ON CONFLICT(analysis_id,business_id) DO NOTHING`,
         [
           id,
@@ -395,7 +412,7 @@ export class AnalysisService {
         ],
       );
       await c.query(
-        "INSERT INTO climashield.optimization_plans(id,run_id,analysis_id,solver_status,constraints,result,modeled_loss_without,modeled_loss_with,operating_cost,portfolio_benefit) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) ON CONFLICT(analysis_id) WHERE analysis_id IS NOT NULL DO NOTHING",
+        "INSERT INTO climashield.optimization_plans(id,run_id,analysis_id,solver_status,constraints,result,modeled_loss_without,modeled_loss_with,operating_cost,portfolio_benefit,liquidity_commitment,funding_cost) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12) ON CONFLICT(analysis_id) WHERE analysis_id IS NOT NULL DO NOTHING",
         [
           randomUUID(),
           run.id,
@@ -407,6 +424,8 @@ export class AnalysisService {
           plan.modeled_loss_with,
           plan.metrics.cost,
           plan.metrics.portfolio_benefit,
+          plan.metrics.liquidity_commitment,
+          plan.metrics.funding_cost,
         ],
       );
       await c.query(
@@ -454,6 +473,8 @@ export class AnalysisService {
       plan: detail.plan,
       model: detail.model,
       sources: detail.source_snapshot,
+      clients: detail.clients,
+      policy: detail.policy,
     };
     const report = await geminiReport(evidence);
     await transaction(async (c) => {
@@ -467,5 +488,23 @@ export class AnalysisService {
       });
     });
     return report;
+  }
+  async consult(id: string, input: { question: string; client_id?: string; mode: "gemini" | "deterministic" }) {
+    const detail = await this.detail(id);
+    if (detail.status !== "COMPLETED") throw new ConflictException("Espere a que termine el análisis");
+    if (input.client_id && !detail.clients.some((c: ClientAnalysis) => c.business_id === input.client_id)) throw new NotFoundException("Cliente fuera del análisis seleccionado");
+    const followUp = detail.plan ? (await pool.query("SELECT business_id,status,result_note,approved_at,assigned_advisor FROM climashield.interventions WHERE plan_id=$1 ORDER BY created_at DESC LIMIT 1000", [detail.plan.id])).rows : [];
+    const evidence: ReportEvidence = {
+      analysis_id: id, event: { name: detail.event_name, mode: detail.mode, valid_from: detail.event_valid_from, valid_until: detail.event_valid_until, cutoff: detail.cutoff, source_snapshot: detail.source_snapshot },
+      summary: detail.result.summary, plan: { ...detail.plan, follow_up: followUp.filter((r) => !input.client_id || r.business_id === input.client_id).slice(0, 50) }, model: detail.model, policy: detail.policy,
+      sources: detail.source_snapshot, clients: detail.clients, selected_client_id: input.client_id, question: input.question,
+    };
+    const report = input.mode === "deterministic" ? deterministicReport(evidence) : await geminiReport(evidence);
+    const reportId = randomUUID();
+    await transaction(async (c) => {
+      await c.query("INSERT INTO climashield.consultation_reports(id,analysis_id,business_id,mode,question,response) VALUES($1,$2,$3,$4,$5,$6)", [reportId,id,input.client_id ?? null,report.mode,input.question,JSON.stringify(report)]);
+      await audit(c, "CONSULTATION_CREATED", reportId, { analysis_id: id, business_id: input.client_id ?? null, mode: report.mode }, "demo-coordinator");
+    });
+    return { id: reportId, analysis_id: id, client_id: input.client_id ?? null, ...report };
   }
 }

@@ -1,5 +1,7 @@
 # Metodología vigente y referencias históricas
 
+**27/11/2026:** la metodología vigente es [Decisión y modelo v2](decision-model-v2.md). Añade capacidad total, score operativo, severidad por cliente, controles de acciones y agente contextual. Las fórmulas y umbrales siguientes documentan la versión 1 y las referencias territoriales conservadas; no determinan por sí solos la nueva criticidad.
+
 Actualización del 26/11/2026: el índice territorial descrito abajo sigue como referencia. Su prioridad y el antiguo optimizador **no determinan el plan por evento actual**. La predicción de crédito es un motor distinto.
 
 ## Flujo actual por evento

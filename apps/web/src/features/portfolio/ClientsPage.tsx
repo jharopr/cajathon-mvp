@@ -10,31 +10,31 @@ import { Map, Search } from "lucide-react";
 import { useEvent } from "../../app/EventContext";
 import { pen } from "../../api";
 import { Badge, Empty, Panel, pct } from "../../shared/ui";
+import { DecisionSummary } from "./DecisionSummary";
+import { ConsultationPanel } from "../plans/ConsultationPanel";
 const RiskMap = lazy(() => import("../../RiskMap"));
 export default function ClientsPage() {
-  const { analysis, event } = useEvent(),
+  const { analysis, event, clientId: selected, selectClient: setSelected } = useEvent(),
     [search, setSearch] = useState(""),
     [page, setPage] = useState(0),
-    [selected, setSelected] = useState(""),
+    [priority, setPriority] = useState("ALL"),
     [showMap, setShowMap] = useState(false);
   const deferred = useDeferredValue(search),
     clients = analysis?.clients ?? [];
   const filtered = useMemo(
     () =>
       clients.filter((c) =>
-        (c.name + c.code + c.district + c.sector)
+        (priority === "ALL" || c.decision?.level === priority || c.status === priority) && (c.name + c.code + c.district + c.sector)
           .toLowerCase()
           .includes(deferred.toLowerCase()),
       ),
-    [clients, deferred],
+    [clients, deferred, priority],
   );
   useEffect(() => {
-    setSelected("");
     setPage(0);
   }, [analysis?.id]);
   const client =
-    clients.find((c) => c.business_id === selected) ??
-    clients.find((c) => c.code === "CS-0001") ??
+    filtered.find((c) => c.business_id === selected) ??
     filtered[0];
   if (!analysis?.result)
     return <Empty>Seleccione un evento con un análisis completado.</Empty>;
@@ -71,7 +71,7 @@ export default function ClientsPage() {
         </Suspense>
       )}
       <div className="client-layout">
-        <Panel title={`${filtered.length} clientes ficticios`}>
+        <Panel title={`${filtered.length} ${filtered.length === 1 ? "cliente ficticio" : "clientes ficticios"}`}>
           <label className="search-label">
             <Search size={17} aria-hidden="true" />
             Buscar cliente, zona o sector
@@ -85,12 +85,15 @@ export default function ClientsPage() {
               placeholder="Código o nombre"
             />
           </label>
+          <label className="priority-filter">Filtrar atención<select value={priority} onChange={(e) => { setPriority(e.target.value); setPage(0); }}>
+            <option value="ALL">Todos los casos</option><option value="CRITICA">Criticidad crítica</option><option value="ALTA">Criticidad alta</option><option value="MEDIA">Criticidad media</option><option value="BAJA">Criticidad baja</option><option value="INCOMPLETE">Datos por revisar</option><option value="UNKNOWN">Sin ubicación</option><option value="ALREADY_DETERIORATED">Ya deteriorados</option>
+          </select></label>
           <div className="table-wrap">
             <table>
               <thead>
                 <tr>
                   <th>Cliente</th>
-                  <th>Prioridad</th>
+                  <th>Criticidad / puntos</th>
                   <th>Prob. atraso &gt;30d</th>
                   <th>Saldo</th>
                 </tr>
@@ -119,8 +122,9 @@ export default function ClientsPage() {
                     </td>
                     <td>
                       <Badge
-                        value={c.probability === null ? c.status : c.priority}
+                        value={c.probability === null ? c.status : c.decision?.level ?? c.priority}
                       />
+                      <small>{c.decision ? `${c.decision.score.toFixed(1)} / 100` : "Sin score de decisión"}</small>
                     </td>
                     <td>{pct(c.probability)}</td>
                     <td>{pen(c.balance)}</td>
@@ -152,8 +156,9 @@ export default function ClientsPage() {
           </div>
         </Panel>
         {client && (
-          <Panel title={client.code + " · " + client.name}>
+          <div className="client-detail"><Panel title={client.code + " · " + client.name}>
             <Badge value={client.status} />
+            <DecisionSummary client={client} />
             <p className="client-probability">
               {pct(client.probability)}
               <small>
@@ -182,7 +187,7 @@ export default function ClientsPage() {
                 </strong>
               </div>
             </div>
-            <h3>Factores de la predicción</h3>
+            <details><summary>Factores de la predicción experimental</summary><h3>Factores de la predicción</h3>
             {client.explanation.length ? (
               <ul className="factors">
                 {client.explanation.map((f) => (
@@ -201,6 +206,7 @@ export default function ClientsPage() {
             <small>
               Contribuciones al logit, no puntos porcentuales ni causalidad.
             </small>
+            </details>
             <h3 className="section-space">
               Escenarios de liquidez del cliente
             </h3>
@@ -235,6 +241,7 @@ export default function ClientsPage() {
             {client.projections.map((a) => (
               <article className="action-scenario" key={a.action_code}>
                 <h3>{a.action}</h3>
+                {a.eligible !== undefined && <Badge value={a.eligible ? "ELIGIBLE" : "BLOCKED"} />}
                 <p>
                   Liquidez central: {pen(a.cash_p50)} · Brecha:{" "}
                   {pct(a.p_cash_gap)}
@@ -243,6 +250,11 @@ export default function ClientsPage() {
                   Beneficio neto de cartera: {pen(a.portfolio_benefit)} · Costo
                   Caja: {pen(a.cost)} · {a.minutes} min
                 </small>
+                {a.checks && <ul className="action-checks">{a.checks.map((c) => <li key={c.label} className={c.passed ? "passed" : "failed"}>{c.passed ? "Cumple" : "Revisar"}: {c.label}</li>)}</ul>}
+                {a.funding_cost && <p className="helper">Costo financiero: {pen(a.funding_cost)} · Cuotas diferidas: {pen(a.liquidity_commitment ?? 0)}</p>}
+                {a.client_cash_gain && <p>Mejora de caja del cliente: {pen(a.client_cash_gain)}</p>}
+                {a.residual_risk && <p className="helper">{a.residual_risk}</p>}
+                {a.steps && <details><summary>Verificaciones de esta acción</summary><ol>{a.steps.map((s) => <li key={s}>{s}</li>)}</ol></details>}
               </article>
             ))}
             <details>
@@ -255,7 +267,7 @@ export default function ClientsPage() {
                 <p key={i}>{r}</p>
               ))}
             </details>
-          </Panel>
+          </Panel><ConsultationPanel key={`${analysis.id}:${client.business_id}`} clientId={client.business_id} code={client.code} /></div>
         )}
       </div>
     </>
