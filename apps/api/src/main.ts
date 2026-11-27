@@ -17,33 +17,30 @@ import { PortfolioModule } from "./portfolio/portfolio.module.js";
 import { AnalysisModule } from "./analysis/analysis.module.js";
 import { PlanningModule } from "./planning/planning.module.js";
 import { RuntimeService } from "./analysis/runtime.service.js";
+import { RecommendationsModule } from "./recommendations/recommendations.module.js";
 
 @Catch()
 class ApiErrors implements ExceptionFilter {
   catch(error: unknown, host: ArgumentsHost) {
     const res = host.switchToHttp().getResponse();
     if (error instanceof z.ZodError)
-      return res
-        .status(422)
-        .json({
-          code: "VALIDATION_ERROR",
-          message: "Revise los campos de entrada",
-          details: error.issues.map((i) => ({
-            field: i.path.join("."),
-            message: i.message,
-          })),
-        });
-    const status = error instanceof HttpException ? error.getStatus() : 503;
-    return res
-      .status(status)
-      .json({
-        code: `HTTP_${status}`,
-        message:
-          error instanceof HttpException
-            ? error.message
-            : "Servicio no disponible. Verifique PostgreSQL y las migraciones.",
-        details: null,
+      return res.status(422).json({
+        code: "VALIDATION_ERROR",
+        message: "Revise los campos de entrada",
+        details: error.issues.map((i) => ({
+          field: i.path.join("."),
+          message: i.message,
+        })),
       });
+    const status = error instanceof HttpException ? error.getStatus() : 503;
+    return res.status(status).json({
+      code: `HTTP_${status}`,
+      message:
+        error instanceof HttpException
+          ? error.message
+          : "Servicio no disponible. Verifique PostgreSQL y las migraciones.",
+      details: null,
+    });
   }
 }
 @Controller("api/v1")
@@ -60,7 +57,13 @@ class HealthController {
   }
 }
 @Module({
-  imports: [ClimateModule, PortfolioModule, AnalysisModule, PlanningModule],
+  imports: [
+    ClimateModule,
+    PortfolioModule,
+    AnalysisModule,
+    PlanningModule,
+    RecommendationsModule,
+  ],
   controllers: [HealthController],
 })
 export class AppModule {}

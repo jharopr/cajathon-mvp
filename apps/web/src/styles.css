@@ -12,6 +12,70 @@
   --red: #a92f29;
   --amber: #895000;
 }
+.selected-filter {
+  flex-direction: row;
+  align-items: center;
+  margin: 14px 0;
+}
+.selected-filter input {
+  width: 20px;
+  height: 20px;
+  min-height: 20px;
+  flex-shrink: 0;
+  accent-color: var(--green);
+}
+.prevention {
+  border-block: 1px solid var(--border);
+  padding: 22px 0;
+  margin: 22px 0;
+  overflow-wrap: anywhere;
+}
+.prevention-heading,
+.prevention-origin {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.prevention-heading h3 {
+  margin: 0;
+}
+.prevention-heading span,
+.prevention-origin span,
+.prevention-note {
+  color: var(--muted);
+  font-size: 14px;
+}
+.prevention-origin strong {
+  color: var(--green);
+}
+.prevention-steps {
+  padding-left: 26px;
+}
+.prevention-steps li {
+  padding: 4px 0 16px 5px;
+}
+.prevention-steps li::marker {
+  color: var(--green);
+  font-weight: 700;
+}
+.prevention-steps p {
+  margin: 7px 0;
+}
+.prevention-error {
+  color: var(--red);
+}
+.prevention-disclaimer {
+  margin-top: 16px;
+}
+.prevention .panel-actions {
+  flex-wrap: wrap;
+}
+.prevention .panel-actions button {
+  white-space: normal;
+}
 * {
   box-sizing: border-box;
 }

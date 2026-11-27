@@ -1,0 +1,67 @@
+{
+  "checked_at": "2026-11-27T05:17:22.100Z",
+  "analysis_id": "e6258735-4f29-4228-a62d-75b6084261f6",
+  "client_code": "CS-0810",
+  "client_name": "Agricultura demo 0810",
+  "synthetic": true,
+  "already_saved": false,
+  "mode": "gemini",
+  "provider": "gemini-3.5-flash-lite",
+  "provider_attempted": true,
+  "fallback_reason": null,
+  "usage": {
+    "total_tokens": 673,
+    "total_input_tokens": 495,
+    "total_cached_tokens": 0,
+    "total_output_tokens": 178,
+    "initial_input_tokens": 495,
+    "total_thought_tokens": 0,
+    "total_tool_use_tokens": 0,
+    "input_tokens_by_modality": [
+      {
+        "tokens": 495,
+        "modality": "text"
+      }
+    ]
+  },
+  "used": 1,
+  "limit": 5,
+  "steps": [
+    {
+      "id": "CHECK_SAFETY",
+      "owner": "ASESOR",
+      "title": "Comprobar condiciones de seguridad",
+      "guardrail": "No ingresar a zonas inundadas ni realizar desplazamientos inseguros. Seguir las indicaciones de las autoridades.",
+      "source_id": "DEMO-OPS-001",
+      "instruction": "Comprobar las condiciones de acceso antes de coordinar la atención prevista.",
+      "protocol_id": "PREV-COMMON"
+    },
+    {
+      "id": "VERIFY_OPERATION",
+      "owner": "ASESOR",
+      "title": "Verificar continuidad del negocio",
+      "guardrail": "La exposición geográfica no demuestra que el negocio haya sufrido daños.",
+      "source_id": "DEMO-OPS-001",
+      "instruction": "Contrastar el estado operativo declarado del negocio y registrar los datos pendientes de verificación.",
+      "protocol_id": "PREV-COMMON"
+    },
+    {
+      "id": "REVIEW_LIQUIDITY",
+      "owner": "ASESOR",
+      "title": "Contrastar el escenario de liquidez",
+      "guardrail": "El escenario es sintético y no equivale a una pérdida observada ni a certeza de mora.",
+      "source_id": "DEMO-FIN-001",
+      "instruction": "Revisar la liquidez modelada y contrastar ingresos, gastos y disponibilidad de caja con información actualizada.",
+      "protocol_id": "PREV-LIQUIDITY"
+    },
+    {
+      "id": "RECORD_FINDINGS",
+      "owner": "ASESOR",
+      "title": "Registrar hallazgos de la atención",
+      "guardrail": "No prometer productos, plazos o desembolsos. Una atención adicional requiere revisar capacidad y presupuesto.",
+      "source_id": "DEMO-FIN-001",
+      "instruction": "Registrar los hallazgos y datos pendientes dentro de la atención seleccionada para revisión del analista.",
+      "protocol_id": "PREV-LIQUIDITY"
+    }
+  ]
+}

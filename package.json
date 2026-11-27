@@ -16,7 +16,7 @@
     "data:export": "tsx scripts/export-data.ts",
     "data:cenepred": "tsx --tsconfig tsconfig.api.json scripts/ingest-cenepred.ts",
     "data:senamhi": "tsx --tsconfig tsconfig.api.json scripts/fetch-senamhi.ts",
-    "test": "tsx --tsconfig tsconfig.api.json --test tests/unit.test.ts tests/event-analysis.test.ts",
+    "test": "tsx --tsconfig tsconfig.api.json --test tests/unit.test.ts tests/event-analysis.test.ts tests/prevention.test.ts",
     "test:integration": "tsx --tsconfig tsconfig.api.json --test tests/integration.test.ts",
     "preview": "vite preview --host 127.0.0.1",
     "test:e2e": "playwright test",

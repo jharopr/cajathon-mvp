@@ -46,3 +46,7 @@ El diccionario anterior describe también la evidencia histórica. El flujo vige
 La probabilidad corresponde a entrada en atraso >30 días en 90 días, no a default regulatorio. PREDICTED se separa de UNKNOWN, INCOMPLETE, ALREADY_DETERIORATED y OUTSIDE_EVENT. La prioridad de crédito experimental es distinta de la prioridad del índice territorial histórico.
 
 El segmento se genera como MICRO o PEQUENA; los demás segmentos no están validados. `p_cash_gap` es la frecuencia de brecha de caja en escenarios; no se interpreta como la probabilidad del modelo. Importes JSON se representan como strings y sus registros financieros conciliables se conservan en NUMERIC.
+
+## Recomendaciones preventivas del 27/11/2026
+
+`preventive_recommendations`: análisis, plan, negocio y hash de contexto; slot entero de 1 a 5 único por análisis; snapshot/hash de protocolos demo; contexto de presentación con importes ya calculados en strings; modo de selección HIGH/MANUAL y motivo; estado GENERATING/READY; lease/token; intento de proveedor, uso reportado, modo gemini/deterministic, motivo de respaldo y contenido estructurado. Referencias a predicciones y plan, RLS y protección de contexto/resultado final. No agrega cálculos monetarios: los valores financieros originales permanecen en sus registros NUMERIC. Los pasos contienen IDs, título, instrucción, precaución, responsable y fuente de demostración. No representan aprobaciones ni contactos.

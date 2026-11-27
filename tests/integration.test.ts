@@ -11,6 +11,13 @@ import { EventsService } from "../apps/api/src/climate/events.service.js";
 import { Repository } from "../apps/api/src/climate/exposure.repository.js";
 import { migrate } from "../scripts/migrate.js";
 import { seed } from "../scripts/seed.js";
+import { randomUUID } from "node:crypto";
+import { PreventionWriter } from "../apps/api/src/agent/prevention-writer.js";
+import {
+  KNOWLEDGE,
+  KNOWLEDGE_HASH,
+  deterministicContent,
+} from "../apps/api/src/recommendations/protocols.js";
 
 test("flujo por evento con PostgreSQL/PostGIS reales", async (t) => {
   await migrate();
@@ -39,14 +46,70 @@ test("flujo por evento con PostgreSQL/PostGIS reales", async (t) => {
     return { status: response.status, data: (await response.json()) as any };
   }
   let eventId: string, analysisId: string, detail: any;
-  async function complete(id:string) {
-    const deadline=Date.now()+30000;
-    while(Date.now()<deadline){
-      if((await service.detail(id)).status==='COMPLETED')return;
+  async function complete(id: string) {
+    const deadline = Date.now() + 30000;
+    while (Date.now() < deadline) {
+      if ((await service.detail(id)).status === "COMPLETED") return;
       await service.processOne();
-      await new Promise(resolve=>setTimeout(resolve,100));
+      await new Promise((resolve) => setTimeout(resolve, 100));
     }
-    assert.fail('La ejecución no terminó en 30 segundos');
+    assert.fail("La ejecución no terminó en 30 segundos");
+  }
+  // Fixtures separados: no cambiar la cartera, el modelo ni el plan de referencia.
+  async function preventionFixture(high = true) {
+    const id = randomUUID(),
+      planId = randomUUID();
+    const clients = detail.clients
+      .filter(
+        (c: any) =>
+          c.status === "PREDICTED" &&
+          c.in_event &&
+          c.location &&
+          c.projections.length,
+      )
+      .slice(0, 9)
+      .map((c: any) => ({ ...c, priority: high ? "ALTA" : "MEDIA" }));
+    const selected = clients
+      .slice(0, 8)
+      .map((c: any) => ({
+        business_id: c.business_id,
+        action_code: "LIQUIDITY_VISIT",
+        action: "Visita de evaluación de liquidez",
+        priority: c.priority,
+      }));
+    await transaction(async (c) => {
+      await c.query(
+        `INSERT INTO climashield.analysis_runs(id,event_id,snapshot_id,model_id,policy_id,evaluation_id,input_hash,seed,constraints,status,result,report,created_at,completed_at)
+        SELECT $1,event_id,snapshot_id,model_id,policy_id,evaluation_id,$2,seed,constraints,'COMPLETED',result,report,'2000-01-01','2000-01-01' FROM climashield.analysis_runs WHERE id=$3`,
+        [id, `prevention-fixture-${id}`, analysisId],
+      );
+      await c.query(
+        `INSERT INTO climashield.optimization_plans(id,run_id,solver_status,constraints,result,analysis_id)
+        SELECT $1,run_id,'OPTIMAL',constraints,$2,$3 FROM climashield.optimization_plans WHERE analysis_id=$4`,
+        [
+          planId,
+          JSON.stringify({
+            solver_status: "OPTIMAL",
+            selected,
+            test_fixture: true,
+          }),
+          id,
+          analysisId,
+        ],
+      );
+      for (const b of clients)
+        await c.query(
+          `INSERT INTO climashield.client_predictions(analysis_id,business_id,probability,modeled_loss,result) VALUES($1,$2,$3,$4,$5)`,
+          [id, b.business_id, b.probability, b.modeled_loss, JSON.stringify(b)],
+        );
+    });
+    return {
+      id,
+      planId,
+      clients,
+      path: (index: number) =>
+        `/analyses/${id}/clients/${clients[index].business_id}/prevention`,
+    };
   }
   try {
     await t.test(
@@ -59,7 +122,7 @@ test("flujo por evento con PostgreSQL/PostGIS reales", async (t) => {
               "SELECT count(*) FROM climashield.schema_migrations",
             )
           ).rows[0].count,
-          5,
+          6,
         );
         assert.equal(
           +(await pool.query("SELECT count(*) FROM climashield.businesses"))
@@ -239,7 +302,10 @@ test("flujo por evento con PostgreSQL/PostGIS reales", async (t) => {
           "UPDATE climashield.event_jobs SET status='RUNNING',attempts=1,lease_until=now()-interval '1 minute' WHERE analysis_id=$1",
           [q.id],
         );
-        await pool.query("UPDATE climashield.analysis_runs SET status='RUNNING' WHERE id=$1",[q.id]);
+        await pool.query(
+          "UPDATE climashield.analysis_runs SET status='RUNNING' WHERE id=$1",
+          [q.id],
+        );
         await complete(q.id);
         const recovered = await service.detail(q.id);
         assert.equal(recovered.status, "COMPLETED");
@@ -261,7 +327,12 @@ test("flujo por evento con PostgreSQL/PostGIS reales", async (t) => {
           budget_pen: 1498,
           capacity_minutes: 460,
         });
-        const previousNotifications=+(await pool.query('SELECT count(*) FROM climashield.notifications WHERE analysis_id=$1',[q.id])).rows[0].count;
+        const previousNotifications = +(
+          await pool.query(
+            "SELECT count(*) FROM climashield.notifications WHERE analysis_id=$1",
+            [q.id],
+          )
+        ).rows[0].count;
         await pool.query(
           "UPDATE climashield.event_jobs SET status='RUNNING',attempts=3,lease_until=now()-interval '1 minute' WHERE analysis_id=$1",
           [q.id],
@@ -399,6 +470,191 @@ test("flujo por evento con PostgreSQL/PostGIS reales", async (t) => {
             ["EVENT_PLAN_READY", "STATUS_CHANGED"].includes(e.action),
           ),
         );
+      },
+    );
+    await t.test(
+      "prevención autentica, deduplica y limita a cinco reservas incluso con concurrencia",
+      async () => {
+        const f = await preventionFixture();
+        assert.equal((await request(f.path(0))).data.used, 0);
+        assert.equal((await request(f.path(0), { use_ai: false })).status, 403);
+        assert.equal(
+          (
+            await request(
+              f.path(0),
+              { use_ai: false, approve: true },
+              "POST",
+              token,
+            )
+          ).status,
+          422,
+        );
+        assert.equal(
+          (await request(f.path(8), { use_ai: false }, "POST", token)).status,
+          400,
+        );
+        const results = await Promise.all(
+          Array.from({ length: 6 }, (_, i) =>
+            request(f.path(i), { use_ai: false }, "POST", token),
+          ),
+        );
+        assert.equal(results.filter((r) => r.status === 201).length, 5);
+        assert.equal(results.filter((r) => r.status === 409).length, 1);
+        const winner = results.findIndex((r) => r.status === 201);
+        const saved = (await request(f.path(winner))).data;
+        assert.equal(saved.used, 5);
+        assert.equal(saved.recommendation.mode, "deterministic");
+        assert.equal(saved.recommendation.provider_attempted, false);
+        assert.equal(saved.recommendation.content.steps.length, 4);
+        const duplicates = await Promise.all([
+          request(f.path(winner), {}, "POST", token),
+          request(f.path(winner), {}, "POST", token),
+        ]);
+        assert.ok(
+          duplicates.every(
+            (r) => r.data.recommendation.id === saved.recommendation.id,
+          ),
+        );
+        await assert.rejects(
+          transaction((c) =>
+            c.query(
+              "UPDATE climashield.preventive_recommendations SET content='{}' WHERE id=$1",
+              [saved.recommendation.id],
+            ),
+          ),
+        );
+        assert.equal(
+          +(
+            await pool.query(
+              "SELECT count(*) FROM climashield.interventions WHERE plan_id=$1",
+              [f.planId],
+            )
+          ).rows[0].count,
+          0,
+        );
+        assert.equal(
+          +(
+            await pool.query(
+              "SELECT count(*) FROM climashield.audit_events WHERE action='PREVENTION_REQUESTED' AND metadata->>'analysis_id'=$1",
+              [f.id],
+            )
+          ).rows[0].count,
+          5,
+        );
+      },
+    );
+    await t.test(
+      "selección manual requiere motivo y sin clave conserva protocolo identificado",
+      async () => {
+        const f = await preventionFixture(false);
+        assert.equal((await request(f.path(0))).data.manual_allowed, true);
+        assert.equal(
+          (await request(f.path(0), { use_ai: false }, "POST", token)).status,
+          400,
+        );
+        const key = process.env.GEMINI_API_KEY;
+        delete process.env.GEMINI_API_KEY;
+        try {
+          const r = await request(
+            f.path(0),
+            { manual_reason: "Revisión sintética solicitada por el asesor" },
+            "POST",
+            token,
+          );
+          assert.equal(r.status, 201);
+          assert.equal(r.data.recommendation.mode, "deterministic");
+          assert.equal(r.data.recommendation.selection_mode, "MANUAL");
+          assert.match(
+            r.data.recommendation.fallback_reason,
+            /no está configurado/,
+          );
+          assert.equal(r.data.recommendation.provider_attempted, false);
+        } finally {
+          if (key === undefined) delete process.env.GEMINI_API_KEY;
+          else process.env.GEMINI_API_KEY = key;
+        }
+      },
+    );
+    await t.test(
+      "cliente Gemini controlado conserva uso, reutiliza y aplica límites locales persistentes",
+      async () => {
+        const f = await preventionFixture(),
+          writer = app.get(PreventionWriter);
+        const original = writer.write,
+          key = process.env.GEMINI_API_KEY,
+          daily = process.env.PREVENTION_DAILY_LIMIT;
+        let calls = 0;
+        writer.write = async (e) => {
+          calls++;
+          return {
+            content: deterministicContent(e.action_code),
+            usage: { total_input_tokens: 500, total_output_tokens: 200 },
+          };
+        };
+        process.env.GEMINI_API_KEY = "controlled-test-no-network";
+        process.env.PREVENTION_DAILY_LIMIT = "100";
+        try {
+          const first = await request(f.path(0), {}, "POST", token);
+          assert.equal(first.status, 201, JSON.stringify(first.data));
+          assert.equal(first.data.recommendation.mode, "gemini");
+          assert.equal(first.data.recommendation.usage.total_input_tokens, 500);
+          await request(f.path(0), {}, "POST", token);
+          assert.equal(calls, 1);
+          assert.equal(
+            (await request(f.path(1), {}, "POST", token)).status,
+            429,
+          );
+          process.env.PREVENTION_DAILY_LIMIT = "1";
+          const limited = await request(f.path(1), {}, "POST", token);
+          assert.equal(limited.data.recommendation.mode, "deterministic");
+          assert.match(
+            limited.data.recommendation.fallback_reason,
+            /límite diario/,
+          );
+          assert.equal(calls, 1);
+          assert.equal(limited.data.used, 2);
+        } finally {
+          writer.write = original;
+          if (key === undefined) delete process.env.GEMINI_API_KEY;
+          else process.env.GEMINI_API_KEY = key;
+          if (daily === undefined) delete process.env.PREVENTION_DAILY_LIMIT;
+          else process.env.PREVENTION_DAILY_LIMIT = daily;
+        }
+      },
+    );
+    await t.test(
+      "solicitud interrumpida recupera snapshot del protocolo sin repetir la llamada",
+      async () => {
+        const f = await preventionFixture(),
+          id = randomUUID();
+        const initial = (await request(f.path(0))).data;
+        await pool.query(
+          `INSERT INTO climashield.preventive_recommendations
+        (id,analysis_id,plan_id,business_id,context_hash,slot,protocol_version,protocol_hash,protocol_snapshot,context,selection_mode,status,provider_attempted,lease_token,lease_until)
+        VALUES($1,$2,$3,$4,$5,1,$6,$7,$8,$9,'HIGH','GENERATING',true,$10,now()-interval '1 minute')`,
+          [
+            id,
+            f.id,
+            f.planId,
+            f.clients[0].business_id,
+            initial.context_hash,
+            KNOWLEDGE.version,
+            KNOWLEDGE_HASH,
+            JSON.stringify(KNOWLEDGE),
+            JSON.stringify({ action_code: "LIQUIDITY_VISIT" }),
+            randomUUID(),
+          ],
+        );
+        assert.equal(
+          (await request(f.path(0))).data.recommendation.recoverable,
+          true,
+        );
+        const recovered = (await request(f.path(0), {}, "POST", token)).data;
+        assert.equal(recovered.recommendation.id, id);
+        assert.equal(recovered.used, 1);
+        assert.equal(recovered.recommendation.mode, "deterministic");
+        assert.match(recovered.recommendation.fallback_reason, /interrumpida/);
+        assert.equal(recovered.recommendation.content.steps.length, 4);
       },
     );
     await t.test(

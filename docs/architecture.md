@@ -1,5 +1,7 @@
 # Arquitectura actual de ClimaShield AI
 
+Ampliación del 27/11: [redacción preventiva acotada del MVP](mvp-prevencion.md), implementada bajo solicitud con protocolos JSON y cinco reservas por análisis. La [arquitectura de plantillas por grupo](propuesta-redaccion-preventiva.md) sigue propuesta. La evaluación y la selección permanecen individuales.
+
 Refactorización por eventos del 26/11/2026. Monolito modular **NestJS + TypeScript**, **React + Vite** y **PostgreSQL/PostGIS** en Docker. Supabase sigue siendo destino PostgreSQL configurable; no se verificó un despliegue remoto. Gemini se llama exclusivamente desde NestJS.
 
 La [propuesta y comparación antes/actual](plan-refactorizacion-puntos-mejora.md) y el [informe de implementación](refactor-implementation.md) explican las eliminaciones y límites. La [arquitectura anterior](archive/architecture-20261124.md) y su [SVG histórico](architecture.svg) se conservan como evidencia previa.
@@ -23,6 +25,10 @@ flowchart TB
   ATOMIC --> WEB
   HTTP --> REPORT[agent/report.ts: dos herramientas de lectura]
   REPORT <--> GEMINI[Gemini opcional con store:false]
+  HTTP --> PREV[RecommendationsModule: solicitud, elegibilidad y cinco reservas]
+  KNOWLEDGE[Protocolos JSON de demostración] --> PREV
+  PREV <--> GEMINI
+  PREV --- DB
   DB[(PostgreSQL/PostGIS)] --- PORT
   DB --- CLIM
   DB --- ANALYSIS
@@ -74,7 +80,7 @@ erDiagram
   OPTIMIZATION_PLANS ||--o{ INTERVENTIONS : propone
 ```
 
-Hay 23 tablas en el esquema, incluida `schema_migrations`. Los triggers protegen versiones/snapshots/eventos inmutables y las transiciones de intervención. RLS sigue habilitado sin acceso anónimo. El rol propietario de la demo requiere sustitución por privilegios mínimos y Auth antes de un piloto.
+Con la migración `202611270006_preventive_recommendations.sql` hay 24 tablas en el esquema, incluida `schema_migrations`. `preventive_recommendations` relaciona análisis, plan y cliente, congela protocolos/contexto y protege cinco reservas y resultados finales. Los triggers también protegen versiones/snapshots/eventos inmutables y las transiciones de intervención. RLS sigue habilitado sin acceso anónimo. El rol propietario de la demo requiere sustitución por privilegios mínimos y Auth antes de un piloto.
 
 ## Invariantes de cálculo y ejecución
 

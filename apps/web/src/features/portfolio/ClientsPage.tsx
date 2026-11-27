@@ -10,23 +10,31 @@ import { Map, Search } from "lucide-react";
 import { useEvent } from "../../app/EventContext";
 import { pen } from "../../api";
 import { Badge, Empty, Panel, pct } from "../../shared/ui";
+import PreventionPanel from "./PreventionPanel";
 const RiskMap = lazy(() => import("../../RiskMap"));
 export default function ClientsPage() {
   const { analysis, event } = useEvent(),
     [search, setSearch] = useState(""),
     [page, setPage] = useState(0),
     [selected, setSelected] = useState(""),
-    [showMap, setShowMap] = useState(false);
+    [showMap, setShowMap] = useState(false),
+    [onlySelected, setOnlySelected] = useState(false);
   const deferred = useDeferredValue(search),
     clients = analysis?.clients ?? [];
+  const selectedIds = useMemo(
+    () => new Set(analysis?.plan?.selected.map((c) => c.business_id) ?? []),
+    [analysis?.plan],
+  );
   const filtered = useMemo(
     () =>
-      clients.filter((c) =>
-        (c.name + c.code + c.district + c.sector)
-          .toLowerCase()
-          .includes(deferred.toLowerCase()),
+      clients.filter(
+        (c) =>
+          (!onlySelected || selectedIds.has(c.business_id)) &&
+          (c.name + c.code + c.district + c.sector)
+            .toLowerCase()
+            .includes(deferred.toLowerCase()),
       ),
-    [clients, deferred],
+    [clients, deferred, onlySelected, selectedIds],
   );
   useEffect(() => {
     setSelected("");
@@ -34,7 +42,7 @@ export default function ClientsPage() {
   }, [analysis?.id]);
   const client =
     clients.find((c) => c.business_id === selected) ??
-    clients.find((c) => c.code === "CS-0001") ??
+    filtered.find((c) => c.code === "CS-0001") ??
     filtered[0];
   if (!analysis?.result)
     return <Empty>Seleccione un evento con un análisis completado.</Empty>;
@@ -80,10 +88,23 @@ export default function ClientsPage() {
               onChange={(e) => {
                 setSearch(e.target.value);
                 setPage(0);
+                setSelected("");
               }}
               type="search"
               placeholder="Código o nombre"
             />
+          </label>
+          <label className="selected-filter">
+            <input
+              type="checkbox"
+              checked={onlySelected}
+              onChange={(e) => {
+                setOnlySelected(e.target.checked);
+                setSelected("");
+                setPage(0);
+              }}
+            />
+            Solo seleccionados en el plan ({selectedIds.size})
           </label>
           <div className="table-wrap">
             <table>
@@ -182,6 +203,11 @@ export default function ClientsPage() {
                 </strong>
               </div>
             </div>
+            <PreventionPanel
+              key={`${analysis.id}:${client.business_id}`}
+              analysisId={analysis.id}
+              clientId={client.business_id}
+            />
             <h3>Factores de la predicción</h3>
             {client.explanation.length ? (
               <ul className="factors">

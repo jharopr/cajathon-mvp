@@ -42,5 +42,9 @@ Se conservó `cd9303d` como referencia de código anterior y se archivaron conce
 
 **Toda esta implementación es anterior al presencial.** No atribuirla como avance de esas jornadas. Cualquier futura adaptación debe registrar corte inicial, commits y evidencia de lo desarrollado entonces. Informe de alcance: [refactor-implementation.md](refactor-implementation.md).
 
+También se documentó el 26/11 la [propuesta de redacción preventiva reutilizable](propuesta-redaccion-preventiva.md). El documento es material previo; sus módulos de conocimientos, plantillas, excepciones y medición de consumo están propuestos y aún no implementados. No contarlos como funcionalidad disponible ni como avance presencial.
+
+El **27/11/2026** se añadió el [MVP individual acotado](mvp-prevencion.md): protocolos JSON demo, solicitud autenticada para casos seleccionados, cinco reservas persistentes por análisis, Gemini con salida validada, respaldo sin IA, medición del uso reportado y ficha React. Es una adaptación nueva respecto del corte del 26/11, pero también es previa al presencial. La migración 0006 es aditiva; agrupación, plantillas compartidas, benchmark y revisión institucional permanecen pendientes. La mención anterior describe el estado al 26/11.
+
 Referencia: [bases oficiales](https://cajathon.cajatrujillo.com.pe/bases/), secciones 3.3, 4 y 8.3. Condiciones jurídicas definitivas en bases y acuerdos suscritos.
 

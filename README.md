@@ -8,9 +8,11 @@ Prototipo de prevención por evento climático para microfinanzas. Une **aviso �
 
 Se implementó el alcance recortado del [plan de refactorización](docs/plan-refactorizacion-puntos-mejora.md). [Cambios y pendientes](docs/refactor-implementation.md), [arquitectura actual](docs/architecture.md), [validación ejecutada](docs/validation-report.md) y [guion de demo](docs/demo-script.md).
 
-La aplicación tiene cinco vistas: Eventos y alertas, Clientes, Impacto de cartera, Plan y seguimiento, Fuentes. Se retiraron el chat abierto, la pantalla de arquitectura, el simulador libre y Open-Meteo. Gemini genera opcionalmente el informe de un evento con herramientas de lectura. No aprueba, contacta, envía mensajes ni calcula importes.
+La aplicación tiene cinco vistas: Eventos y alertas, Clientes, Impacto de cartera, Plan y seguimiento, Fuentes. Se retiraron el chat abierto, la pantalla de arquitectura, el simulador libre y Open-Meteo. Gemini genera opcionalmente el informe de un evento con herramientas de lectura y, desde el 27/11, una secuencia preventiva bajo solicitud para casos seleccionados. No aprueba, contacta, envía mensajes ni calcula importes.
 
 ## Stack
+
+Implementación acotada: [acciones preventivas del MVP y caso de uso](docs/mvp-prevencion.md). En Clientes, filtrar seleccionados del plan, abrir una ficha y preparar acciones: hasta cinco reservas por análisis, protocolos demo, Gemini opcional y respaldo identificado sin IA. La [arquitectura de plantillas por grupo](docs/propuesta-redaccion-preventiva.md) sigue siendo una ampliación propuesta.
 
 | Capa | Implementación |
 | --- | --- |
@@ -67,6 +69,8 @@ El modelo entrenado ya está en `data/models/deterioration-v1.json`. El procesad
 
 El seed conserva negocios y créditos existentes. Las migraciones 0001–0003 permanecen intactas; 0004 agrega nueve tablas; 0005 agrega períodos financieros NUMERIC y totales en planes para versiones, historia, eventos, análisis, jobs y notificaciones. El runner verifica SHA-256 y usa bloqueo/transacciones. No utiliza sincronización, reset ni reversión destructiva.
 
+La migración 0006 añade recomendaciones preventivas con snapshots, cinco reservas por análisis, uso reportado y protección de resultados guardados. No modifica las cinco migraciones anteriores.
+
 También puede ejecutarse todo en Docker:
 
 ```powershell
@@ -87,6 +91,7 @@ Usar los mismos puertos; no mantener servidores npm ocupándolos. `docker compos
 | `POSTGRES_PASSWORD` | Credencial del contenedor local |
 | `DEMO_COORDINATOR_TOKEN` | Revisión y acciones operativas locales; solo en memoria de la página |
 | `GEMINI_API_KEY`, `GEMINI_MODEL` | Informe opcional desde backend; modelo por defecto `gemini-3.5-flash-lite` |
+| `PREVENTION_DAILY_LIMIT` | Máximo diario local de intentos de redacción preventiva, hora de Lima; 20 por defecto. No representa la cuota del proveedor |
 | `EVENT_WORKER_ENABLED` | `true` por defecto; `false` detiene scheduler/procesador |
 | `EVENT_SOURCE_REFRESH_MINUTES` | `30` por defecto; mínimo 5 para consultar; `0` desactiva red para pruebas/demo sin conexión |
 | `DEMO_EVENTS_ENABLED` | `true` por defecto; crea un replay/ficticio explícito de respaldo |
@@ -123,6 +128,7 @@ Prefijo `/api/v1`, validación Zod y errores `{code,message,details}`. Las escri
 | POST | `/analyses/:id/retry` | Reintento manual autenticado de una ejecución fallida |
 | GET | `/analyses/:id`, `/analyses/:id/clients/:clientId` | Estado, cifras, escenarios y evidencia |
 | GET / POST | `/analyses/:id/report` | Leer informe / generar con Gemini |
+| GET / POST | `/analyses/:id/clients/:clientId/prevention` | Consultar / preparar una secuencia preventiva guardada, hasta cinco por análisis |
 | GET | `/notifications` | Alertas internas |
 | PATCH | `/notifications/:id/read` | Marcar como leída |
 | POST | `/interventions/drafts` | Crear borradores idempotentes desde un plan |

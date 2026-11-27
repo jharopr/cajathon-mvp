@@ -8,6 +8,7 @@ COPY scripts ./scripts
 COPY supabase ./supabase
 COPY data/official ./data/official
 COPY data/models ./data/models
+COPY data/knowledge ./data/knowledge
 RUN npm run build:api
 EXPOSE 8081
 CMD ["sh", "-c", "npm run db:migrate && npm run db:seed && npm run start:api"]

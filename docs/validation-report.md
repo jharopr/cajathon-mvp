@@ -182,3 +182,34 @@ Capturas de esta versión: [eventos](mockup-events.png), [impacto](mockup-event-
 Se corrigió `dev:api` a `tsx watch --tsconfig tsconfig.api.json apps/api/src/main.ts`: el orden anterior interpretaba `watch` como archivo e impedía iniciar `npm run dev`. Web y API quedaron activos localmente; ambos respondieron HTTP 200 en `http://127.0.0.1:5180` y `http://127.0.0.1:8081/api/v1/health`. PostgreSQL sigue en Docker, puerto local 54322.
 
 Se repitieron unitarias (23 aprobadas), build (correcto), integración (11 aprobadas, aproximadamente 20 s) y navegador reutilizando los servidores de desarrollo (3 aprobadas, aproximadamente 11 s). La primera repetición de integración detectó una suposición incorrecta del fixture de fallo: exigía cero notificaciones incluso para un análisis ya ejecutado anteriormente. Se corrigió para comprobar que no aumente el conteo y para esperar la recuperación del job cuando hay otro procesador activo. La ejecución posterior pasó; no se cambiaron resultados financieros ni reglas del producto por ese ajuste de pruebas.
+
+### Propuesta documental de redacción preventiva, 26/11/2026
+
+Se añadió [la propuesta de protocolos y plantillas reutilizables](propuesta-redaccion-preventiva.md), enlazada desde README y arquitectura. Este cambio solo documenta la ampliación: no añade módulos, tablas, endpoints, generación por cliente ni consumo real de Gemini. La propuesta distingue la base ya implementada de los componentes nuevos pendientes y define un benchmark futuro con casos sintéticos.
+
+Comprobaciones repetidas sobre la aplicación actual: `npm test`, **23 aprobadas**; `npm run build`, **correcto**, con el aviso existente de tamaño del chunk MapLibre; `npm run test:integration`, **11 aprobadas** con PostgreSQL/PostGIS local, aproximadamente 28 s incluyendo arranque; `npm run test:e2e`, **3 aprobadas**, aproximadamente 13 s. No se realizaron llamadas reales a Gemini. Estos resultados verifican la aplicación existente, no la implementación ni el rendimiento de la arquitectura propuesta. No se midieron costos de generación o capacidad para cientos de miles de clientes.
+
+## MVP de acciones preventivas implementado, 27/11/2026
+
+Alcance: [descripción y caso de uso](mvp-prevencion.md). Tres protocolos demo, preparación autenticada desde Clientes, selección individual conservada, máximo de cinco reservas por análisis, uso mínimo de Gemini y resultados guardados. Adaptación posterior al corte del 26/11, también previa al presencial. Migración 0006 aplicada localmente; las cinco anteriores conservaron checksum y contenido. `.env` sigue excluido y sin cambios.
+
+| Comprobación final | Resultado observado |
+| --- | --- |
+| `npm test` | 28 aprobadas, 0 fallidas |
+| `npm run build` | API y web correctos; persiste el aviso previo del chunk MapLibre de aproximadamente 1.10 MB |
+| `npm run test:integration` | 15 aprobadas, 0 fallidas, aproximadamente 17 s con PostgreSQL/PostGIS real |
+| `npm run test:e2e` | 4 aprobadas, 0 fallidas, aproximadamente 29 s |
+| Migraciones y credenciales | 0006 aditiva aplicada; 0001–0005 sin diff; `.env` ignorado; ningún secreto en los artefactos nuevos |
+| Arranque local | `npm run dev`; web 5180 y API 8081 disponibles; PostgreSQL Docker healthy |
+
+Se probaron selección por prioridad/plan, excepción manual con motivo, rechazo por datos/ubicación/derivación, vigencia LIVE, catálogo por acción, cambios de hash y validación estructural de redacción. La integración comprueba seis solicitudes concurrentes con solo cinco reservas, reutilización aun con el límite alcanzado, resultado final inmutable, auditoría y ausencia de intervenciones/contactos automáticos. También verifica respaldo sin clave, uso del cliente controlado, límite diario e intervalo local persistentes y recuperación de solicitud interrumpida sin repetir llamada.
+
+El nuevo e2e usa una copia sintética del análisis con fecha de fixture y selección de ese análisis solo dentro del navegador de prueba. Prepara expresamente un protocolo sin IA; comprueba cuatro pasos, revisión pendiente, persistencia al recargar y ausencia de POST adicional, además de ancho móvil de 375 px. No consume cupos del plan activo. Se inspeccionaron las capturas de escritorio y móvil. La primera ejecución del nuevo caso falló porque el selector apuntaba a la sección «Evento seleccionado» en vez de a su select; se corrigió el localizador. El caso aislado y la suite completa posterior pasaron.
+
+### Una llamada real al proveedor
+
+Con el servidor ya iniciado se solicitó una sola recomendación para **CS-0810, Agricultura demo 0810**, cliente sintético seleccionado con prioridad alta. El endpoint devolvió modo **gemini**, cuatro pasos validados y una de cinco reservas utilizadas. Modelo reportado: `gemini-3.5-flash-lite`; uso reportado: **495 tokens de entrada, 178 de salida, 673 totales**, sin tokens de pensamiento reportados. No se realizaron reintentos. [Evidencia guardada](../artifacts/prevention-smoke.json).
+
+La ficha se volvió a consultar en un navegador real: mostró Gemini y los cuatro pasos guardados con **cero POST** durante esa consulta. [Captura Gemini](mockup-prevention-gemini.png), [protocolo sin IA en escritorio](mockup-prevention.png) y [móvil](mockup-prevention-mobile.png). Estas últimas dos son del fixture de pruebas.
+
+Esta llamada confirma el funcionamiento observado con la clave/configuración existente; no confirma una cuota garantizada, factura cero, calidad general ni beneficio frente al texto determinista. En esta muestra el proveedor conservó las instrucciones del protocolo. Los protocolos, la cartera, prioridades y cálculos son sintéticos. No se incorporaron plantillas por grupos, lotes masivos, worker nuevo, edición/aprobación textual ni el benchmark de 100 casos. La revisión humana se señala en la guía; las aprobaciones financieras conservan su flujo independiente. Supabase remoto, Docker full y escala productiva no se verificaron en esta entrega. El artefacto financiero de referencia anterior se conserva como evidencia histórica, sin reemplazarlo por la salida variable de estas pruebas.

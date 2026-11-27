@@ -16,6 +16,8 @@ Aviso nuevo/revisado → evento con snapshot → job persistido → exposición 
 
 Se reutilizan NestJS/TypeScript, React/Vite y PostgreSQL/PostGIS. El modelo logístico entrena e infiere en TypeScript. Gemini explica evidencia del evento mediante herramientas limitadas; es opcional, no calcula ni aprueba. Un informe determinista está identificado como “sin IA”.
 
+El 27/11 se implementó además el [MVP de acciones preventivas](docs/mvp-prevencion.md): hasta cinco recomendaciones bajo solicitud por análisis, para clientes de prioridad alta seleccionados en el plan. Cuando el plan no incluye prioridad alta, admite selección manual de otro cliente del plan con motivo. Tres protocolos JSON de demostración acotan los pasos; Gemini solo redacta instrucciones, con resultados guardados y respaldo identificado sin IA. Esta ampliación también es previa al presencial. Las plantillas por grupo y la generación masiva siguen propuestas.
+
 ### Demostración y datos
 
 Cartera de 1,000 negocios y 1,001 créditos, completamente inventados. Se añaden 24 meses ficticios de pagos, perfiles de endeudamiento, segmentos micro/pequeña y sensibilidad sectorial. Los cortes son versionados y anteriores al evento. CENEPRED/SENAMHI son fuentes oficiales; una reproducción histórica se rotula y no se presenta como alerta actual.

@@ -198,3 +198,52 @@ export interface Sources {
   items: Source[];
   policy: { source: string; policy: string; automated: boolean }[];
 }
+export interface PreventionState {
+  eligible: boolean;
+  manual_allowed: boolean;
+  reason: string;
+  used: number;
+  limit: number;
+  gemini_configured: boolean;
+  protocol_version: string;
+  protocol_notice: string;
+  high_unselected: number;
+  recommendation: {
+    id: string;
+    status: "GENERATING" | "READY";
+    mode: "gemini" | "deterministic" | null;
+    provider: string | null;
+    fallback_reason: string | null;
+    provider_attempted: boolean;
+    protocol_version: string;
+    protocol_hash: string;
+    selection_mode: "HIGH" | "MANUAL";
+    selection_reason: string;
+    created_at: string;
+    completed_at: string | null;
+    recoverable: boolean;
+    sources: { id: string; title: string; kind: string }[];
+    context: {
+      client_name: string;
+      client_code: string;
+      event_name: string;
+      event_mode: string;
+      action: string;
+      cash_p50_pen: string;
+      balance_pen: string;
+      modeled_loss_pen: string;
+      note: string;
+    };
+    content: {
+      steps: {
+        id: string;
+        title: string;
+        instruction: string;
+        guardrail: string;
+        protocol_id: string;
+        source_id: string;
+        owner: string;
+      }[];
+    } | null;
+  } | null;
+}
